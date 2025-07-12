@@ -3,34 +3,6 @@
 
 ## styles
 - _variables.css
-<!-- 
- :root {
-   --acme-primary-color: #007bff;
-   --acme-bg-page: #f8f8f8;
-   --acme-bg-card: #ffffff;
-   --acme-border-color: #e0e0e0;
-   --acme-chart-line-color: #FD1050;
-   --acme-chart-area-gradient-start: rgba(253, 16, 80, 0.3);
-   --acme-chart-area-gradient-end: rgba(253, 16, 80, 0);
-   --acme-chart-kline-up: #FD1050; // K线阳线
-   --acme-chart-kline-down: #0CF49B; // K线阴线
-   // ... 更多您组件中会用到的变量
- }
- 
- // 暗色主题的 CSS 变量覆盖
- .dark-theme {
-   --acme-primary-color: #66b3ff;
-   --acme-bg-page: #1a1a1a;
-   --acme-bg-card: #2a2a2a;
-   --acme-border-color: #444444;
-   --acme-chart-line-color: #FD1050; // 暗色主题下线条颜色不变，但可以调整
-   --acme-chart-area-gradient-start: rgba(253, 16, 80, 0.3);
-   --acme-chart-area-gradient-end: rgba(253, 16, 80, 0);
-   --acme-chart-kline-up: #FD1050;
-   --acme-chart-kline-down: #0CF49B;
-   // ... 更多变量的暗色主题值
- }
- -->
 
 ## ui
 
