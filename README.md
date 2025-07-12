@@ -107,6 +107,79 @@ Txn (Transaction)：交易相关组件（如充值提现）。
 - u-chart.js
 
 <!-- 
+ // your-main-project/main.js
+ import Vue from 'vue';
+ import App from './App';
+ 
+ // 导入 acme 库的全局配置和主题设置函数
+ // 假设您的别名是 `@acme` 指向 wtf 文件夹
+ import { wtfConfig, wtfSetTheme } from '@/acme/config.js'; 
+ 
+ // === 关键：在主项目全局导入 acme 的 CSS 变量定义 ===
+ // 这将使 acme/_variables.scss 中定义的变量在全局范围内可用
+ // 并且可以通过后续的 CSS 规则进行覆盖
+ import '@/acme/styles/_variables.scss'; 
+ 
+ // 将 wtfConfig 挂载到 Vue 原型上，方便组件访问
+ Vue.prototype.$wtfConfig = wtfConfig;
+ 
+ // === 关键：在主项目设置主题 ===
+ // 这会覆盖 acme/config.js 中设置的默认主题
+ // 并且会向 body 元素添加 'dark-theme' 或 'light-theme' 类名
+ wtfSetTheme('dark'); // 示例：强制主项目使用暗色主题
+ 
+ // 其他初始化代码
+ Vue.config.productionTip = false;
+ App.mpType = 'app';
+ 
+ const app = new Vue({
+     ...App
+ });
+ app.$mount();
+ 
+  // your-main-project/App.vue
+ <template>
+ 	<div id="app">
+ 		<router-view></router-view>
+ 	</div>
+ </template>
+ 
+ <script>
+ // ...
+ </script>
+ 
+ <style lang="scss">
+ /* 导入 acme 库的默认变量，确保它们在主项目可用 */
+ @import '~@/acme/styles/_variables.scss'; // 确保路径正确
+ 
+ /* === 关键：在主项目级别覆盖 acme 库的 CSS 变量 === */
+ /* 这些定义会覆盖 acme/_variables.scss 中的默认值 */
+ :root {
+   --acme-primary-color: #9C27B0; /* 主项目自定义的主色调 */
+   --acme-text-color-primary: #212121; /* 主项目自定义的文本颜色 */
+   --acme-bg-page: #f0f4f8; /* 主项目自定义的页面背景色 */
+   // ... 覆盖更多 acme 的亮色主题变量
+ }
+ 
+ .dark-theme {
+   --acme-primary-color: #E040FB; /* 主项目自定义的暗色主题主色调 */
+   --acme-text-color-primary: #FAFAFA; /* 主项目自定义的暗色主题文本颜色 */
+   --acme-bg-page: #121212; /* 主项目自定义的暗色主题页面背景色 */
+   // ... 覆盖更多 acme 的暗色主题变量
+ }
+ 
+ /* 其他主项目全局样式 */
+ body {
+   margin: 0;
+   font-family: "Inter", sans-serif;
+   /* 使用 acme 的背景色变量 */
+   background-color: var(--acme-bg-page); 
+   color: var(--acme-text-color-primary);
+ }
+ </style>
+ -->
+
+<!-- 
 
 ### chart // 图表相关的 UI 组件 (例如 TradeView 风格的UI)
   `https://www.tradingview.com/`
