@@ -1,7 +1,5 @@
 :root {
-	--acme-svg-close: #CDCDCD;
 	--acme-input-placeholder-size: 22rpx;
-	--acme-mask-color: #0CF49B;
 }
 
 .dark-theme {

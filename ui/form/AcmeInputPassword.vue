@@ -39,11 +39,11 @@
 		},
 		computed: {
 			svgData() {
-				const _color = cssVariableColor(`var(--acme-svg-close)`, acmeCfg.theme)
+				const _color = cssVariableColor(`acme-svg-close`, acmeCfg.theme)
 				return svgClose(_color)
 			},
 			svgMask() {
-				const _color = cssVariableColor(`var(--acme-mask-color)`, acmeCfg.theme);
+				const _color = cssVariableColor(`acme-mask-color`, acmeCfg.theme);
 				return this.isMask ? svgMaskHide(_color) : svgMaskShow(_color);
 			},
 			showDel() {

@@ -10,7 +10,23 @@ import '@/styles/_variables.css';
 // 从 wtf-ui 库导入配置对象和设置函数
 // import { wtfConfig, wtfSetAssetsRootPath, wtfSetLgre, wtfSetCurrency, wtfSetTheme } from './config.js';
 
+import { setGlobalThemeColorsMap } from '@/utils/theme.js';
 
+// === 关键：定义主项目自己的 SVG 颜色映射并注入到 acme 库 ===
+// 这些颜色值应该与您主项目 styles/_variables.scss 中定义的实际颜色值保持一致
+const myProjectSvgColors = {
+	'light': {
+		'acme-svg-close': '#333333', // 亮色模式下关闭图标的颜色
+		'acme-mask-color': `#0CF49B`,
+	},
+	'dark': {
+		'acme-svg-close': '#CCCCCC', // 暗色模式下关闭图标的颜色
+		'acme-mask-color': `#0CF49B`,
+	}
+};
+
+// 在应用启动时，将主项目的颜色映射注入到 acme 库
+setGlobalThemeColorsMap(myProjectSvgColors);
 
 Vue.prototype.$appCfg = {
 	appName: null, // 应用名称

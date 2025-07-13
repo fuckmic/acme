@@ -31,7 +31,7 @@
 		},
 		computed: {
 			svgData() {
-				const _color = cssVariableColor(`var(--acme-svg-close)`, acmeCfg.theme)
+				const _color = cssVariableColor(`acme-svg-close`, acmeCfg.theme)
 				return svgClose(_color)
 			},
 			showDel() {
