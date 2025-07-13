@@ -19,6 +19,10 @@
 				<AcmeSvg :svgString="svgData" :size="128" customClass="my-custom-icon" />
 			</view>
 		</view>
+
+		<AcmeCopyrightVersion appName="Acme" version="V 0.0.1" />
+		<AcmeCopyrightVersion appName="Acme" />
+
 	</AcmePageContainer>
 </template>
 
@@ -27,8 +31,9 @@
 	import AcmeIcon from '../ui/common/AcmeIcon.vue';
 	import AcmeSvg from '../ui/common/AcmeSvg.vue';
 	import { exampleIconSvg } from '../utils/svg.js';
+	import AcmeCopyrightVersion from '../ui/common/AcmeCopyrightVersion.vue';
 	export default {
-		components: { AcmeIcon, AcmeSvg },
+		components: { AcmeIcon, AcmeSvg, AcmeCopyrightVersion },
 		data() {
 			return {
 				title: 'Acme',
