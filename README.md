@@ -13,8 +13,8 @@
 - ✅ AcmeSvg.vue 突破uniapp中对svg的限制。通用svg的字符串放在utils/svg.js中
 - AcmeTag.vue tag
 - ✅ AcmePageContainer.vue 页面容器层,主项目全局注册。❎ 考虑加入header和footer
-- AcmeCopyrightVersion.vue 版权信息
-- AcmeEmptyData.vue 空数据
+- ✅ AcmeCopyrightVersion.vue 版权信息
+- ✅ AcmeEmptyData.vue 空数据
 
 ### fmt/ 各类数据格式化
 - AcmeFmtFiat.vue 法币值

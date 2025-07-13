@@ -23,6 +23,8 @@
 		<AcmeCopyrightVersion appName="Acme" version="V 0.0.1" />
 		<AcmeCopyrightVersion appName="Acme" />
 
+		<AcmeEmptyData icon="empty_data" path="/static/" :size="360" format="png" title="Empty Data" />
+
 	</AcmePageContainer>
 </template>
 
@@ -32,8 +34,9 @@
 	import AcmeSvg from '../ui/common/AcmeSvg.vue';
 	import { exampleIconSvg } from '../utils/svg.js';
 	import AcmeCopyrightVersion from '../ui/common/AcmeCopyrightVersion.vue';
+	import AcmeEmptyData from '../ui/common/AcmeEmptyData.vue';
 	export default {
-		components: { AcmeIcon, AcmeSvg, AcmeCopyrightVersion },
+		components: { AcmeIcon, AcmeSvg, AcmeCopyrightVersion, AcmeEmptyData },
 		data() {
 			return {
 				title: 'Acme',

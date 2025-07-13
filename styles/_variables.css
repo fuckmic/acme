@@ -1,21 +1,15 @@
-:root {
-	--acme-primary-color: teal;
-	--acme-bg-page: #f8f8f8;
-	--acme-copyright-color: var(--acme-primary-color);
-
-	/* 	--acme-bg-card: #ffffff;
-	--acme-border-color: #e0e0e0;
-	--acme-chart-line-color: #FD1050;
-	--acme-chart-area-gradient-start: rgba(253, 16, 80, 0.3);
-	--acme-chart-area-gradient-end: rgba(253, 16, 80, 0);
-	--acme-chart-kline-up: #FD1050;
-	--acme-chart-kline-down: #0CF49B; */
-}
+:root {}
 
 
 .dark-theme {
 	--acme-primary-color: #66b3ff;
 	--acme-bg-page: #121212;
+	--acme-info: #A8A8A8;
+	--acme-success: #0CF49B;
+	--acme-error: #FD1050;
+	--acme-warn: #FFD700;
+	--acme-copyright-color: var(--acme-primary-color);
+	--acme-empty-data-color: var(--acme-info);
 
 	/* 	--acme-bg-card: #2a2a2a;
 	--acme-border-color: #444444;
@@ -29,7 +23,12 @@
 .light-theme {
 	--acme-primary-color: teal;
 	--acme-bg-page: #f8f8f8;
-
+	--acme-info: #909399;
+	--acme-success: #0CF49B;
+	--acme-error: #FD1050;
+	--acme-warn: #FFA500;
+	--acme-copyright-color: var(--acme-primary-color);
+	--acme-empty-data-color: var(--acme-info);
 
 	/* 	--acme-bg-card: #ffffff;
 	--acme-border-color: #e0e0e0;
