@@ -9,7 +9,7 @@
 ## ui
 
 ### common/ 
-- ✅ AcmeIcon.vue 仅渲染icon
+- ✅ AcmeIcon.vue 无需动态改变颜色的图像，通常是非svg。
 - ✅ AcmeSvg.vue 突破uniapp中对svg的限制。通用svg的字符串放在utils/svg.js中
 - AcmeTag.vue tag
 - ✅ AcmePageContainer.vue 页面容器层,主项目全局注册。❎ 考虑加入header和footer
