@@ -17,9 +17,9 @@
 		name: "AcmeFmtFiat",
 		props: {
 			value: { type: [String, Number], default: 0 },
-			locale: { type: String, default: '' },
+			locale: { type: String, default: () => acmeCfg.lgre },
 			// 用于 'fiat' 类型，如 'USD', 'EUR'
-			currency: { type: String, default: '' },
+			currency: { type: String, default: () => acmeCfg.currency },
 			showSign: {
 				type: String,
 				default: 'auto', // 默认自动显示，负数显示负号，正数不显示
@@ -29,15 +29,12 @@
 			bg: { type: String, default: '' },
 		},
 		computed: {
-			curLgre() { return this.locale.length > 0 ? this.locale : acmeCfg.lgre; },
-			curCurrency() { return this.currency.length > 0 ? this.currency : acmeCfg.currency; },
 			formattedValue() {
-				return formatterFiat(this.value, this.curLgre, this.curCurrency, this.showSign);
+				return formatterFiat(this.value, this.locale, this.currency, this.showSign);
 			},
 			setStyle() {
 				const _color = this.color && this.color.length > 0 ? this.color : `var(--acme-fmt-color)`;
 				const _bg = this.bg && this.bg.length > 0 ? this.bg : `transparent`;
-				console.log({ color: _color, backgroundColor: _bg });
 				return { color: _color, backgroundColor: _bg };
 			},
 		},

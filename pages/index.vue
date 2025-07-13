@@ -38,9 +38,19 @@
 			</view>
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
 				<view>{{`AcmeFmtInteger:`}}</view>
-				<AcmeFmtInteger :value="123456" />
+				<AcmeFmtInteger :value="123456">
+					<template #suffix>
+						<text style="font-size: 24rpx;color:var(--acme-info);">{{`KM`}}</text>
+					</template>
+				</AcmeFmtInteger>
 				<AcmeFmtInteger :value="123456" locale="de-DE" />
 			</view>
+			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
+				<view>{{`AcmeFmtPercent:`}}</view>
+				<AcmeFmtPercent :value="123.45" />
+				<AcmeFmtPercent :value="345.6" locale="de-DE" />
+			</view>
+
 
 
 			<AcmeEmptyData icon="empty_data" path="/static/" :size="360" format="png" title="Empty Data" />
@@ -58,8 +68,9 @@
 	import AcmeEmptyData from '../ui/common/AcmeEmptyData.vue';
 	import AcmeFmtFiat from '../ui/fmt/AcmeFmtFiat.vue';
 	import AcmeFmtInteger from '../ui/fmt/AcmeFmtInteger.vue';
+	import AcmeFmtPercent from '../ui/fmt/AcmeFmtPercent.vue';
 	export default {
-		components: { AcmeIcon, AcmeSvg, AcmeCopyrightVersion, AcmeEmptyData, AcmeFmtFiat, AcmeFmtInteger },
+		components: { AcmeIcon, AcmeSvg, AcmeCopyrightVersion, AcmeEmptyData, AcmeFmtFiat, AcmeFmtInteger, AcmeFmtPercent },
 		data() {
 			return {
 				title: 'Acme',

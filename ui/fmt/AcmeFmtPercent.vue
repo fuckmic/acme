@@ -3,7 +3,7 @@
 		<view v-if="$slots.prefix" class="prefix-slot">
 			<slot name="prefix"></slot>
 		</view>
-		<text> {{ formattedValue }} </text>
+		<text>{{ formattedValue }}</text>
 		<view v-if="$slots.suffix" class="suffix-slot">
 			<slot name="suffix"></slot>
 		</view>
@@ -12,19 +12,19 @@
 
 <script>
 	import { acmeCfg } from '../../config.js';
-	import { formatterInteger } from '../../utils/formatter';
+	import { formatterPercent } from '../../utils/formatter';
 	export default {
-		name: "AcmeFmtInteger",
+		name: "AcmeFmtPercent",
 		props: {
 			value: { type: [String, Number], default: 0 },
 			locale: { type: String, default: () => acmeCfg.lgre },
-			showSign: { type: String, default: 'auto' },
+			showSign: { type: String, default: 'exceptZero' },
 			color: { type: String, default: '' },
 			bg: { type: String, default: '' },
 		},
 		computed: {
 			formattedValue() {
-				return formatterInteger(this.value, this.locale);
+				return formatterPercent(this.value, this.locale);
 			},
 			setStyle() {
 				const _color = this.color && this.color.length > 0 ? this.color : `var(--acme-fmt-color)`;

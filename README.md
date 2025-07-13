@@ -19,7 +19,7 @@
 ### fmt/ 各类数据格式化
 - ✅ AcmeFmtFiat.vue 法币值
 - ✅ AcmeFmtInteger.vue 整数值
-- AcmeFmtPercent.vue 百分值
+- ✅ AcmeFmtPercent.vue 百分值
 - AcmeFmtCryptoAmount.vue 加密币数量
 - AcmeFmtCryptoValue.vue 稳定币
 - AcmeFmtKMB.vue 金融大数KMB
