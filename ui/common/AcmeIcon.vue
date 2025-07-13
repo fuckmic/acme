@@ -2,7 +2,6 @@
 	<image :src="setSrc" :style="[computedStyle, customStyle]" :mode="imageMode" />
 </template>
 <script>
-	import { wtfConfig } from '../../config.js';
 	export default {
 		name: "AcmeIcon",
 		props: {

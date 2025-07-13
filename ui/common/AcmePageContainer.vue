@@ -5,11 +5,11 @@
 </template>
 
 <script>
-	import { wtfConfig } from '../../config.js';
+	import { acmeCfg } from '../../config.js';
 	export default {
 		name: "AcmePageContainer",
 		computed: {
-			curTheme() { return `${wtfConfig.theme}-theme`; },
+			curTheme() { return `${acmeCfg.theme}-theme`; },
 		}
 	}
 </script>

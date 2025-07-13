@@ -10,6 +10,7 @@
 	--acme-warn: #FFD700;
 	--acme-copyright-color: var(--acme-primary-color);
 	--acme-empty-data-color: var(--acme-info);
+	--acme-fmt-color: #f8f8f8;
 
 	/* 	--acme-bg-card: #2a2a2a;
 	--acme-border-color: #444444;
@@ -29,6 +30,7 @@
 	--acme-warn: #FFA500;
 	--acme-copyright-color: var(--acme-primary-color);
 	--acme-empty-data-color: var(--acme-info);
+	--acme-fmt-color: #121212;
 
 	/* 	--acme-bg-card: #ffffff;
 	--acme-border-color: #e0e0e0;
