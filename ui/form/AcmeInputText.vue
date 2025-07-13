@@ -31,7 +31,7 @@
 		},
 		computed: {
 			svgData() {
-				const _color = cssVariableColor(`var(--acme-svg-del)`, acmeCfg.theme)
+				const _color = cssVariableColor(`var(--acme-svg-input-del)`, acmeCfg.theme)
 				return svgDel(_color)
 			},
 			showDel() {
