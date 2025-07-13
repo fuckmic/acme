@@ -7,7 +7,7 @@
 				<view @tap="onTheme(`light`)" style="color:var(--acme-primary-color);">{{`Light`}}</view>
 				<AcmeIcon icon="account" path="/static/" />
 			</view>
-			<view style="margin: 16rpx 0; border: 1rpx dashed #121212;"></view>
+			<view style="margin: 16rpx 0; border: 1rpx dashed var(--acme-fmt-color);"></view>
 
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
 				<AcmeSvg :svgString="svgData" :size="128" customClass="my-custom-icon" />
@@ -17,29 +17,31 @@
 				<view @tap="onTheme(`dark`)" style="cursor: pointer;">
 					<AcmeSvg :svgString="svgData" :size="128" customClass="my-custom-icon" />
 				</view>
-				<view @tap="onTheme(`light`)" style="cursor: pointer;">
+				<view @tap="onTheme(`light`)" style="cursor: pointer;color:var(--acme-primary-color);">
 					<AcmeSvg :svgString="svgData" :size="128" customClass="my-custom-icon" />
 				</view>
 			</view>
-			<view style="margin: 16rpx 0; border: 1rpx dashed #121212;"></view>
+			<view style="margin: 16rpx 0; border: 1rpx dashed var(--acme-fmt-color);"></view>
 
 			<AcmeCopyrightVersion appName="Acme" version="V 0.0.1" />
 			<AcmeCopyrightVersion appName="Acme" />
-			<view style="margin: 16rpx 0; border: 1rpx dashed #121212;"></view>
+			<view style="margin: 16rpx 0; border: 1rpx dashed var(--acme-fmt-color);"></view>
 
-			<view style="font-size: 40rpx;font-weight: 900;text-align: center;">Formatter Value</view>
+			<view style="font-size: 40rpx;font-weight: 900;text-align: center;color:var(--acme-primary-color);">
+				{{`Formatter Value`}}
+			</view>
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
 				<view>{{`AcmeFmtFiat:`}}</view>
 				<AcmeFmtFiat :value="123456.789" />
 				<AcmeFmtFiat :value="123456.789" currency="EUR" />
 			</view>
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
-				<view>{{`AcmeFmtFiat:`}}</view>
+				<view style="color:var(--acme-primary-color);">{{`AcmeFmtFiat:`}}</view>
 				<AcmeFmtFiat :value="123456.789" color="var(--acme-success)" />
 				<AcmeFmtFiat :value="123456.789" currency="EUR" bg="var(--acme-success)" />
 			</view>
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
-				<view>{{`AcmeFmtInteger:`}}</view>
+				<view style="color:var(--acme-primary-color);">{{`AcmeFmtInteger:`}}</view>
 				<AcmeFmtInteger :value="123456">
 					<template #suffix>
 						<text style="font-size: 24rpx;color:var(--acme-info);">{{`KM`}}</text>
@@ -48,13 +50,15 @@
 				<AcmeFmtInteger :value="123456" locale="de-DE" />
 			</view>
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
-				<view>{{`AcmeFmtPercent:`}}</view>
+				<view style="color:var(--acme-primary-color);">{{`AcmeFmtPercent:`}}</view>
 				<AcmeFmtPercent :value="123.45" />
 				<AcmeFmtPercent :value="345.6" locale="de-DE" />
 			</view>
-			<view style="margin: 16rpx 0; border: 1rpx dashed #121212;"></view>
+			<view style="margin: 16rpx 0; border: 1rpx dashed var(--acme-fmt-color);"></view>
 
-			<view style="font-size: 40rpx;font-weight: 900;text-align: center;">Form Input</view>
+			<view style="font-size: 40rpx;font-weight: 900;text-align: center;color:var(--acme-primary-color);">
+				{{`Form Input`}}
+			</view>
 			<AcmeInputText v-model="formData.account" :placeholder="`Enter account`" />
 			<AcmeInputPassword v-model="formData.password" :placeholder="`Enter password`" />
 
