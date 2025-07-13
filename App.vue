@@ -37,8 +37,7 @@
 	// @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
 	// @import url('https://fonts.googleapis.com/css2?family=Roboto:wdth,wght@75..100,100..900&display=swap');
 	// @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&display=swap');
-	// @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
-	@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap');
+	@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 
 	// @media screen and (max-device-width:375px) {
@@ -63,7 +62,7 @@
 
 
 	* {
-		font-family: "Noto Sans JP", serif;
+		font-family: "Open Sans", serif;
 		// font-weight: 400;
 		// font-size: 14px;
 		font-style: normal;

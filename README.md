@@ -34,6 +34,8 @@
 - AcmePresetSelectorFiat.vue 法币预置值
 - AcmePresetSelectorLever.vue 杠杆预置值
 - AcmePresetSelectorCrypto.vue 加密币预置值、稳定币预置值
+- AcmeLgreSelector.vue 语言选择器
+- 
 <!-- 
  // 以 type="text" 输入，格式化为合法数值。允许用户按照格式化输入，或输入值自动格式化。
  
