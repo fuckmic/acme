@@ -55,12 +55,8 @@
 			<view style="margin: 16rpx 0; border: 1rpx dashed #121212;"></view>
 
 			<view style="font-size: 40rpx;font-weight: 900;text-align: center;">Form Input</view>
-			<AcmeInputText v-model="formData.account" :placeholder="`Enter account`">
-				<!-- <template v-slot:prefix>
-									<WtfIcon icon="account"></WtfIcon>
-								</template> -->
-			</AcmeInputText>
-
+			<AcmeInputText v-model="formData.account" :placeholder="`Enter account`" />
+			<AcmeInputPassword v-model="formData.password" :placeholder="`Enter password`" />
 
 			<AcmeEmptyData icon="empty_data" path="/static/" :size="360" format="png" title="Empty Data" />
 		</view>
@@ -79,6 +75,7 @@
 	import AcmeFmtInteger from '../ui/fmt/AcmeFmtInteger.vue';
 	import AcmeFmtPercent from '../ui/fmt/AcmeFmtPercent.vue';
 	import AcmeInputText from '../ui/form/AcmeInputText.vue';
+	import AcmeInputPassword from '../ui/form/AcmeInputPassword.vue';
 	export default {
 		components: {
 			AcmeIcon,
@@ -89,6 +86,7 @@
 			AcmeFmtInteger,
 			AcmeFmtPercent,
 			AcmeInputText,
+			AcmeInputPassword,
 		},
 		data() {
 			return {

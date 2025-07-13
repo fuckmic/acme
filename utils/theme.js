@@ -1,10 +1,12 @@
 /* Maybe only map svg color */
 const themeColorsMap = {
 	'dark': {
-		'acme-svg-input-del': `#CDCDCD`,
+		'acme-svg-close': `#CDCDCD`,
+		'acme-mask-color': `#0CF49B`,
 	},
 	'light': {
-		'acme-svg-input-del': `#CDCDCD`,
+		'acme-svg-close': `#CDCDCD`,
+		'acme-mask-color': `#0CF49B`,
 	}
 }
 
