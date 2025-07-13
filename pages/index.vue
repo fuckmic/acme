@@ -31,6 +31,16 @@
 				<AcmeFmtFiat :value="123456.789" />
 				<AcmeFmtFiat :value="123456.789" currency="EUR" />
 			</view>
+			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
+				<view>{{`AcmeFmtFiat:`}}</view>
+				<AcmeFmtFiat :value="123456.789" color="var(--acme-success)" />
+				<AcmeFmtFiat :value="123456.789" currency="EUR" bg="var(--acme-success)" />
+			</view>
+			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
+				<view>{{`AcmeFmtInteger:`}}</view>
+				<AcmeFmtInteger :value="123456" />
+				<AcmeFmtInteger :value="123456" locale="de-DE" />
+			</view>
 
 
 			<AcmeEmptyData icon="empty_data" path="/static/" :size="360" format="png" title="Empty Data" />
@@ -47,8 +57,9 @@
 	import AcmeCopyrightVersion from '../ui/common/AcmeCopyrightVersion.vue';
 	import AcmeEmptyData from '../ui/common/AcmeEmptyData.vue';
 	import AcmeFmtFiat from '../ui/fmt/AcmeFmtFiat.vue';
+	import AcmeFmtInteger from '../ui/fmt/AcmeFmtInteger.vue';
 	export default {
-		components: { AcmeIcon, AcmeSvg, AcmeCopyrightVersion, AcmeEmptyData, AcmeFmtFiat },
+		components: { AcmeIcon, AcmeSvg, AcmeCopyrightVersion, AcmeEmptyData, AcmeFmtFiat, AcmeFmtInteger },
 		data() {
 			return {
 				title: 'Acme',

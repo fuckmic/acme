@@ -3,7 +3,10 @@
 		<view v-if="$slots.prefix" class="prefix-slot">
 			<slot name="prefix"></slot>
 		</view>
-		<text>{{ formattedValue }}</text>
+		<text>
+			{{ formattedValue }}
+			<text v-if="!hideUnitText && unitText" class="unit-text">{{ unitText }}</text>
+		</text>
 		<view v-if="$slots.suffix" class="suffix-slot">
 			<slot name="suffix"></slot>
 		</view>
@@ -12,32 +15,28 @@
 
 <script>
 	import { acmeCfg } from '../../config.js';
-	import { formatterFiat } from '../../utils/formatter';
+	import { formatterInteger } from '../../utils/formatter';
 	export default {
-		name: "AcmeFmtFiat",
+		name: "AcmeFmtInteger",
 		props: {
 			value: { type: [String, Number], default: 0 },
 			locale: { type: String, default: '' },
-			// 用于 'fiat' 类型，如 'USD', 'EUR'
-			currency: { type: String, default: '' },
-			showSign: {
-				type: String,
-				default: 'auto', // 默认自动显示，负数显示负号，正数不显示
-				validator: (val) => ['auto', 'always', 'exceptZero', 'never'].includes(val),
-			},
+			minDigits: { type: Number, default: 0 },
+			maxDigits: { type: Number, default: 0 },
+			showSign: { type: String, default: 'auto' },
+			hideUnitText: { type: Boolean, default: false },
+			unitText: { type: String, default: '' },
 			color: { type: String, default: '' },
 			bg: { type: String, default: '' },
 		},
 		computed: {
 			curLgre() { return this.locale.length > 0 ? this.locale : acmeCfg.lgre; },
-			curCurrency() { return this.currency.length > 0 ? this.currency : acmeCfg.currency; },
 			formattedValue() {
-				return formatterFiat(this.value, this.curLgre, this.curCurrency, this.showSign);
+				return formatterInteger(this.value, this.curLgre);
 			},
 			setStyle() {
 				const _color = this.color && this.color.length > 0 ? this.color : `var(--acme-fmt-color)`;
 				const _bg = this.bg && this.bg.length > 0 ? this.bg : `transparent`;
-				console.log({ color: _color, backgroundColor: _bg });
 				return { color: _color, backgroundColor: _bg };
 			},
 		},
