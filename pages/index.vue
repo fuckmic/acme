@@ -1,17 +1,17 @@
 <template>
 	<view :class="curTheme" style="background-color: var(--acme-bg-page);">
-		<view style="color:var(--acme-primary-color);">{{`Acme`}}</view>
-
-		<view @tap="onTheme(`dark`)" style="color:var(--acme-primary-color);">{{`Dark`}}</view>
-		<view @tap="onTheme(`light`)" style="color:var(--acme-primary-color);">{{`Light`}}</view>
-
-		<AcmeIcon icon="account" path="/static/" />
+		<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
+			<view style="color:var(--acme-primary-color);">{{`Acme`}}</view>
+			<view @tap="onTheme(`dark`)" style="color:var(--acme-primary-color);">{{`Dark`}}</view>
+			<view @tap="onTheme(`light`)" style="color:var(--acme-primary-color);">{{`Light`}}</view>
+			<AcmeIcon icon="account" path="/static/" />
+		</view>
 	</view>
 </template>
 
 <script>
 	import { wtfConfig, acmeSetTheme } from '../config.js';
-	import { AcmeIcon } from '@/ui/common/AcmeIcon.vue';
+	import AcmeIcon from '../ui/common/AcmeIcon.vue';
 	export default {
 		components: { AcmeIcon },
 		data() {
