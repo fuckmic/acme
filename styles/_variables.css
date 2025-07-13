@@ -1,5 +1,7 @@
-:root {}
-
+:root {
+	--acme-svg-del: #CDCDCD;
+	--acme-input-placeholder-size: 22rpx;
+}
 
 .dark-theme {
 	--acme-primary-color: #66b3ff;
@@ -11,9 +13,11 @@
 	--acme-copyright-color: var(--acme-primary-color);
 	--acme-empty-data-color: var(--acme-info);
 	--acme-fmt-color: #f8f8f8;
+	--acme-input-placeholder-color: var(--acme-info);
+	--acme-input-color: #f8f8f8;
+	--acme-input-border-color: #444444;
 
 	/* 	--acme-bg-card: #2a2a2a;
-	--acme-border-color: #444444;
 	--acme-chart-line-color: #FD1050;
 	--acme-chart-area-gradient-start: rgba(253, 16, 80, 0.3);
 	--acme-chart-area-gradient-end: rgba(253, 16, 80, 0);
@@ -31,9 +35,11 @@
 	--acme-copyright-color: var(--acme-primary-color);
 	--acme-empty-data-color: var(--acme-info);
 	--acme-fmt-color: #121212;
+	--acme-input-placeholder-color: var(--acme-info);
+	--acme-input-color: #121212;
+	--acme-input-border-color: #e0e0e0;
 
 	/* 	--acme-bg-card: #ffffff;
-	--acme-border-color: #e0e0e0;
 	--acme-chart-line-color: #FD1050;
 	--acme-chart-area-gradient-start: rgba(253, 16, 80, 0.3);
 	--acme-chart-area-gradient-end: rgba(253, 16, 80, 0);

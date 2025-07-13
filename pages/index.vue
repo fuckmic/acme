@@ -8,6 +8,7 @@
 				<AcmeIcon icon="account" path="/static/" />
 			</view>
 			<view style="margin: 16rpx 0; border: 1rpx dashed #121212;"></view>
+
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
 				<AcmeSvg :svgString="svgData" :size="128" customClass="my-custom-icon" />
 				<AcmeSvg :svgString="svgData" :size="64" sizeMode="heightFix" />
@@ -21,10 +22,11 @@
 				</view>
 			</view>
 			<view style="margin: 16rpx 0; border: 1rpx dashed #121212;"></view>
+
 			<AcmeCopyrightVersion appName="Acme" version="V 0.0.1" />
 			<AcmeCopyrightVersion appName="Acme" />
-
 			<view style="margin: 16rpx 0; border: 1rpx dashed #121212;"></view>
+
 			<view style="font-size: 40rpx;font-weight: 900;text-align: center;">Formatter Value</view>
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
 				<view>{{`AcmeFmtFiat:`}}</view>
@@ -50,7 +52,14 @@
 				<AcmeFmtPercent :value="123.45" />
 				<AcmeFmtPercent :value="345.6" locale="de-DE" />
 			</view>
+			<view style="margin: 16rpx 0; border: 1rpx dashed #121212;"></view>
 
+			<view style="font-size: 40rpx;font-weight: 900;text-align: center;">Form Input</view>
+			<AcmeInputText v-model="formData.account" :placeholder="`Enter account`">
+				<!-- <template v-slot:prefix>
+									<WtfIcon icon="account"></WtfIcon>
+								</template> -->
+			</AcmeInputText>
 
 
 			<AcmeEmptyData icon="empty_data" path="/static/" :size="360" format="png" title="Empty Data" />
@@ -69,11 +78,26 @@
 	import AcmeFmtFiat from '../ui/fmt/AcmeFmtFiat.vue';
 	import AcmeFmtInteger from '../ui/fmt/AcmeFmtInteger.vue';
 	import AcmeFmtPercent from '../ui/fmt/AcmeFmtPercent.vue';
+	import AcmeInputText from '../ui/form/AcmeInputText.vue';
 	export default {
-		components: { AcmeIcon, AcmeSvg, AcmeCopyrightVersion, AcmeEmptyData, AcmeFmtFiat, AcmeFmtInteger, AcmeFmtPercent },
+		components: {
+			AcmeIcon,
+			AcmeSvg,
+			AcmeCopyrightVersion,
+			AcmeEmptyData,
+			AcmeFmtFiat,
+			AcmeFmtInteger,
+			AcmeFmtPercent,
+			AcmeInputText,
+		},
 		data() {
 			return {
 				title: 'Acme',
+				formData: {
+					account: '',
+					password: '',
+					amount: '',
+				}
 			}
 		},
 		computed: {

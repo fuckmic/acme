@@ -28,7 +28,7 @@
 - AcmeCheckbox.vue 复选框
 - AcmeSwith.vue 开关
 - AcmeUpload.vue 上传图片
-- AcmeInputText.vue 普通文本
+- ✅ AcmeInputText.vue 普通文本
 - AcmeInputPassword.vue 密码，带掩码
 - AcmeInputSearch.vue 搜索
 - AcmeInputFiat.vue 法币。带币符号，小数两位或0位。
@@ -102,7 +102,7 @@ Txn (Transaction)：交易相关组件（如充值提现）。
 ## utils
 - formatter.js
 - locales.js 所有国家国际化配置
-- theme.js 主题
+- theme.js 主题、 css变量映射颜色值等
 - websocket.js ws
 - validator.js 表单验证
 - svg.js 所有需要动态改变size和color的svg文件
