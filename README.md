@@ -1,14 +1,16 @@
 # acme
 `分为：ui、utils、示例`
 
+- 说明：✅ 已完成、❎ 未完成、❓ 待确认、🟰 等等做、➕ 新增功能、➖ 非使用功能、✖ 移除功能
+
 ## styles
 - _variables.css
 
 ## ui
 
 ### common/ 
-- AcmeIcon.vue 仅渲染icon
-- AcmeSvg.vue 突破uniapp中对svg的限制。
+- ✅ AcmeIcon.vue 仅渲染icon
+- ✅ AcmeSvg.vue 突破uniapp中对svg的限制。通用svg的字符串放在utils/svg.js中
 - AcmeTag.vue tag
 - AcmePage.vue 页面容器层
 - AcmeCopyrightVersion.vue 版权信息
@@ -103,6 +105,7 @@ Txn (Transaction)：交易相关组件（如充值提现）。
 - theme.js 主题
 - websocket.js ws
 - validator.js 表单验证
+- svg.js 所有需要动态改变size和color的svg文件
 
 ### chart/ 图表相关
 - klinechart.js
