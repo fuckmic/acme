@@ -1,5 +1,11 @@
 import Vue from 'vue';
 import App from './App';
+import AcmePageContainer from '@/ui/common/AcmePageContainer.vue';
+
+Vue.component('AcmePageContainer', AcmePageContainer); // 全局注册
+
+// 导入 acme 库的 CSS 变量定义
+import '@/styles/_variables.css';
 
 // 从 wtf-ui 库导入配置对象和设置函数
 // import { wtfConfig, wtfSetAssetsRootPath, wtfSetLgre, wtfSetCurrency, wtfSetTheme } from './config.js';

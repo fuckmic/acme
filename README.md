@@ -12,7 +12,7 @@
 - ✅ AcmeIcon.vue 仅渲染icon
 - ✅ AcmeSvg.vue 突破uniapp中对svg的限制。通用svg的字符串放在utils/svg.js中
 - AcmeTag.vue tag
-- AcmePage.vue 页面容器层
+- ✅ AcmePageContainer.vue 页面容器层,主项目全局注册。❎ 考虑加入header和footer
 - AcmeCopyrightVersion.vue 版权信息
 - AcmeEmptyData.vue 空数据
 

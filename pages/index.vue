@@ -1,5 +1,5 @@
 <template>
-	<view :class="curTheme" style="background-color: var(--acme-bg-page);">
+	<AcmePageContainer>
 		<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
 			<view style="color:var(--acme-primary-color);">{{`Acme`}}</view>
 			<view @tap="onTheme(`dark`)" style="color:var(--acme-primary-color);">{{`Dark`}}</view>
@@ -7,18 +7,19 @@
 			<AcmeIcon icon="account" path="/static/" />
 		</view>
 
-		<AcmeSvg :svgString="svgData" :size="128" customClass="my-custom-icon" />
-		<AcmeSvg :svgString="svgData" :size="64" sizeMode="heightFix" />
-		<AcmeSvg :svgString="svgData" :size="48" />
-		<AcmeSvg :svgString="svgData" :size="32" />
-
-		<view @tap="onTheme(`dark`)" style="cursor: pointer;">
+		<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
 			<AcmeSvg :svgString="svgData" :size="128" customClass="my-custom-icon" />
+			<AcmeSvg :svgString="svgData" :size="64" sizeMode="heightFix" />
+			<AcmeSvg :svgString="svgData" :size="48" />
+			<AcmeSvg :svgString="svgData" :size="32" />
+			<view @tap="onTheme(`dark`)" style="cursor: pointer;">
+				<AcmeSvg :svgString="svgData" :size="128" customClass="my-custom-icon" />
+			</view>
+			<view @tap="onTheme(`light`)" style="cursor: pointer;">
+				<AcmeSvg :svgString="svgData" :size="128" customClass="my-custom-icon" />
+			</view>
 		</view>
-		<view @tap="onTheme(`light`)" style="cursor: pointer;">
-			<AcmeSvg :svgString="svgData" :size="128" customClass="my-custom-icon" />
-		</view>
-	</view>
+	</AcmePageContainer>
 </template>
 
 <script>
