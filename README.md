@@ -31,7 +31,7 @@
 - ✅ AcmeInputText.vue 普通文本
 - ✅ AcmeInputPassword.vue 密码，带掩码
 - ✅ AcmeInputSearch.vue 搜索
-- AcmeInputFiat.vue 法币。带币符号，小数两位或0位。
+- ✅ AcmeInputFiat.vue 法币。带币符号，小数两位或0位。
 - AcmeInputInteger.vue 正整值、数量值。
 - AcmePresetSelectorFiat.vue 法币预置值
 - AcmePresetSelectorLever.vue 杠杆预置值
