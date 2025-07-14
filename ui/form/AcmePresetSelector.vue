@@ -51,6 +51,7 @@
 				}
 				return rows;
 			},
+			// 计算行上单元格占宽
 			curWidth() { return { flex: `0 0 calc(${100 / this.column}% - 16rpx)` } }
 		},
 		watch: {
