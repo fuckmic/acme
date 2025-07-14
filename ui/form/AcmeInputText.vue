@@ -64,7 +64,6 @@
 		flex-wrap: nowrap;
 		gap: 20rpx;
 		padding: 28rpx 0;
-		margin-bottom: 36rpx;
 		height: 100rpx;
 		padding: 0 32rpx;
 		box-sizing: border-box;

@@ -4,7 +4,7 @@
 - 说明：✅ 已完成、❎ 未完成、❓ 待确认、🟰 等等做、➕ 新增功能、➖ 非使用功能、✖ 移除功能
 
 ## styles
-- _variables.css
+- _variables.css css变量。主项目引入，再引入覆写的变量。
 
 ## ui
 
@@ -30,7 +30,7 @@
 - AcmeUpload.vue 上传图片
 - ✅ AcmeInputText.vue 普通文本
 - ✅ AcmeInputPassword.vue 密码，带掩码
-- AcmeInputSearch.vue 搜索
+- ✅ AcmeInputSearch.vue 搜索
 - AcmeInputFiat.vue 法币。带币符号，小数两位或0位。
 - AcmeInputInteger.vue 正整值、数量值。
 - AcmePresetSelectorFiat.vue 法币预置值
