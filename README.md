@@ -39,11 +39,10 @@
 - ✅ AcmeInputSearch.vue 搜索
 - ✅ AcmeInputFiat.vue 法币。带币符号，小数两位或0位。
 - ✅ AcmeInputInteger.vue 正整值、数量值。
-- AcmePresetSelectorFiat.vue 法币预置值
-- AcmePresetSelectorLever.vue 杠杆预置值
-- AcmePresetSelectorCrypto.vue 加密币预置值、稳定币预置值
-- AcmeLgreSelector.vue 语言选择器
-- 
+- ✅ AcmePresetSelector.vue 预置值 法币、杠杆、加密币、稳定币。
+- AcmeDropdownLgre.vue 下拉选择器 语言
+- AcmeSliderPercent.vue  滑动条 百分比
+
 <!-- 
  // 以 type="text" 输入，格式化为合法数值。允许用户按照格式化输入，或输入值自动格式化。
  

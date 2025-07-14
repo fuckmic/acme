@@ -76,6 +76,23 @@
 			<view style="margin-bottom: 36rpx;"></view>
 			<AcmeInputInteger v-model="formData.quantity" :placeholder="`Enter quantity`" />
 			<view style="margin-bottom: 36rpx;"></view>
+			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
+				<view style="color:var(--acme-primary-color);">{{`Current curFiat:`}}</view>
+				<AcmeInputFiat v-model="formData.curFiat" :placeholder="`Enter curFiat`" />
+			</view>
+			<view style="margin-bottom: 36rpx;"></view>
+			<AcmePresetSelector v-model="formData.curFiat" :list="optsFiat" @select="onSelected" />
+			<view style="margin-bottom: 36rpx;"></view>
+
+			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
+				<view style="color:var(--acme-primary-color);">{{`Current Lever:`}}</view>
+				<AcmeInputInteger v-model="formData.lever" :placeholder="`Enter Lever`" />
+			</view>
+			<view style="margin-bottom: 36rpx;"></view>
+			<AcmePresetSelector v-model="formData.lever" :list="optLevers" @select="onSelectedLever" />
+			<view style="margin-bottom: 36rpx;"></view>
+
+
 
 			<view style="margin: 16rpx 0; border: 1rpx dashed var(--acme-fmt-color);"></view>
 			<AcmeEmptyData icon="empty_data" path="/static/" :size="360" format="png" title="Empty Data" />
@@ -99,6 +116,8 @@
 	import AcmeInputSearch from '../ui/form/AcmeInputSearch.vue';
 	import AcmeInputFiat from '../ui/form/AcmeInputFiat.vue';
 	import AcmeInputInteger from '../ui/form/AcmeInputInteger.vue';
+	import AcmePresetSelector from '../ui/form/AcmePresetSelector.vue';
+	import { formatterFiat, formatterInteger } from '../utils/formatter';
 	export default {
 		components: {
 			AcmeIcon,
@@ -113,6 +132,7 @@
 			AcmeInputSearch,
 			AcmeInputFiat,
 			AcmeInputInteger,
+			AcmePresetSelector,
 		},
 		data() {
 			return {
@@ -123,7 +143,9 @@
 					keyword: '',
 					amount: '',
 					quantity: '',
-				}
+					curFiat: '',
+					lever: 1,
+				},
 			}
 		},
 		computed: {
@@ -132,15 +154,41 @@
 			setColor() { return '#' + Math.floor(Math.random() * 16777215).toString(16); },
 			svgData() { return exampleIconSvg(this.setColor) },
 			svgDataSearch() { return svgSearch(this.setColor) },
+			// 法比选项组
+			optsFiat() {
+				const tmp = [100, 500, 1000, 3000, 5000, 10000];
+				return tmp.map(v => {
+					const _label = formatterFiat(v, acmeCfg.lgre, acmeCfg.currency);
+					return { key: v, label: _label }
+				})
+			},
+			// 杠杆选项组
+			optLevers() {
+				const tmp = [1, 5, 10, 30, 50, 100, 300, 800];
+				return tmp.map(v => {
+					const _label = formatterInteger(v, acmeCfg.lgre);
+					return { key: v, label: _label }
+				})
+			}
 		},
 		onLoad() {},
-		onShow() {},
+		onShow() {
+
+		},
 		methods: {
 			onTheme(val) {
 				acmeSetTheme(val);
 				uni.navigateTo({
 					url: `/pages/index`
 				})
+			},
+			onSelected(val) {
+				console.log(`val:`, val);
+				this.formData.curFiat = val;
+			},
+			onSelectedLever(val) {
+				console.log(`val:`, val);
+				this.formData.lever = val;
 			},
 		}
 	}

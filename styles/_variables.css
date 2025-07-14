@@ -15,6 +15,10 @@
 	--acme-input-placeholder-color: var(--acme-info);
 	--acme-input-color: #f8f8f8;
 	--acme-input-border-color: #444444;
+	--acme-preset-selector-active: #f8f8f8;
+	--acme-preset-selector-unactive: #f8f8f8;
+	--acme-preset-selector-active-bg: var(--acme-primary-color);
+	--acme-preset-selector-unactive-bg: #2e2c2c;
 
 	/* 	--acme-bg-card: #2a2a2a;
 	--acme-chart-line-color: #FD1050;
@@ -37,6 +41,11 @@
 	--acme-input-placeholder-color: var(--acme-info);
 	--acme-input-color: #121212;
 	--acme-input-border-color: #e0e0e0;
+	--acme-preset-selector-active: #121212;
+	--acme-preset-selector-unactive: #121212;
+	--acme-preset-selector-active-bg: var(--acme-primary-color);
+	--acme-preset-selector-unactive-bg: #e3e3e3;
+
 
 	/* 	--acme-bg-card: #ffffff;
 	--acme-chart-line-color: #FD1050;
