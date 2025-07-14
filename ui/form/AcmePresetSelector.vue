@@ -100,7 +100,7 @@
 		align-items: center;
 		padding: 28rpx 0;
 		border-radius: 16rpx;
-		font-size: 30rpx;
+		font-size: var(--acme-preset-selector-size);
 		font-weight: bold;
 		cursor: pointer;
 		transition: all 0.3s ease;

@@ -63,8 +63,6 @@
 
 	* {
 		font-family: "Open Sans", serif;
-		// font-weight: 400;
-		// font-size: 14px;
 		font-style: normal;
 	}
 </style>

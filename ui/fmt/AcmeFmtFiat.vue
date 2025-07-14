@@ -1,5 +1,5 @@
 <template>
-	<view class="acme-fmt-value" :style="setStyle">
+	<view :class="[`acme-fmt-value`,customClass]" :style="setStyle">
 		<view v-if="$slots.prefix" class="prefix-slot">
 			<slot name="prefix"></slot>
 		</view>
@@ -27,6 +27,7 @@
 			},
 			color: { type: String, default: '' },
 			bg: { type: String, default: '' },
+			customClass: { type: String, default: '' },
 		},
 		computed: {
 			formattedValue() {
@@ -47,6 +48,7 @@
 		align-items: baseline;
 		gap: 8rpx;
 		white-space: nowrap;
+		font-size: var(--acme-fmt-size);
 
 		.prefix-slot,
 		.suffix-slot {

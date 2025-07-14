@@ -1,5 +1,7 @@
 :root {
 	--acme-input-placeholder-size: 22rpx;
+	--acme-fmt-size: 26rpx;
+	--acme-preset-selector-size: 28rpx;
 }
 
 .dark-theme {
