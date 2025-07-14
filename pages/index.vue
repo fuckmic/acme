@@ -98,8 +98,10 @@
 			<view style="margin: 16rpx 0; border: 1rpx dashed var(--acme-fmt-color);"></view>
 			<AcmeEmptyData icon="empty_data" path="/static/" :size="360" format="png" title="Empty Data" />
 
-
-			<view v-for="(v,k) in [0,1,2,3,4,5,6,7,8,9]" :key="k" style="    background-color: #121212;
+			<view style="padding: 16px;
+    border-radius: 8px;
+    background-color: #121212;">
+				<view v-for="(v,k) in [0,1,2,3,4,5,6,7,8,9]" :key="k" style="    background-color: #121212;
     color: #fff;
     -webkit-transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
@@ -113,10 +115,14 @@
     text-align: center;
     color: rgba(255, 255, 255, 0.7);margin-bottom: 40rpx;
     height: 60px;" :style="{boxShadow:`var(--acme-shadow-${v})`,backgroundImage:`var(--acme-overlay-${v})`}">
-				{{`--acme-shadow-`+v}}
+					{{`--acme-shadow-`+v}}
+				</view>
 			</view>
 
-			<view v-for="(v,k) in [0,1,2,3,4,5,6,7,8,9]" :key="k" style="background-color: #fff;
+			<view style="padding: 16px;
+    border-radius: 8px;
+    background-color: #FFF;">
+				<view v-for="(v,k) in [0,1,2,3,4,5,6,7,8,9]" :key="k" style="background-color: #fff;
     color: rgba(0, 0, 0, 0.87);
     -webkit-transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
@@ -129,8 +135,11 @@
     text-align: center;
     color: rgba(0, 0, 0, 0.6);margin-bottom: 40rpx;
     height: 60px;" :style="{boxShadow:`var(--acme-shadow-${v})`}">
-				{{`--acme-shadow-`+v}}
+					{{`--acme-shadow-`+v}}
+				</view>
 			</view>
+
+
 
 		</view>
 
