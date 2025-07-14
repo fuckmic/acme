@@ -67,9 +67,11 @@
 - AcmeChartMiniArea.vue (Acme 库的图表组件，具体是迷你面积图)
 - AcmeChartProgressBarSegmented.vue 
 
-### modal/ 模态框/弹窗
-- AcmeModalDialog.vue (Acme 库的模态框组件，具体是对话框类型)
+### feedback
+- AcmeAlert.vue 
+- AcmeModal.vue (Acme 库的模态框组件，具体是对话框类型)
 - AcmeModalSheet.vue (底部弹出的 Sheet 类型模态框)
+- AcmeSnackbar.vue 也就是toast
 
 ### btn/ 按钮
 - AcmeBtnPrimary.vue (Acme 库的按钮组件，具体是主按钮)
@@ -80,10 +82,12 @@
 - SmallNavItemArrow.vue 竖屏一行一个。[icon label  arrow]
 - AcmeNavBar.vue
 - AcmeSideMenu.vue
-
-### tabs/ some tabs
-- AcmeTabsBasic.vue 通用的tabs 固定的一行中显示完。
-- AcmeTabsScroll.vue 可滚动的tabs  不限量，需计算位移
+- AcmeBottomNav.vue 底部导航 竖屏版
+- AcmeDrawer.vue 四方入侧边导航， 通常只有宽屏需要。
+- AcmePagination.vue 分页导航 通常只有宽屏需要。
+- AcmeStepper.vue 步骤导航
+- AcmeTabsBasic.vue 通用的tabs导航 固定的一行中显示完。
+- AcmeTabsScroll.vue 可滚动的tabs导航  不限量，需计算位移
 
 ### data/ 数据相关 （如列表、卡片）
 - 
