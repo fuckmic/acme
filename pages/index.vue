@@ -31,7 +31,7 @@
 				{{`Formatter Value`}}
 			</view>
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
-				<view>{{`AcmeFmtFiat:`}}</view>
+				<view style="color:var(--acme-primary-color);">{{`AcmeFmtFiat:`}}</view>
 				<AcmeFmtFiat :value="123456.789" />
 				<AcmeFmtFiat :value="123456.789" currency="EUR" />
 			</view>
