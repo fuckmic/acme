@@ -89,10 +89,11 @@
 				<AcmeInputInteger v-model="formData.lever" :placeholder="`Enter Lever`" />
 			</view>
 			<view style="margin-bottom: 36rpx;"></view>
-			<AcmePresetSelector v-model="formData.lever" :list="optLevers" @select="onSelectedLever" />
+			<AcmePresetSelector v-model="formData.lever" :list="optLevers" @select="onSelectedLever" :column="4" />
 			<view style="margin-bottom: 36rpx;"></view>
-
-
+			<AcmePresetSelector v-model="formData.lever" :list="optLevers" @select="onSelectedLever" :column="5" />
+			<view style="margin-bottom: 36rpx;"></view>
+			<AcmePresetSelector v-model="formData.lever" :list="optLevers" @select="onSelectedLever" :column="8" />
 
 			<view style="margin: 16rpx 0; border: 1rpx dashed var(--acme-fmt-color);"></view>
 			<AcmeEmptyData icon="empty_data" path="/static/" :size="360" format="png" title="Empty Data" />

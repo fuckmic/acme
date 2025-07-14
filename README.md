@@ -39,7 +39,7 @@
 - ✅ AcmeInputSearch.vue 搜索
 - ✅ AcmeInputFiat.vue 法币。带币符号，小数两位或0位。
 - ✅ AcmeInputInteger.vue 正整值、数量值。
-- ✅ AcmePresetSelector.vue 预置值 法币、杠杆、加密币、稳定币。
+- ✅ AcmePresetSelector.vue 预置值 法币、杠杆、加密币、稳定币。自由列数
 - AcmeDropdownLgre.vue 下拉选择器 语言
 - AcmeSliderPercent.vue  滑动条 百分比
 

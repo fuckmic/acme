@@ -1,10 +1,19 @@
 <template>
-	<view :class="[`acme-preset-selector`,customClass]">
-		<view v-for="item in list" :key="item[keyField]" class="acme-preset-selector-item"
-			:class="[itemClass,internalValue==item[keyField] ?selectedClass:unSelectedClass]" :style="gridStyle"
-			@tap="onSelected(item[keyField])">
-			{{ item[labelField] }}
+	<view class="acme-preset-selector-group">
+		<view :class="[`acme-preset-selector`,customClass]" v-for="(row, rowIndex) in optsRows" :key="rowIndex">
+			<view v-for="(item,index) in row" :key="item[keyField]" class="acme-preset-selector-item"
+				:class="[itemClass,internalValue==item[keyField] ?selectedClass:unSelectedClass]" :style="curWidth"
+				@tap="onSelected(item[keyField])">
+				{{ item[labelField] }}
+			</view>
 		</view>
+
+
+		<!-- <view v-for="(row, rowIndex) in optsRows" :key="rowIndex" class="btn_row">
+					<UIButton v-for="(btn, colIndex) in row" :key="colIndex" v-if="btn" :value="btn.key" :name="btn.name"
+						:icon="btn.icon" :color="btn.color || '#FFFFFF'" :size="btn.size || 120" @click="onTap"></UIButton>
+				</view> -->
+
 	</view>
 </template>
 
@@ -21,7 +30,7 @@
 			// 列表中作为显示文本的属性名 (例如 'label', 'name')
 			labelField: { type: String, default: 'label' },
 			// 网格的列数
-			columns: { type: Number, default: 3 },
+			column: { type: Number, default: 3 },
 
 			customClass: { type: String, default: 'custom_class' },
 			itemClass: { type: String, default: '' },
@@ -34,9 +43,15 @@
 			}
 		},
 		computed: {
-			gridStyle() {
-				return { flex: `0 0 calc((100% - (20rpx * 2)) / ${this.columns})` }
-			}
+			optsRows() {
+				const rows = [];
+				const itemsPerRow = this.column; // 每行显示的按钮数量
+				for (let i = 0; i < this.list.length; i += itemsPerRow) {
+					rows.push(this.list.slice(i, i + itemsPerRow));
+				}
+				return rows;
+			},
+			curWidth() { return { flex: `0 0 calc(${100 / this.column}% - 16rpx)` } }
 		},
 		watch: {
 			// 监听 value prop 的变化，保持 internalValue 同步
@@ -59,13 +74,23 @@
 </script>
 
 <style lang="scss" scoped>
+	.acme-preset-selector-group {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+	}
+
 	.acme-preset-selector {
 		display: flex;
-		flex-wrap: wrap;
-		gap: 10px;
+		flex-wrap: nowrap;
+		// justify-content: space-between;
 		width: 100%;
-		max-width: 600px;
-		margin: 0 auto;
+		gap: 16rpx;
+
+		// 行之间需要额外间距
+		&:not(:last-child) {
+			margin-bottom: 24rpx;
+		}
 	}
 
 	.acme-preset-selector-item {
