@@ -31,7 +31,7 @@
 </script>
 
 <style lang="scss">
-	@import "@/styles/_variables.css";
+	@import "@/styles/_variables.scss";
 
 
 	// @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
@@ -64,5 +64,77 @@
 	* {
 		font-family: "Open Sans", serif;
 		font-style: normal;
+		padding: 0;
+		margin: 0;
+		box-sizing: border-box;
+	}
+
+	/* --- 变体特定样式 --- */
+	/* 'pill' 变体 */
+	.acme-tabs-fixed.variant-pill {
+		border-bottom: 1rpx solid #444444;
+
+		.tab-item {
+			.tab-text {
+				color: #121212;
+				background-color: var(--acme-tabs-pill-unactive-bg, transparent);
+				padding-bottom: 12rpx;
+				border-bottom: 6rpx solid transparent;
+			}
+
+			&.is-active {
+				.tab-text {
+					color: var(--acme-primary-color);
+					background-color: transparent;
+					border-bottom-color: var(--acme-primary-color);
+				}
+			}
+
+			&:hover {
+				.tab-text {
+					background-color: var(--acme-tabs-pill-hover-bg, rgba(0, 0, 0, 0.05));
+				}
+			}
+
+			&.is-active:hover {
+				.tab-text {
+					background-color: transparent;
+				}
+			}
+		}
+	}
+
+	/* acme-preset-selector variant */
+	.acme-preset-selector.variant {
+		--acme-preset-selector-size: 40rpx;
+
+		::v-deep .selector-item {
+			font-weight: 900;
+		}
+
+		::v-deep .selector-item.is-selected {
+			background-color: royalblue;
+			color: lemonchiffon;
+		}
+	}
+
+	.variant-bold {
+		--acme-fmt-font-weight: 900;
+	}
+
+	.variant-large {
+		--acme-fmt-font-size: 40rpx;
+		--acme-fmt-space: 30rpx;
+		--acme-fmt-color: teal;
+		--acme-fmt-font-weight: 500;
+		background-color: #444444 !important;
+		padding: var(--acme-space-sm);
+		border-radius: var(--acme-border-radius-sm);
+	}
+
+	.my-custom-red-text {
+		--acme-fmt-color: red;
+		--acme-fmt-font-weight: 900;
+		--acme-fmt-font-size: 80rpx;
 	}
 </style>

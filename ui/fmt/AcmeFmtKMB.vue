@@ -12,27 +12,28 @@
 
 <script>
 	import { acmeCfg } from '../../config.js';
-	import { formatterFiat } from '../../utils/formatter';
+	import { formatterKMB } from '../../utils/formatter';
 	export default {
-		name: "AcmeFmtFiat",
+		name: "AcmeFmtKMB",
 		props: {
 			value: { type: [String, Number], default: 0 },
 			locale: { type: String, default: () => acmeCfg.lgre },
-			// 用于 'fiat' 类型，如 'USD', 'EUR'
 			currency: { type: String, default: () => acmeCfg.currency },
-			showSign: {
+			maxFractionDigits: { type: Number, default: 2 }, // KMB通常保留2位小数
+			showSign: { type: String, default: 'auto' },
+			// 控制紧凑型显示方式  'short' (默认，如 1M, 1B), 'long' (如 1 million, 1 billion)
+			compactDisplay: {
 				type: String,
-				default: 'auto', // 默认自动显示，负数显示负号，正数不显示
-				validator: (val) => ['auto', 'always', 'exceptZero', 'never'].includes(val),
+				default: 'short',
+				validator: (val) => ['short', 'long'].includes(val),
 			},
 			color: { type: String, default: undefined },
 			bg: { type: String, default: undefined },
-			// 外部组件样式覆盖
 			variant: { type: String, default: '' },
 		},
 		computed: {
 			formattedValue() {
-				return formatterFiat(this.value, this.locale, this.currency, { signDisplay: this.showSign });
+				return formatterKMB(this.value, this.locale, { signDisplay: this.showSign, compact: this.compactDisplay });
 			},
 			setColor() { return this.color || `var(--acme-fmt-color)` },
 			setBg() { return this.bg || `var(--acme-fmt-bg)` },

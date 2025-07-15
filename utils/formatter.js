@@ -294,3 +294,32 @@ export function formatterPercent(rawValue, locale, signDisplay = 'auto') {
 		return `${num.toFixed(defDigit)}%`; // 回退方案
 	}
 }
+
+export function formatterKMB(rawValue, locale, opt = {}) {
+	const { signDisplay = 'auto', compact = 'short' } = opt;
+	const num = parseFloat(rawValue);
+	if (isNaN(num)) return '';
+	// 真实的小数位数
+	const _decimal = getDecimalPlacesFromRawString(rawValue);
+	const options = {
+		style: "decimal",
+		useGrouping: true, // 通常在 compact 模式下，这个会被 notation 覆盖，但保留无害
+		signDisplay: signDisplay,
+		notation: 'compact',
+		compactDisplay: compact, // 'short' (默认) 或 'long'
+		// 关于小数位数：
+		// compact notation 会根据缩写自动调整小数位数，
+		// 但 maxFractionDigits 仍然可以作为最大限制。
+		// minimumFractionDigits 通常设为 0，让 compact notation 灵活处理。
+		minimumFractionDigits: 0,
+		maximumFractionDigits: _decimal,
+	};
+	try {
+		return new Intl.NumberFormat(locale, options).format(num);
+	} catch (e) {
+		console.warn(`formatterFiat 格式化数字 ${rawValue} 失败，使用默认格式化。`, e);
+		const formattedNum = formatNumberManually(num, locale, _decimal);
+		// return `${formattedNum} ${currency}`;
+		return formattedNum;
+	}
+}

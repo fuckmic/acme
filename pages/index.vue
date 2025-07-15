@@ -3,14 +3,16 @@
 		<view style="padding: 40rpx;">
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
 				<view style="color:var(--acme-primary-color);">{{`Acme`}}</view>
-				<view @tap="onTheme(`dark`)" style="color:var(--acme-primary-color);">
-					{{`Dark`}}
-				</view>
-				<view @tap="onTheme(`light`)" style="color:var(--acme-primary-color);">
-					{{`Light`}}
-				</view>
 				<AcmeIcon icon="account" path="/static/" />
 			</view>
+			<view style="margin: 16rpx 0; border: 1rpx dashed var(--acme-fmt-color);"></view>
+			<AcmeTabsFixed v-model="curTab" :tabs="tabs" @change="onTab" />
+			<view style="margin: 16rpx 0; border: 1rpx dashed var(--acme-fmt-color);"></view>
+			<AcmeTabsFixed v-model="curTab" :tabs="tabs" @change="onTab" variant="variant-pill" />
+			<view style="margin: 16rpx 0; border: 1rpx dashed var(--acme-fmt-color);"></view>
+
+			<AcmeTabsFixed v-model="curTab1" :tabs="tabs1" @change="onTab1" variant="variant-pill" />
+			<view style="font-size: 28rpx;color:var(--acme-primary-color);">{{curTab1}}</view>
 			<view style="margin: 16rpx 0; border: 1rpx dashed var(--acme-fmt-color);"></view>
 
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
@@ -32,6 +34,8 @@
 			<view style="margin: 16rpx 0; border: 1rpx dashed var(--acme-fmt-color);"></view>
 
 
+
+
 			<view style="font-size: 40rpx;font-weight: 900;text-align: center;color:var(--acme-primary-color);">
 				{{`Formatter Value`}}
 			</view>
@@ -51,6 +55,15 @@
 				<AcmeFmtFiat :value="setFiat" currency="EUR" bg="var(--acme-success)" />
 			</view>
 
+			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
+				<AcmeFmtFiat :value="setFiatNoml" variant="variant-bold" />
+				<AcmeFmtFiat :value="setFiatNoml" variant="variant-large" />
+			</view>
+			<AcmeFmtFiat :value="setFiatNoml" variant="my-custom-red-text" />
+
+			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
+				<AcmeFmtKMB :value="987654321987.999" />
+			</view>
 
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
 				<view style="color:var(--acme-primary-color);">{{`AcmeFmtInteger:`}}</view>
@@ -110,11 +123,15 @@
 			<view style="margin-bottom: 36rpx;"></view>
 			<AcmePresetSelector v-model="formData.lever" :list="optLevers" @select="onSelectedLever" :column="4" />
 			<view style="margin-bottom: 36rpx;"></view>
-			<AcmePresetSelector v-model="formData.lever" :list="optLevers" @select="onSelectedLever" :column="5" />
+			<AcmePresetSelector v-model="formData.lever" :list="optLevers" @select="onSelectedLever" :column="5"
+				variant="variant" />
 			<view style="margin-bottom: 36rpx;"></view>
 			<AcmePresetSelector v-model="formData.lever" :list="optLevers" @select="onSelectedLever" :column="8" />
 
 			<view style="margin: 16rpx 0; border: 1rpx dashed var(--acme-fmt-color);"></view>
+
+
+
 
 			<AcmeUpload v-model="formData.imgSrc" :tip="`Upload`" :upload="uploadImage" @uploaded="onUploadSuccess"
 				@start="onStartUpload" @end="onEndUpload" />
@@ -141,6 +158,7 @@
 	import AcmeFmtFiat from '../ui/fmt/AcmeFmtFiat.vue';
 	import AcmeFmtInteger from '../ui/fmt/AcmeFmtInteger.vue';
 	import AcmeFmtPercent from '../ui/fmt/AcmeFmtPercent.vue';
+	import AcmeFmtKMB from '../ui/fmt/AcmeFmtKMB.vue';
 	import AcmeInputText from '../ui/form/AcmeInputText.vue';
 	import AcmeInputPassword from '../ui/form/AcmeInputPassword.vue';
 	import AcmeInputSearch from '../ui/form/AcmeInputSearch.vue';
@@ -149,6 +167,7 @@
 	import AcmePresetSelector from '../ui/form/AcmePresetSelector.vue';
 	import AcmeCheckbox from '../ui/form/AcmeCheckbox.vue';
 	import AcmeUpload from '../ui/form/AcmeUpload.vue';
+	import AcmeTabsFixed from '../ui/nav/AcmeTabsFixed.vue';
 
 	import Elevation from '../components/Elevation.vue';
 	import { formatterFiat, formatterInteger, formatNumberToPrecision } from '../utils/formatter';
@@ -161,6 +180,7 @@
 			AcmeFmtFiat,
 			AcmeFmtInteger,
 			AcmeFmtPercent,
+			AcmeFmtKMB,
 			AcmeInputText,
 			AcmeInputPassword,
 			AcmeInputSearch,
@@ -170,6 +190,7 @@
 			Elevation,
 			AcmeCheckbox,
 			AcmeUpload,
+			AcmeTabsFixed,
 		},
 		data() {
 			return {
@@ -186,11 +207,13 @@
 					imgSrc: '',
 				},
 				isChooseImg: false,
+				curTab: null,
+				tabs: { 'dark': `Dark`, 'light': `Light` },
+				curTab1: null,
+				tabs1: { 'one': `Tab One`, 'two': `Tab Two`, 'three': `Tab Three`, 'four': `Tab Four` },
 			}
 		},
 		computed: {
-			// 计算主题类名，用于绑定到根 view 元素
-			curTheme() { return `${acmeCfg.theme}-theme`; },
 			setColor() { return '#' + Math.floor(Math.random() * 16777215).toString(16); },
 			svgData() { return exampleIconSvg(this.setColor) },
 			svgDataSearch() { return svgSearch(this.setColor) },
@@ -223,16 +246,20 @@
 		},
 		onLoad() {},
 		onShow() {
-
+			if (this.curTab) this.onTab(this.curTab);
 		},
 		methods: {
-			onCheck(val) { this.isChecked = val },
-			onTheme(val) {
-				acmeSetTheme(val);
+			onTab(val) {
+				this.curTab = val;
+				acmeSetTheme(this.curTab);
 				uni.navigateTo({
 					url: `/pages/index`
 				})
 			},
+			onTab1(val) {
+				this.curTab1 = val;
+			},
+			onCheck(val) { this.isChecked = val },
 			onSelected(val) {
 				console.log(`val:`, val);
 				this.formData.curFiat = val;

@@ -1,9 +1,9 @@
 <template>
-	<view :class="[`acme-fmt-value`,customClass]" :style="setStyle">
+	<view :class="[`acme-fmt-value`,variant]" :style="{backgroundColor:setBg}">
 		<view v-if="$slots.prefix" class="prefix-slot">
 			<slot name="prefix"></slot>
 		</view>
-		<text> {{ formattedValue }} </text>
+		<text :style="{color:setColor}"> {{ formattedValue }} </text>
 		<view v-if="$slots.suffix" class="suffix-slot">
 			<slot name="suffix"></slot>
 		</view>
@@ -19,35 +19,20 @@
 			value: { type: [String, Number], default: 0 },
 			locale: { type: String, default: () => acmeCfg.lgre },
 			showSign: { type: String, default: 'auto' },
-			color: { type: String, default: '' },
-			bg: { type: String, default: '' },
-			customClass: { type: String, default: '' },
+			color: { type: String, default: undefined },
+			bg: { type: String, default: undefined },
+			variant: { type: String, default: '' },
 		},
 		computed: {
 			formattedValue() {
 				return formatterInteger(this.value, this.locale);
 			},
-			setStyle() {
-				const _color = this.color && this.color.length > 0 ? this.color : `var(--acme-fmt-color)`;
-				const _bg = this.bg && this.bg.length > 0 ? this.bg : `transparent`;
-				return { color: _color, backgroundColor: _bg };
-			},
+			setColor() { return this.color || `var(--acme-fmt-color)` },
+			setBg() { return this.bg || `var(--acme-fmt-bg)` },
 		},
 	}
 </script>
 
 <style lang="scss" scoped>
-	.acme-fmt-value {
-		display: inline-flex;
-		align-items: baseline;
-		gap: 8rpx;
-		white-space: nowrap;
-		font-size: var(--acme-fmt-size);
-
-		.prefix-slot,
-		.suffix-slot {
-			display: inline-flex;
-			align-items: baseline;
-		}
-	}
+	@import '../../styles/_format-base.scss';
 </style>

@@ -1,7 +1,73 @@
 :root {
+	// 间距刻度
+	--acme-space-xs: 8rpx;
+	--acme-space-sm: 16rpx;
+	--acme-space-md: 24rpx;
+	--acme-space-lg: 32rpx;
+
+	// 字体大小刻度
+	--acme-font-size-sm: 24rpx;
+	--acme-font-size-base: 28rpx;
+	--acme-font-size-md: 32rpx;
+	--acme-font-size-lg: 36rpx;
+	
+	// 圆角刻度
+	--acme-border-radius-sm: 8rpx;
+	--acme-border-radius-md: 16rpx;
+	--acme-border-radius-lg: 40rpx;
+	
+	// 
+	--acme-font-color-base:#121212;
+	
+	// fmt value
+	--acme-fmt-font-size: 26rpx;
+	--acme-fmt-font-weight:400;
+	--acme-fmt-space:8rpx;
+	--acme-fmt-color: #121212;
+	--acme-fmt-bg:transparent;
+
+
 	--acme-input-placeholder-size: 22rpx;
-	--acme-fmt-size: 26rpx;
 	--acme-preset-selector-size: 28rpx;
+	/* tabs fixed */
+	--acme-tabs-gap: 16rpx;
+	--acme-tabs-bg: transparent;
+	--acme-tabs-border-radius: 10rpx;
+	--acme-tabs-padding: 0;
+	--acme-tabs-font-size: 28rpx;
+	--acme-tabs-font-weight: 700;
+	--acme-tabs-item-padding: 20rpx;
+	--acme-tabs-item-border-radius: 10rpx;
+
+	--acme-primary-color: teal;
+	--acme-bg-page: #f8f8f8;
+	--acme-info: #909399;
+	--acme-success: #0CF49B;
+	--acme-error: #FD1050;
+	--acme-warn: #FFA500;
+	--acme-copyright-color: var(--acme-primary-color);
+	--acme-empty-data-color: var(--acme-info);
+	
+	--acme-input-placeholder-color: var(--acme-info);
+	--acme-input-color: #121212;
+	--acme-input-border-color: #e0e0e0;
+	--acme-preset-selector-active: #121212;
+	--acme-preset-selector-unactive: #121212;
+	--acme-preset-selector-active-bg: var(--acme-primary-color);
+	--acme-preset-selector-unactive-bg: #e3e3e3;
+	--acme-upload-border-color: var(--acme-input-border-color);
+	--acme-tabs-active-bg: var(--acme-primary-color);
+	--acme-tabs-active-color: #121212;
+	--acme-tabs-unactive-bg: #e3e3e3;
+	--acme-tabs-unactive-color: #121212;
+
+
+	/* 	--acme-bg-card: #ffffff;
+	--acme-chart-line-color: #FD1050;
+	--acme-chart-area-gradient-start: rgba(253, 16, 80, 0.3);
+	--acme-chart-area-gradient-end: rgba(253, 16, 80, 0);
+	--acme-chart-kline-up: #FD1050;
+	--acme-chart-kline-down: #0CF49B; */
 
 	/* box-shadow */
 	--acme-shadow-elevation-0: none;
@@ -46,36 +112,12 @@
 	--acme-preset-selector-active-bg: var(--acme-primary-color);
 	--acme-preset-selector-unactive-bg: #2e2c2c;
 	--acme-upload-border-color: var(--acme-input-border-color);
-
+	--acme-tabs-active-bg: var(--acme-primary-color);
+	--acme-tabs-active-color: #f8f8f8;
+	--acme-tabs-unactive-bg: #2e2c2c;
+	--acme-tabs-unactive-color: #f8f8f8;
 
 	/* 	--acme-bg-card: #2a2a2a;
-	--acme-chart-line-color: #FD1050;
-	--acme-chart-area-gradient-start: rgba(253, 16, 80, 0.3);
-	--acme-chart-area-gradient-end: rgba(253, 16, 80, 0);
-	--acme-chart-kline-up: #FD1050;
-	--acme-chart-kline-down: #0CF49B; */
-}
-
-.light-theme {
-	--acme-primary-color: teal;
-	--acme-bg-page: #f8f8f8;
-	--acme-info: #909399;
-	--acme-success: #0CF49B;
-	--acme-error: #FD1050;
-	--acme-warn: #FFA500;
-	--acme-copyright-color: var(--acme-primary-color);
-	--acme-empty-data-color: var(--acme-info);
-	--acme-fmt-color: #121212;
-	--acme-input-placeholder-color: var(--acme-info);
-	--acme-input-color: #121212;
-	--acme-input-border-color: #e0e0e0;
-	--acme-preset-selector-active: #121212;
-	--acme-preset-selector-unactive: #121212;
-	--acme-preset-selector-active-bg: var(--acme-primary-color);
-	--acme-preset-selector-unactive-bg: #e3e3e3;
-	--acme-upload-border-color: var(--acme-input-border-color);
-
-	/* 	--acme-bg-card: #ffffff;
 	--acme-chart-line-color: #FD1050;
 	--acme-chart-area-gradient-start: rgba(253, 16, 80, 0.3);
 	--acme-chart-area-gradient-end: rgba(253, 16, 80, 0);

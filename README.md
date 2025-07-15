@@ -12,6 +12,7 @@
 ## styles
 - _variables.css css变量。主项目引入，再引入覆写的变量。
 
+
 ## ui
 
 ### common/ 
@@ -26,9 +27,9 @@
 - ✅ AcmeFmtFiat.vue 法币值。传入最终显示值，不处理国际化之外的逻辑
 - ✅ AcmeFmtInteger.vue 整数值
 - ✅ AcmeFmtPercent.vue 百分值
-- AcmeFmtCryptoAmount.vue 加密币数量
-- AcmeFmtCryptoValue.vue 稳定币
-- AcmeFmtKMB.vue 金融大数KMB
+- AcmeFmtCrypto.vue 加密币
+- AcmeFmtStable.vue 稳定币
+- ✅ AcmeFmtKMB.vue 金融大数KMB
 
 ### form/ 表单组件
 - ✅ AcmeCheckbox.vue 复选框
@@ -45,12 +46,10 @@
 - AcmeSlider.vue  滑动条 :value值，抛出值。
 
 <!-- 
- // 以 type="text" 输入，格式化为合法数值。允许用户按照格式化输入，或输入值自动格式化。
- 
- - WtfInputFloat.vue 支持输入整数和小数
- - WtfInputCryptoAmount.vue 仅输入加密币数量，按照lgre格式化。如 'BTC', 'ETH'，高精度小数位。
- - WtfInputCryptoValue.vue 仅输入稳定币值，按照lgre格式化。如 'USDT', 'USDC',通常2-4位小数。
- 
+ -  InputFloat.vue 支持输入整数和小数
+ -  InputCryptoAmount.vue 仅输入加密币数量，按照lgre格式化。如 'BTC', 'ETH'，高精度小数位。
+ -  InputCryptoValue.vue 仅输入稳定币值，按照lgre格式化。如 'USDT', 'USDC',通常2-4位小数。
+ - 
  displayValue 和 rawValue 的分离：
  displayValue 绑定到 input 的 :value，用户看到并直接操作。
  rawValue 是用于计算的实际数字，通过 v-model 传递给父组件。
@@ -86,9 +85,9 @@
 - AcmeDrawer.vue 四方入侧边导航， 通常只有宽屏需要。
 - AcmePagination.vue 分页导航 通常只有宽屏需要。
 - AcmeStepper.vue 步骤导航
-- AcmeTabsBasic.vue 通用的tabs导航 固定的一行中显示完。
+- AcmeTabsFixed.vue 通用的tabs导航 固定的一行中显示完。
 - AcmeTabsScroll.vue 可滚动的tabs导航  不限量，需计算位移
-- AcmeTabs .vue 宽屏侧tabs
+- AcmeTabsVertical.vue 竖tabs，通常宽屏使用
 
 ### data/ 数据相关 （如列表、卡片）
 - 

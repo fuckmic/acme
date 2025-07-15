@@ -9,7 +9,7 @@
 	export default {
 		name: "AcmePageContainer",
 		computed: {
-			curTheme() { return `${acmeCfg.theme}-theme`; },
+			curTheme() { return acmeCfg.theme === 'dark' ? 'dark-theme' : ''; },
 		}
 	}
 </script>

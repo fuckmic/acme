@@ -1,19 +1,13 @@
 <template>
 	<view class="acme-preset-selector-group">
-		<view :class="[`acme-preset-selector`,customClass]" v-for="(row, rowIndex) in optsRows" :key="rowIndex">
-			<view v-for="(item,index) in row" :key="item[keyField]" class="acme-preset-selector-item"
-				:class="[itemClass,internalValue==item[keyField] ?selectedClass:unSelectedClass]" :style="curWidth"
-				@tap="onSelected(item[keyField])">
-				{{ item[labelField] }}
-			</view>
+		<view :class="[`acme-preset-selector`,variant]" v-for="(row, rowIndex) in optsRows" :key="rowIndex">
+			<block v-for="(item,index) in row" :key="item[keyField]">
+				<view class="selector-item" :class="{ 'is-selected': internalValue==item[keyField]}" :style="curWidth"
+					@tap="onSelected(item[keyField])">
+					{{ item[labelField] }}
+				</view>
+			</block>
 		</view>
-
-
-		<!-- <view v-for="(row, rowIndex) in optsRows" :key="rowIndex" class="btn_row">
-					<UIButton v-for="(btn, colIndex) in row" :key="colIndex" v-if="btn" :value="btn.key" :name="btn.name"
-						:icon="btn.icon" :color="btn.color || '#FFFFFF'" :size="btn.size || 120" @click="onTap"></UIButton>
-				</view> -->
-
 	</view>
 </template>
 
@@ -31,11 +25,8 @@
 			labelField: { type: String, default: 'label' },
 			// 网格的列数
 			column: { type: Number, default: 3 },
-
-			customClass: { type: String, default: 'custom_class' },
-			itemClass: { type: String, default: '' },
-			selectedClass: { type: String, default: 'selected' },
-			unSelectedClass: { type: String, default: 'unselected' },
+			// 外部组件样式覆盖
+			variant: { type: String, default: '' },
 		},
 		data() {
 			return {
@@ -84,7 +75,6 @@
 	.acme-preset-selector {
 		display: flex;
 		flex-wrap: nowrap;
-		// justify-content: space-between;
 		width: 100%;
 		gap: 16rpx;
 
@@ -92,28 +82,28 @@
 		&:not(:last-child) {
 			margin-bottom: 24rpx;
 		}
-	}
 
-	.acme-preset-selector-item {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		padding: 28rpx 0;
-		border-radius: 16rpx;
-		font-size: var(--acme-preset-selector-size);
-		font-weight: bold;
-		cursor: pointer;
-		transition: all 0.3s ease;
-		box-sizing: border-box;
-	}
+		.selector-item {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding: 28rpx 0;
+			border-radius: 16rpx;
+			font-size: var(--acme-preset-selector-size);
+			font-weight: bold;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			box-sizing: border-box;
 
-	.acme-preset-selector-item.selected {
-		background-color: var(--acme-preset-selector-active-bg);
-		color: var(--acme-preset-selector-active);
-	}
+			// 默认失活状态颜色
+			background-color: var(--acme-preset-selector-unactive-bg);
+			color: var(--acme-preset-selector-unactive);
+		}
 
-	.acme-preset-selector-item.unselected {
-		background-color: var(--acme-preset-selector-unactive-bg);
-		color: var(--acme-preset-selector-unactive);
+		// 激活状态样式
+		.is-selected {
+			background-color: var(--acme-preset-selector-active-bg);
+			color: var(--acme-preset-selector-active);
+		}
 	}
 </style>
