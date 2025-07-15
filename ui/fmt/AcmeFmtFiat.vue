@@ -31,7 +31,7 @@
 		},
 		computed: {
 			formattedValue() {
-				return formatterFiat(this.value, this.locale, this.currency, this.showSign);
+				return formatterFiat(this.value, this.locale, this.currency, { signDisplay: this.showSign });
 			},
 			setStyle() {
 				const _color = this.color && this.color.length > 0 ? this.color : `var(--acme-fmt-color)`;

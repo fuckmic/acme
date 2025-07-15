@@ -32,14 +32,22 @@
 			</view>
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
 				<view style="color:var(--acme-primary-color);">{{`AcmeFmtFiat:`}}</view>
-				<AcmeFmtFiat :value="123456.789" />
-				<AcmeFmtFiat :value="123456.789" currency="EUR" />
+				<AcmeFmtFiat :value="setFiatNoml" />
+				<AcmeFmtFiat :value="setFiatNoml" currency="EUR" />
 			</view>
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
 				<view style="color:var(--acme-primary-color);">{{`AcmeFmtFiat:`}}</view>
 				<AcmeFmtFiat :value="123456.789" color="var(--acme-success)" />
 				<AcmeFmtFiat :value="123456.789" currency="EUR" bg="var(--acme-success)" />
 			</view>
+			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
+				<view style="color:var(--acme-primary-color);">{{`AcmeFmtFiat:`}}</view>
+				<AcmeFmtFiat :value="setFiat" color="var(--acme-success)" />
+				<AcmeFmtFiat :value="setFiat" currency="EUR" bg="var(--acme-success)" />
+			</view>
+
+
+
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
 				<view style="color:var(--acme-primary-color);">{{`AcmeFmtInteger:`}}</view>
 				<AcmeFmtInteger :value="123456">
@@ -98,48 +106,9 @@
 			<view style="margin: 16rpx 0; border: 1rpx dashed var(--acme-fmt-color);"></view>
 			<AcmeEmptyData icon="empty_data" path="/static/" :size="360" format="png" title="Empty Data" />
 
-			<view style="padding: 16px;
-    border-radius: 8px;
-    background-color: #121212;">
-				<view v-for="(v,k) in [0,1,2,3,4,5,6,7,8,9]" :key="k" style="    background-color: #121212;
-    color: #fff;
-    -webkit-transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    border-radius: 4px;
-    box-shadow: var(--acme-shadow-0);
-    background-image: var(--acme-overlay-0); 
-    font-weight: 400;
-    font-size: 0.875rem;
-    line-height: 60px;
-    letter-spacing: 0.01071em;
-    text-align: center;
-    color: rgba(255, 255, 255, 0.7);margin-bottom: 40rpx;
-    height: 60px;" :style="{boxShadow:`var(--acme-shadow-${v})`,backgroundImage:`var(--acme-overlay-${v})`}">
-					{{`--acme-shadow-`+v}}
-				</view>
-			</view>
-
-			<view style="padding: 16px;
-    border-radius: 8px;
-    background-color: #FFF;">
-				<view v-for="(v,k) in [0,1,2,3,4,5,6,7,8,9]" :key="k" style="background-color: #fff;
-    color: rgba(0, 0, 0, 0.87);
-    -webkit-transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    border-radius: 4px;
-    box-shadow: var(--acme-shadow-0); 
-    font-weight: 400;
-    font-size: 0.875rem;
-    line-height: 60px;
-    letter-spacing: 0.01071em;
-    text-align: center;
-    color: rgba(0, 0, 0, 0.6);margin-bottom: 40rpx;
-    height: 60px;" :style="{boxShadow:`var(--acme-shadow-${v})`}">
-					{{`--acme-shadow-`+v}}
-				</view>
-			</view>
 
 
+			<Elevation />
 
 		</view>
 
@@ -162,7 +131,9 @@
 	import AcmeInputFiat from '../ui/form/AcmeInputFiat.vue';
 	import AcmeInputInteger from '../ui/form/AcmeInputInteger.vue';
 	import AcmePresetSelector from '../ui/form/AcmePresetSelector.vue';
-	import { formatterFiat, formatterInteger } from '../utils/formatter';
+
+	import Elevation from '../components/Elevation.vue';
+	import { formatterFiat, formatterInteger, formatNumberToPrecision } from '../utils/formatter';
 	export default {
 		components: {
 			AcmeIcon,
@@ -178,6 +149,7 @@
 			AcmeInputFiat,
 			AcmeInputInteger,
 			AcmePresetSelector,
+			Elevation,
 		},
 		data() {
 			return {
@@ -214,7 +186,17 @@
 					const _label = formatterInteger(v, acmeCfg.lgre);
 					return { key: v, label: _label }
 				})
-			}
+			},
+			// 标准法币
+			setFiatNoml() {
+				console.log(formatNumberToPrecision(123456.78901, acmeCfg.currency))
+				return formatNumberToPrecision(123456.78901, acmeCfg.currency)
+			},
+			// 自定义小数位
+			setFiat() {
+				console.log(formatNumberToPrecision(123456.78901, acmeCfg.currency, { decimal: 4 }))
+				return formatNumberToPrecision(123456.78901, acmeCfg.currency, { decimal: 4 })
+			},
 		},
 		onLoad() {},
 		onShow() {

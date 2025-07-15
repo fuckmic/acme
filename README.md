@@ -23,7 +23,7 @@
 - ✅ AcmeEmptyData.vue 空数据
 
 ### fmt/ 各类数据格式化
-- ✅ AcmeFmtFiat.vue 法币值
+- ✅ AcmeFmtFiat.vue 法币值。传入最终显示值，不处理国际化之外的逻辑
 - ✅ AcmeFmtInteger.vue 整数值
 - ✅ AcmeFmtPercent.vue 百分值
 - AcmeFmtCryptoAmount.vue 加密币数量

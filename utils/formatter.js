@@ -153,30 +153,100 @@ export function formatNumberManually(numValue, locale, fixedDigits = 0) {
 }
 
 /**
+ * 根据货币代码获取默认小数位数，或根据传入的 desiredDecimalPlaces 返回指定位数。
+ * @param {string} currency - 货币代码 (如 'USD', 'EUR', 'JPY')。
+ * @param {number} [desiredDecimalPlaces] - 可选参数，如果提供，则覆盖默认值。
+ * @returns {number} - 最终确定的小数位数。
+ */
+export function getFiatDecimalPlaces(currency, desiredDecimalPlaces) {
+	// 如果 desiredDecimalPlaces 明确提供且有效，则优先使用它
+	if (typeof desiredDecimalPlaces === 'number' && desiredDecimalPlaces >= 0 && Number.isInteger(desiredDecimalPlaces)) {
+		return desiredDecimalPlaces;
+	}
+}
+
+/**
+ * 根据货币代码获取默认小数位数。
+ * @param {string} currency - 货币代码 (如 'USD', 'EUR', 'JPY')。
+ * @returns {number} - 默认小数位数。
+ */
+export function getDefaultFiatDecimalPlaces(currency) {
+	if (currency === 'JPY' || currency === 'VND' || currency === 'ISK') return 0;
+	else return 2; // 默认两位小数
+}
+
+/**
+ * 将数值格式化到指定的小数位数，并返回一个数字。
+ * 此函数不进行货币符号、千位分隔符等格式化，只处理数值的精度。
+ * 可作用于：法币、加密币等所有数值。
+ * @param {number|string} rawValue - 原始数值。
+ * @param {string} currency - 货币代码，用于在未指定 decimal 时确定默认小数位数。
+ * @param {object} opt[decimal] - 可选参数，指定最终的小数位数。如果未提供，则使用货币的默认小数位数。
+ * @returns {number} - 格式化到指定小数位数后的数值。如果原始值无法解析为数字，则返回 NaN。
+ */
+export function formatNumberToPrecision(rawValue, currency, opt = {}) {
+	const { decimal } = opt;
+	const num = parseFloat(rawValue);
+	if (isNaN(num)) return NaN; // 返回 NaN，让调用者处理无效输入
+
+	// 确定最终的小数位数：优先使用传入的 decimal，否则使用货币默认值
+	const finalDecimalDigits = typeof decimal === 'number' && decimal >= 0 &&
+		Number.isInteger(decimal) ? decimal :
+		getDefaultFiatDecimalPlaces(currency);
+
+	// 使用 toFixed 进行格式化和四舍五入，然后转换回数字
+	// toFixed() 返回字符串，需要 parseFloat() 转换回数字，以确保后续 Intl.NumberFormat 接收的是数字
+	// return parseFloat(num.toFixed(finalDecimalDigits));
+	return num.toFixed(finalDecimalDigits);
+}
+
+/**
+ * 从原始数值的字符串表示中获取小数位数。所有数值可通用
+ * 例如：123 -> 0, 123.4 -> 1, 123.456 -> 3
+ * 注意：此函数处理的是字符串表示的小数位数，对于浮点数精度问题需谨慎。
+ * @param {number|string} rawValue - 原始数值。
+ * @returns {number} - 原始数值字符串表示的小数位数。如果不是有效数字，返回 0。
+ */
+export function getDecimalPlacesFromRawString(rawValue) {
+	// 将数值转换为字符串，以处理其字符串表示的小数点
+	const valueString = String(rawValue);
+
+	const parts = valueString.split('.');
+	if (parts.length === 2) return parts[1].length;
+	// 如果没有小数点或不是有效数字，则为 0 位小数
+	return 0;
+}
+
+/**
  * 法币格式化 12345.67 -> 12,345.67|12.345,67
- * @param {Object} rawValue 原始数值
- * @param {Object} locale 语言代码
- * @param {Object} currency 货币代码。以此确定小数位数
+ * @param {number|string} rawValue 原始数值
+ * @param {string} locale 语言代码
+ * @param {string} currency 货币代码。以此确定小数位数
+ * @param {object} opt 其他配置
  * @returns {string} - 格式化后的字符串
  */
-export function formatterFiat(rawValue, locale, currency, signDisplay = 'auto') {
+export function formatterFiat(rawValue, locale, currency, opt = {}) {
+	// 解构 opt 对象，并为 signDisplay 提供默认值
+	const { signDisplay = 'auto' } = opt;
+
 	const num = parseFloat(rawValue);
 	if (isNaN(num)) return '';
-	let defDigit = 2;
-	if (currency === 'JPY' || currency === 'VND' || currency === 'ISK') defDigit = 0;
+	// 真实的小数位数
+	const _decimal = getDecimalPlacesFromRawString(rawValue);
+
 	const options = {
 		style: "currency",
 		currency: currency,
 		useGrouping: true, // 使用千位分隔符
 		signDisplay: signDisplay,
-		minimumFractionDigits: defDigit, // 最少显示的小数位数
-		maximumFractionDigits: defDigit, // 最多显示的小数位数
+		minimumFractionDigits: _decimal, // 最少显示的小数位数
+		maximumFractionDigits: _decimal, // 最多显示的小数位数
 	}
 	try {
 		return new Intl.NumberFormat(locale, options).format(num);
 	} catch (e) {
 		console.warn(`formatterFiat 格式化数字 ${rawValue} 失败，使用默认格式化。`, e);
-		const formattedNum = formatNumberManually(num, locale, defDigit);
+		const formattedNum = formatNumberManually(num, locale, _decimal);
 		// return `${formattedNum} ${currency}`;
 		return formattedNum;
 	}
@@ -202,7 +272,7 @@ export function formatterInteger(rawValue, locale) {
 	}
 }
 
-export function formatterPercent (rawValue,locale, signDisplay = 'auto'){
+export function formatterPercent(rawValue, locale, signDisplay = 'auto') {
 	const num = parseFloat(rawValue);
 	if (isNaN(num)) return '';
 	let defDigit = 2; // %值通常两位小数

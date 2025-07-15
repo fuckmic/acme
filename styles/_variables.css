@@ -4,28 +4,28 @@
 	--acme-preset-selector-size: 28rpx;
 
 	/* box-shadow */
-	--acme-shadow-0: none;
-	--acme-shadow-1: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
-	--acme-shadow-2: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
-	--acme-shadow-3: 0px 3px 3px -2px rgba(0, 0, 0, 0.2), 0px 3px 4px 0px rgba(0, 0, 0, 0.14), 0px 1px 8px 0px rgba(0, 0, 0, 0.12);
-	--acme-shadow-4: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
-	--acme-shadow-5: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
-	--acme-shadow-6: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
-	--acme-shadow-7: 0px 7px 8px -4px rgba(0, 0, 0, 0.2), 0px 12px 17px 2px rgba(0, 0, 0, 0.14), 0px 5px 22px 4px rgba(0, 0, 0, 0.12);
-	--acme-shadow-8: 0px 8px 10px -5px rgba(0, 0, 0, 0.2), 0px 16px 24px 2px rgba(0, 0, 0, 0.14), 0px 6px 30px 5px rgba(0, 0, 0, 0.12);
-	--acme-shadow-9: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);
+	--acme-shadow-elevation-0: none;
+	--acme-shadow-elevation-1: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+	--acme-shadow-elevation-2: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+	--acme-shadow-elevation-3: 0px 3px 3px -2px rgba(0, 0, 0, 0.2), 0px 3px 4px 0px rgba(0, 0, 0, 0.14), 0px 1px 8px 0px rgba(0, 0, 0, 0.12);
+	--acme-shadow-elevation-4: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+	--acme-shadow-elevation-5: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+	--acme-shadow-elevation-6: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+	--acme-shadow-elevation-7: 0px 7px 8px -4px rgba(0, 0, 0, 0.2), 0px 12px 17px 2px rgba(0, 0, 0, 0.14), 0px 5px 22px 4px rgba(0, 0, 0, 0.12);
+	--acme-shadow-elevation-8: 0px 8px 10px -5px rgba(0, 0, 0, 0.2), 0px 16px 24px 2px rgba(0, 0, 0, 0.14), 0px 6px 30px 5px rgba(0, 0, 0, 0.12);
+	--acme-shadow-elevation-9: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);
 
 	/* background-image  */
-	--acme-overlay-0: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
-	--acme-overlay-1: linear-gradient(rgba(255, 255, 255, 0.051), rgba(255, 255, 255, 0.051));
-	--acme-overlay-2: linear-gradient(rgba(255, 255, 255, 0.069), rgba(255, 255, 255, 0.069));
-	--acme-overlay-3: linear-gradient(rgba(255, 255, 255, 0.082), rgba(255, 255, 255, 0.082));
-	--acme-overlay-4: linear-gradient(rgba(255, 255, 255, 0.092), rgba(255, 255, 255, 0.092));
-	--acme-overlay-5: linear-gradient(rgba(255, 255, 255, 0.108), rgba(255, 255, 255, 0.108));
-	--acme-overlay-6: linear-gradient(rgba(255, 255, 255, 0.119), rgba(255, 255, 255, 0.119));
-	--acme-overlay-7: linear-gradient(rgba(255, 255, 255, 0.135), rgba(255, 255, 255, 0.135));
-	--acme-overlay-8: linear-gradient(rgba(255, 255, 255, 0.147), rgba(255, 255, 255, 0.147));
-	--acme-overlay-9: linear-gradient(rgba(255, 255, 255, 0.165), rgba(255, 255, 255, 0.165));
+	--acme-overlay-elevation-0: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
+	--acme-overlay-elevation-1: linear-gradient(rgba(255, 255, 255, 0.051), rgba(255, 255, 255, 0.051));
+	--acme-overlay-elevation-2: linear-gradient(rgba(255, 255, 255, 0.069), rgba(255, 255, 255, 0.069));
+	--acme-overlay-elevation-3: linear-gradient(rgba(255, 255, 255, 0.082), rgba(255, 255, 255, 0.082));
+	--acme-overlay-elevation-4: linear-gradient(rgba(255, 255, 255, 0.092), rgba(255, 255, 255, 0.092));
+	--acme-overlay-elevation-5: linear-gradient(rgba(255, 255, 255, 0.108), rgba(255, 255, 255, 0.108));
+	--acme-overlay-elevation-6: linear-gradient(rgba(255, 255, 255, 0.119), rgba(255, 255, 255, 0.119));
+	--acme-overlay-elevation-7: linear-gradient(rgba(255, 255, 255, 0.135), rgba(255, 255, 255, 0.135));
+	--acme-overlay-elevation-8: linear-gradient(rgba(255, 255, 255, 0.147), rgba(255, 255, 255, 0.147));
+	--acme-overlay-elevation-9: linear-gradient(rgba(255, 255, 255, 0.165), rgba(255, 255, 255, 0.165));
 }
 
 .dark-theme {
