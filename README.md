@@ -18,9 +18,9 @@
 - ✅ AcmeIcon.vue 无需动态改变颜色的图像，通常是非svg。
 - ✅ AcmeSvg.vue 突破uniapp中对svg的限制。通用svg的字符串放在utils/svg.js中
 - AcmeTag.vue tag
-- ✅ AcmePageContainer.vue 页面容器层,主项目全局注册。❎ 考虑加入header和footer
-- ✅ AcmeCopyrightVersion.vue 版权信息
-- ✅ AcmeEmptyData.vue 空数据
+- ✅ AcmePageContainer.vue 页面容器层,主项目全局注册。
+- ✅ AcmeCopyrightVersion.vue 版权信息 竖版
+- ✅ AcmeEmptyData.vue 空数据 响应式
 
 ### fmt/ 各类数据格式化
 - ✅ AcmeFmtFiat.vue 法币值。传入最终显示值，不处理国际化之外的逻辑
@@ -40,7 +40,7 @@
 - ✅ AcmeInputFiat.vue 法币。带币符号，小数两位或0位。
 - ✅ AcmeInputInteger.vue 正整值、数量值。
 - ✅ AcmePresetSelector.vue 预置值 法币、杠杆、加密币、稳定币。自由列数
-- AcmeDropdownLgre.vue 下拉选择器 语言
+- AcmeDropdownLgre.vue 下拉选择器 语言 。精简的、带搜索的、
 - AcmeSliderPercent.vue  滑动条 百分比
 
 <!-- 
@@ -80,8 +80,7 @@
 ### nav/ 导航相关组件
 - SmallNavItem.vue 竖屏一行一个。[icon  label]
 - SmallNavItemArrow.vue 竖屏一行一个。[icon label  arrow]
-- AcmeNavBar.vue
-- AcmeSideMenu.vue
+- AcmeAppBar.vue 顶部导航，响应式
 - AcmeBottomNav.vue 底部导航 竖屏版
 - AcmeDrawer.vue 四方入侧边导航， 通常只有宽屏需要。
 - AcmePagination.vue 分页导航 通常只有宽屏需要。
@@ -100,13 +99,6 @@ Table.vue
 <!-- - AcmePage.vue 页面容器层
 - AcmeCopyrightVersion.vue 版权信息
 - -->
-<!-- - header/
-- - LargeNavHeader.vue 宽屏顶导航。
-- footer/
-- - SmallFooter.vue 竖屏底导航。
-- - LargeFooter.vue 宽屏底导航。
-- LayoutHeader.vue 顶导航
-- LayoutFooter.vue 底导航 -->
 
 Txn (Transaction)：交易相关组件（如充值提现）。
 
