@@ -3,11 +3,17 @@
 		<view style="padding: 40rpx;">
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
 				<view style="color:var(--acme-primary-color);">{{`Acme`}}</view>
-				<view @tap="onTheme(`dark`)" style="color:var(--acme-primary-color);">{{`Dark`}}</view>
-				<view @tap="onTheme(`light`)" style="color:var(--acme-primary-color);">{{`Light`}}</view>
+				<view @tap="onTheme(`dark`)" style="color:var(--acme-primary-color);">
+					{{`Dark`}}
+				</view>
+				<view @tap="onTheme(`light`)" style="color:var(--acme-primary-color);">
+					{{`Light`}}
+				</view>
 				<AcmeIcon icon="account" path="/static/" />
 			</view>
 			<view style="margin: 16rpx 0; border: 1rpx dashed var(--acme-fmt-color);"></view>
+
+
 
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
 				<AcmeSvg :svgString="svgData" :size="128" customClass="my-custom-icon" />
