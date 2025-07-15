@@ -12,7 +12,7 @@
 				default: 'svg',
 				validator: (val) => ['png', 'svg', 'webp', 'jpg', 'gif'].includes(val)
 			},
-			path: { type: String, required: true },
+			path: { type: String, default: '/static/' },
 			// 尺寸模式
 			// 'square': 默认，宽高相等，由 size 决定 (例如 32x32rpx)
 			// 'heightFix': 高度固定，宽度自适应 (例如 height: 100rpx, width: auto)

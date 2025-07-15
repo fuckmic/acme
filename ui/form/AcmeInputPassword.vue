@@ -9,7 +9,7 @@
 			<AcmeSvg v-show="showDel" :svgString="svgData" :size="24" />
 		</view>
 		<view class="clear" @tap="onMask()">
-			<AcmeSvg :svgString="svgMask" :size="32" />
+			<AcmeSvg :svgString="svgMask" :size="40" />
 		</view>
 		<view v-if="$slots.suffix" class="suffix">
 			<slot name="suffix"></slot>

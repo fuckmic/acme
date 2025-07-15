@@ -115,6 +115,11 @@
 			<AcmePresetSelector v-model="formData.lever" :list="optLevers" @select="onSelectedLever" :column="8" />
 
 			<view style="margin: 16rpx 0; border: 1rpx dashed var(--acme-fmt-color);"></view>
+
+			<AcmeUpload v-model="formData.imgSrc" :tip="`Upload`" :upload="uploadImage" @uploaded="onUploadSuccess"
+				@start="onStartUpload" @end="onEndUpload" />
+
+
 			<AcmeEmptyData icon="empty_data" path="/static/" :size="360" format="png" title="Empty Data" />
 
 
@@ -143,6 +148,7 @@
 	import AcmeInputInteger from '../ui/form/AcmeInputInteger.vue';
 	import AcmePresetSelector from '../ui/form/AcmePresetSelector.vue';
 	import AcmeCheckbox from '../ui/form/AcmeCheckbox.vue';
+	import AcmeUpload from '../ui/form/AcmeUpload.vue';
 
 	import Elevation from '../components/Elevation.vue';
 	import { formatterFiat, formatterInteger, formatNumberToPrecision } from '../utils/formatter';
@@ -163,6 +169,7 @@
 			AcmePresetSelector,
 			Elevation,
 			AcmeCheckbox,
+			AcmeUpload,
 		},
 		data() {
 			return {
@@ -176,7 +183,9 @@
 					quantity: '',
 					curFiat: '',
 					lever: 1,
+					imgSrc: '',
 				},
+				isChooseImg: false,
 			}
 		},
 		computed: {
@@ -231,6 +240,30 @@
 			onSelectedLever(val) {
 				console.log(`val:`, val);
 				this.formData.lever = val;
+			},
+			onUploadSuccess(val) {
+				console.log('imgSrc 上传成功，URL:', val);
+				// this.isChooseImg = false;
+				this.formData.imgSrc = val;
+			},
+			onStartUpload() {
+				this.isChooseImg = true;
+			},
+			onEndUpload() {
+				this.isChooseImg = false;
+			},
+			async uploadImage(filePath) {
+				// try {
+				// 	// 这里调用主项目 Vue 原型上的 $api 服务
+				// 	const imageUrl = await this.$api.uploadImage(filePath);
+				// 	console.log('图片上传成功，URL:', imageUrl);
+				// 	return imageUrl; // 返回图片的 URL
+				// } catch (error) {
+				// 	console.error('上传头像失败:', error);
+				// 	// 根据您的错误处理策略，可以显示用户友好的提示
+				// 	// uni.showToast({ title: '上传失败', icon: 'none' });
+				// 	throw error; // 重新抛出错误，让 WtfUpload 也能捕获到
+				// }
 			},
 		}
 	}

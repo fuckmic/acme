@@ -45,7 +45,7 @@
 	--acme-preset-selector-unactive: #f8f8f8;
 	--acme-preset-selector-active-bg: var(--acme-primary-color);
 	--acme-preset-selector-unactive-bg: #2e2c2c;
-
+	--acme-upload-border-color: var(--acme-input-border-color);
 
 
 	/* 	--acme-bg-card: #2a2a2a;
@@ -73,7 +73,7 @@
 	--acme-preset-selector-unactive: #121212;
 	--acme-preset-selector-active-bg: var(--acme-primary-color);
 	--acme-preset-selector-unactive-bg: #e3e3e3;
-
+	--acme-upload-border-color: var(--acme-input-border-color);
 
 	/* 	--acme-bg-card: #ffffff;
 	--acme-chart-line-color: #FD1050;

@@ -33,7 +33,7 @@
 ### form/ 表单组件
 - ✅ AcmeCheckbox.vue 复选框
 - AcmeSwith.vue 开关
-- AcmeUpload.vue 上传图片，自带预览
+- ✅ AcmeUpload.vue 上传图片，自带预览
 - AcmeUploadMini.vue 迷你上传，不带预览
 - ✅ AcmeInputText.vue 普通文本
 - ✅ AcmeInputPassword.vue 密码，带掩码
