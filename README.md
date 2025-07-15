@@ -31,9 +31,10 @@
 - AcmeFmtKMB.vue 金融大数KMB
 
 ### form/ 表单组件
-- AcmeCheckbox.vue 复选框
+- ✅ AcmeCheckbox.vue 复选框
 - AcmeSwith.vue 开关
-- AcmeUpload.vue 上传图片
+- AcmeUpload.vue 上传图片，自带预览
+- AcmeUploadMini.vue 迷你上传，不带预览
 - ✅ AcmeInputText.vue 普通文本
 - ✅ AcmeInputPassword.vue 密码，带掩码
 - ✅ AcmeInputSearch.vue 搜索
@@ -41,7 +42,7 @@
 - ✅ AcmeInputInteger.vue 正整值、数量值。
 - ✅ AcmePresetSelector.vue 预置值 法币、杠杆、加密币、稳定币。自由列数
 - AcmeDropdownLgre.vue 下拉选择器 语言 。精简的、带搜索的、
-- AcmeSliderPercent.vue  滑动条 百分比
+- AcmeSlider.vue  滑动条 :value值，抛出值。
 
 <!-- 
  // 以 type="text" 输入，格式化为合法数值。允许用户按照格式化输入，或输入值自动格式化。
@@ -87,6 +88,7 @@
 - AcmeStepper.vue 步骤导航
 - AcmeTabsBasic.vue 通用的tabs导航 固定的一行中显示完。
 - AcmeTabsScroll.vue 可滚动的tabs导航  不限量，需计算位移
+- AcmeTabs .vue 宽屏侧tabs
 
 ### data/ 数据相关 （如列表、卡片）
 - 

@@ -13,8 +13,6 @@
 			</view>
 			<view style="margin: 16rpx 0; border: 1rpx dashed var(--acme-fmt-color);"></view>
 
-
-
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
 				<AcmeSvg :svgString="svgData" :size="128" customClass="my-custom-icon" />
 				<AcmeSvg :svgString="svgData" :size="64" sizeMode="heightFix" />
@@ -32,6 +30,7 @@
 			<AcmeCopyrightVersion appName="Acme" version="V 0.0.1" />
 			<AcmeCopyrightVersion appName="Acme" />
 			<view style="margin: 16rpx 0; border: 1rpx dashed var(--acme-fmt-color);"></view>
+
 
 			<view style="font-size: 40rpx;font-weight: 900;text-align: center;color:var(--acme-primary-color);">
 				{{`Formatter Value`}}
@@ -53,7 +52,6 @@
 			</view>
 
 
-
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
 				<view style="color:var(--acme-primary-color);">{{`AcmeFmtInteger:`}}</view>
 				<AcmeFmtInteger :value="123456">
@@ -69,7 +67,14 @@
 				<AcmeFmtPercent :value="345.6" locale="de-DE" />
 			</view>
 			<view style="margin: 16rpx 0; border: 1rpx dashed var(--acme-fmt-color);"></view>
-
+			<view style="font-size: 40rpx;font-weight: 900;text-align: center;color:var(--acme-primary-color);">
+				{{`Form Checkbox`}}
+			</view>
+			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
+				<view style="color:var(--acme-primary-color);">{{`Checkbox:`}}</view>
+				<AcmeCheckbox v-model="isChecked" @change="onCheck" />
+			</view>
+			<view style="margin: 16rpx 0; border: 1rpx dashed var(--acme-fmt-color);"></view>
 			<view style="font-size: 40rpx;font-weight: 900;text-align: center;color:var(--acme-primary-color);">
 				{{`Form Input`}}
 			</view>
@@ -137,6 +142,7 @@
 	import AcmeInputFiat from '../ui/form/AcmeInputFiat.vue';
 	import AcmeInputInteger from '../ui/form/AcmeInputInteger.vue';
 	import AcmePresetSelector from '../ui/form/AcmePresetSelector.vue';
+	import AcmeCheckbox from '../ui/form/AcmeCheckbox.vue';
 
 	import Elevation from '../components/Elevation.vue';
 	import { formatterFiat, formatterInteger, formatNumberToPrecision } from '../utils/formatter';
@@ -156,10 +162,12 @@
 			AcmeInputInteger,
 			AcmePresetSelector,
 			Elevation,
+			AcmeCheckbox,
 		},
 		data() {
 			return {
 				title: 'Acme',
+				isChecked: false,
 				formData: {
 					account: '',
 					password: '',
@@ -209,6 +217,7 @@
 
 		},
 		methods: {
+			onCheck(val) { this.isChecked = val },
 			onTheme(val) {
 				acmeSetTheme(val);
 				uni.navigateTo({

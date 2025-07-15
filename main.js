@@ -18,10 +18,12 @@ const myProjectSvgColors = {
 	'light': {
 		'acme-svg-close': '#333333', // 亮色模式下关闭图标的颜色
 		'acme-mask-color': `#0CF49B`,
+		'acme-svg-checkbox': `#0CF49B`,
 	},
 	'dark': {
 		'acme-svg-close': '#CCCCCC', // 暗色模式下关闭图标的颜色
 		'acme-mask-color': `#0CF49B`,
+		'acme-svg-checkbox': `#0CF49B`,
 	}
 };
 
