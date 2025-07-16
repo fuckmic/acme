@@ -5,96 +5,49 @@
 				<view style="color:var(--acme-primary-color);">{{`Acme`}}</view>
 				<AcmeIcon icon="account" path="/static/" />
 			</view>
-			<view style="margin: 16rpx 0; border: 1rpx dashed var(--acme-fmt-color);"></view>
+			<AcmeDivider />
 			<AcmeTabsFixed v-model="curTab" :tabs="tabs" @change="onTab" />
-			<view style="margin: 16rpx 0; border: 1rpx dashed var(--acme-fmt-color);"></view>
-			<AcmeTabsFixed v-model="curTab" :tabs="tabs" @change="onTab" variant="variant-pill" />
-			<view style="margin: 16rpx 0; border: 1rpx dashed var(--acme-fmt-color);"></view>
-
 			<AcmeTabsFixed v-model="curTab1" :tabs="tabs1" @change="onTab1" variant="variant-pill" />
 			<view style="font-size: 28rpx;color:var(--acme-primary-color);">{{curTab1}}</view>
-
-			<view style="margin: 16rpx 0; border: 1rpx dashed var(--acme-fmt-color);"></view>
-			<view class="acme-button-text"
-				style="padding: var(--acme-spacing-md);border: 1px solid var(--acme-primary-color);text-align: center;"
-				@tap="$nav.comLink($nav.keys.typography)">
-				{{`Typography`}}
+			<AcmeDivider />
+			<view style="display: flex;align-items: center;gap:12rpx;flex-wrap: wrap;">
+				<block v-for="(v,k) in setNavs" :key="k">
+					<view class="acme-button-text"
+						style="padding: var(--acme-spacing-sm);border: 1px solid var(--acme-primary-color);text-align: center;"
+						@tap="$nav.comLink(v)">
+						{{v}}
+					</view>
+				</block>
 			</view>
-			<view style="margin-bottom: 36rpx;"></view>
-			<view class="acme-button-text"
-				style="padding: var(--acme-spacing-md);border: 1px solid var(--acme-primary-color);text-align: center;"
-				@tap="$nav.comLink($nav.keys.format)">
-				{{`Formatter Value`}}
-			</view>
-			<view style="margin-bottom: 36rpx;"></view>
-			<view class="acme-button-text"
-				style="padding: var(--acme-spacing-md);border: 1px solid var(--acme-primary-color);text-align: center;"
-				@tap="$nav.comLink($nav.keys.elevation)">
-				{{`Elevation`}}
-			</view>
-			<view style="margin-bottom: 36rpx;"></view>
-			<view class="acme-button-text"
-				style="padding: var(--acme-spacing-md);border: 1px solid var(--acme-primary-color);text-align: center;"
-				@tap="$nav.comLink($nav.keys.presetSelector)">
-				{{`PresetSelector`}}
-			</view>
-			<view style="margin-bottom: 36rpx;"></view>
-			<view class="acme-button-text"
-				style="padding: var(--acme-spacing-md);border: 1px solid var(--acme-primary-color);text-align: center;"
-				@tap="$nav.comLink($nav.keys.input)">
-				{{`PresetSelector`}}
-			</view>
-			<view style="margin: 16rpx 0; border: 1rpx dashed var(--acme-fmt-color);"></view>
 
-
-
-
-
-
-
-
-			<view style="margin: 16rpx 0; border: 1rpx dashed var(--acme-fmt-color);"></view>
+			<AcmeDivider />
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
 				<AcmeSvg :svgString="svgData" :size="128" customClass="my-custom-icon" />
 				<AcmeSvg :svgString="svgData" :size="64" sizeMode="heightFix" />
 				<AcmeSvg :svgString="svgData" :size="48" />
 				<AcmeSvg :svgString="svgData" :size="32" />
 				<view @tap="onTheme(`dark`)" style="cursor: pointer;">
-					<AcmeSvg :svgString="svgDataDark" :size="128" customClass="my-custom-icon" />
+					<AcmeSvg :svgString="svgDataDark" :size="48" customClass="my-custom-icon" />
 				</view>
 				<view @tap="onTheme(`light`)" style="cursor: pointer;color:var(--acme-primary-color);">
-					<AcmeSvg :svgString="svgDataLight" :size="128" customClass="my-custom-icon" />
+					<AcmeSvg :svgString="svgDataLight" :size="48" customClass="my-custom-icon" />
 				</view>
 			</view>
-			<view style="margin: 16rpx 0; border: 1rpx dashed var(--acme-fmt-color);"></view>
+			<AcmeDivider />
 
 			<AcmeCopyrightVersion appName="Acme" version="V 0.0.1" />
 			<AcmeCopyrightVersion appName="Acme" />
-			<view style="margin: 16rpx 0; border: 1rpx dashed var(--acme-fmt-color);"></view>
-
 			<AcmeDivider />
-			<AcmeDivider>
-				<text>居中内容</text>
+
+
+			<AcmeDivider leftLineRatio="40rpx">
+				<view class="acme-h6">{{`Form Checkbox`}}</view>
 			</AcmeDivider>
-			<AcmeDivider leftLineRatio="10%" />
-			<AcmeDivider leftLineRatio="100rpx">
-				<text>左侧固定 100rpx</text>
-			</AcmeDivider>
-
-
-
-			<view style="font-size: 40rpx;font-weight: 900;text-align: center;color:var(--acme-primary-color);">
-				{{`Form Checkbox`}}
-			</view>
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
 				<view style="color:var(--acme-primary-color);">{{`Checkbox:`}}</view>
 				<AcmeCheckbox v-model="isChecked" @change="onCheck" />
 			</view>
-
-
-
-			<view style="margin: 16rpx 0; border: 1rpx dashed var(--acme-fmt-color);"></view>
-
+			<AcmeDivider />
 
 
 
@@ -155,6 +108,15 @@
 			svgData() { return exampleIconSvg(this.setColor) },
 			svgDataDark() { return svgDark(this.setColor) },
 			svgDataLight() { return svgLight(this.setColor) },
+			setNavs() {
+				return [
+					this.$nav.keys.typography,
+					this.$nav.keys.format,
+					this.$nav.keys.elevation,
+					this.$nav.keys.presetSelector,
+					this.$nav.keys.input,
+				]
+			}
 		},
 		onLoad() {},
 		onShow() {
