@@ -1,0 +1,115 @@
+// 导入全局变量，以便使用颜色、间距、圆角、字体等设计令牌
+@import './_variables.scss';
+
+/* --- 输入框组件的通用基础样式 --- */
+.acme-input-base {
+	display: flex;
+	align-items: center;
+	gap:var(--acme-input-gap);
+	width: 100%;
+	box-sizing: border-box;
+	min-height: var(--acme-input-min-height, 88rpx); /* 默认最小高度 */
+	padding: var(--acme-input-padding, var(--acme-spacing-sm) var(--acme-spacing-md)); /* 默认内边距 */
+	
+	font-size: var(--acme-input-font-size, var(--acme-font-size-base)); /* 默认字体大小 */
+	color: var(--acme-input-text-color, var(--acme-text-color-primary)); /* 默认文本颜色 */
+	background-color: var(--acme-input-bg, var(--acme-bg-card)); /* 默认背景色 */
+	border-radius: var(--acme-input-border-radius, var(--acme-border-radius-sm)); /* 默认圆角 */
+	border: var(--acme-input-border-width, 1rpx) solid var(--acme-input-border-color, var(--acme-border-color)); /* 默认边框 */
+
+	transition: all 0.2s ease-in-out; /* 统一过渡效果 */
+	
+	 input{
+		 	flex: 1; 
+			height: 100%; /* 确保输入框高度填充容器 */
+			line-height: var(--acme-input-line-height, 1.5); /* 保持行高一致 */
+			font-size: inherit; /* 继承父容器的字体大小 */
+			color: inherit; /* 继承父容器的文本颜色 */
+			background-color: transparent; /* 背景透明 */
+			border: none; /* 移除默认边框 */
+			outline: none; /* 移除焦点轮廓 */
+			padding: 0; /* 移除默认内边距 */
+			box-sizing: border-box;
+	 }
+	 .placeholder{
+			color: var(--acme-input-placeholder-color, var(--acme-text-color-secondary));
+	 }
+
+	// // 内部 input 元素的通用样式
+	// .input-field {
+	// 	// 占位符样式
+	// 	&::placeholder {
+	// 		color: var(--acme-input-placeholder-color, var(--acme-text-color-secondary));
+	// 	}
+	// }
+
+	// 前缀/后缀插槽的样式
+	.prefix-slot,
+	.suffix-slot {
+		display: flex;
+		align-items: center;
+		padding: 0 var(--acme-input-addon-padding, var(--acme-spacing-xs)); /* 前缀/后缀内边距 */
+		color: var(--acme-input-addon-color, var(--acme-text-color-secondary)); /* 默认颜色 */
+		font-size: var(--acme-input-addon-font-size, var(--acme-font-size-sm)); /* 默认字体大小 */
+	}
+
+	// 焦点状态样式
+	&:focus-within {
+		border-color: var(--acme-input-focus-border-color, var(--acme-primary-color)); /* 焦点时边框颜色 */
+		box-shadow: var(--acme-input-focus-shadow, 0 0 0 4rpx rgba(var(--acme-primary-rgb), 0.2)); /* 焦点时阴影 */
+	}
+
+	// 禁用状态样式
+	&.is-disabled {
+		opacity: 0.6;
+		cursor: not-allowed;
+		background-color: var(--acme-input-disabled-bg, var(--acme-bg-page));
+		border-color: var(--acme-input-disabled-border-color, var(--acme-border-color));
+		.input-field {
+			cursor: not-allowed;
+		}
+	}
+
+	// 错误状态样式
+	&.is-error {
+		border-color: var(--acme-error);
+		box-shadow: var(--acme-input-error-shadow, 0 0 0 4rpx rgba(var(--acme-error-rgb), 0.2));
+	}
+
+	/* --- 预设变体样式 --- */
+	// 这些变体类名会通过 `variant` prop 添加到 .acme-input-base 根元素。
+
+	// 'bordered' 变体 (默认就是带边框的，这里可以强调或调整)
+	&.variant-bordered {
+		// 默认样式已经包含边框，这里可以覆盖或微调
+		border: var(--acme-input-bordered-border-width, 2rpx) solid var(--acme-input-bordered-border-color, var(--acme-border-color));
+		background-color: var(--acme-input-bordered-bg, transparent);
+		border-radius: var(--acme-input-bordered-border-radius, var(--acme-border-radius-sm));
+	}
+
+	// 'filled' 变体 (圆角和背景填充)
+	&.variant-filled {
+		background-color: var(--acme-input-filled-bg, var(--acme-bg-card)); /* 更明显的背景色 */
+		border: none; /* 移除边框 */
+		border-radius: var(--acme-input-filled-border-radius, var(--acme-border-radius-md)); /* 更大的圆角 */
+		padding: var(--acme-input-filled-padding, var(--acme-spacing-sm) var(--acme-spacing-md));
+		
+		&:focus-within {
+			box-shadow: var(--acme-input-filled-focus-shadow, 0 0 0 4rpx rgba(var(--acme-primary-rgb), 0.2));
+		}
+	}
+
+	// 'underline' 变体 (下划线)
+	&.variant-underline {
+		background-color: transparent; /* 背景透明 */
+		border: none; /* 移除所有边框 */
+		border-bottom: var(--acme-input-underline-border-width, 2rpx) solid var(--acme-input-underline-border-color, var(--acme-border-color)); /* 底部边框 */
+		border-radius: 0; /* 无圆角 */
+		padding: var(--acme-input-underline-padding, var(--acme-spacing-xs) 0); /* 调整内边距 */
+
+		&:focus-within {
+			border-color: var(--acme-input-underline-focus-border-color, var(--acme-primary-color)); /* 焦点时下划线颜色 */
+			box-shadow: none; /* 移除阴影 */
+		}
+	}
+}

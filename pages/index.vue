@@ -26,6 +26,7 @@
 				<view class="acme-body1">这是正文内容。</view>
 				<view class="acme-caption acme-text-secondary">这是带有次要颜色的说明文字。</view>
 				<view class="acme-body2 acme-text-bold acme-text-success">这是一个加粗的成功信息。</view>
+				<view class="acme-button-text">{{`acme-button-text`}}</view>
 			</view>
 
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
@@ -101,11 +102,30 @@
 				<AcmeCheckbox v-model="isChecked" @change="onCheck" />
 			</view>
 			<view style="margin: 16rpx 0; border: 1rpx dashed var(--acme-fmt-color);"></view>
+
+
 			<view style="font-size: 40rpx;font-weight: 900;text-align: center;color:var(--acme-primary-color);">
 				{{`Form Input`}}
 			</view>
-			<AcmeInputText v-model="formData.account" :placeholder="`Enter account`" />
+			<AcmeInputText v-model="formData.account" :placeholder="`Enter account`">
+				<!-- <template #prefix>
+					<AcmeSvg :svgString="svgDataSearch" :size="48" />
+				</template>
+				<template #suffix>
+					<view style="font-size: 28rpx;color:var(--acme-primary-color);">{{`Search`}}</view>
+				</template> -->
+			</AcmeInputText>
 			<view style="margin-bottom: 36rpx;"></view>
+
+			<AcmeInputText v-model="formData.account" :placeholder="`Enter account`" variant="variant-bordered" />
+			<view style="margin-bottom: 36rpx;"></view>
+
+			<AcmeInputText v-model="formData.account" :placeholder="`Enter account`" variant="variant-filled" />
+			<view style="margin-bottom: 36rpx;"></view>
+
+			<AcmeInputText v-model="formData.account" :placeholder="`Enter account`" variant="variant-underline" />
+			<view style="margin-bottom: 36rpx;"></view>
+
 			<AcmeInputPassword v-model="formData.password" :placeholder="`Enter password`" />
 			<view style="margin-bottom: 36rpx;"></view>
 			<AcmeInputSearch v-model="formData.keyword" :placeholder="`Enter keyword`">

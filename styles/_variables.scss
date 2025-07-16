@@ -16,46 +16,46 @@
   // --- 排版变体 (全部使用 rpx 单位，字号已调整) ---
 
   // 标题 (Headings) - 调整为更合理的尺寸
-  --acme-typography-h1-font-size: 80rpx; // 对应主流 40px，比之前 96px 更合理
+  --acme-typography-h1-font-size: 80rpx; 
   --acme-typography-h1-font-weight: var(--acme-font-weight-light);
   --acme-typography-h1-line-height: 1.167; 
-  --acme-typography-h1-letter-spacing: -1rpx; // 对应 -0.01562em * 40px = -0.62px -> -1.24rpx (取 -1rpx)
+  --acme-typography-h1-letter-spacing: -1rpx;  
 
-  --acme-typography-h2-font-size: 64rpx; // 对应主流 32px
+  --acme-typography-h2-font-size: 64rpx;  
   --acme-typography-h2-font-weight: var(--acme-font-weight-light);
   --acme-typography-h2-line-height: 1.2;
-  --acme-typography-h2-letter-spacing: -0.5rpx; // 对应 -0.00833em * 32px = -0.26px -> -0.52rpx (取 -0.5rpx)
+  --acme-typography-h2-letter-spacing: -0.5rpx; 
 
-  --acme-typography-h3-font-size: 56rpx; // 对应主流 28px
+  --acme-typography-h3-font-size: 56rpx;  
   --acme-typography-h3-font-weight: var(--acme-font-weight-regular);
   --acme-typography-h3-line-height: 1.04;
   --acme-typography-h3-letter-spacing: 0rpx; 
 
-  --acme-typography-h4-font-size: 48rpx; // 对应主流 24px
+  --acme-typography-h4-font-size: 48rpx;  
   --acme-typography-h4-font-weight: var(--acme-font-weight-regular);
   --acme-typography-h4-line-height: 1.235;
-  --acme-typography-h4-letter-spacing: 0.5rpx; // 对应 0.00735em * 24px = 0.17px -> 0.34rpx (取 0.5rpx)
+  --acme-typography-h4-letter-spacing: 0.5rpx;  
 
-  --acme-typography-h5-font-size: 40rpx; // 对应主流 20px
+  --acme-typography-h5-font-size: 40rpx; 
   --acme-typography-h5-font-weight: var(--acme-font-weight-regular);
   --acme-typography-h5-line-height: 1.334;
   --acme-typography-h5-letter-spacing: 0rpx; 
 
-  --acme-typography-h6-font-size: 36rpx; // 对应主流 18px
+  --acme-typography-h6-font-size: 36rpx; 
   --acme-typography-h6-font-weight: var(--acme-font-weight-medium);
   --acme-typography-h6-line-height: 1.6;
-  --acme-typography-h6-letter-spacing: 0.5rpx; // 对应 0.0075em * 18px = 0.135px -> 0.27rpx (取 0.5rpx)
+  --acme-typography-h6-letter-spacing: 0.5rpx;  
 
   // 副标题 (Subtitles)
-  --acme-typography-subtitle1-font-size: var(--acme-font-size-base); // 对应 14px -> 28rpx
+  --acme-typography-subtitle1-font-size: var(--acme-font-size-base);  
   --acme-typography-subtitle1-font-weight: var(--acme-font-weight-regular);
   --acme-typography-subtitle1-line-height: 1.75;
-  --acme-typography-subtitle1-letter-spacing: 0.5rpx; // 对应 0.00938em * 14px = 0.13px -> 0.26rpx (取 0.5rpx)
+  --acme-typography-subtitle1-letter-spacing: 0.5rpx;  
 
-  --acme-typography-subtitle2-font-size: 26rpx; // 对应 13px
+  --acme-typography-subtitle2-font-size: 26rpx;  
   --acme-typography-subtitle2-font-weight: var(--acme-font-weight-medium);
   --acme-typography-subtitle2-line-height: 1.57;
-  --acme-typography-subtitle2-letter-spacing: 0.5rpx; // 对应 0.00714em * 13px = 0.09px -> 0.18rpx (取 0.5rpx)
+  --acme-typography-subtitle2-letter-spacing: 0.5rpx; 
 
   // 正文 (Body)
   --acme-typography-body1-font-size: var(--acme-font-size-base); // 对应 14px -> 28rpx
@@ -63,29 +63,29 @@
   --acme-typography-body1-line-height: 1.5;
   --acme-typography-body1-letter-spacing: 0.5rpx; // 对应 0.00938em * 14px = 0.13px -> 0.26rpx (取 0.5rpx)
 
-  --acme-typography-body2-font-size: 26rpx; // 对应 13px
+  --acme-typography-body2-font-size: 26rpx; 
   --acme-typography-body2-font-weight: var(--acme-font-weight-regular);
   --acme-typography-body2-line-height: 1.43;
-  --acme-typography-body2-letter-spacing: 0.5rpx; // 对应 0.01071em * 13px = 0.13px -> 0.26rpx (取 0.5rpx)
+  --acme-typography-body2-letter-spacing: 0.5rpx;  
 
   // 按钮 (Button)
-  --acme-typography-button-font-size: 28rpx; // 对应 14px
+  --acme-typography-button-font-size: 28rpx;  
   --acme-typography-button-font-weight: var(--acme-font-weight-medium);
   --acme-typography-button-line-height: 1.75;
-  --acme-typography-button-letter-spacing: 1rpx; // 对应 0.02857em * 14px = 0.40px -> 0.8rpx (取 1rpx)
+  --acme-typography-button-letter-spacing: 1rpx;  
   --acme-typography-button-text-transform: uppercase;
 
   // 说明文字 (Caption)
-  --acme-typography-caption-font-size: 24rpx; // 对应 12px
+  --acme-typography-caption-font-size: 24rpx; 
   --acme-typography-caption-font-weight: var(--acme-font-weight-regular);
   --acme-typography-caption-line-height: 1.66;
-  --acme-typography-caption-letter-spacing: 1rpx; // 对应 0.03333em * 12px = 0.40px -> 0.8rpx (取 1rpx)
+  --acme-typography-caption-letter-spacing: 1rpx;  
 
   // 超小字 (Overline)
-  --acme-typography-overline-font-size: 24rpx; // 对应 12px
+  --acme-typography-overline-font-size: 24rpx; 
   --acme-typography-overline-font-weight: var(--acme-font-weight-medium);
   --acme-typography-overline-line-height: 2.66;
-  --acme-typography-overline-letter-spacing: 2rpx; // 对应 0.08333em * 12px = 1.00px -> 2rpx
+  --acme-typography-overline-letter-spacing: 2rpx;  
   --acme-typography-overline-text-transform: uppercase;
 
   // --- 间距刻度 (保持不变，已在之前讨论) ---
@@ -125,6 +125,55 @@
 	  --acme-scroll-thumb: #ccc;
 	  --acme-scroll-track: #f0f0f0;
 	  --acme-shadow-color: rgba(0, 0, 0, 0.3);
+		
+		  // --- 输入框组件通用变量 ---
+			--acme-input-gap:var(--acme-spacing-sm);
+		  --acme-input-min-height: 88rpx;
+		  --acme-input-padding: var(--acme-spacing-sm) var(--acme-spacing-md);
+		  --acme-input-font-size: var(--acme-font-size-base);
+		  --acme-input-text-color: var(--acme-text-color-primary);
+		  --acme-input-bg: var(--acme-bg-card);
+		  --acme-input-border-radius: var(--acme-border-radius-sm);
+		  --acme-input-border-width: 1rpx;
+		  --acme-input-border-color: var(--acme-border-color);
+		  --acme-input-line-height: 1.5;
+		  --acme-input-placeholder-color: var(--acme-text-color-secondary);
+		  --acme-input-addon-padding: var(--acme-spacing-xs);
+		  --acme-input-addon-color: var(--acme-text-color-secondary);
+		  --acme-input-addon-font-size: var(--acme-font-size-sm);
+		
+		  // 焦点状态
+		  --acme-input-focus-border-color: var(--acme-primary-color);
+		  --acme-input-focus-shadow: 0 0 0 4rpx rgba(var(--acme-primary-rgb), 0.2); // 需要在 JS 中计算 rgb 值
+		
+		  // 禁用状态
+		  --acme-input-disabled-bg: var(--acme-bg-page);
+		  --acme-input-disabled-border-color: var(--acme-border-color);
+		
+		  // 错误状态
+		  --acme-input-error-shadow: 0 0 0 4rpx rgba(var(--acme-error-rgb), 0.2); // 需要在 JS 中计算 rgb 值
+		
+		  // --- 输入框变体特定变量 ---
+		  // 'bordered' 变体
+		  --acme-input-bordered-border-width: 2rpx;
+		  --acme-input-bordered-border-color: var(--acme-border-color);
+		  --acme-input-bordered-bg: transparent;
+		  --acme-input-bordered-border-radius: var(--acme-border-radius-sm);
+		
+		  // 'filled' 变体
+		  --acme-input-filled-bg: var(--acme-bg-card);
+		  --acme-input-filled-border-radius: var(--acme-border-radius-md);
+		  --acme-input-filled-padding: var(--acme-spacing-sm) var(--acme-spacing-md);
+		  --acme-input-filled-focus-shadow: 0 0 0 4rpx rgba(var(--acme-primary-rgb), 0.2);
+		
+		  // 'underline' 变体
+		  --acme-input-underline-border-width: 2rpx;
+		  --acme-input-underline-border-color: var(--acme-border-color);
+		  --acme-input-underline-focus-border-color: var(--acme-primary-color);
+		  --acme-input-underline-padding: var(--acme-spacing-xs) 0;
+		
+		
+		
 	
 	  // --- 组件特有变量 (示例) ---
 	  --acme-tabs-gap: var(--acme-spacing-sm);
@@ -179,27 +228,27 @@
 	--acme-tabs-item-padding: 20rpx;
 	--acme-tabs-item-border-radius: 10rpx;
 
-	--acme-primary-color: teal;
-	--acme-bg-page: #f8f8f8;
-	--acme-info: #909399;
-	--acme-success: #0CF49B;
-	--acme-error: #FD1050;
-	--acme-warn: #FFA500;
-	--acme-copyright-color: var(--acme-primary-color);
-	--acme-empty-data-color: var(--acme-info);
+	// --acme-primary-color: teal;
+	// --acme-bg-page: #f8f8f8;
+	// --acme-info: #909399;
+	// --acme-success: #0CF49B;
+	// --acme-error: #FD1050;
+	// --acme-warn: #FFA500;
+	// --acme-copyright-color: var(--acme-primary-color);
+	// --acme-empty-data-color: var(--acme-info);
 	
-	--acme-input-placeholder-color: var(--acme-info);
-	--acme-input-color: #121212;
-	--acme-input-border-color: #e0e0e0;
-	--acme-preset-selector-active: #121212;
-	--acme-preset-selector-unactive: #121212;
-	--acme-preset-selector-active-bg: var(--acme-primary-color);
-	--acme-preset-selector-unactive-bg: #e3e3e3;
-	--acme-upload-border-color: var(--acme-input-border-color);
-	--acme-tabs-active-bg: var(--acme-primary-color);
-	--acme-tabs-active-color: #121212;
-	--acme-tabs-unactive-bg: #e3e3e3;
-	--acme-tabs-unactive-color: #121212;
+	// --acme-input-placeholder-color: var(--acme-info);
+	// --acme-input-color: #121212;
+	// --acme-input-border-color: #e0e0e0;
+	// --acme-preset-selector-active: #121212;
+	// --acme-preset-selector-unactive: #121212;
+	// --acme-preset-selector-active-bg: var(--acme-primary-color);
+	// --acme-preset-selector-unactive-bg: #e3e3e3;
+	// --acme-upload-border-color: var(--acme-input-border-color);
+	// --acme-tabs-active-bg: var(--acme-primary-color);
+	// --acme-tabs-active-color: #121212;
+	// --acme-tabs-unactive-bg: #e3e3e3;
+	// --acme-tabs-unactive-color: #121212;
 
 
 	/* 	--acme-bg-card: #ffffff;
@@ -257,6 +306,29 @@
 	  --acme-scroll-thumb: #666;
 	  --acme-scroll-track: #333;
 	  --acme-shadow-color: rgba(0, 0, 0, 0.6);
+		
+		  // 暗色主题下输入框变量覆盖
+		  --acme-input-bg: var(--acme-bg-card);
+		  --acme-input-text-color: var(--acme-text-color-primary);
+		  --acme-input-border-color: var(--acme-border-color);
+		  --acme-input-placeholder-color: var(--acme-text-color-secondary);
+		  --acme-input-disabled-bg: var(--acme-bg-page);
+		  --acme-input-disabled-border-color: var(--acme-border-color);
+		
+		  // 暗色主题下变体覆盖
+		  --acme-input-filled-bg: var(--acme-bg-card);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	
 	  // --- 排版变体覆盖 (如果暗色主题需要不同的字重或行高) ---
 	  // 通常字号在暗色模式下不会改变，但如果需要，可以在这里覆盖
