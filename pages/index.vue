@@ -14,11 +14,43 @@
 			<AcmeTabsFixed v-model="curTab1" :tabs="tabs1" @change="onTab1" variant="variant-pill" />
 			<view style="font-size: 28rpx;color:var(--acme-primary-color);">{{curTab1}}</view>
 
-			<Typography />
+			<view style="margin: 16rpx 0; border: 1rpx dashed var(--acme-fmt-color);"></view>
+			<view class="acme-button-text"
+				style="padding: var(--acme-spacing-md);border: 1px solid var(--acme-primary-color);text-align: center;"
+				@tap="$nav.comLink($nav.keys.typography)">
+				{{`Typography`}}
+			</view>
+			<view style="margin-bottom: 36rpx;"></view>
+			<view class="acme-button-text"
+				style="padding: var(--acme-spacing-md);border: 1px solid var(--acme-primary-color);text-align: center;"
+				@tap="$nav.comLink($nav.keys.format)">
+				{{`Formatter Value`}}
+			</view>
+			<view style="margin-bottom: 36rpx;"></view>
+			<view class="acme-button-text"
+				style="padding: var(--acme-spacing-md);border: 1px solid var(--acme-primary-color);text-align: center;"
+				@tap="$nav.comLink($nav.keys.elevation)">
+				{{`Elevation`}}
+			</view>
+			<view style="margin-bottom: 36rpx;"></view>
+			<view class="acme-button-text"
+				style="padding: var(--acme-spacing-md);border: 1px solid var(--acme-primary-color);text-align: center;"
+				@tap="$nav.comLink($nav.keys.presetSelector)">
+				{{`PresetSelector`}}
+			</view>
+			<view style="margin-bottom: 36rpx;"></view>
+			<view class="acme-button-text"
+				style="padding: var(--acme-spacing-md);border: 1px solid var(--acme-primary-color);text-align: center;"
+				@tap="$nav.comLink($nav.keys.input)">
+				{{`PresetSelector`}}
+			</view>
+			<view style="margin: 16rpx 0; border: 1rpx dashed var(--acme-fmt-color);"></view>
 
-			<FormatterValue />
 
-			<PresetSelector />
+
+
+
+
 
 
 			<view style="margin: 16rpx 0; border: 1rpx dashed var(--acme-fmt-color);"></view>
@@ -51,59 +83,7 @@
 				<view style="color:var(--acme-primary-color);">{{`Checkbox:`}}</view>
 				<AcmeCheckbox v-model="isChecked" @change="onCheck" />
 			</view>
-			<view style="margin: 16rpx 0; border: 1rpx dashed var(--acme-fmt-color);"></view>
 
-
-			<view style="font-size: 40rpx;font-weight: 900;text-align: center;color:var(--acme-primary-color);">
-				{{`Form Input`}}
-			</view>
-			<AcmeInputText v-model="formData.account" :placeholder="`Enter account`">
-				<!-- <template #prefix>
-					<AcmeSvg :svgString="svgDataSearch" :size="48" />
-				</template>
-				<template #suffix>
-					<view style="font-size: 28rpx;color:var(--acme-primary-color);">{{`Search`}}</view>
-				</template> -->
-			</AcmeInputText>
-			<view style="margin-bottom: 36rpx;"></view>
-
-			<AcmeInputText v-model="formData.account" :placeholder="`Enter account`" variant="variant-bordered" />
-			<view style="margin-bottom: 36rpx;"></view>
-
-			<AcmeInputText v-model="formData.account" :placeholder="`Enter account`" variant="variant-filled" />
-			<view style="margin-bottom: 36rpx;"></view>
-
-			<AcmeInputText v-model="formData.account" :placeholder="`Enter account`" variant="variant-underline" />
-			<view style="margin-bottom: 36rpx;"></view>
-
-			<AcmeInputPassword v-model="formData.password" :placeholder="`Enter password`" />
-			<view style="margin-bottom: 36rpx;"></view>
-			<AcmeInputSearch v-model="formData.keyword" :placeholder="`Enter keyword`">
-				<template #prefix>
-					<AcmeSvg :svgString="svgDataSearch" :size="48" />
-				</template>
-				<template #suffix>
-					<view style="font-size: 28rpx;color:var(--acme-primary-color);">{{`Search`}}</view>
-				</template>
-			</AcmeInputSearch>
-			<view style="margin-bottom: 36rpx;"></view>
-			<AcmeInputFiat v-model="formData.amount" :placeholder="`Enter amount`" />
-			<view style="margin-bottom: 36rpx;"></view>
-			<AcmeInputInteger v-model="formData.quantity" :placeholder="`Enter quantity`" />
-			<view style="margin-bottom: 36rpx;"></view>
-			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
-				<view style="color:var(--acme-primary-color);">{{`Current curFiat:`}}</view>
-				<AcmeInputFiat v-model="formData.curFiat" :placeholder="`Enter curFiat`" />
-			</view>
-			<view style="margin-bottom: 36rpx;"></view>
-
-			<view style="margin-bottom: 36rpx;"></view>
-
-			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
-				<view style="color:var(--acme-primary-color);">{{`Current Lever:`}}</view>
-				<AcmeInputInteger v-model="formData.lever" :placeholder="`Enter Lever`" />
-			</view>
-			<view style="margin-bottom: 36rpx;"></view>
 
 
 			<view style="margin: 16rpx 0; border: 1rpx dashed var(--acme-fmt-color);"></view>
@@ -119,7 +99,7 @@
 
 
 
-			<Elevation />
+
 
 		</view>
 
@@ -127,47 +107,22 @@
 </template>
 
 <script>
-	import { acmeCfg, acmeSetTheme } from '../config.js';
-	import Typography from '../components/Typography.vue';
-	import FormatterValue from '../components/FormatterValue.vue';
-	import PresetSelector from '../components/PresetSelector.vue';
-
-
+	import { acmeSetTheme } from '../config.js';
 	import AcmeIcon from '../ui/common/AcmeIcon.vue';
 	import AcmeSvg from '../ui/common/AcmeSvg.vue';
 	import { exampleIconSvg, svgSearch } from '../utils/svg.js';
 	import AcmeCopyrightVersion from '../ui/common/AcmeCopyrightVersion.vue';
 	import AcmeEmptyData from '../ui/common/AcmeEmptyData.vue';
-
-	import AcmeInputText from '../ui/form/AcmeInputText.vue';
-	import AcmeInputPassword from '../ui/form/AcmeInputPassword.vue';
-	import AcmeInputSearch from '../ui/form/AcmeInputSearch.vue';
-	import AcmeInputFiat from '../ui/form/AcmeInputFiat.vue';
-	import AcmeInputInteger from '../ui/form/AcmeInputInteger.vue';
-
 	import AcmeCheckbox from '../ui/form/AcmeCheckbox.vue';
 	import AcmeUpload from '../ui/form/AcmeUpload.vue';
 	import AcmeTabsFixed from '../ui/nav/AcmeTabsFixed.vue';
 
-	import Elevation from '../components/Elevation.vue';
-	import { formatterFiat, formatterInteger } from '../utils/formatter';
 	export default {
 		components: {
-			Typography,
-			FormatterValue,
-			PresetSelector,
-
 			AcmeIcon,
 			AcmeSvg,
 			AcmeCopyrightVersion,
 			AcmeEmptyData,
-			AcmeInputText,
-			AcmeInputPassword,
-			AcmeInputSearch,
-			AcmeInputFiat,
-			AcmeInputInteger,
-
-			Elevation,
 			AcmeCheckbox,
 			AcmeUpload,
 			AcmeTabsFixed,
@@ -177,13 +132,6 @@
 				title: 'Acme',
 				isChecked: false,
 				formData: {
-					account: '',
-					password: '',
-					keyword: '',
-					amount: '',
-					quantity: '',
-					curFiat: '',
-					lever: 1,
 					imgSrc: '',
 				},
 				isChooseImg: false,
@@ -196,8 +144,6 @@
 		computed: {
 			setColor() { return '#' + Math.floor(Math.random() * 16777215).toString(16); },
 			svgData() { return exampleIconSvg(this.setColor) },
-			svgDataSearch() { return svgSearch(this.setColor) },
-
 		},
 		onLoad() {},
 		onShow() {

@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import App from './App';
 import AcmePageContainer from '@/ui/common/AcmePageContainer.vue';
+import * as navigation from './utils/navigation.js';
 
 Vue.component('AcmePageContainer', AcmePageContainer); // 全局注册
 
@@ -38,6 +39,8 @@ Vue.prototype.$appCfg = {
 	theme: null, // 当前主题方案
 	layout: null, // 当前布局方案
 }
+
+Vue.prototype.$nav = navigation;
 
 // // --- 1. 初始化资源根路径 ---
 // wtfSetAssetsRootPath('/static'); // 为UI库设置资源路径
