@@ -24,7 +24,7 @@
 - ✅ AcmePageContainer.vue 页面容器层,主项目全局注册。
 - ✅ AcmeCopyrightVersion.vue 版权信息 竖版
 - ✅ AcmeEmptyData.vue 空数据 响应式
-- ✅ AcmeDivider.vue 分割线。垂直中线，左右线占比实现居左、居中、居右。插槽,
+- ✅ AcmeDivider.vue 分割线。
 <!-- - AcmeTheme.vue 主题切换 -->
 
 ### fmt/ 各类数据格式化

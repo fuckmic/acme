@@ -1,10 +1,10 @@
 <template>
 	<view class="acme-divider">
-		<view class="divider-line left-line" :style="leftLineStyle"></view>
+		<view class="divider-line" :style="leftLineStyle"></view>
 		<view v-if="$slots.default" class="divider-content">
 			<slot></slot>
 		</view>
-		<view class="divider-line right-line" :style="rightLineStyle"></view>
+		<view class="divider-line" :style="rightLineStyle"></view>
 	</view>
 </template>
 
@@ -71,11 +71,4 @@
 		white-space: nowrap; // 防止内容换行
 		text-align: center; // 确保插槽内文本居中
 	}
-
-	/* --- 当没有内容插槽时，线条行为 --- */
-	/* 由于 `v-if="$slots.default"` 的使用，当没有插槽内容时，
-			`.divider-content` 元素不会被渲染。
-			此时，`.acme-divider` 容器中只剩下 `left-line` 和 `right-line`。
-			计算属性会处理它们的 flex-grow 和 width，形成一条贯穿的线。
-		*/
 </style>
