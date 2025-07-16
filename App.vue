@@ -123,24 +123,4 @@
 			color: lemonchiffon;
 		}
 	}
-
-	.variant-bold {
-		--acme-fmt-font-weight: 900;
-	}
-
-	.variant-large {
-		--acme-fmt-font-size: 40rpx;
-		--acme-fmt-space: 30rpx;
-		--acme-fmt-color: teal;
-		--acme-fmt-font-weight: 500;
-		background-color: #444444 !important;
-		padding: var(--acme-space-sm);
-		border-radius: var(--acme-border-radius-sm);
-	}
-
-	.my-custom-red-text {
-		--acme-fmt-color: red;
-		--acme-fmt-font-weight: 900;
-		--acme-fmt-font-size: 80rpx;
-	}
 </style>

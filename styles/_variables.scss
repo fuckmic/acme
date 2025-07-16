@@ -176,6 +176,12 @@
 		
 	
 	  // --- 组件特有变量 (示例) ---
+		--acme-fmt-gap: var(--acme-spacing-xs);
+		--acme-fmt-text-color: var(--acme-text-color-primary);
+		--acme-fmt-font-size: var(--acme-typography-body1-font-size);
+		--acme-fmt-font-weight: var(--acme-typography-body1-font-weight);
+		--acme-fmt-bg: transparent;
+		
 	  --acme-tabs-gap: var(--acme-spacing-sm);
 	  --acme-tabs-font-size: var(--acme-typography-button-font-size); 
 	  --acme-tabs-font-weight: var(--acme-typography-button-font-weight);
@@ -187,11 +193,7 @@
 	  --acme-tabs-unactive-bg: transparent;
 	  --acme-tabs-hover-bg: rgba(0, 0, 0, 0.05);
 	
-	  --acme-fmt-gap: var(--acme-spacing-xs);
-	  --acme-fmt-text-color: var(--acme-text-color-primary);
-	  --acme-fmt-font-size: var(--acme-typography-body1-font-size);
-	  --acme-fmt-font-weight: var(--acme-typography-body1-font-weight);
-	  --acme-fmt-bg: transparent;
+	  
 
 
 

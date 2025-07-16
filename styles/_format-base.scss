@@ -1,11 +1,12 @@
+@import './_variables.scss'; 
 	.acme-fmt-value {
 		display: inline-flex;
 		align-items: baseline;
-		gap:var(--acme-fmt-space,var(--acme-space-xs));
+		gap:var(--acme-fmt-gap,var(--acme-space-xs));
 		white-space: nowrap;
-				color: var(--acme-fmt-color, var(--acme-text-color-primary)); 
-				font-size: var(--acme-fmt-font-size,var(--acme-font-size-base));
-				font-weight: var(--acme-fmt-font-weight, normal);
+		color: var(--acme-fmt-color, var(--acme-text-color-primary)); 
+		font-size: var(--acme-fmt-font-size,var(--acme-font-size-base));
+		font-weight: var(--acme-fmt-font-weight, normal);
 		.prefix-slot,
 		.suffix-slot {
 			display: inline-flex;

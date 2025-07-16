@@ -16,11 +16,12 @@
 
 			<Typography />
 
+			<FormatterValue />
+
+			<PresetSelector />
+
 
 			<view style="margin: 16rpx 0; border: 1rpx dashed var(--acme-fmt-color);"></view>
-
-
-
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
 				<AcmeSvg :svgString="svgData" :size="128" customClass="my-custom-icon" />
 				<AcmeSvg :svgString="svgData" :size="64" sizeMode="heightFix" />
@@ -42,50 +43,7 @@
 
 
 
-			<view style="font-size: 40rpx;font-weight: 900;text-align: center;color:var(--acme-primary-color);">
-				{{`Formatter Value`}}
-			</view>
-			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
-				<view style="color:var(--acme-primary-color);">{{`AcmeFmtFiat:`}}</view>
-				<AcmeFmtFiat :value="setFiatNoml" />
-				<AcmeFmtFiat :value="setFiatNoml" currency="EUR" />
-			</view>
-			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
-				<view style="color:var(--acme-primary-color);">{{`AcmeFmtFiat:`}}</view>
-				<AcmeFmtFiat :value="123456.789" color="var(--acme-success)" />
-				<AcmeFmtFiat :value="123456.789" currency="EUR" bg="var(--acme-success)" />
-			</view>
-			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
-				<view style="color:var(--acme-primary-color);">{{`AcmeFmtFiat:`}}</view>
-				<AcmeFmtFiat :value="setFiat" color="var(--acme-success)" />
-				<AcmeFmtFiat :value="setFiat" currency="EUR" bg="var(--acme-success)" />
-			</view>
 
-			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
-				<AcmeFmtFiat :value="setFiatNoml" variant="variant-bold" />
-				<AcmeFmtFiat :value="setFiatNoml" variant="variant-large" />
-			</view>
-			<AcmeFmtFiat :value="setFiatNoml" variant="my-custom-red-text" />
-
-			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
-				<AcmeFmtKMB :value="987654321987.999" />
-			</view>
-
-			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
-				<view style="color:var(--acme-primary-color);">{{`AcmeFmtInteger:`}}</view>
-				<AcmeFmtInteger :value="123456">
-					<template #suffix>
-						<text style="font-size: 24rpx;color:var(--acme-info);">{{`KM`}}</text>
-					</template>
-				</AcmeFmtInteger>
-				<AcmeFmtInteger :value="123456" locale="de-DE" />
-			</view>
-			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
-				<view style="color:var(--acme-primary-color);">{{`AcmeFmtPercent:`}}</view>
-				<AcmeFmtPercent :value="123.45" />
-				<AcmeFmtPercent :value="345.6" locale="de-DE" />
-			</view>
-			<view style="margin: 16rpx 0; border: 1rpx dashed var(--acme-fmt-color);"></view>
 			<view style="font-size: 40rpx;font-weight: 900;text-align: center;color:var(--acme-primary-color);">
 				{{`Form Checkbox`}}
 			</view>
@@ -138,7 +96,7 @@
 				<AcmeInputFiat v-model="formData.curFiat" :placeholder="`Enter curFiat`" />
 			</view>
 			<view style="margin-bottom: 36rpx;"></view>
-			<AcmePresetSelector v-model="formData.curFiat" :list="optsFiat" @select="onSelected" />
+
 			<view style="margin-bottom: 36rpx;"></view>
 
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
@@ -146,12 +104,7 @@
 				<AcmeInputInteger v-model="formData.lever" :placeholder="`Enter Lever`" />
 			</view>
 			<view style="margin-bottom: 36rpx;"></view>
-			<AcmePresetSelector v-model="formData.lever" :list="optLevers" @select="onSelectedLever" :column="4" />
-			<view style="margin-bottom: 36rpx;"></view>
-			<AcmePresetSelector v-model="formData.lever" :list="optLevers" @select="onSelectedLever" :column="5"
-				variant="variant" />
-			<view style="margin-bottom: 36rpx;"></view>
-			<AcmePresetSelector v-model="formData.lever" :list="optLevers" @select="onSelectedLever" :column="8" />
+
 
 			<view style="margin: 16rpx 0; border: 1rpx dashed var(--acme-fmt-color);"></view>
 
@@ -176,7 +129,8 @@
 <script>
 	import { acmeCfg, acmeSetTheme } from '../config.js';
 	import Typography from '../components/Typography.vue';
-
+	import FormatterValue from '../components/FormatterValue.vue';
+	import PresetSelector from '../components/PresetSelector.vue';
 
 
 	import AcmeIcon from '../ui/common/AcmeIcon.vue';
@@ -184,39 +138,35 @@
 	import { exampleIconSvg, svgSearch } from '../utils/svg.js';
 	import AcmeCopyrightVersion from '../ui/common/AcmeCopyrightVersion.vue';
 	import AcmeEmptyData from '../ui/common/AcmeEmptyData.vue';
-	import AcmeFmtFiat from '../ui/fmt/AcmeFmtFiat.vue';
-	import AcmeFmtInteger from '../ui/fmt/AcmeFmtInteger.vue';
-	import AcmeFmtPercent from '../ui/fmt/AcmeFmtPercent.vue';
-	import AcmeFmtKMB from '../ui/fmt/AcmeFmtKMB.vue';
+
 	import AcmeInputText from '../ui/form/AcmeInputText.vue';
 	import AcmeInputPassword from '../ui/form/AcmeInputPassword.vue';
 	import AcmeInputSearch from '../ui/form/AcmeInputSearch.vue';
 	import AcmeInputFiat from '../ui/form/AcmeInputFiat.vue';
 	import AcmeInputInteger from '../ui/form/AcmeInputInteger.vue';
-	import AcmePresetSelector from '../ui/form/AcmePresetSelector.vue';
+
 	import AcmeCheckbox from '../ui/form/AcmeCheckbox.vue';
 	import AcmeUpload from '../ui/form/AcmeUpload.vue';
 	import AcmeTabsFixed from '../ui/nav/AcmeTabsFixed.vue';
 
 	import Elevation from '../components/Elevation.vue';
-	import { formatterFiat, formatterInteger, formatNumberToPrecision } from '../utils/formatter';
+	import { formatterFiat, formatterInteger } from '../utils/formatter';
 	export default {
 		components: {
 			Typography,
+			FormatterValue,
+			PresetSelector,
+
 			AcmeIcon,
 			AcmeSvg,
 			AcmeCopyrightVersion,
 			AcmeEmptyData,
-			AcmeFmtFiat,
-			AcmeFmtInteger,
-			AcmeFmtPercent,
-			AcmeFmtKMB,
 			AcmeInputText,
 			AcmeInputPassword,
 			AcmeInputSearch,
 			AcmeInputFiat,
 			AcmeInputInteger,
-			AcmePresetSelector,
+
 			Elevation,
 			AcmeCheckbox,
 			AcmeUpload,
@@ -247,32 +197,7 @@
 			setColor() { return '#' + Math.floor(Math.random() * 16777215).toString(16); },
 			svgData() { return exampleIconSvg(this.setColor) },
 			svgDataSearch() { return svgSearch(this.setColor) },
-			// 法比选项组
-			optsFiat() {
-				const tmp = [100, 500, 1000, 3000, 5000, 10000];
-				return tmp.map(v => {
-					const _label = formatterFiat(v, acmeCfg.lgre, acmeCfg.currency);
-					return { key: v, label: _label }
-				})
-			},
-			// 杠杆选项组
-			optLevers() {
-				const tmp = [1, 5, 10, 30, 50, 100, 300, 800];
-				return tmp.map(v => {
-					const _label = formatterInteger(v, acmeCfg.lgre);
-					return { key: v, label: _label }
-				})
-			},
-			// 标准法币
-			setFiatNoml() {
-				console.log(formatNumberToPrecision(123456.78901, acmeCfg.currency))
-				return formatNumberToPrecision(123456.78901, acmeCfg.currency)
-			},
-			// 自定义小数位
-			setFiat() {
-				console.log(formatNumberToPrecision(123456.78901, acmeCfg.currency, { decimal: 4 }))
-				return formatNumberToPrecision(123456.78901, acmeCfg.currency, { decimal: 4 })
-			},
+
 		},
 		onLoad() {},
 		onShow() {
@@ -290,14 +215,7 @@
 				this.curTab1 = val;
 			},
 			onCheck(val) { this.isChecked = val },
-			onSelected(val) {
-				console.log(`val:`, val);
-				this.formData.curFiat = val;
-			},
-			onSelectedLever(val) {
-				console.log(`val:`, val);
-				this.formData.lever = val;
-			},
+
 			onUploadSuccess(val) {
 				console.log('imgSrc 上传成功，URL:', val);
 				// this.isChooseImg = false;
