@@ -1,0 +1,94 @@
+// acme/styles/vars/_typography.scss
+// 导入 _colors.scss 以便使用其中的 Sass 颜色变量
+@import './_colors.scss';
+
+:root {
+  // --- 全局字体家族 ---
+  --acme-font-family-primary: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+  --acme-font-family-monospace: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+
+  // --- 字重刻度 ---
+  --acme-font-weight-light: 300;
+  --acme-font-weight-regular: 400;
+  --acme-font-weight-medium: 500;
+  --acme-font-weight-bold: 700;
+  --acme-font-weight-heavy: 900; 
+
+  // --- 基准字号 (通常是正文的默认字号，对应主流的 14px -> 28rpx) ---
+  --acme-font-size-base: 28rpx; 
+
+  // --- 排版变体 (全部使用 rpx 单位，字号已调整) ---
+
+  // 标题 (Headings)
+  --acme-typography-h1-font-size: 80rpx;
+  --acme-typography-h1-font-weight: var(--acme-font-weight-light);
+  --acme-typography-h1-line-height: 1.167;
+  --acme-typography-h1-letter-spacing: -1rpx; 
+
+  --acme-typography-h2-font-size: 64rpx;
+  --acme-typography-h2-font-weight: var(--acme-font-weight-light);
+  --acme-typography-h2-line-height: 1.2;
+  --acme-typography-h2-letter-spacing: -0.5rpx;
+
+  --acme-typography-h3-font-size: 56rpx;
+  --acme-typography-h3-font-weight: var(--acme-font-weight-regular);
+  --acme-typography-h3-line-height: 1.04;
+  --acme-typography-h3-letter-spacing: 0rpx; 
+
+  --acme-typography-h4-font-size: 48rpx;
+  --acme-typography-h4-font-weight: var(--acme-font-weight-regular);
+  --acme-typography-h4-line-height: 1.235;
+  --acme-typography-h4-letter-spacing: 0.5rpx;
+
+  --acme-typography-h5-font-size: 40rpx;
+  --acme-typography-h5-font-weight: var(--acme-font-weight-regular);
+  --acme-typography-h5-line-height: 1.334;
+  --acme-typography-h5-letter-spacing: 0rpx; 
+
+  --acme-typography-h6-font-size: 36rpx;
+  --acme-typography-h6-font-weight: var(--acme-font-weight-medium);
+  --acme-typography-h6-line-height: 1.6;
+  --acme-typography-h6-letter-spacing: 0.5rpx;
+
+  // 副标题 (Subtitles)
+  --acme-typography-subtitle1-font-size: var(--acme-font-size-base);
+  --acme-typography-subtitle1-font-weight: var(--acme-font-weight-regular);
+  --acme-typography-subtitle1-line-height: 1.75;
+  --acme-typography-subtitle1-letter-spacing: 0.5rpx;
+
+  --acme-typography-subtitle2-font-size: 26rpx;
+  --acme-typography-subtitle2-font-weight: var(--acme-font-weight-medium);
+  --acme-typography-subtitle2-line-height: 1.57;
+  --acme-typography-subtitle2-letter-spacing: 0.5rpx;
+
+  // 正文 (Body)
+  --acme-typography-body1-font-size: var(--acme-font-size-base);
+  --acme-typography-body1-font-weight: var(--acme-font-weight-regular);
+  --acme-typography-body1-line-height: 1.5;
+  --acme-typography-body1-letter-spacing: 0.5rpx;
+
+  --acme-typography-body2-font-size: 26rpx;
+  --acme-typography-body2-font-weight: var(--acme-font-weight-regular);
+  --acme-typography-body2-line-height: 1.43;
+  --acme-typography-body2-letter-spacing: 0.5rpx;
+
+  // 按钮 (Button)
+  --acme-typography-button-font-size: 28rpx;
+  --acme-typography-button-font-weight: var(--acme-font-weight-medium);
+  --acme-typography-button-line-height: 1.75;
+  --acme-typography-button-letter-spacing: 1rpx;
+  --acme-typography-button-text-transform: uppercase;
+
+  // 说明文字 (Caption)
+  --acme-typography-caption-font-size: 24rpx;
+  --acme-typography-caption-font-weight: var(--acme-font-weight-regular);
+  --acme-typography-caption-line-height: 1.66;
+  --acme-typography-caption-letter-spacing: 1rpx;
+
+  // 超小字 (Overline)
+  --acme-typography-overline-font-size: 24rpx;
+  --acme-typography-overline-font-weight: var(--acme-font-weight-medium);
+  --acme-typography-overline-line-height: 2.66;
+  --acme-typography-overline-letter-spacing: 2rpx;
+  --acme-typography-overline-text-transform: uppercase;
+}

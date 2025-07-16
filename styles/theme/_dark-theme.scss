@@ -1,0 +1,137 @@
+// acme/styles/themes/_dark-theme.scss
+// 导入基础颜色 Sass 变量
+@import '../vars/_colors.scss';
+
+// 暗色主题的 CSS 变量覆盖
+// 这些变量的值直接从 _colors.scss 中的 Sass 变量派生，或根据暗色主题需求重新定义
+.dark-theme {
+  // Primary Color
+  $acme-color-primary-dark: #66b3ff; // 暗色主题主色
+  --acme-primary-color: #{$acme-color-primary-dark};
+  --acme-primary-rgb: #{red($acme-color-primary-dark)}, #{green($acme-color-primary-dark)}, #{blue($acme-color-primary-dark)};
+
+  // Secondary Color
+  $acme-color-secondary-dark: #adb5bd;
+  --acme-secondary-color: #{$acme-color-secondary-dark};
+  --acme-secondary-rgb: #{red($acme-color-secondary-dark)}, #{green($acme-color-secondary-dark)}, #{blue($acme-color-secondary-dark)};
+
+  // Text Colors
+  $acme-color-text-primary-dark: #ffffff;
+  --acme-text-color-primary: #{$acme-color-text-primary-dark};
+  --acme-text-color-primary-rgb: #{red($acme-color-text-primary-dark)}, #{green($acme-color-text-primary-dark)}, #{blue($acme-color-text-primary-dark)};
+
+  $acme-color-text-secondary-dark: #cccccc;
+  --acme-text-color-secondary: #{$acme-color-text-secondary-dark};
+  --acme-text-color-secondary-rgb: #{red($acme-color-text-secondary-dark)}, #{green($acme-color-text-secondary-dark)}, #{blue($acme-color-text-secondary-dark)};
+
+  // Background Colors
+  $acme-color-bg-page-dark: #121212; // 更深的背景
+  --acme-bg-page: #{$acme-color-bg-page-dark};
+  --acme-bg-page-rgb: #{red($acme-color-bg-page-dark)}, #{green($acme-color-bg-page-dark)}, #{blue($acme-color-bg-page-dark)};
+
+  $acme-color-bg-card-dark: #2a2a2a;
+  --acme-bg-card: #{$acme-color-bg-card-dark};
+  --acme-bg-card-rgb: #{red($acme-color-bg-card-dark)}, #{green($acme-color-bg-card-dark)}, #{blue($acme-color-bg-card-dark)};
+
+  // Border Color
+  $acme-color-border-dark: #444444;
+  --acme-border-color: #{$acme-color-border-dark};
+  --acme-border-color-rgb: #{red($acme-color-border-dark)}, #{green($acme-color-border-dark)}, #{blue($acme-color-border-dark)};
+
+  // Status Colors (如果暗色模式下需要调整，按此模式覆盖)
+  $acme-color-info-dark: #A8A8A8;
+  --acme-info: #{$acme-color-info-dark};
+  --acme-info-rgb: #{red($acme-color-info-dark)}, #{green($acme-color-info-dark)}, #{blue($acme-color-info-dark)};
+
+  $acme-color-warn-dark: #FFD700;
+  --acme-warn: #{$acme-color-warn-dark};
+  --acme-warn-rgb: #{red($acme-color-warn-dark)}, #{green($acme-color-warn-dark)}, #{blue($acme-color-warn-dark)};
+
+  // Success 和 Error 颜色通常在亮暗模式下保持不变，如果需要调整，也按此模式覆盖
+  --acme-success: #{$acme-color-success}; // 保持不变
+  --acme-success-rgb: #{red($acme-color-success)}, #{green($acme-color-success)}, #{blue($acme-color-success)};
+  --acme-error: #{$acme-color-error}; // 保持不变
+  --acme-error-rgb: #{red($acme-color-error)}, #{green($acme-color-error)}, #{blue($acme-color-error)};
+
+  // Scrollbar Colors
+  $acme-color-scroll-thumb-dark: #666;
+  --acme-scroll-thumb: #{$acme-color-scroll-thumb-dark};
+  --acme-scroll-thumb-rgb: #{red($acme-color-scroll-thumb-dark)}, #{green($acme-color-scroll-thumb-dark)}, #{blue($acme-color-scroll-thumb-dark)};
+
+  $acme-color-scroll-track-dark: #333;
+  --acme-scroll-track: #{$acme-color-scroll-track-dark};
+  --acme-scroll-track-rgb: #{red($acme-color-scroll-track-dark)}, #{green($acme-color-scroll-track-dark)}, #{blue($acme-color-scroll-track-dark)};
+
+  // --- 组合 RGBA 变量 (这些会自动引用上面覆盖后的 RGB 变量) ---
+  --acme-hover-bg: rgba(var(--acme-primary-rgb), var(--acme-opacity-light));
+  --acme-shadow-color: rgba(0, 0, 0, var(--acme-opacity-medium)); // 黑色阴影通常不变
+
+  // --- 新增的组件特定颜色 CSS 变量 (暗色覆盖值) ---
+  $acme-color-copyright-dark: $acme-color-primary-dark;
+  --acme-copyright-color: #{$acme-color-copyright-dark};
+  --acme-copyright-rgb: #{red($acme-color-copyright-dark)}, #{green($acme-color-copyright-dark)}, #{blue($acme-color-copyright-dark)};
+
+  $acme-color-empty-data-dark: $acme-color-info-dark;
+  --acme-empty-data-color: #{$acme-color-empty-data-dark};
+  --acme-empty-data-rgb: #{red($acme-color-empty-data-dark)}, #{green($acme-color-empty-data-dark)}, #{blue($acme-color-empty-data-dark)};
+
+  $acme-color-fmt-dark: #f8f8f8;
+  --acme-fmt-color: #{$acme-color-fmt-dark};
+  --acme-fmt-rgb: #{red($acme-color-fmt-dark)}, #{green($acme-color-fmt-dark)}, #{blue($acme-color-fmt-dark)};
+
+  $acme-color-input-dark: #f8f8f8;
+  --acme-input-color: #{$acme-color-input-dark};
+  --acme-input-rgb: #{red($acme-color-input-dark)}, #{green($acme-color-input-dark)}, #{blue($acme-color-input-dark)};
+
+  $acme-color-input-border-dark: #444444;
+  --acme-input-border-color: #{$acme-color-input-border-dark};
+  --acme-input-border-rgb: #{red($acme-color-input-border-dark)}, #{green($acme-color-input-border-dark)}, #{blue($acme-color-input-border-dark)};
+
+  $acme-color-preset-selector-active-dark: #f8f8f8;
+  --acme-preset-selector-active: #{$acme-color-preset-selector-active-dark};
+  --acme-preset-selector-active-rgb: #{red($acme-color-preset-selector-active-dark)}, #{green($acme-color-preset-selector-active-dark)}, #{blue($acme-color-preset-selector-active-dark)};
+
+  $acme-color-preset-selector-unactive-dark: #f8f8f8;
+  --acme-preset-selector-unactive: #{$acme-color-preset-selector-unactive-dark};
+  --acme-preset-selector-unactive-rgb: #{red($acme-color-preset-selector-unactive-dark)}, #{green($acme-color-preset-selector-unactive-dark)}, #{blue($acme-color-preset-selector-unactive-dark)};
+
+  $acme-color-preset-selector-active-bg-dark: $acme-color-primary-dark;
+  --acme-preset-selector-active-bg: #{$acme-color-preset-selector-active-bg-dark};
+  --acme-preset-selector-active-bg-rgb: #{red($acme-color-preset-selector-active-bg-dark)}, #{green($acme-color-preset-selector-active-bg-dark)}, #{blue($acme-color-preset-selector-active-bg-dark)};
+
+  $acme-color-preset-selector-unactive-bg-dark: #2e2c2c;
+  --acme-preset-selector-unactive-bg: #{$acme-color-preset-selector-unactive-bg-dark};
+  --acme-preset-selector-unactive-bg-rgb: #{red($acme-color-preset-selector-unactive-bg-dark)}, #{green($acme-color-preset-selector-unactive-bg-dark)}, #{blue($acme-color-preset-selector-unactive-bg-dark)};
+
+  $acme-color-upload-border-dark: $acme-color-input-border-dark;
+  --acme-upload-border-color: #{$acme-color-upload-border-dark};
+  --acme-upload-border-rgb: #{red($acme-color-upload-border-dark)}, #{green($acme-color-upload-border-dark)}, #{blue($acme-color-upload-border-dark)};
+
+  $acme-color-tabs-active-bg-dark: $acme-color-primary-dark;
+  --acme-tabs-active-bg: #{$acme-color-tabs-active-bg-dark};
+  --acme-tabs-active-bg-rgb: #{red($acme-color-tabs-active-bg-dark)}, #{green($acme-color-tabs-active-bg-dark)}, #{blue($acme-color-tabs-active-bg-dark)};
+
+  $acme-color-tabs-active-dark: #f8f8f8;
+  --acme-tabs-active-color: #{$acme-color-tabs-active-dark};
+  --acme-tabs-active-rgb: #{red($acme-color-tabs-active-dark)}, #{green($acme-color-tabs-active-dark)}, #{blue($acme-color-tabs-active-dark)};
+
+  $acme-color-tabs-unactive-bg-dark: #2e2c2c;
+  --acme-tabs-unactive-bg: #{$acme-color-tabs-unactive-bg-dark};
+  --acme-tabs-unactive-bg-rgb: #{red($acme-color-tabs-unactive-bg-dark)}, #{green($acme-color-tabs-unactive-bg-dark)}, #{blue($acme-color-tabs-unactive-bg-dark)};
+
+  $acme-color-tabs-unactive-dark: #f8f8f8;
+  --acme-tabs-unactive-color: #{$acme-color-tabs-unactive-dark};
+  --acme-tabs-unactive-rgb: #{red($acme-color-tabs-unactive-dark)}, #{green($acme-color-tabs-unactive-dark)}, #{blue($acme-color-tabs-unactive-dark)};
+
+  // --- 组件内部引用的 CSS 变量，其值会根据主题动态变化 ---
+  // 这些变量的值在暗色主题下可能需要重新指向暗色主题的颜色变量
+  --acme-input-bg: var(--acme-bg-card);
+  --acme-input-text-color: var(--acme-text-color-primary);
+  --acme-input-placeholder-color: var(--acme-info);
+  --acme-input-disabled-bg: var(--acme-bg-page);
+  --acme-input-disabled-border-color: var(--acme-border-color);
+  --acme-input-filled-bg: var(--acme-bg-card);
+
+  --acme-fmt-text-color: var(--acme-text-color-primary);
+  --acme-fmt-slot-color: var(--acme-fmt-text-color);
+}

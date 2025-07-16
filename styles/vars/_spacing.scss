@@ -1,0 +1,17 @@
+// acme/styles/vars/_spacing.scss
+// 导入 _colors.scss 以便使用其中的 Sass 颜色变量
+@import './_colors.scss';
+
+:root {
+  // --- 核心间距基准 ---
+  --acme-spacing-base: 8rpx;
+
+  // --- 间距刻度 (基于基准单位的倍数) ---
+  --acme-spacing-xxs: calc(var(--acme-spacing-base) * 0.5); // 4rpx
+  --acme-spacing-xs: var(--acme-spacing-base);             // 8rpx
+  --acme-spacing-sm: calc(var(--acme-spacing-base) * 2);   // 16rpx
+  --acme-spacing-md: calc(var(--acme-spacing-base) * 3);   // 24rpx
+  --acme-spacing-lg: calc(var(--acme-spacing-base) * 4);   // 32rpx
+  --acme-spacing-xl: calc(var(--acme-spacing-base) * 5);   // 40rpx
+  --acme-spacing-xxl: calc(var(--acme-spacing-base) * 6);  // 48rpx
+}

@@ -1,0 +1,44 @@
+// 这些是您设计系统中的“原子”颜色值，可以是亮色主题的默认值
+$acme-color-primary: teal;
+$acme-color-secondary: #6c757d;
+$acme-color-text-primary: #333333;
+$acme-color-text-secondary: #666666;
+$acme-color-bg-page: #f8f8f8;
+$acme-color-bg-card: #ffffff;
+$acme-color-border: #e0e0e0;
+
+$acme-color-info: #909399;
+$acme-color-success: #0CF49B;
+$acme-color-error: #FD1050;
+$acme-color-warn: #FFA500;
+
+// 图表和特殊颜色 (如果与上述状态色重复，可以直接引用)
+$acme-color-chart-line: $acme-color-error;
+$acme-color-chart-kline-up: $acme-color-error;
+$acme-color-chart-kline-down: $acme-color-success;
+$acme-color-scroll-thumb: #ccc;
+$acme-color-scroll-track: #f0f0f0;
+
+// 新增的组件特定颜色（亮色默认值）
+$acme-color-copyright: $acme-color-primary;
+$acme-color-empty-data: $acme-color-info;
+$acme-color-fmt: $acme-color-text-primary;
+$acme-color-input: $acme-color-text-primary;
+$acme-color-input-border: $acme-color-border;
+$acme-color-preset-selector-active: #ffffff;
+$acme-color-preset-selector-unactive: $acme-color-text-primary;
+$acme-color-preset-selector-active-bg: $acme-color-primary;
+$acme-color-preset-selector-unactive-bg: $acme-color-bg-card;
+$acme-color-upload-border: $acme-color-input-border;
+$acme-color-tabs-active: #ffffff;
+$acme-color-tabs-active-bg: $acme-color-primary;
+$acme-color-tabs-unactive: $acme-color-text-primary;
+$acme-color-tabs-unactive-bg: $acme-color-bg-card;
+
+	// --- 定义通用透明度变量 ---
+:root{
+	--acme-opacity-light: 0.1;
+	--acme-opacity-medium: 0.3;
+	--acme-opacity-heavy: 0.6;
+	--acme-opacity-full: 1;
+}

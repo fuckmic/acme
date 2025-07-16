@@ -1,0 +1,10 @@
+// acme/styles/vars/_shapes.scss
+// 导入 _colors.scss 以便使用其中的 Sass 颜色变量
+@import './_colors.scss';
+
+:root {
+  // --- 圆角刻度 ---
+  --acme-border-radius-sm: 8rpx;
+  --acme-border-radius-md: 16rpx;
+  --acme-border-radius-lg: 40rpx;
+}

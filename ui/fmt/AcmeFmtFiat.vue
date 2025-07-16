@@ -1,9 +1,9 @@
 <template>
-	<view :class="[`acme-fmt-value`,variant]" :style="{backgroundColor:setBg}">
+	<view :class="[`acme-fmt-value`,variant]">
 		<view v-if="$slots.prefix" class="prefix-slot">
 			<slot name="prefix"></slot>
 		</view>
-		<text :style="{color:setColor}">{{ formattedValue }}</text>
+		<text>{{ formattedValue }}</text>
 		<view v-if="$slots.suffix" class="suffix-slot">
 			<slot name="suffix"></slot>
 		</view>
@@ -25,8 +25,6 @@
 				default: 'auto', // 默认自动显示，负数显示负号，正数不显示
 				validator: (val) => ['auto', 'always', 'exceptZero', 'never'].includes(val),
 			},
-			color: { type: String, default: undefined },
-			bg: { type: String, default: undefined },
 			// 外部组件样式覆盖
 			variant: { type: String, default: '' },
 		},
@@ -34,8 +32,6 @@
 			formattedValue() {
 				return formatterFiat(this.value, this.locale, this.currency, { signDisplay: this.showSign });
 			},
-			setColor() { return this.color || `var(--acme-fmt-color)` },
-			setBg() { return this.bg || `var(--acme-fmt-bg)` },
 		},
 	}
 </script>

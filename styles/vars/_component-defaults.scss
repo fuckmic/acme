@@ -1,0 +1,92 @@
+// acme/styles/vars/_component-defaults.scss
+// 导入其他基础变量文件，以便引用通用设计令牌
+@import './_colors.scss';
+@import './_typography.scss';
+@import './_spacing.scss';
+@import './_shapes.scss';
+
+:root {
+  // --- 组件特有变量 (这些是组件的默认配置，引用通用设计令牌) ---
+
+  // Tabs 组件变量
+  --acme-tabs-gap: var(--acme-spacing-sm);
+  --acme-tabs-font-size: var(--acme-typography-button-font-size);
+  --acme-tabs-font-weight: var(--acme-typography-button-font-weight);
+  --acme-tabs-item-padding: var(--acme-spacing-md) var(--acme-spacing-sm);
+  --acme-tabs-border-radius: var(--acme-border-radius-sm);
+  --acme-tabs-active-bg: var(--acme-primary-color);
+  --acme-tabs-active-text-color: #ffffff; // 通常激活文本是白色，不随主题色变
+  --acme-tabs-unactive-text-color: var(--acme-text-color-primary);
+  --acme-tabs-unactive-bg: transparent;
+  --acme-tabs-hover-bg: rgba(var(--acme-primary-rgb), var(--acme-opacity-light)); // 悬停背景
+
+  // 格式化组件变量
+  --acme-fmt-gap: var(--acme-spacing-xs);
+  --acme-fmt-text-color: var(--acme-text-color-primary);
+  --acme-fmt-font-size: var(--acme-typography-body1-font-size);
+  --acme-fmt-font-weight: var(--acme-font-weight-regular);
+  --acme-fmt-line-height: var(--acme-typography-body1-line-height);
+  --acme-fmt-letter-spacing: var(--acme-typography-body1-letter-spacing);
+  --acme-fmt-bg: transparent;
+  --acme-fmt-border-radius: 0;
+  --acme-fmt-padding: 0;
+  --acme-fmt-slot-color: var(--acme-text-color-secondary);
+  --acme-fmt-slot-font-size: var(--acme-typography-caption-font-size);
+  --acme-fmt-slot-font-weight: var(--acme-font-weight-regular);
+  --acme-fmt-positive-color: var(--acme-success);
+  --acme-fmt-negative-color: var(--acme-error);
+  --acme-fmt-zero-color: var(--acme-text-color-secondary);
+  --acme-fmt-highlighted-bg: var(--acme-warn);
+  --acme-fmt-highlighted-padding: var(--acme-spacing-xs) var(--acme-spacing-sm);
+  --acme-fmt-highlighted-border-radius: var(--acme-border-radius-sm);
+  --acme-fmt-highlighted-text-color: #fff;
+  --acme-fmt-highlighted-slot-color: #fff;
+  --acme-fmt-pill-bg: var(--acme-primary-color);
+  --acme-fmt-pill-padding: var(--acme-spacing-xxs) var(--acme-spacing-xs);
+  --acme-fmt-pill-border-radius: var(--acme-border-radius-lg);
+  --acme-fmt-pill-text-color: #fff;
+  --acme-fmt-pill-font-size: var(--acme-typography-caption-font-size);
+  --acme-fmt-pill-slot-color: #fff;
+  --acme-fmt-pill-slot-font-size: var(--acme-typography-caption-font-size);
+
+  // 输入框组件变量
+	--acme-input-gap:var(--acme-spacing-sm);
+  --acme-input-min-height: 88rpx;
+  --acme-input-padding: var(--acme-spacing-sm) var(--acme-spacing-md);
+  --acme-input-font-size: var(--acme-font-size-base);
+  --acme-input-text-color: var(--acme-text-color-primary);
+  --acme-input-bg: var(--acme-bg-card);
+  --acme-input-border-radius: var(--acme-border-radius-sm);
+  --acme-input-border-width: 1rpx;
+  --acme-input-border-color: var(--acme-border-color);
+  --acme-input-line-height: 1.5;
+  --acme-input-placeholder-color: var(--acme-text-color-secondary);
+  --acme-input-addon-padding: var(--acme-spacing-xs);
+  --acme-input-addon-color: var(--acme-text-color-secondary);
+  --acme-input-addon-font-size: var(--acme-font-size-sm);
+  --acme-input-focus-border-color: var(--acme-primary-color);
+  --acme-input-focus-shadow: 0 0 0 4rpx rgba(var(--acme-primary-rgb), 0.2);
+  --acme-input-disabled-bg: var(--acme-bg-page);
+  --acme-input-disabled-border-color: var(--acme-border-color);
+  --acme-input-error-shadow: 0 0 0 4rpx rgba(var(--acme-error-rgb), 0.2);
+	// 'bordered' 变体
+  --acme-input-bordered-border-width: 2rpx;
+  --acme-input-bordered-border-color: var(--acme-border-color);
+  --acme-input-bordered-bg: transparent;
+  --acme-input-bordered-border-radius: var(--acme-border-radius-sm);
+	// 'filled' 变体
+  --acme-input-filled-bg: var(--acme-bg-card);
+  --acme-input-filled-border-radius: var(--acme-border-radius-md);
+  --acme-input-filled-padding: var(--acme-spacing-sm) var(--acme-spacing-md);
+  --acme-input-filled-focus-shadow: 0 0 0 4rpx rgba(var(--acme-primary-rgb), 0.2);
+	// 'underline' 变体
+  --acme-input-underline-border-width: 2rpx;
+  --acme-input-underline-border-color: var(--acme-border-color);
+  --acme-input-underline-focus-border-color: var(--acme-primary-color);
+  --acme-input-underline-padding: var(--acme-spacing-xs) 0;
+
+  // 其他通用组件变量
+  --acme-copyright-color: var(--acme-primary-color);
+  --acme-empty-data-color: var(--acme-info);
+  --acme-upload-border-color: var(--acme-input-border-color);
+}

@@ -46,6 +46,3 @@
 		name: "Elevation",
 	}
 </script>
-
-<style>
-</style>

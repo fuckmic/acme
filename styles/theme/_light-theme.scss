@@ -1,0 +1,106 @@
+// acme/styles/themes/_light-theme.scss
+// 导入基础颜色 Sass 变量
+@import '../vars/_colors.scss';
+
+// 亮色主题的默认 CSS 变量定义
+// 这些变量的值直接从 _colors.scss 中的 Sass 变量派生
+:root {
+  // Primary Color
+  --acme-primary-color: #{$acme-color-primary};
+  --acme-primary-rgb: #{red($acme-color-primary)}, #{green($acme-color-primary)}, #{blue($acme-color-primary)};
+
+  // Secondary Color
+  --acme-secondary-color: #{$acme-color-secondary};
+  --acme-secondary-rgb: #{red($acme-color-secondary)}, #{green($acme-color-secondary)}, #{blue($acme-color-secondary)};
+
+  // Text Colors
+  --acme-text-color-primary: #{$acme-color-text-primary};
+  --acme-text-color-primary-rgb: #{red($acme-color-text-primary)}, #{green($acme-color-text-primary)}, #{blue($acme-color-text-primary)};
+
+  --acme-text-color-secondary: #{$acme-color-text-secondary};
+  --acme-text-color-secondary-rgb: #{red($acme-color-text-secondary)}, #{green($acme-color-text-secondary)}, #{blue($acme-color-text-secondary)};
+
+  // Background Colors
+  --acme-bg-page: #{$acme-color-bg-page};
+  --acme-bg-page-rgb: #{red($acme-color-bg-page)}, #{green($acme-color-bg-page)}, #{blue($acme-color-bg-page)};
+
+  --acme-bg-card: #{$acme-color-bg-card};
+  --acme-bg-card-rgb: #{red($acme-color-bg-card)}, #{green($acme-color-bg-card)}, #{blue($acme-color-bg-card)};
+
+  // Border Color
+  --acme-border-color: #{$acme-color-border};
+  --acme-border-color-rgb: #{red($acme-color-border)}, #{green($acme-color-border)}, #{blue($acme-color-border)};
+
+  // Status Colors
+  --acme-info: #{$acme-color-info};
+  --acme-info-rgb: #{red($acme-color-info)}, #{green($acme-color-info)}, #{blue($acme-color-info)};
+
+  --acme-success: #{$acme-color-success};
+  --acme-success-rgb: #{red($acme-color-success)}, #{green($acme-color-success)}, #{blue($acme-color-success)};
+
+  --acme-error: #{$acme-color-error};
+  --acme-error-rgb: #{red($acme-color-error)}, #{green($acme-color-error)}, #{blue($acme-color-error)};
+
+  --acme-warn: #{$acme-color-warn};
+  --acme-warn-rgb: #{red($acme-color-warn)}, #{green($acme-color-warn)}, #{blue($acme-color-warn)};
+
+  // Chart Colors
+  --acme-chart-line-color: #{$acme-color-chart-line};
+  --acme-chart-line-rgb: #{red($acme-color-chart-line)}, #{green($acme-color-chart-line)}, #{blue($acme-color-chart-line)};
+
+  --acme-chart-kline-up: #{$acme-color-chart-kline-up};
+  --acme-chart-kline-up-rgb: #{red($acme-color-chart-kline-up)}, #{green($acme-color-chart-kline-up)}, #{blue($acme-color-chart-kline-up)};
+
+  --acme-chart-kline-down: #{$acme-color-chart-kline-down};
+  --acme-chart-kline-down-rgb: #{red($acme-color-chart-kline-down)}, #{green($acme-color-chart-kline-down)}, #{blue($acme-color-chart-kline-down)};
+
+  // Scrollbar Colors
+  --acme-scroll-thumb: #{$acme-color-scroll-thumb};
+  --acme-scroll-thumb-rgb: #{red($acme-color-scroll-thumb)}, #{green($acme-color-scroll-thumb)}, #{blue($acme-color-scroll-thumb)};
+
+  --acme-scroll-track: #{$acme-color-scroll-track};
+  --acme-scroll-track-rgb: #{red($acme-color-scroll-track)}, #{green($acme-color-scroll-track)}, #{blue($acme-color-scroll-track)};
+
+  // --- 新增的组件特定颜色 CSS 变量 (亮色默认值) ---
+  --acme-copyright-color: #{$acme-color-copyright};
+  --acme-copyright-rgb: #{red($acme-color-copyright)}, #{green($acme-color-copyright)}, #{blue($acme-color-copyright)};
+
+  --acme-empty-data-color: #{$acme-color-empty-data};
+  --acme-empty-data-rgb: #{red($acme-color-empty-data)}, #{green($acme-color-empty-data)}, #{blue($acme-color-empty-data)};
+
+  --acme-fmt-color: #{$acme-color-fmt};
+  --acme-fmt-rgb: #{red($acme-color-fmt)}, #{green($acme-color-fmt)}, #{blue($acme-color-fmt)};
+
+  --acme-input-color: #{$acme-color-input};
+  --acme-input-rgb: #{red($acme-color-input)}, #{green($acme-color-input)}, #{blue($acme-color-input)};
+
+  --acme-input-border-color: #{$acme-color-input-border};
+  --acme-input-border-rgb: #{red($acme-color-input-border)}, #{green($acme-color-input-border)}, #{blue($acme-color-input-border)};
+
+  --acme-preset-selector-active: #{$acme-color-preset-selector-active};
+  --acme-preset-selector-active-rgb: #{red($acme-color-preset-selector-active)}, #{green($acme-color-preset-selector-active)}, #{blue($acme-color-preset-selector-active)};
+
+  --acme-preset-selector-unactive: #{$acme-color-preset-selector-unactive};
+  --acme-preset-selector-unactive-rgb: #{red($acme-color-preset-selector-unactive)}, #{green($acme-color-preset-selector-unactive)}, #{blue($acme-color-preset-selector-unactive)};
+
+  --acme-preset-selector-active-bg: #{$acme-color-preset-selector-active-bg};
+  --acme-preset-selector-active-bg-rgb: #{red($acme-color-preset-selector-active-bg)}, #{green($acme-color-preset-selector-active-bg)}, #{blue($acme-color-preset-selector-active-bg)};
+
+  --acme-preset-selector-unactive-bg: #{$acme-color-preset-selector-unactive-bg};
+  --acme-preset-selector-unactive-bg-rgb: #{red($acme-color-preset-selector-unactive-bg)}, #{green($acme-color-preset-selector-unactive-bg)}, #{blue($acme-color-preset-selector-unactive-bg)};
+
+  --acme-upload-border-color: #{$acme-color-upload-border};
+  --acme-upload-border-rgb: #{red($acme-color-upload-border)}, #{green($acme-color-upload-border)}, #{blue($acme-color-upload-border)};
+
+  --acme-tabs-active-bg: #{$acme-color-tabs-active-bg};
+  --acme-tabs-active-bg-rgb: #{red($acme-color-tabs-active-bg)}, #{green($acme-color-tabs-active-bg)}, #{blue($acme-color-tabs-active-bg)};
+
+  --acme-tabs-active-color: #{$acme-color-tabs-active};
+  --acme-tabs-active-rgb: #{red($acme-color-tabs-active)}, #{green($acme-color-tabs-active)}, #{blue($acme-color-tabs-active)};
+
+  --acme-tabs-unactive-bg: #{$acme-color-tabs-unactive-bg};
+  --acme-tabs-unactive-bg-rgb: #{red($acme-color-tabs-unactive-bg)}, #{green($acme-color-tabs-unactive-bg)}, #{blue($acme-color-tabs-unactive-bg)};
+
+  --acme-tabs-unactive-color: #{$acme-color-tabs-unactive};
+  --acme-tabs-unactive-rgb: #{red($acme-color-tabs-unactive)}, #{green($acme-color-tabs-unactive)}, #{blue($acme-color-tabs-unactive)};
+}

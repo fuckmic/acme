@@ -20,7 +20,33 @@
 			<AcmeFmtFiat :value="setFiatNoml" variant="variant-large" />
 		</view>
 
-		<AcmeFmtFiat :value="setFiatNoml" variant="my-custom-red-text" />
+		<AcmeFmtFiat :value="setFiatNoml" />
+
+		<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
+			<AcmeFmtFiat :value="setFiatNoml" :variant="getTextColor(setFiatNoml)" />
+			<AcmeFmtFiat :value="setFiatNoml" :variant="getBgColor(-setFiatNoml)" />
+		</view>
+
+		<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
+			<AcmeFmtFiat :value="setFiatNoml" :variant="getBgColor(setFiatNoml)" />
+			<AcmeFmtFiat :value="setFiatNoml" :variant="getTextColor(-setFiatNoml)" />
+		</view>
+
+		<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
+			<AcmeFmtFiat :value="setFiatNoml" :variant="getTextColor(setFiatNoml,true)" />
+			<AcmeFmtFiat :value="setFiatNoml" :variant="getBgColor(-setFiatNoml,true)" />
+		</view>
+
+		<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
+			<AcmeFmtFiat :value="setFiatNoml" :variant="getBgColor(setFiatNoml,true)" />
+			<AcmeFmtFiat :value="setFiatNoml" :variant="getTextColor(-setFiatNoml,true)" />
+		</view>
+
+		<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
+			<AcmeFmtFiat :value="setFiatNoml" :variant="getBgColorRgba(setFiatNoml)" />
+			<AcmeFmtFiat :value="setFiatNoml" :variant="getBgColorRgba(0)" />
+			<AcmeFmtFiat :value="setFiatNoml" :variant="getBgColorRgba(-setFiatNoml)" />
+		</view>
 
 		<view class="acme-h3 acme-text-success">{{`AcmeFmtKMB`}}</view>
 		<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
@@ -80,6 +106,33 @@
 				console.log(formatNumberToPrecision(this.fiatValue, acmeCfg.currency, { decimal: 4 }))
 				return formatNumberToPrecision(this.fiatValue, acmeCfg.currency, { decimal: 4 })
 			},
+		},
+		methods: {
+			// 根据数字获取对应的索引 (0: 跌/亏, 1: 平, 2: 涨/盈)
+			getSignIndex(num) {
+				return num === 0 ? 1 : (num < 0 ? 0 : 2); // 调整索引顺序为 [跌, 平, 涨]
+			},
+
+			// 获取盈亏/涨跌文字颜色  (传入值，是否倒转)
+			getTextColor(num, isRevse) {
+				let index = this.getSignIndex(num);
+				index = isRevse ? (index === 0 ? 2 : (index === 2 ? 0 : index)) : index;
+				const tmp = [`acme-text-fall`, `acme-text-flat`, `acme-text-profit`];
+				return tmp[index];
+			},
+			// 获取盈亏/涨跌背景颜色  (传入值，是否倒转)
+			getBgColor(num, isRevse) {
+				let index = this.getSignIndex(num);
+				index = isRevse ? (index === 0 ? 2 : (index === 2 ? 0 : index)) : index;
+				const tmp = [`acme-bg-fall`, `acme-bg-flat`, `acme-bg-profit`];
+				return tmp[index];
+			},
+			getBgColorRgba(num, isRevse) {
+				let index = this.getSignIndex(num);
+				index = isRevse ? (index === 0 ? 2 : (index === 2 ? 0 : index)) : index;
+				const tmp = [`acme-bg-fall-rgba`, `acme-bg-flat-rgba`, `acme-bg-profit-rgba`];
+				return tmp[index];
+			},
 		}
 	}
 </script>
@@ -95,7 +148,7 @@
 		--acme-fmt-color: teal;
 		--acme-fmt-font-weight: 500;
 		background-color: #444444 !important;
-		padding: var(--acme-space-sm);
+		padding: var(--acme-spacing-sm);
 		border-radius: var(--acme-border-radius-sm);
 	}
 
