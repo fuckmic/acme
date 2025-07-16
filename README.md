@@ -11,34 +11,7 @@
 - uni.onWindowResize()
 
 ## styles
-- _colors.scss 包含所有基础的 Sass 颜色变量.包含所有 CSS 变量的定义和 RGB 分量生成（例如 --acme-primary-color: #{$acme-color-primary}; 和 --acme-primary-rgb: ...;）。
-
-- _opacity.scss 包含通用透明度变量。
-- _typography.scss (排版定义) 包含所有排版相关的 CSS 变量（字体家族、字重刻度、基准字号、所有 acme-typography-h1-font-size 等变体）。
-
-- _spacing.scss (间距定义) 包含所有间距相关的 CSS 变量（基准间距、xxs 到 xxl 等刻度）。
-
-- _shapes.scss (形状定义) 包含所有圆角相关的 CSS 变量（sm, md, lg 等）。
-
-themes/_light-theme.scss (亮色主题)
-
-包含 :root 选择器，并在这里应用所有亮色主题的 CSS 变量。
-
-这个文件会导入 _colors.scss 等文件，以便使用它们的 Sass 变量。
-
-acme/styles/themes/_dark-theme.scss (暗色主题)
-
-包含 .dark-theme 选择器，并在这里覆盖所有暗色主题所需的 CSS 变量。
-
-同样会导入 _colors.scss 等文件。
-
-_component-defaults.scss (组件默认变量)
-
-包含所有组件特有的 CSS 变量，这些变量通常会引用上面定义的通用设计令牌（例如 --acme-tabs-gap: var(--acme-spacing-sm);）。
-
-这部分是组件的默认配置，不涉及主题覆盖。
-
-
+- _colors.scss 包含所有基础的 Sass 颜色变量.
 - _variables.css css变量。主项目引入，再引入覆写的变量。
 - - 确保所有可变的设计属性（颜色、字体大小、字重、间距、圆角、边框、阴影等）都抽象为 CSS 变量
 

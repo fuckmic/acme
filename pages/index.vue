@@ -60,10 +60,10 @@
 				<AcmeSvg :svgString="svgData" :size="48" />
 				<AcmeSvg :svgString="svgData" :size="32" />
 				<view @tap="onTheme(`dark`)" style="cursor: pointer;">
-					<AcmeSvg :svgString="svgData" :size="128" customClass="my-custom-icon" />
+					<AcmeSvg :svgString="svgDataDark" :size="128" customClass="my-custom-icon" />
 				</view>
 				<view @tap="onTheme(`light`)" style="cursor: pointer;color:var(--acme-primary-color);">
-					<AcmeSvg :svgString="svgData" :size="128" customClass="my-custom-icon" />
+					<AcmeSvg :svgString="svgDataLight" :size="128" customClass="my-custom-icon" />
 				</view>
 			</view>
 			<view style="margin: 16rpx 0; border: 1rpx dashed var(--acme-fmt-color);"></view>
@@ -110,7 +110,7 @@
 	import { acmeSetTheme } from '../config.js';
 	import AcmeIcon from '../ui/common/AcmeIcon.vue';
 	import AcmeSvg from '../ui/common/AcmeSvg.vue';
-	import { exampleIconSvg, svgSearch } from '../utils/svg.js';
+	import { exampleIconSvg, svgSearch, svgDark, svgLight } from '../utils/svg.js';
 	import AcmeCopyrightVersion from '../ui/common/AcmeCopyrightVersion.vue';
 	import AcmeEmptyData from '../ui/common/AcmeEmptyData.vue';
 	import AcmeCheckbox from '../ui/form/AcmeCheckbox.vue';
@@ -144,6 +144,8 @@
 		computed: {
 			setColor() { return '#' + Math.floor(Math.random() * 16777215).toString(16); },
 			svgData() { return exampleIconSvg(this.setColor) },
+			svgDataDark() { return svgDark(this.setColor) },
+			svgDataLight() { return svgLight(this.setColor) },
 		},
 		onLoad() {},
 		onShow() {
