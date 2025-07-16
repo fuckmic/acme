@@ -14,20 +14,12 @@
 			<AcmeTabsFixed v-model="curTab1" :tabs="tabs1" @change="onTab1" variant="variant-pill" />
 			<view style="font-size: 28rpx;color:var(--acme-primary-color);">{{curTab1}}</view>
 
+			<Typography />
+
+
 			<view style="margin: 16rpx 0; border: 1rpx dashed var(--acme-fmt-color);"></view>
 
-			<view>
-				<view class="acme-h1">这是一个标题 H1</view>
-				<view class="acme-h2">这是一个标题 H2</view>
-				<view class="acme-h3">这是一个标题 H3</view>
-				<view class="acme-h4">这是一个标题 H4</view>
-				<view class="acme-h5">这是一个标题 H5</view>
-				<view class="acme-h6">这是一个标题 H6</view>
-				<view class="acme-body1">这是正文内容。</view>
-				<view class="acme-caption acme-text-secondary">这是带有次要颜色的说明文字。</view>
-				<view class="acme-body2 acme-text-bold acme-text-success">这是一个加粗的成功信息。</view>
-				<view class="acme-button-text">{{`acme-button-text`}}</view>
-			</view>
+
 
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
 				<AcmeSvg :svgString="svgData" :size="128" customClass="my-custom-icon" />
@@ -183,6 +175,10 @@
 
 <script>
 	import { acmeCfg, acmeSetTheme } from '../config.js';
+	import Typography from '../components/Typography.vue';
+
+
+
 	import AcmeIcon from '../ui/common/AcmeIcon.vue';
 	import AcmeSvg from '../ui/common/AcmeSvg.vue';
 	import { exampleIconSvg, svgSearch } from '../utils/svg.js';
@@ -206,6 +202,7 @@
 	import { formatterFiat, formatterInteger, formatNumberToPrecision } from '../utils/formatter';
 	export default {
 		components: {
+			Typography,
 			AcmeIcon,
 			AcmeSvg,
 			AcmeCopyrightVersion,
