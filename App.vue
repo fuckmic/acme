@@ -32,7 +32,7 @@
 
 <style lang="scss">
 	@import "@/styles/_variables.scss";
-
+	@import '@/styles/_typography.scss';
 
 	// @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
 	// @import url('https://fonts.googleapis.com/css2?family=Roboto:wdth,wght@75..100,100..900&display=swap');
@@ -67,6 +67,11 @@
 		padding: 0;
 		margin: 0;
 		box-sizing: border-box;
+	}
+
+	page {
+		background-color: var(--acme-bg-page);
+		color: var(--acme-text-color-primary);
 	}
 
 	/* --- 变体特定样式 --- */

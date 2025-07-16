@@ -1,0 +1,170 @@
+// 导入 _variables.scss 以便使用其中定义的 CSS 变量
+@import './_variables.scss'; 
+
+/* --- 通用排版类 --- */
+
+.acme-h1 {
+  font-family: var(--acme-font-family-primary);
+  font-size: var(--acme-typography-h1-font-size);
+  font-weight: var(--acme-typography-h1-font-weight);
+  line-height: var(--acme-typography-h1-line-height);
+  letter-spacing: var(--acme-typography-h1-letter-spacing);
+  color: var(--acme-text-color-primary);
+}
+
+.acme-h2 {
+  font-family: var(--acme-font-family-primary);
+  font-size: var(--acme-typography-h2-font-size);
+  font-weight: var(--acme-typography-h2-font-weight);
+  line-height: var(--acme-typography-h2-line-height);
+  letter-spacing: var(--acme-typography-h2-letter-spacing);
+  color: var(--acme-text-color-primary);
+}
+
+.acme-h3 {
+  font-family: var(--acme-font-family-primary);
+  font-size: var(--acme-typography-h3-font-size);
+  font-weight: var(--acme-typography-h3-font-weight);
+  line-height: var(--acme-typography-h3-line-height);
+  letter-spacing: var(--acme-typography-h3-letter-spacing);
+  color: var(--acme-text-color-primary);
+}
+
+.acme-h4 {
+  font-family: var(--acme-font-family-primary);
+  font-size: var(--acme-typography-h4-font-size);
+  font-weight: var(--acme-typography-h4-font-weight);
+  line-height: var(--acme-typography-h4-line-height);
+  letter-spacing: var(--acme-typography-h4-letter-spacing);
+  color: var(--acme-text-color-primary);
+}
+
+.acme-h5 {
+  font-family: var(--acme-font-family-primary);
+  font-size: var(--acme-typography-h5-font-size);
+  font-weight: var(--acme-typography-h5-font-weight);
+  line-height: var(--acme-typography-h5-line-height);
+  letter-spacing: var(--acme-typography-h5-letter-spacing);
+  color: var(--acme-text-color-primary);
+}
+
+.acme-h6 {
+  font-family: var(--acme-font-family-primary);
+  font-size: var(--acme-typography-h6-font-size);
+  font-weight: var(--acme-typography-h6-font-weight);
+  line-height: var(--acme-typography-h6-line-height);
+  letter-spacing: var(--acme-typography-h6-letter-spacing);
+  color: var(--acme-text-color-primary);
+}
+
+.acme-subtitle1 {
+  font-family: var(--acme-font-family-primary);
+  font-size: var(--acme-typography-subtitle1-font-size);
+  font-weight: var(--acme-typography-subtitle1-font-weight);
+  line-height: var(--acme-typography-subtitle1-line-height);
+  letter-spacing: var(--acme-typography-subtitle1-letter-spacing);
+  color: var(--acme-text-color-primary);
+}
+
+.acme-subtitle2 {
+  font-family: var(--acme-font-family-primary);
+  font-size: var(--acme-typography-subtitle2-font-size);
+  font-weight: var(--acme-typography-subtitle2-font-weight);
+  line-height: var(--acme-typography-subtitle2-line-height);
+  letter-spacing: var(--acme-typography-subtitle2-letter-spacing);
+  color: var(--acme-text-color-primary);
+}
+
+.acme-body1 {
+  font-family: var(--acme-font-family-primary);
+  font-size: var(--acme-typography-body1-font-size);
+  font-weight: var(--acme-typography-body1-font-weight);
+  line-height: var(--acme-typography-body1-line-height);
+  letter-spacing: var(--acme-typography-body1-letter-spacing);
+  color: var(--acme-text-color-primary);
+}
+
+.acme-body2 {
+  font-family: var(--acme-font-family-primary);
+  font-size: var(--acme-typography-body2-font-size);
+  font-weight: var(--acme-typography-body2-font-weight);
+  line-height: var(--acme-typography-body2-line-height);
+  letter-spacing: var(--acme-typography-body2-letter-spacing);
+  color: var(--acme-text-color-primary);
+}
+
+.acme-button-text {
+  font-family: var(--acme-font-family-primary);
+  font-size: var(--acme-typography-button-font-size);
+  font-weight: var(--acme-typography-button-font-weight);
+  line-height: var(--acme-typography-button-line-height);
+  letter-spacing: var(--acme-typography-button-letter-spacing);
+  text-transform: var(--acme-typography-button-text-transform);
+  color: var(--acme-text-color-primary); /* 按钮文本颜色通常由按钮组件自身控制 */
+}
+
+.acme-caption {
+  font-family: var(--acme-font-family-primary);
+  font-size: var(--acme-typography-caption-font-size);
+  font-weight: var(--acme-typography-caption-font-weight);
+  line-height: var(--acme-typography-caption-line-height);
+  letter-spacing: var(--acme-typography-caption-letter-spacing);
+  color: var(--acme-text-color-secondary); /* 说明文字通常是次要颜色 */
+}
+
+.acme-overline {
+  font-family: var(--acme-font-family-primary);
+  font-size: var(--acme-typography-overline-font-size);
+  font-weight: var(--acme-typography-overline-font-weight);
+  line-height: var(--acme-typography-overline-line-height);
+  letter-spacing: var(--acme-typography-overline-letter-spacing);
+  text-transform: var(--acme-typography-overline-text-transform);
+  color: var(--acme-text-color-secondary);
+}
+
+/* --- 预设变体 (全局文本变体) --- */
+/* 这些是可以在任何文本元素上添加的辅助类 */
+
+.acme-text-bold {
+  font-weight: var(--acme-font-weight-bold);
+}
+
+.acme-text-medium {
+  font-weight: var(--acme-font-weight-medium);
+}
+
+.acme-text-light {
+  font-weight: var(--acme-font-weight-light);
+}
+
+.acme-text-primary {
+  color: var(--acme-primary-color);
+}
+
+.acme-text-secondary {
+  color: var(--acme-secondary-color);
+}
+
+.acme-text-success {
+  color: var(--acme-success);
+}
+
+.acme-text-error {
+  color: var(--acme-error);
+}
+
+.acme-text-warn {
+  color: var(--acme-warn);
+}
+
+.acme-text-info {
+  color: var(--acme-info);
+}
+
+// 示例：响应式字体大小变体（如果需要）
+// .acme-text-responsive-h1 {
+//   font-size: var(--acme-typography-h1-font-size);
+//   @media (max-width: 768rpx) {
+//     font-size: calc(var(--acme-typography-h1-font-size) * 0.8); // 小屏幕下缩小
+//   }
+// }

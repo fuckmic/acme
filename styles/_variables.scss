@@ -1,36 +1,160 @@
 :root {
-	// --- 核心间距基准 ---
-	  --acme-spacing-base: 8rpx; // 定义基础间距单位，例如 8rpx
-	
-	// --- 间距刻度 (基于基准单位的倍数) ---
-	--acme-spacing-xxs: calc(var(--acme-spacing-base) * 0.5); // 4rpx
-	--acme-spacing-xs: var(--acme-spacing-base);             // 8rpx
-	--acme-spacing-sm: calc(var(--acme-spacing-base) * 2);   // 16rpx
-	--acme-spacing-md: calc(var(--acme-spacing-base) * 3);   // 24rpx
-	--acme-spacing-lg: calc(var(--acme-spacing-base) * 4);   // 32rpx
-	--acme-spacing-xl: calc(var(--acme-spacing-base) * 5);   // 40rpx
-	--acme-spacing-xxl: calc(var(--acme-spacing-base) * 6);  // 48rpx
-	// 您可以根据需要定义更多刻度，例如 8 倍、10 倍等
-	
-	
-		
-		
-	// 间距刻度
-	--acme-space-xs: 8rpx;
-	--acme-space-sm: 16rpx;
-	--acme-space-md: 24rpx;
-	--acme-space-lg: 32rpx;
+// --- 全局字体家族 ---
+  --acme-font-family-primary: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+  --acme-font-family-monospace: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
 
-	// 字体大小刻度
-	--acme-font-size-sm: 24rpx;
-	--acme-font-size-base: 28rpx;
-	--acme-font-size-md: 32rpx;
-	--acme-font-size-lg: 36rpx;
+  // --- 字重刻度 ---
+  --acme-font-weight-light: 300;
+  --acme-font-weight-regular: 400;
+  --acme-font-weight-medium: 500;
+  --acme-font-weight-bold: 700;
+  --acme-font-weight-heavy: 900; 
+
+  // --- 基准字号 (通常是正文的默认字号，对应主流的 14px -> 28rpx) ---
+  --acme-font-size-base: 28rpx; 
+
+  // --- 排版变体 (全部使用 rpx 单位，字号已调整) ---
+
+  // 标题 (Headings) - 调整为更合理的尺寸
+  --acme-typography-h1-font-size: 80rpx; // 对应主流 40px，比之前 96px 更合理
+  --acme-typography-h1-font-weight: var(--acme-font-weight-light);
+  --acme-typography-h1-line-height: 1.167; 
+  --acme-typography-h1-letter-spacing: -1rpx; // 对应 -0.01562em * 40px = -0.62px -> -1.24rpx (取 -1rpx)
+
+  --acme-typography-h2-font-size: 64rpx; // 对应主流 32px
+  --acme-typography-h2-font-weight: var(--acme-font-weight-light);
+  --acme-typography-h2-line-height: 1.2;
+  --acme-typography-h2-letter-spacing: -0.5rpx; // 对应 -0.00833em * 32px = -0.26px -> -0.52rpx (取 -0.5rpx)
+
+  --acme-typography-h3-font-size: 56rpx; // 对应主流 28px
+  --acme-typography-h3-font-weight: var(--acme-font-weight-regular);
+  --acme-typography-h3-line-height: 1.04;
+  --acme-typography-h3-letter-spacing: 0rpx; 
+
+  --acme-typography-h4-font-size: 48rpx; // 对应主流 24px
+  --acme-typography-h4-font-weight: var(--acme-font-weight-regular);
+  --acme-typography-h4-line-height: 1.235;
+  --acme-typography-h4-letter-spacing: 0.5rpx; // 对应 0.00735em * 24px = 0.17px -> 0.34rpx (取 0.5rpx)
+
+  --acme-typography-h5-font-size: 40rpx; // 对应主流 20px
+  --acme-typography-h5-font-weight: var(--acme-font-weight-regular);
+  --acme-typography-h5-line-height: 1.334;
+  --acme-typography-h5-letter-spacing: 0rpx; 
+
+  --acme-typography-h6-font-size: 36rpx; // 对应主流 18px
+  --acme-typography-h6-font-weight: var(--acme-font-weight-medium);
+  --acme-typography-h6-line-height: 1.6;
+  --acme-typography-h6-letter-spacing: 0.5rpx; // 对应 0.0075em * 18px = 0.135px -> 0.27rpx (取 0.5rpx)
+
+  // 副标题 (Subtitles)
+  --acme-typography-subtitle1-font-size: var(--acme-font-size-base); // 对应 14px -> 28rpx
+  --acme-typography-subtitle1-font-weight: var(--acme-font-weight-regular);
+  --acme-typography-subtitle1-line-height: 1.75;
+  --acme-typography-subtitle1-letter-spacing: 0.5rpx; // 对应 0.00938em * 14px = 0.13px -> 0.26rpx (取 0.5rpx)
+
+  --acme-typography-subtitle2-font-size: 26rpx; // 对应 13px
+  --acme-typography-subtitle2-font-weight: var(--acme-font-weight-medium);
+  --acme-typography-subtitle2-line-height: 1.57;
+  --acme-typography-subtitle2-letter-spacing: 0.5rpx; // 对应 0.00714em * 13px = 0.09px -> 0.18rpx (取 0.5rpx)
+
+  // 正文 (Body)
+  --acme-typography-body1-font-size: var(--acme-font-size-base); // 对应 14px -> 28rpx
+  --acme-typography-body1-font-weight: var(--acme-font-weight-regular);
+  --acme-typography-body1-line-height: 1.5;
+  --acme-typography-body1-letter-spacing: 0.5rpx; // 对应 0.00938em * 14px = 0.13px -> 0.26rpx (取 0.5rpx)
+
+  --acme-typography-body2-font-size: 26rpx; // 对应 13px
+  --acme-typography-body2-font-weight: var(--acme-font-weight-regular);
+  --acme-typography-body2-line-height: 1.43;
+  --acme-typography-body2-letter-spacing: 0.5rpx; // 对应 0.01071em * 13px = 0.13px -> 0.26rpx (取 0.5rpx)
+
+  // 按钮 (Button)
+  --acme-typography-button-font-size: 28rpx; // 对应 14px
+  --acme-typography-button-font-weight: var(--acme-font-weight-medium);
+  --acme-typography-button-line-height: 1.75;
+  --acme-typography-button-letter-spacing: 1rpx; // 对应 0.02857em * 14px = 0.40px -> 0.8rpx (取 1rpx)
+  --acme-typography-button-text-transform: uppercase;
+
+  // 说明文字 (Caption)
+  --acme-typography-caption-font-size: 24rpx; // 对应 12px
+  --acme-typography-caption-font-weight: var(--acme-font-weight-regular);
+  --acme-typography-caption-line-height: 1.66;
+  --acme-typography-caption-letter-spacing: 1rpx; // 对应 0.03333em * 12px = 0.40px -> 0.8rpx (取 1rpx)
+
+  // 超小字 (Overline)
+  --acme-typography-overline-font-size: 24rpx; // 对应 12px
+  --acme-typography-overline-font-weight: var(--acme-font-weight-medium);
+  --acme-typography-overline-line-height: 2.66;
+  --acme-typography-overline-letter-spacing: 2rpx; // 对应 0.08333em * 12px = 1.00px -> 2rpx
+  --acme-typography-overline-text-transform: uppercase;
+
+  // --- 间距刻度 (保持不变，已在之前讨论) ---
+  --acme-spacing-base: 8rpx;
+  --acme-spacing-xxs: calc(var(--acme-spacing-base) * 0.5);
+  --acme-spacing-xs: var(--acme-spacing-base);
+  --acme-spacing-sm: calc(var(--acme-spacing-base) * 2);
+  --acme-spacing-md: calc(var(--acme-spacing-base) * 3);
+  --acme-spacing-lg: calc(var(--acme-spacing-base) * 4);
+  --acme-spacing-xl: calc(var(--acme-spacing-base) * 5);
+  --acme-spacing-xxl: calc(var(--acme-spacing-base) * 6);
+
+  // --- 圆角刻度 (保持不变，已在之前讨论) ---
+  --acme-border-radius-sm: 8rpx;
+  --acme-border-radius-md: 16rpx;
+  --acme-border-radius-lg: 40rpx;
 	
-	// 圆角刻度
-	--acme-border-radius-sm: 8rpx;
-	--acme-border-radius-md: 16rpx;
-	--acme-border-radius-lg: 40rpx;
+	// --- 颜色变量 (保持不变或根据需要添加) ---
+	  --acme-primary-color: #007bff;
+	  --acme-secondary-color: #6c757d;
+	  --acme-text-color-primary: #333333;
+	  --acme-text-color-secondary: #666666;
+	  --acme-bg-page: #f8f8f8;
+	  --acme-bg-card: #ffffff;
+	  --acme-border-color: #e0e0e0;
+	  --acme-chart-line-color: #FD1050;
+	  --acme-chart-area-gradient-start: rgba(253, 16, 80, 0.3);
+	  --acme-chart-area-gradient-end: rgba(253, 16, 80, 0);
+	  --acme-chart-kline-up: #FD1050;
+	  --acme-chart-kline-down: #0CF49B;
+	  --acme-info: #909399;
+	  --acme-success: #0CF49B;
+	  --acme-error: #FD1050;
+	  --acme-warn: #FFA500;
+	  --acme-success-color: #0CF49B;
+	  --acme-hover-bg: rgba(0, 123, 255, 0.1);
+	  --acme-scroll-thumb: #ccc;
+	  --acme-scroll-track: #f0f0f0;
+	  --acme-shadow-color: rgba(0, 0, 0, 0.3);
+	
+	  // --- 组件特有变量 (示例) ---
+	  --acme-tabs-gap: var(--acme-spacing-sm);
+	  --acme-tabs-font-size: var(--acme-typography-button-font-size); 
+	  --acme-tabs-font-weight: var(--acme-typography-button-font-weight);
+	  --acme-tabs-item-padding: var(--acme-spacing-md) var(--acme-spacing-sm);
+	  --acme-tabs-border-radius: var(--acme-border-radius-sm);
+	  --acme-tabs-active-bg: var(--acme-primary-color);
+	  --acme-tabs-active-text-color: #ffffff;
+	  --acme-tabs-unactive-text-color: var(--acme-text-color-primary);
+	  --acme-tabs-unactive-bg: transparent;
+	  --acme-tabs-hover-bg: rgba(0, 0, 0, 0.05);
+	
+	  --acme-fmt-gap: var(--acme-spacing-xs);
+	  --acme-fmt-text-color: var(--acme-text-color-primary);
+	  --acme-fmt-font-size: var(--acme-typography-body1-font-size);
+	  --acme-fmt-font-weight: var(--acme-typography-body1-font-weight);
+	  --acme-fmt-bg: transparent;
+
+
+
+
+
+
+
+
+
+
+
+
 	
 	// 
 	--acme-font-color-base:#121212;
@@ -111,6 +235,32 @@
 }
 
 .dark-theme {
+	  // --- 颜色覆盖 ---
+	  --acme-primary-color: #66b3ff;
+	  --acme-secondary-color: #adb5bd;
+	  --acme-text-color-primary: #ffffff;
+	  --acme-text-color-secondary: #cccccc;
+	  --acme-bg-page: #1a1a1a;
+	  --acme-bg-card: #2a2a2a;
+	  --acme-border-color: #444444;
+	  --acme-chart-line-color: #FD1050;
+	  --acme-chart-area-gradient-start: rgba(253, 16, 80, 0.3);
+	  --acme-chart-area-gradient-end: rgba(253, 16, 80, 0);
+	  --acme-chart-kline-up: #FD1050;
+	  --acme-chart-kline-down: #0CF49B;
+	  --acme-info: #A8A8A8;
+	  --acme-success: #0CF49B;
+	  --acme-error: #FD1050;
+	  --acme-warn: #FFD700;
+	  --acme-success-color: #0CF49B;
+	  --acme-hover-bg: rgba(102, 179, 255, 0.1);
+	  --acme-scroll-thumb: #666;
+	  --acme-scroll-track: #333;
+	  --acme-shadow-color: rgba(0, 0, 0, 0.6);
+	
+	  // --- 排版变体覆盖 (如果暗色主题需要不同的字重或行高) ---
+	  // 通常字号在暗色模式下不会改变，但如果需要，可以在这里覆盖
+		
 	--acme-primary-color: #66b3ff;
 	--acme-bg-page: #121212;
 	--acme-info: #A8A8A8;
