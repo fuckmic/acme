@@ -72,7 +72,14 @@
 			<AcmeCopyrightVersion appName="Acme" />
 			<view style="margin: 16rpx 0; border: 1rpx dashed var(--acme-fmt-color);"></view>
 
-
+			<AcmeDivider />
+			<AcmeDivider>
+				<text>居中内容</text>
+			</AcmeDivider>
+			<AcmeDivider leftLineRatio="10%" />
+			<AcmeDivider leftLineRatio="100rpx">
+				<text>左侧固定 100rpx</text>
+			</AcmeDivider>
 
 
 
@@ -116,6 +123,7 @@
 	import AcmeCheckbox from '../ui/form/AcmeCheckbox.vue';
 	import AcmeUpload from '../ui/form/AcmeUpload.vue';
 	import AcmeTabsFixed from '../ui/nav/AcmeTabsFixed.vue';
+	import AcmeDivider from '../ui/common/AcmeDivider.vue';
 
 	export default {
 		components: {
@@ -126,6 +134,7 @@
 			AcmeCheckbox,
 			AcmeUpload,
 			AcmeTabsFixed,
+			AcmeDivider,
 		},
 		data() {
 			return {

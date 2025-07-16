@@ -134,4 +134,9 @@
 
   --acme-fmt-text-color: var(--acme-text-color-primary);
   --acme-fmt-slot-color: var(--acme-fmt-text-color);
+	
+	// === 补充的分割线组件 (AcmeDivider) 变量 - 暗色主题覆盖 ===
+	  // 大部分可以继承亮色主题的默认值，只覆盖需要变化的
+	  --acme-divider-line-color: var(--acme-border-color); // 边框颜色在暗色模式下可能被覆盖
+	  --acme-divider-content-color: var(--acme-text-color-secondary); // 次要文本颜色可能被覆盖
 }

@@ -15,4 +15,14 @@
  
  	@import './_elevation.scss';
 
-
+:root{
+	// === 补充的分割线组件 (AcmeDivider) 变量 ===
+	  --acme-divider-gap: var(--acme-spacing-md); // 分割线元素之间的默认间距
+	  --acme-divider-margin-y: var(--acme-spacing-lg); // 分割线组件上下默认外边距
+	  --acme-divider-line-thickness: 4rpx; // 分割线线条粗细
+	  --acme-divider-line-color: var(--acme-border-color); // 分割线线条颜色
+	  --acme-divider-content-padding: var(--acme-spacing-xs); // 中间内容左右内边距
+	  --acme-divider-content-color: var(--acme-text-color-secondary); // 中间内容文本颜色
+	  // 注意：字体大小通常由排版文件 (_typography.scss) 定义，这里引用排版变量
+	  --acme-divider-content-font-size: var(--acme-typography-caption-font-size); 
+}
