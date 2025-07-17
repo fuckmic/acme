@@ -47,7 +47,6 @@
 					bottom: 0,
 					left: 0,
 					right: 0,
-
 					zIndex: 9, // 引用 z-index 变量
 					backgroundImage: 'none'
 				}

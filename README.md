@@ -92,8 +92,8 @@
 - AcmeBtnIcon.vue (带图标的按钮)
 
 ### nav/ 导航相关组件
-- SmallNavItem.vue 竖屏一行一个。[icon  label]
-- SmallNavItemArrow.vue 竖屏一行一个。[icon label  arrow]
+<!-- - SmallNavItem.vue 竖屏一行一个。[icon  label]
+- SmallNavItemArrow.vue 竖屏一行一个。[icon label  arrow] -->
 - AcmeAppBar.vue 顶部导航，响应式
 - ✅ AcmeBottomNav.vue 底部导航 竖屏版
 - AcmeDrawer.vue 四方入侧边导航， 通常只有宽屏需要。
