@@ -167,3 +167,53 @@ export const klineGird = {
 		dashedValue: [2, 2], // 虚线时的紧密程度
 	}
 };
+
+export const klineArea = {
+	type: "area",
+	tooltip: {
+		showRule: 'always',
+		// 'standard' | 'rect'
+		showType: 'standard',
+	},
+	// 面积图，只有当type为'area'时，当有效
+	area: {
+		lineSize: 2,
+		lineColor: `var(--primary)`,
+		value: 'close',
+		backgroundColor: [{
+			offset: 0, //下半区颜色
+			color: 'rgba(33, 150, 243, 0)'
+		}, {
+			offset: 1, //上半区颜色
+			color: 'rgba(33, 150, 243, 0)'
+		}],
+		point: {
+			show: true,
+			color: `var(--success)`,
+			radius: 4,
+			rippleColor: 'rgba(255,255,255,0.5)',
+			rippleRadius: 8,
+			animation: true,
+			animationDuration: 1000
+		}
+	},
+};
+
+// 蜡烛图设置
+export const klineCandle = {
+	type: "candle_solid",
+	tooltip: {
+		showRule: "standard",
+	},
+	// bar: {
+	// 	upColor: '#00aa99',
+	// 	downColor: '#F92855',
+	// 	noChangeColor: '#888888',
+	// 	upBorderColor: '#00aa99',
+	// 	downBorderColor: '#F92855',
+	// 	noChangeBorderColor: '#888888',
+	// 	upWickColor: '#00aa99',
+	// 	downWickColor: '#F92855',
+	// 	noChangeWickColor: '#888888'
+	// },
+};
