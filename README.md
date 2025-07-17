@@ -32,6 +32,21 @@
 - ✅ AcmeBadge.vue 徽章、online
 <!-- - AcmeTheme.vue 主题切换 -->
 
+### nav/ 导航相关组件
+<!-- - SmallNavItem.vue 竖屏一行一个。[icon  label]
+- SmallNavItemArrow.vue 竖屏一行一个。[icon label  arrow] -->
+- ✅ AcmeAppBar.vue 顶部导航，响应式
+- AcmeAppBarSub.vue 顶部导航，竖屏，子级
+- ✅ AcmeBottomNav.vue 底部导航 竖屏版
+
+- AcmeDrawer.vue 四方入侧边导航， 通常只有宽屏需要。
+- AcmePagination.vue 分页导航 通常只有宽屏需要。
+- AcmeStepper.vue 步骤导航
+- AcmeTabsFixed.vue 通用的tabs导航 固定的一行中显示完。
+- AcmeTabsScroll.vue 可滚动的tabs导航  不限量，需计算位移
+- AcmeTabsVertical.vue 竖tabs，通常宽屏使用
+
+
 ### fmt/ 各类数据格式化
 - ✅ AcmeFmtFiat.vue 法币值。传入最终显示值，不处理国际化之外的逻辑
 - ✅ AcmeFmtInteger.vue 整数值
@@ -97,18 +112,6 @@
 - AcmeBtnPrimary.vue 
 - AcmeBtnIcon.vue (带图标的按钮)
 
-### nav/ 导航相关组件
-<!-- - SmallNavItem.vue 竖屏一行一个。[icon  label]
-- SmallNavItemArrow.vue 竖屏一行一个。[icon label  arrow] -->
-- AcmeAppBar.vue 顶部导航，响应式
-- ✅ AcmeBottomNav.vue 底部导航 竖屏版
-
-- AcmeDrawer.vue 四方入侧边导航， 通常只有宽屏需要。
-- AcmePagination.vue 分页导航 通常只有宽屏需要。
-- AcmeStepper.vue 步骤导航
-- AcmeTabsFixed.vue 通用的tabs导航 固定的一行中显示完。
-- AcmeTabsScroll.vue 可滚动的tabs导航  不限量，需计算位移
-- AcmeTabsVertical.vue 竖tabs，通常宽屏使用
 
 ### data/ 数据相关 （如列表、卡片）
 

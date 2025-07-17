@@ -153,7 +153,7 @@
 		position: absolute; // 绝对定位
 		box-sizing: border-box;
 		line-height: 1; // 确保文本行高不影响徽章高度
-		z-index: var(--acme-z-index-tooltip, 1500); // 确保徽章在内容之上
+		z-index: var(--acme-z-index-tooltip, 5); // 确保徽章在内容之上
 		color: var(--acme-badge-color); // 徽章文字颜色
 		border-radius: 100%; // 确保是圆形
 		white-space: nowrap; // 防止数字换行

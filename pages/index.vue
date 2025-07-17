@@ -192,10 +192,10 @@
 				curTab1: null,
 				tabs1: { 'four': `Tab Four` },
 				curNav: null,
+				setColor: '',
 			}
 		},
 		computed: {
-			setColor() { return '#' + Math.floor(Math.random() * 16777215).toString(16); },
 			svgData() { return exampleIconSvg(this.setColor) },
 			setNavs() {
 				return [
@@ -208,8 +208,17 @@
 		onLoad() {},
 		onShow() {
 			if (this.curTab) this.onTab(this.curTab);
+			this.calColor();
+		},
+		onPullDownRefresh() {
+			this.calColor();
+			uni.stopPullDownRefresh();
 		},
 		methods: {
+			calColor() {
+				this.setColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+			},
+
 			onTab(val) {
 				this.curTab = val;
 				// this.$nav.comLink(this.curTab);

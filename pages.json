@@ -6,31 +6,31 @@
 	},
 	"pages": [{
 		"path": "pages/index",
-		"style": { "enablePullDownRefresh": false, "navigationStyle": "custom" },
+		"style": { "enablePullDownRefresh": true, "navigationStyle": "custom" },
 		"meta": { "name": "index", "auth": false, "mode": "reLaunch" }
 	}, {
 		"path": "pages/format",
-		"style": { "enablePullDownRefresh": false, "navigationStyle": "custom" },
+		"style": { "enablePullDownRefresh": true, "navigationStyle": "custom" },
 		"meta": { "name": "format", "auth": false, "mode": "" }
 	}, {
 		"path": "pages/typography",
-		"style": { "enablePullDownRefresh": false, "navigationStyle": "custom" },
+		"style": { "enablePullDownRefresh": true, "navigationStyle": "custom" },
 		"meta": { "name": "typography", "auth": false, "mode": "" }
 	}, {
 		"path": "pages/elevation",
-		"style": { "enablePullDownRefresh": false, "navigationStyle": "custom" },
+		"style": { "enablePullDownRefresh": true, "navigationStyle": "custom" },
 		"meta": { "name": "elevation", "auth": false, "mode": "" }
 	}, {
 		"path": "pages/input",
-		"style": { "enablePullDownRefresh": false, "navigationStyle": "custom" },
+		"style": { "enablePullDownRefresh": true, "navigationStyle": "custom" },
 		"meta": { "name": "input", "auth": false, "mode": "" }
 	}, {
 		"path": "pages/presetSelector",
-		"style": { "enablePullDownRefresh": false, "navigationStyle": "custom" },
+		"style": { "enablePullDownRefresh": true, "navigationStyle": "custom" },
 		"meta": { "name": "presetSelector", "auth": false, "mode": "" }
 	}, {
 		"path": "pages/doc",
-		"style": { "enablePullDownRefresh": false, "navigationStyle": "custom" },
+		"style": { "enablePullDownRefresh": true, "navigationStyle": "custom" },
 		"meta": { "name": "doc", "auth": false, "mode": "" }
 	}]
 }
