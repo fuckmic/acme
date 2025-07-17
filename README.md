@@ -10,6 +10,9 @@
 - UI组件多种css形态
 - uni.onWindowResize()
 
+## pages/示例
+- icons.vue 所有自定义默认icon
+
 ## styles
 - _colors.scss 包含所有基础的 Sass 颜色变量.
 - _elevation.scss 海拔定义0-24
@@ -31,6 +34,10 @@
 - ✅ AcmeAvatar.vue 头像及类头像风格显示
 - ✅ AcmeBadge.vue 徽章、online
 <!-- - AcmeTheme.vue 主题切换 -->
+
+### icons/ 组件化一些图标
+- AcmeIconSearch.vue 
+- AcmeIcon[xxx].vue
 
 ### nav/ 导航相关组件
 <!-- - SmallNavItem.vue 竖屏一行一个。[icon  label]

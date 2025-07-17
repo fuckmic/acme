@@ -65,10 +65,6 @@
 
 			<AcmeDivider />
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
-				<AcmeSvg :svgString="svgData" :size="128" customClass="my-custom-icon" />
-				<AcmeSvg :svgString="svgData" :size="64" sizeMode="heightFix" />
-				<AcmeSvg :svgString="svgData" :size="48" />
-				<AcmeSvg :svgString="svgData" :size="32" />
 			</view>
 			<AcmeDivider />
 
@@ -162,7 +158,6 @@
 
 	import AcmeIcon from '../ui/common/AcmeIcon.vue';
 	import AcmeSvg from '../ui/common/AcmeSvg.vue';
-	import { exampleIconSvg, svgSearch } from '../utils/svg.js';
 	import AcmeCopyrightVersion from '../ui/common/AcmeCopyrightVersion.vue';
 	import AcmeEmptyData from '../ui/common/AcmeEmptyData.vue';
 	import AcmeCheckbox from '../ui/form/AcmeCheckbox.vue';
@@ -214,6 +209,7 @@
 				return [
 					this.$nav.keys.presetSelector,
 					this.$nav.keys.input,
+					this.$nav.keys.icons
 				]
 			},
 

@@ -7,7 +7,7 @@
 			:selection-end="cursorPosition" placeholder-class="placeholder" @input="onInput" @focus="onFocus" @blur="onBlur"
 			:disabled="disabled" autocomplete="off" />
 		<view class="clear" @tap="onClear">
-			<AcmeSvg v-show="showDel" :svgString="svgData" :size="24" />
+			<!-- <AcmeSvg v-show="showDel" :svgString="svgData" :size="24" /> -->
 		</view>
 		<view v-if="$slots.suffix" class="suffix">
 			<slot name="suffix"></slot>
@@ -17,9 +17,6 @@
 
 <script>
 	import { acmeCfg } from '../../config.js';
-	import { cssVariableColor } from '../../utils/theme.js';
-	import { svgClose } from '../../utils/svg.js';
-	import AcmeSvg from '../common/AcmeSvg.vue';
 	import {
 		getLocaleSeparators,
 		formatterFiat,
@@ -28,7 +25,7 @@
 	} from '../../utils/formatter.js';
 	export default {
 		name: "AcmeInputFiat",
-		components: { AcmeSvg },
+		components: {  },
 		props: {
 			value: { type: [String, Number], default: '' },
 			placeholder: { type: String, default: '' },
@@ -49,10 +46,6 @@
 			};
 		},
 		computed: {
-			svgData() {
-				const _color = cssVariableColor(`acme-svg-close`, acmeCfg.theme)
-				return svgClose(_color)
-			},
 			showDel() {
 				return (this.value !== null && this.value !== '' && String(this.value).length > 0) && this.showClearIcon
 			},

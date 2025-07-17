@@ -3,7 +3,8 @@
 		<view v-if="$slots.prefix">
 			<slot name="prefix"></slot>
 		</view>
-		<AcmeSvg :svgString="isChecked?setIconChecked:setIconUncheck" :size="40" />
+		<AcmeIconChecked v-if="isChecked" />
+		<AcmeIconUncheck v-else />
 		<view v-if="$slots.suffix">
 			<slot name="suffix"></slot>
 		</view>
@@ -11,13 +12,11 @@
 </template>
 
 <script>
-	import { acmeCfg } from '../../config.js';
-	import AcmeSvg from '../common/AcmeSvg.vue';
-	import { svgChecked, svgUncheck } from '../../utils/svg.js';
-	import { cssVariableColor } from '../../utils/theme.js';
+	import AcmeIconChecked from '../icons/AcmeIconChecked.vue';
+	import AcmeIconUncheck from '../icons/AcmeIconUncheck.vue';
 	export default {
 		name: "AcmeCheckbox",
-		components: { AcmeSvg },
+		components: { AcmeIconChecked, AcmeIconUncheck },
 		props: {
 			value: { type: Boolean, default: false },
 			// 如果是主项目传入，则是已经设置好颜色码的svg文件字符串
@@ -30,9 +29,7 @@
 			}
 		},
 		computed: {
-			setCheckColor() { return cssVariableColor(`acme-svg-checkbox`, acmeCfg.theme) },
-			setIconChecked() { return this.iconChecked || svgChecked(this.setCheckColor) },
-			setIconUncheck() { return this.iconUncheck || svgUncheck(this.setCheckColor) }
+
 		},
 		watch: {
 			// 监听外部 value 变化，同步内部状态

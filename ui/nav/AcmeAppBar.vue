@@ -4,31 +4,28 @@
 			<AcmeIcon icon="sun" :size="64" />
 			<view class="acme-h5">{{`Name`}}</view>
 			<view style="margin-left: auto;" @tap="onTheme()">
-				<AcmeSvg :svgString="isDark?svgDataDark:svgDataLight" :size="48" />
+				<AcmeIconDark v-if="isDark" />
+				<AcmeIconLight v-else />
 			</view>
 		</view>
 	</AcmePaper>
 </template>
 
 <script>
-	import { acmeCfg, acmeSetTheme } from '../../config.js';
+	import { acmeSetTheme } from '../../config.js';
 	import AcmePaper from '../common/AcmePaper.vue';
 	import AcmeIcon from '../common/AcmeIcon.vue';
-	import AcmeSvg from '../common/AcmeSvg.vue';
-	import { svgDark, svgLight } from '../../utils/svg.js';
-	import { cssVariableColor } from '../../utils/theme.js'
+	import AcmeIconDark from '../icons/AcmeIconDark.vue';
+	import AcmeIconLight from '../icons/AcmeIconLight.vue';
 	export default {
 		name: "AcmeAppBar",
-		components: { AcmePaper, AcmeIcon, AcmeSvg, },
+		components: { AcmePaper, AcmeIcon, AcmeIconDark, AcmeIconLight },
 		data() {
 			return {
 				isDark: true,
 			}
 		},
 		computed: {
-			setColor() { return cssVariableColor(`acme-theme-color`, acmeCfg.theme) },
-			svgDataDark() { return svgDark(this.setColor) },
-			svgDataLight() { return svgLight(this.setColor) },
 			setSx() {
 				return {
 					position: 'fixed',

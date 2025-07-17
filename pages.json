@@ -9,6 +9,18 @@
 		"style": { "enablePullDownRefresh": true, "navigationStyle": "custom" },
 		"meta": { "name": "index", "auth": false, "mode": "reLaunch" }
 	}, {
+		"path": "pages/kline",
+		"style": { "enablePullDownRefresh": true, "navigationStyle": "custom" },
+		"meta": { "name": "kline", "auth": false, "mode": "" }
+	}, {
+		"path": "pages/chart",
+		"style": { "enablePullDownRefresh": true, "navigationStyle": "custom" },
+		"meta": { "name": "chart", "auth": false, "mode": "" }
+	}, {
+		"path": "pages/icons",
+		"style": { "enablePullDownRefresh": true, "navigationStyle": "custom" },
+		"meta": { "name": "icons", "auth": false, "mode": "" }
+	}, {
 		"path": "pages/format",
 		"style": { "enablePullDownRefresh": true, "navigationStyle": "custom" },
 		"meta": { "name": "format", "auth": false, "mode": "" }

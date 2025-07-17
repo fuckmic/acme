@@ -2,39 +2,32 @@
 	<AcmePaper elevation="4" :sx="setSx">
 		<view style="padding:40rpx 32rpx 24rpx; display: flex;align-items: center;gap:12rpx;">
 			<view @tap="$nav.navBack()">
-				<AcmeSvg :svgString="svgDataBack" :size="48" />
+				<AcmeIconBack />
 			</view>
-			<view class="acme-h5">{{$nav.keys.doc}}</view>
+			<view class="acme-h5">{{title}}</view>
 			<view style="margin-left: auto;">
-
-				<AcmeInputSearchExpand :placeholder="`Search...`">
-					<template #prefix>
-						<AcmeSvg :svgString="svgDataSearch" :size="24" />
-					</template>
-				</AcmeInputSearchExpand>
+				<AcmeInputSearchExpand :placeholder="`Search...`" />
 			</view>
 		</view>
 	</AcmePaper>
 </template>
 
 <script>
-	import { acmeCfg, acmeSetTheme } from '../../config.js';
+	import { acmeCfg } from '../../config.js';
 	import AcmePaper from '../common/AcmePaper.vue';
-	import AcmeIcon from '../common/AcmeIcon.vue';
-	import AcmeSvg from '../common/AcmeSvg.vue';
-	import { svgBack, svgSearch } from '../../utils/svg.js';
 	import { cssVariableColor } from '../../utils/theme.js';
 	import AcmeInputSearchExpand from '../inputs/AcmeInputSearchExpand.vue';
+	import AcmeIconBack from '../icons/AcmeIconBack.vue';
 	export default {
 		name: "AcmeAppBarSub",
-		components: { AcmePaper, AcmeIcon, AcmeSvg, AcmeInputSearchExpand },
+		components: { AcmePaper, AcmeInputSearchExpand, AcmeIconBack },
+		props: {
+			title: { type: String, default: '' }
+		},
 		data() {
 			return {}
 		},
 		computed: {
-			setColor() { return cssVariableColor(`acme-theme-color`, acmeCfg.theme) },
-			svgDataBack() { return svgBack(this.setColor) },
-			svgDataSearch() { return svgSearch(this.setColor) },
 			setSx() {
 				return {
 					position: 'fixed',

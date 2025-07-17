@@ -6,10 +6,11 @@
 		<input :value="value" :password="isMask" :placeholder="placeholder" @input="onInput" placeholder-class="placeholder"
 			:disabled="disabled" autocomplete="off"></input>
 		<view class="clear" @tap="onClear">
-			<AcmeSvg v-show="showDel" :svgString="svgData" :size="24" />
+			<AcmeIconClose v-show="showDel" :size="24" />
 		</view>
 		<view class="clear" @tap="onMask()">
-			<AcmeSvg :svgString="svgMask" :size="40" />
+			<AcmeIconMaskhide v-if="isMask" :size="40" />
+			<AcmeIconMaskshow v-else :size="40" />
 		</view>
 		<view v-if="$slots.suffix" class="suffix">
 			<slot name="suffix"></slot>
@@ -19,12 +20,12 @@
 
 <script>
 	import { acmeCfg } from '../../config.js';
-	import { cssVariableColor } from '../../utils/theme.js';
-	import { svgClose, svgMaskHide, svgMaskShow } from '../../utils/svg.js';
-	import AcmeSvg from '../common/AcmeSvg.vue';
+	import AcmeIconClose from '../icons/AcmeIconClose.vue';
+	import AcmeIconMaskhide from '../icons/AcmeIconMaskhide.vue';
+	import AcmeIconMaskshow from '../icons/AcmeIconMaskshow.vue';
 	export default {
 		name: "AcmeInputPassword",
-		components: { AcmeSvg },
+		components: { AcmeIconClose, AcmeIconMaskhide, AcmeIconMaskshow },
 		props: {
 			value: { type: [String, Number], default: '' },
 			placeholder: { type: String, default: '' },
@@ -38,14 +39,6 @@
 			};
 		},
 		computed: {
-			svgData() {
-				const _color = cssVariableColor(`acme-svg-close`, acmeCfg.theme)
-				return svgClose(_color)
-			},
-			svgMask() {
-				const _color = cssVariableColor(`acme-mask-color`, acmeCfg.theme);
-				return this.isMask ? svgMaskHide(_color) : svgMaskShow(_color);
-			},
 			showDel() {
 				return (this.value !== null && this.value !== '' && String(this.value).length > 0) && this.showClearIcon
 			},

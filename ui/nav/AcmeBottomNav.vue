@@ -26,8 +26,8 @@
 				type: Object,
 				default: () => ({
 					'index': `Home`,
-					'components': `Compontnes`,
-					'elevation': `Elevation`,
+					'kline': `Kline`,
+					'chart': `Chart`,
 					'input': `Input`,
 					'doc': `Readme`,
 				})
