@@ -19,7 +19,6 @@
 			</view>
 
 			<AcmeDivider />
-
 			<view style="display: flex;align-items: center;justify-content: space-between; gap:24rpx;">
 				<AcmeAvatar src="/static/plat.png" :size="120"></AcmeAvatar>
 				<AcmeAvatar :size="100" bgColor="var(--acme-primary-color)">
@@ -34,6 +33,34 @@
 				<AcmeAvatar :size="48" bgColor="var(--acme-error)">
 					<text class="acme-h6">{{`E`}}</text>
 				</AcmeAvatar>
+			</view>
+
+			<AcmeDivider />
+			<view style="display: flex;align-items: center;justify-content: space-between; gap:24rpx;">
+				<AcmeBadge dot bgColor="var(--acme-success)" :anchor="{ vert: 'bottom', horz: 'right' }">
+					<AcmeAvatar src="/static/plat.png" :size="120"></AcmeAvatar>
+				</AcmeBadge>
+
+				<!-- dot 模式：小圆点 -->
+				<AcmeBadge count="3" :anchor="{ vert: 'bottom', horz: 'right' }">
+					<AcmeAvatar :size="100" bgColor="var(--acme-primary-color)">
+						<text class="acme-h3" style="color: white;">A</text>
+					</AcmeAvatar>
+				</AcmeBadge>
+
+				<!-- count=0，不显示 (默认 showZero: false) -->
+				<AcmeBadge count="0">
+					<AcmeAvatar :size="80" bgColor="var(--acme-info)">
+						<text class="acme-h4" style="color: white;">0</text>
+					</AcmeAvatar>
+				</AcmeBadge>
+
+				<!-- count=0，显示 (showZero: true) -->
+				<AcmeBadge count="0" :showZero="true">
+					<AcmeAvatar :size="80" bgColor="var(--acme-info)">
+						<text class="acme-h4" style="color: white;">0</text>
+					</AcmeAvatar>
+				</AcmeBadge>
 			</view>
 
 			<AcmeDivider />
@@ -119,6 +146,7 @@
 	import AcmeAppBar from '../ui/nav/AcmeAppBar.vue';
 	import AcmeBottomNav from '../ui/nav/AcmeBottomNav.vue';
 	import AcmeAvatar from '../ui/common/AcmeAvatar.vue';
+	import AcmeBadge from '../ui/common/AcmeBadge.vue';
 
 	import AcmeIcon from '../ui/common/AcmeIcon.vue';
 	import AcmeSvg from '../ui/common/AcmeSvg.vue';
@@ -136,6 +164,7 @@
 			AcmeAppBar,
 			AcmeBottomNav,
 			AcmeAvatar,
+			AcmeBadge,
 
 			AcmeIcon,
 			AcmeSvg,

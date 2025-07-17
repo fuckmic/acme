@@ -29,6 +29,7 @@
 - ✅ AcmePaper.vue 一些需要指定位置和海拔的组件容器。
 - AcmeAccordion.vue 手风琴
 - ✅ AcmeAvatar.vue 头像及类头像风格显示
+- ✅ AcmeBadge.vue 徽章、online
 <!-- - AcmeTheme.vue 主题切换 -->
 
 ### fmt/ 各类数据格式化

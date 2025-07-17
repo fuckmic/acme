@@ -24,4 +24,25 @@
 	  --acme-divider-content-color: var(--acme-text-color-secondary); // 中间内容文本颜色
 	  // 注意：字体大小通常由排版文件 (_typography.scss) 定义，这里引用排版变量
 	  --acme-divider-content-font-size: var(--acme-typography-caption-font-size); 
-}
+
+  /* --- 徽章组件变量 --- */
+  --acme-badge-min-size: 32rpx; // 徽章的最小尺寸（用于点或单数字）
+  --acme-badge-padding-x: 10rpx; // 徽章内容左右内边距
+  --acme-badge-font-size: var(--acme-typography-caption-font-size); // 徽章文字大小
+  --acme-badge-font-weight: var(--acme-font-weight-medium); // 徽章文字字重
+  --acme-badge-color: var(--acme-text-color-light); // 徽章文字颜色 (默认白色)
+  --acme-badge-bg: var(--acme-error); // 徽章默认背景色 (通常是红色)
+
+  // 徽章定位偏移量 (用于将徽章边缘与目标元素边缘对齐)
+  // 这些值需要根据徽章的实际大小和期望的重叠程度进行调整
+  --acme-badge-vert-offset: 12rpx; // 垂直方向的初始偏移量 (top 或 bottom)
+  --acme-badge-horz-offset: 12rpx; // 水平方向的初始偏移量 (left 或 right)
+
+  // 徽章的 translate 偏移量，用于实现边缘重叠
+  // 这些百分比是相对于徽章自身的尺寸
+  --acme-badge-translate-y-top: -50%; // 向上偏移自身高度的 50%
+  --acme-badge-translate-y-bottom: 50%; // 向下偏移自身高度的 50%
+  --acme-badge-translate-x-right: 50%; // 向右偏移自身宽度的 50%
+  --acme-badge-translate-x-left: -50%; // 向左偏移自身宽度的 50%
+
+	}

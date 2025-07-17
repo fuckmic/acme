@@ -1,5 +1,5 @@
 <template>
-	<view :class="[variant]" :style="setStyle">
+	<view :class="[`acme-avatar`,variant]" :style="setStyle">
 		<image v-if="src" :src="src" mode="scaleToFill" style="width: 100%;height: 100%;"></image>
 		<slot v-else> </slot>
 	</view>
@@ -13,7 +13,7 @@
 			size: { type: Number, default: 48 },
 			bgColor: { type: String, default: 'transparent' },
 			shape: { type: String, default: `100%` },
-			variant: { type: String, default: `acme-avatar` },
+			variant: { type: String, default: `` },
 		},
 		computed: {
 			setStyle() {
