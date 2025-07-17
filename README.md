@@ -60,10 +60,10 @@
  数值设置涨跌平背景色、内边距、圆角
  -->
  
-### input/ 各类Input组件
-- 
- 
- 
+### inputs/ 各类Input组件
+
+
+
 
 ### form/ 表单组件
 - ✅ AcmeCheckbox.vue 复选框
@@ -78,6 +78,7 @@
 - ✅ AcmePresetSelector.vue 预置值 法币、杠杆、加密币、稳定币。自由列数
 - AcmeDropdownLgre.vue 下拉选择器 语言 。精简的、带搜索的、
 - AcmeSlider.vue  滑动条 :value值，抛出值。
+- ✅ AcmeInputSearchExpand.vue 聚焦可伸缩
 
 <!-- 
  -  InputFloat.vue 支持输入整数和小数

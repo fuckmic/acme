@@ -6,7 +6,12 @@
 			</view>
 			<view class="acme-h5">{{$nav.keys.doc}}</view>
 			<view style="margin-left: auto;">
-				<AcmeSvg :svgString="svgDataSearch" :size="48" />
+
+				<AcmeInputSearchExpand :placeholder="`Search...`">
+					<template #prefix>
+						<AcmeSvg :svgString="svgDataSearch" :size="24" />
+					</template>
+				</AcmeInputSearchExpand>
 			</view>
 		</view>
 	</AcmePaper>
@@ -18,10 +23,11 @@
 	import AcmeIcon from '../common/AcmeIcon.vue';
 	import AcmeSvg from '../common/AcmeSvg.vue';
 	import { svgBack, svgSearch } from '../../utils/svg.js';
-	import { cssVariableColor } from '../../utils/theme.js'
+	import { cssVariableColor } from '../../utils/theme.js';
+	import AcmeInputSearchExpand from '../inputs/AcmeInputSearchExpand.vue';
 	export default {
 		name: "AcmeAppBarSub",
-		components: { AcmePaper, AcmeIcon, AcmeSvg, },
+		components: { AcmePaper, AcmeIcon, AcmeSvg, AcmeInputSearchExpand },
 		data() {
 			return {}
 		},

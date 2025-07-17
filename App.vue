@@ -76,6 +76,7 @@
 	}
 
 	/* --- 变体特定样式 --- */
+
 	/* 'pill' 变体 */
 	.acme-tabs-fixed.variant-pill {
 		border-bottom: 1rpx solid #444444;

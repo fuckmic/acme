@@ -75,7 +75,18 @@
 			<AcmeCopyrightVersion appName="Acme" version="V 0.0.1" />
 			<AcmeCopyrightVersion appName="Acme" />
 			<AcmeDivider />
+			<AcmeInputSearchExpand :placeholder="`Search...`">
+				<!-- <template #prefix>
+					<AcmeSvg :svgString="svgDataSearch" :size="24" />
+				</template> -->
+			</AcmeInputSearchExpand>
+			<AcmeInputSearchExpand :placeholder="`Search...`" variant="search-expand">
+				<!-- <template #prefix>
+					<AcmeSvg :svgString="svgDataSearch" :size="24" />
+				</template> -->
+			</AcmeInputSearchExpand>
 
+			<AcmeDivider />
 
 			<!-- 	<AcmePaper elevation="4" :sx="{ 
 							position: 'fixed', 
@@ -147,6 +158,7 @@
 	import AcmeBottomNav from '../ui/nav/AcmeBottomNav.vue';
 	import AcmeAvatar from '../ui/common/AcmeAvatar.vue';
 	import AcmeBadge from '../ui/common/AcmeBadge.vue';
+	import AcmeInputSearchExpand from '../ui/inputs/AcmeInputSearchExpand.vue';
 
 	import AcmeIcon from '../ui/common/AcmeIcon.vue';
 	import AcmeSvg from '../ui/common/AcmeSvg.vue';
@@ -165,6 +177,7 @@
 			AcmeBottomNav,
 			AcmeAvatar,
 			AcmeBadge,
+			AcmeInputSearchExpand,
 
 			AcmeIcon,
 			AcmeSvg,
@@ -257,5 +270,23 @@
 </script>
 
 <style lang="scss" scoped>
+	.search-expand {
+		background-color: transparent;
+		border-radius: 0;
+		border: none;
+		border-bottom: 1rpx solid var(--acme-bg-card);
+	}
 
+	.search-expand:focus-within {
+		box-shadow: none;
+	}
+
+	/* 可以添加聚焦时的样式，例如边框、阴影等 */
+	.search-expand.is-active {
+		border: none;
+		border-bottom: 1rpx solid var(--acme-primary-color); // 活跃时边框
+		outline: none;
+		// box-shadow: 0 0 8rpx rgba(0, 123, 255, 0.2); // 活跃时阴影
+		// background-color: rgba(255, 255, 255, 0.25); // 活跃时背景可以更亮
+	}
 </style>
