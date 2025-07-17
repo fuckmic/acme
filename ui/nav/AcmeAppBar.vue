@@ -1,19 +1,38 @@
 <template>
 	<AcmePaper elevation="4" :sx="setSx">
+		<view style="padding:40rpx 32rpx 24rpx; display: flex;align-items: center;gap:12rpx;">
+			<AcmeIcon icon="sun" :size="64" />
+			<view class="acme-h5">{{`Name`}}</view>
+			<view style="margin-left: auto;" @tap="onTheme()">
+				<AcmeSvg :svgString="isDark?svgDataDark:svgDataLight" :size="48" />
+			</view>
+		</view>
 	</AcmePaper>
 </template>
 
 <script>
+	import { acmeCfg, acmeSetTheme } from '../../config.js';
 	import AcmePaper from '../common/AcmePaper.vue';
 	import AcmeIcon from '../common/AcmeIcon.vue';
+	import AcmeSvg from '../common/AcmeSvg.vue';
+	import { svgDark, svgLight } from '../../utils/svg.js';
+	import { cssVariableColor } from '../../utils/theme.js'
 	export default {
 		name: "AcmeAppBar",
-		components: { AcmePaper, AcmeIcon, },
+		components: { AcmePaper, AcmeIcon, AcmeSvg, },
+		data() {
+			return {
+				isDark: true,
+			}
+		},
 		computed: {
+			setColor() { return cssVariableColor(`acme-theme-color`, acmeCfg.theme) },
+			svgDataDark() { return svgDark(this.setColor) },
+			svgDataLight() { return svgLight(this.setColor) },
 			setSx() {
 				return {
 					position: 'fixed',
-					bottom: 0,
+					top: 0,
 					left: 0,
 					right: 0,
 					zIndex: 9, // 引用 z-index 变量
@@ -21,6 +40,16 @@
 				}
 			},
 		},
+		methods: {
+			onTheme() {
+				this.isDark = !this.isDark;
+				const tmp = this.isDark ? `dark` : `light`;
+				acmeSetTheme(tmp);
+				uni.navigateTo({
+					url: `/pages/index`
+				})
+			}
+		}
 	}
 </script>
 

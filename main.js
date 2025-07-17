@@ -20,11 +20,13 @@ const myProjectSvgColors = {
 		'acme-svg-close': '#333333', // 亮色模式下关闭图标的颜色
 		'acme-mask-color': `teal`,
 		'acme-svg-checkbox': `teal`,
+		'acme-theme-color': `teal`,
 	},
 	'dark': {
 		'acme-svg-close': '#CCCCCC', // 暗色模式下关闭图标的颜色
 		'acme-mask-color': `teal`,
 		'acme-svg-checkbox': `teal`,
+		'acme-theme-color': `#66b3ff`,
 	}
 };
 

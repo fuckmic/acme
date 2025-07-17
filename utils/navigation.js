@@ -52,3 +52,26 @@ export const comLink = (key, params = {}) => {
 
 	navigateToPage();
 }
+
+// 根据当前平台，执行回退方式
+export const navBack = () => {
+	const pages = getCurrentPages();
+	console.log(`navBack:`, pages);
+	/*#ifdef APP-PLUS*/
+	uni.navigateBack({
+		delta: 1, // 尝试返回一层
+		fail: (res) => {
+			// 如果无法回退（例如当前页面是栈底），则执行备用方案
+			console.warn(`uni.navigateBack 失败，可能已是栈底或无历史：`, res);
+			console.warn(`备用方案：reLaunch 到首页`);
+			comLink(keys.home);
+		},
+		success: () => {
+			console.log(`uni.navigateBack 成功。`);
+		},
+	});
+	/*#endif*/
+	/*#ifdef H5*/
+	history.back();
+	/*#endif*/
+};

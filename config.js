@@ -4,7 +4,7 @@ import Vue from 'vue';
 
 // 将 acmeCfg 声明为 Vue 的响应式对象
 export const acmeCfg = Vue.observable({
-	theme: 'light', // 默认主题为 'light'
+	theme: 'dark', // 默认主题为 'dark'
 	lgre: 'en-US', // 默认国际化代码
 	currency: 'USD', // 默认法币代码
 });

@@ -1,11 +1,9 @@
 <template>
 	<AcmePageContainer>
-		<view style="padding: 40rpx;">
-			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
-				<view style="color:var(--acme-primary-color);">{{`Acme`}}</view>
-				<AcmeIcon icon="account" path="/static/" />
-			</view>
-			<AcmeDivider />
+		<AcmeAppBar />
+		<AcmeBottomNav :code="`index`"></AcmeBottomNav>
+
+		<view style="padding: 40rpx;padding-top: 160rpx;">
 			<AcmeTabsFixed v-model="curTab" :tabs="tabs" @change="onTab" />
 			<AcmeTabsFixed v-model="curTab1" :tabs="tabs1" @change="onTab1" variant="variant-pill" />
 			<view style="font-size: 28rpx;color:var(--acme-primary-color);">{{curTab1}}</view>
@@ -21,17 +19,29 @@
 			</view>
 
 			<AcmeDivider />
+
+			<view style="display: flex;align-items: center;justify-content: space-between; gap:24rpx;">
+				<AcmeAvatar src="/static/plat.png" :size="120"></AcmeAvatar>
+				<AcmeAvatar :size="100" bgColor="var(--acme-primary-color)">
+					<text class="acme-h3">{{`A`}}</text>
+				</AcmeAvatar>
+				<AcmeAvatar :size="80" bgColor="var(--acme-success)" shape="0">
+					<text class="acme-h4">{{`C`}}</text>
+				</AcmeAvatar>
+				<AcmeAvatar :size="64" bgColor="var(--acme-info)" shape="8rpx">
+					<text class="acme-h5">{{`M`}}</text>
+				</AcmeAvatar>
+				<AcmeAvatar :size="48" bgColor="var(--acme-error)">
+					<text class="acme-h6">{{`E`}}</text>
+				</AcmeAvatar>
+			</view>
+
+			<AcmeDivider />
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
 				<AcmeSvg :svgString="svgData" :size="128" customClass="my-custom-icon" />
 				<AcmeSvg :svgString="svgData" :size="64" sizeMode="heightFix" />
 				<AcmeSvg :svgString="svgData" :size="48" />
 				<AcmeSvg :svgString="svgData" :size="32" />
-				<view @tap="onTheme(`dark`)" style="cursor: pointer;">
-					<AcmeSvg :svgString="svgDataDark" :size="48" customClass="my-custom-icon" />
-				</view>
-				<view @tap="onTheme(`light`)" style="cursor: pointer;color:var(--acme-primary-color);">
-					<AcmeSvg :svgString="svgDataLight" :size="48" customClass="my-custom-icon" />
-				</view>
 			</view>
 			<AcmeDivider />
 
@@ -39,19 +49,10 @@
 			<AcmeCopyrightVersion appName="Acme" />
 			<AcmeDivider />
 
-			<AcmePaper>
-				<view class="acme-h3" style="padding: var(--acme-spacing-lg);">{{`AcmePaper`}}</view>
-			</AcmePaper>
-			<AcmeDivider />
-			<AcmePaper elevation="16">
-				<view class="acme-h2" style="padding: var(--acme-spacing-lg);">{{`AcmePaper`}}</view>
-			</AcmePaper>
 
-			<AcmeBottomNav :code="`index`"></AcmeBottomNav>
-
-			<AcmePaper elevation="4" :sx="{ 
+			<!-- 	<AcmePaper elevation="4" :sx="{ 
 							position: 'fixed', 
-							top: 0, 
+							top: `160rpx`, 
 							left: 0, 
 							right: 0, 
 							height: '80rpx',
@@ -60,7 +61,7 @@
 				<view style="display: flex; justify-content: center; align-items: center; height: 100%; width: 100%;">
 					<text class="acme-caption">这是一个顶部通知！</text>
 				</view>
-			</AcmePaper>
+			</AcmePaper> -->
 
 			<view
 				style="position: relative; height: 500rpx; width: 100%; display: flex; justify-content: center; align-items: center;">
@@ -115,11 +116,13 @@
 <script>
 	import { acmeSetTheme } from '../config.js';
 	import AcmePaper from '../ui/common/AcmePaper.vue';
+	import AcmeAppBar from '../ui/nav/AcmeAppBar.vue';
 	import AcmeBottomNav from '../ui/nav/AcmeBottomNav.vue';
+	import AcmeAvatar from '../ui/common/AcmeAvatar.vue';
 
 	import AcmeIcon from '../ui/common/AcmeIcon.vue';
 	import AcmeSvg from '../ui/common/AcmeSvg.vue';
-	import { exampleIconSvg, svgSearch, svgDark, svgLight } from '../utils/svg.js';
+	import { exampleIconSvg, svgSearch } from '../utils/svg.js';
 	import AcmeCopyrightVersion from '../ui/common/AcmeCopyrightVersion.vue';
 	import AcmeEmptyData from '../ui/common/AcmeEmptyData.vue';
 	import AcmeCheckbox from '../ui/form/AcmeCheckbox.vue';
@@ -130,7 +133,9 @@
 	export default {
 		components: {
 			AcmePaper,
+			AcmeAppBar,
 			AcmeBottomNav,
+			AcmeAvatar,
 
 			AcmeIcon,
 			AcmeSvg,
@@ -150,22 +155,21 @@
 				},
 				isChooseImg: false,
 				curTab: null,
-				tabs: { 'dark': `Dark`, 'light': `Light` },
+				tabs: {
+					[this.$nav.keys.typography]: this.$nav.keys.typography,
+					[this.$nav.keys.format]: this.$nav.keys.format,
+					[this.$nav.keys.elevation]: this.$nav.keys.elevation,
+				},
 				curTab1: null,
-				tabs1: { 'one': `Tab One`, 'two': `Tab Two`, 'three': `Tab Three`, 'four': `Tab Four` },
+				tabs1: { 'four': `Tab Four` },
 				curNav: null,
 			}
 		},
 		computed: {
 			setColor() { return '#' + Math.floor(Math.random() * 16777215).toString(16); },
 			svgData() { return exampleIconSvg(this.setColor) },
-			svgDataDark() { return svgDark(this.setColor) },
-			svgDataLight() { return svgLight(this.setColor) },
 			setNavs() {
 				return [
-					this.$nav.keys.typography,
-					this.$nav.keys.format,
-					this.$nav.keys.elevation,
 					this.$nav.keys.presetSelector,
 					this.$nav.keys.input,
 				]
@@ -179,10 +183,7 @@
 		methods: {
 			onTab(val) {
 				this.curTab = val;
-				acmeSetTheme(this.curTab);
-				uni.navigateTo({
-					url: `/pages/index`
-				})
+				// this.$nav.comLink(this.curTab);
 			},
 			onTab1(val) {
 				this.curTab1 = val;
