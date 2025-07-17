@@ -5,6 +5,7 @@
 @import './vars/_typography.scss';
 @import './vars/_spacing.scss';
 @import './vars/_shapes.scss';
+@import './vars/_elevation.scss';
 
 // 导入组件的默认 CSS 变量
 @import './vars/_component-defaults.scss';
@@ -12,8 +13,6 @@
 // 导入主题文件
 @import './theme/_light-theme.scss'; // 默认亮色主题
 @import './theme/_dark-theme.scss';  // 暗色主题覆盖
- 
- 	@import './_elevation.scss';
 
 :root{
 	// === 补充的分割线组件 (AcmeDivider) 变量 ===

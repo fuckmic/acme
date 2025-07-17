@@ -1,0 +1,104 @@
+// 这个文件定义了 Material Design 风格的海拔 (elevation) 相关的 CSS 变量。
+// 它们被用于模拟元素在 Z 轴上的提升，通过 box-shadow 和可选的叠加层来实现。
+
+:root {
+  /*
+   * --acme-shadow-elevation-X: Material Design 海拔阴影定义 (亮色主题默认值)
+   * 这些值直接来源于 Material-UI (MUI) 默认主题的 shadows 数组。
+   * 它们是多个 box-shadow 叠加的组合，用于创建逼真的深度感。
+   * 在暗色主题下，MUI 默认通常也使用这些阴影值，视觉上的提升主要通过叠加层实现。
+   */
+  --acme-shadow-elevation-0: none;
+  --acme-shadow-elevation-1: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);
+  --acme-shadow-elevation-2: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  --acme-shadow-elevation-3: 0px 3px 3px -2px rgba(0,0,0,0.2),0px 3px 4px 0px rgba(0,0,0,0.14),0px 1px 8px 0px rgba(0,0,0,0.12);
+  --acme-shadow-elevation-4: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+  --acme-shadow-elevation-5: 0px 3px 5px -1px rgba(0,0,0,0.2),0px 5px 8px 0px rgba(0,0,0,0.14),0px 1px 14px 0px rgba(0,0,0,0.12);
+  --acme-shadow-elevation-6: 0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12);
+  --acme-shadow-elevation-7: 0px 4px 5px -2px rgba(0,0,0,0.2),0px 7px 10px 1px rgba(0,0,0,0.14),0px 2px 16px 1px rgba(0,0,0,0.12);
+  --acme-shadow-elevation-8: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+  --acme-shadow-elevation-9: 0px 5px 6px -3px rgba(0,0,0,0.2),0px 9px 12px 1px rgba(0,0,0,0.14),0px 3px 16px 2px rgba(0,0,0,0.12);
+  --acme-shadow-elevation-10: 0px 6px 6px -3px rgba(0,0,0,0.2),0px 10px 14px 1px rgba(0,0,0,0.14),0px 4px 18px 3px rgba(0,0,0,0.12);
+  --acme-shadow-elevation-11: 0px 6px 7px -4px rgba(0,0,0,0.2),0px 11px 15px 1px rgba(0,0,0,0.14),0px 4px 20px 3px rgba(0,0,0,0.12);
+  --acme-shadow-elevation-12: 0px 7px 8px -4px rgba(0,0,0,0.2),0px 12px 17px 2px rgba(0,0,0,0.14),0px 5px 22px 4px rgba(0,0,0,0.12);
+  --acme-shadow-elevation-13: 0px 7px 8px -4px rgba(0,0,0,0.2),0px 13px 19px 2px rgba(0,0,0,0.14),0px 5px 24px 4px rgba(0,0,0,0.12);
+  --acme-shadow-elevation-14: 0px 7px 9px -4px rgba(0,0,0,0.2),0px 14px 21px 2px rgba(0,0,0,0.14),0px 5px 26px 4px rgba(0,0,0,0.12);
+  --acme-shadow-elevation-15: 0px 8px 9px -5px rgba(0,0,0,0.2),0px 15px 22px 2px rgba(0,0,0,0.14),0px 6px 28px 5px rgba(0,0,0,0.12);
+  --acme-shadow-elevation-16: 0px 8px 10px -5px rgba(0,0,0,0.2),0px 16px 24px 2px rgba(0,0,0,0.14),0px 6px 30px 5px rgba(0,0,0,0.12);
+  --acme-shadow-elevation-17: 0px 8px 11px -5px rgba(0,0,0,0.2),0px 17px 26px 2px rgba(0,0,0,0.14),0px 6px 32px 5px rgba(0,0,0,0.12);
+  --acme-shadow-elevation-18: 0px 9px 11px -5px rgba(0,0,0,0.2),0px 18px 28px 2px rgba(0,0,0,0.14),0px 7px 34px 6px rgba(0,0,0,0.12);
+  --acme-shadow-elevation-19: 0px 9px 12px -6px rgba(0,0,0,0.2),0px 19px 29px 2px rgba(0,0,0,0.14),0px 7px 36px 6px rgba(0,0,0,0.12);
+  --acme-shadow-elevation-20: 0px 10px 13px -6px rgba(0,0,0,0.2),0px 20px 31px 3px rgba(0,0,0,0.14),0px 8px 38px 7px rgba(0,0,0,0.12);
+  --acme-shadow-elevation-21: 0px 10px 13px -6px rgba(0,0,0,0.2),0px 21px 33px 3px rgba(0,0,0,0.14),0px 8px 40px 7px rgba(0,0,0,0.12);
+  --acme-shadow-elevation-22: 0px 10px 14px -6px rgba(0,0,0,0.2),0px 22px 35px 3px rgba(0,0,0,0.14),0px 8px 42px 7px rgba(0,0,0,0.12);
+  --acme-shadow-elevation-23: 0px 11px 14px -7px rgba(0,0,0,0.2),0px 23px 36px 3px rgba(0,0,0,0.14),0px 9px 44px 8px rgba(0,0,0,0.12);
+  --acme-shadow-elevation-24: 0px 11px 15px -7px rgba(0,0,0,0.2),0px 24px 38px 3px rgba(0,0,0,0.14),0px 9px 46px 8px rgba(0,0,0,0.12);
+
+  /*
+   * --acme-overlay-elevation-X: 叠加层渐变定义 (亮色主题默认值：完全透明)
+   * 在亮色主题下，这些叠加层通常是不可见的。
+   */
+  --acme-overlay-elevation-0: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
+  --acme-overlay-elevation-1: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
+  --acme-overlay-elevation-2: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
+  --acme-overlay-elevation-3: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
+  --acme-overlay-elevation-4: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
+  --acme-overlay-elevation-5: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
+  --acme-overlay-elevation-6: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
+  --acme-overlay-elevation-7: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
+  --acme-overlay-elevation-8: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
+  --acme-overlay-elevation-9: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
+  --acme-overlay-elevation-10: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
+  --acme-overlay-elevation-11: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
+  --acme-overlay-elevation-12: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
+  --acme-overlay-elevation-13: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
+  --acme-overlay-elevation-14: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
+  --acme-overlay-elevation-15: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
+  --acme-overlay-elevation-16: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
+  --acme-overlay-elevation-17: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
+  --acme-overlay-elevation-18: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
+  --acme-overlay-elevation-19: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
+  --acme-overlay-elevation-20: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
+  --acme-overlay-elevation-21: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
+  --acme-overlay-elevation-22: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
+  --acme-overlay-elevation-23: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
+  --acme-overlay-elevation-24: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
+}
+
+// 暗色主题的 CSS 变量覆盖
+// 当 body 或 html 元素上存在 'dark-theme' 类时生效
+.dark-theme {
+  // 阴影值通常继承自 :root，MUI 主要通过叠加层处理暗色主题的海拔视觉。
+  // 如果需要，可以在这里覆盖阴影值，例如调整颜色或透明度。
+
+  /*
+   * --acme-overlay-elevation-X: 叠加层渐变定义 (暗色主题覆盖)
+   * 在暗色主题下，叠加层变为半透明白色，透明度随海拔升高而增加。
+   * 这些透明度值是示例，您可以根据您的具体暗色背景和需求进行微调。
+   */
+  --acme-overlay-elevation-0: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)); // 仍是透明
+  --acme-overlay-elevation-1: linear-gradient(rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05));
+  --acme-overlay-elevation-2: linear-gradient(rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.07));
+  --acme-overlay-elevation-3: linear-gradient(rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08));
+  --acme-overlay-elevation-4: linear-gradient(rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.09));
+  --acme-overlay-elevation-5: linear-gradient(rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.10));
+  --acme-overlay-elevation-6: linear-gradient(rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.11));
+  --acme-overlay-elevation-7: linear-gradient(rgba(255, 255, 255, 0.115), rgba(255, 255, 255, 0.115));
+  --acme-overlay-elevation-8: linear-gradient(rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.12));
+  --acme-overlay-elevation-9: linear-gradient(rgba(255, 255, 255, 0.125), rgba(255, 255, 255, 0.125));
+  --acme-overlay-elevation-10: linear-gradient(rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.13));
+  --acme-overlay-elevation-11: linear-gradient(rgba(255, 255, 255, 0.135), rgba(255, 255, 255, 0.135));
+  --acme-overlay-elevation-12: linear-gradient(rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.14));
+  --acme-overlay-elevation-13: linear-gradient(rgba(255, 255, 255, 0.145), rgba(255, 255, 255, 0.145));
+  --acme-overlay-elevation-14: linear-gradient(rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.15));
+  --acme-overlay-elevation-15: linear-gradient(rgba(255, 255, 255, 0.155), rgba(255, 255, 255, 0.155));
+  --acme-overlay-elevation-16: linear-gradient(rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.16));
+  --acme-overlay-elevation-17: linear-gradient(rgba(255, 255, 255, 0.165), rgba(255, 255, 255, 0.165));
+  --acme-overlay-elevation-18: linear-gradient(rgba(255, 255, 255, 0.17), rgba(255, 255, 255, 0.17));
+  --acme-overlay-elevation-19: linear-gradient(rgba(255, 255, 255, 0.175), rgba(255, 255, 255, 0.175));
+  --acme-overlay-elevation-20: linear-gradient(rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.18));
+  --acme-overlay-elevation-21: linear-gradient(rgba(255, 255, 255, 0.185), rgba(255, 255, 255, 0.185));
+  --acme-overlay-elevation-22: linear-gradient(rgba(255, 255, 255, 0.19), rgba(255, 255, 255, 0.19));
+  --acme-overlay-elevation-23: linear-gradient(rgba(255, 255, 255, 0.195), rgba(255, 255, 255, 0.195));
+  --acme-overlay-elevation-24: linear-gradient(rgba(255, 255, 255, 0.20), rgba(255, 255, 255, 0.20));
+}

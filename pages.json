@@ -28,5 +28,9 @@
 		"path": "pages/presetSelector",
 		"style": { "enablePullDownRefresh": false, "navigationStyle": "custom" },
 		"meta": { "name": "presetSelector", "auth": false, "mode": "" }
+	}, {
+		"path": "pages/doc",
+		"style": { "enablePullDownRefresh": false, "navigationStyle": "custom" },
+		"meta": { "name": "doc", "auth": false, "mode": "" }
 	}]
 }

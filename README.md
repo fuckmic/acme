@@ -12,6 +12,7 @@
 
 ## styles
 - _colors.scss 包含所有基础的 Sass 颜色变量.
+- _elevation.scss 海拔定义0-24
 - _variables.css css变量。主项目引入，再引入覆写的变量。
 - - 确保所有可变的设计属性（颜色、字体大小、字重、间距、圆角、边框、阴影等）都抽象为 CSS 变量
 
@@ -25,6 +26,7 @@
 - ✅ AcmeCopyrightVersion.vue 版权信息 竖版
 - ✅ AcmeEmptyData.vue 空数据 响应式
 - ✅ AcmeDivider.vue 分割线。
+- ✅ AcmePaper.vue 一些需要指定位置和海拔的组件容器。
 <!-- - AcmeTheme.vue 主题切换 -->
 
 ### fmt/ 各类数据格式化
@@ -93,7 +95,7 @@
 - SmallNavItem.vue 竖屏一行一个。[icon  label]
 - SmallNavItemArrow.vue 竖屏一行一个。[icon label  arrow]
 - AcmeAppBar.vue 顶部导航，响应式
-- AcmeBottomNav.vue 底部导航 竖屏版
+- ✅ AcmeBottomNav.vue 底部导航 竖屏版
 - AcmeDrawer.vue 四方入侧边导航， 通常只有宽屏需要。
 - AcmePagination.vue 分页导航 通常只有宽屏需要。
 - AcmeStepper.vue 步骤导航

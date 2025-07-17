@@ -39,6 +39,52 @@
 			<AcmeCopyrightVersion appName="Acme" />
 			<AcmeDivider />
 
+			<AcmePaper>
+				<view class="acme-h3" style="padding: var(--acme-spacing-lg);">{{`AcmePaper`}}</view>
+			</AcmePaper>
+			<AcmeDivider />
+			<AcmePaper elevation="16">
+				<view class="acme-h2" style="padding: var(--acme-spacing-lg);">{{`AcmePaper`}}</view>
+			</AcmePaper>
+
+			<AcmeBottomNav :code="`index`"></AcmeBottomNav>
+
+			<AcmePaper elevation="4" :sx="{ 
+							position: 'fixed', 
+							top: 0, 
+							left: 0, 
+							right: 0, 
+							height: '80rpx',
+							zIndex: 9, // 引用 z-index 变量
+						}">
+				<view style="display: flex; justify-content: center; align-items: center; height: 100%; width: 100%;">
+					<text class="acme-caption">这是一个顶部通知！</text>
+				</view>
+			</AcmePaper>
+
+			<view
+				style="position: relative; height: 500rpx; width: 100%; display: flex; justify-content: center; align-items: center;">
+				<AcmePaper elevation="6" :sx="{ 
+								position: 'absolute', // 或 'fixed'
+								top: '50%', 
+								left: '50%', 
+								transform: 'translate(-50%, -50%)', 
+								width: '600rpx', 
+								height: '400rpx',
+								zIndex: 6, // 引用 z-index 变量
+							}">
+					<view style="padding: 40rpx; text-align: center;">
+						<text class="acme-h5">居中卡片</text>
+						<text class="acme-body2">这是一个使用 absolute 和 center 放置的浮动容器。</text>
+					</view>
+				</AcmePaper>
+			</view>
+
+
+			<AcmePaper elevation="2" :sx="{ margin: '60rpx', padding: '30rpx' }">
+				<text class="acme-body1">这是一个默认流布局的 Paper。</text>
+			</AcmePaper>
+
 
 			<AcmeDivider leftLineRatio="40rpx">
 				<view class="acme-h6">{{`Form Checkbox`}}</view>
@@ -68,6 +114,9 @@
 
 <script>
 	import { acmeSetTheme } from '../config.js';
+	import AcmePaper from '../ui/common/AcmePaper.vue';
+	import AcmeBottomNav from '../ui/nav/AcmeBottomNav.vue';
+
 	import AcmeIcon from '../ui/common/AcmeIcon.vue';
 	import AcmeSvg from '../ui/common/AcmeSvg.vue';
 	import { exampleIconSvg, svgSearch, svgDark, svgLight } from '../utils/svg.js';
@@ -80,6 +129,9 @@
 
 	export default {
 		components: {
+			AcmePaper,
+			AcmeBottomNav,
+
 			AcmeIcon,
 			AcmeSvg,
 			AcmeCopyrightVersion,
@@ -101,6 +153,7 @@
 				tabs: { 'dark': `Dark`, 'light': `Light` },
 				curTab1: null,
 				tabs1: { 'one': `Tab One`, 'two': `Tab Two`, 'three': `Tab Three`, 'four': `Tab Four` },
+				curNav: null,
 			}
 		},
 		computed: {
@@ -116,7 +169,8 @@
 					this.$nav.keys.presetSelector,
 					this.$nav.keys.input,
 				]
-			}
+			},
+
 		},
 		onLoad() {},
 		onShow() {
