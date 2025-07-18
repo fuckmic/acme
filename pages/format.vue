@@ -68,6 +68,22 @@
 				<AcmeFmtPercent :value="percentValue" locale="de-DE" :variant="getTextColor(percentValue)" />
 				<AcmeFmtPercent :value="percentValue" locale="de-DE" :variant="getBgColorRgba(-percentValue)" />
 			</view>
+
+			<AcmeDivider />
+			<view class="acme-h6 ">{{`AcmeFmtCrypto`}}</view>
+			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
+				<AcmeFmtCrypto :value="cryptoValue" />
+				<AcmeFmtCrypto :value="cryptoValue" locale="de-DE" :variant="getTextColor(cryptoValue)" />
+				<AcmeFmtCrypto :value="cryptoValue" locale="de-DE" :variant="getBgColorRgba(-cryptoValue)" />
+			</view>
+
+			<AcmeDivider />
+			<view class="acme-h6 ">{{`AcmeFmtStable`}}</view>
+			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
+				<AcmeFmtStable :value="stableValue" />
+				<AcmeFmtStable :value="stableValue" locale="de-DE" :variant="getTextColor(-stableValue)" />
+				<AcmeFmtStable :value="stableValue" locale="de-DE" :variant="getBgColorRgba(stableValue)" />
+			</view>
 		</view>
 
 	</AcmePageContainer>
@@ -84,6 +100,8 @@
 	import AcmeFmtInteger from '../ui/fmt/AcmeFmtInteger.vue';
 	import AcmeFmtPercent from '../ui/fmt/AcmeFmtPercent.vue';
 	import AcmeFmtKMB from '../ui/fmt/AcmeFmtKMB.vue';
+	import AcmeFmtCrypto from '../ui/fmt/AcmeFmtCrypto.vue';
+	import AcmeFmtStable from '../ui/fmt/AcmeFmtStable.vue';
 	export default {
 		components: {
 			AcmeBottomNav,
@@ -93,6 +111,8 @@
 			AcmeFmtInteger,
 			AcmeFmtPercent,
 			AcmeFmtKMB,
+			AcmeFmtCrypto,
+			AcmeFmtStable,
 		},
 		data() {
 			return {
@@ -100,6 +120,8 @@
 				integerValue: 123456,
 				kmbValue: 987654321987.999,
 				percentValue: 123.45,
+				cryptoValue: 123456.78901234,
+				stableValue: 123456.78901234,
 			}
 		},
 		computed: {

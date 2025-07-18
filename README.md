@@ -71,8 +71,8 @@
 - ✅ AcmeFmtFiat.vue 法币值。传入最终显示值，不处理国际化之外的逻辑
 - ✅ AcmeFmtInteger.vue 整数值
 - ✅ AcmeFmtPercent.vue 百分值
-- AcmeFmtCrypto.vue 加密币
-- AcmeFmtStable.vue 稳定币
+- ✅ AcmeFmtCrypto.vue 加密币
+- ✅ AcmeFmtStable.vue 稳定币
 - ✅ AcmeFmtKMB.vue 金融大数KMB
 <!-- 
  :variant="直接传入需要的class名"

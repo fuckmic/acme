@@ -323,3 +323,57 @@ export function formatterKMB(rawValue, locale, opt = {}) {
 		return formattedNum;
 	}
 }
+
+// 加密币格式化
+export function formatterCrypto(rawValue, locale, opt = {}) {
+	// 解构 opt 对象，并为 signDisplay 提供默认值
+	const { signDisplay = 'auto' } = opt;
+
+	const num = parseFloat(rawValue);
+	if (isNaN(num)) return '';
+	// 真实的小数位数
+	const _decimal = getDecimalPlacesFromRawString(rawValue);
+
+	const options = {
+		style: "decimal",
+		useGrouping: true, // 使用千位分隔符
+		signDisplay: signDisplay,
+		minimumFractionDigits: _decimal, // 最少显示的小数位数
+		maximumFractionDigits: _decimal, // 最多显示的小数位数
+	}
+	try {
+		return new Intl.NumberFormat(locale, options).format(num);
+	} catch (e) {
+		console.warn(`formatterFiat 格式化数字 ${rawValue} 失败，使用默认格式化。`, e);
+		const formattedNum = formatNumberManually(num, locale, _decimal);
+		// return `${formattedNum} ${currency}`;
+		return formattedNum;
+	}
+}
+
+// 稳定币格式化
+export function formatterStable(rawValue, locale, opt = {}) {
+	// 解构 opt 对象，并为 signDisplay 提供默认值
+	const { signDisplay = 'auto' } = opt;
+
+	const num = parseFloat(rawValue);
+	if (isNaN(num)) return '';
+	// 真实的小数位数
+	const _decimal = getDecimalPlacesFromRawString(rawValue);
+
+	const options = {
+		style: "decimal",
+		useGrouping: true, // 使用千位分隔符
+		signDisplay: signDisplay,
+		minimumFractionDigits: _decimal, // 最少显示的小数位数
+		maximumFractionDigits: _decimal, // 最多显示的小数位数
+	}
+	try {
+		return new Intl.NumberFormat(locale, options).format(num);
+	} catch (e) {
+		console.warn(`formatterFiat 格式化数字 ${rawValue} 失败，使用默认格式化。`, e);
+		const formattedNum = formatNumberManually(num, locale, _decimal);
+		// return `${formattedNum} ${currency}`;
+		return formattedNum;
+	}
+}
