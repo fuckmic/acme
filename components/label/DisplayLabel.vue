@@ -3,9 +3,8 @@
 		v-bind="$attrs" v-on="$listeners">
 		<view>{{isEditable}}</view>
 		<template v-slot="slotProps">
-			<view>1111</view>
 			<AcmeLabelEdit :transKey="slotProps.transKey" :initialLabel="slotProps.initialLabel"
-				@close-modal="slotProps['close-modal']" />
+				:closeModalCallback="slotProps.closeModalCallback" />
 		</template>
 	</AcmeLabelEvent>
 

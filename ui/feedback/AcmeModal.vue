@@ -1,6 +1,6 @@
 <template>
 	<view v-if="isVisible" :class="[`modal_container`,`pos_${position}`]">
-		<view class="overlay" @tap="cancel()" :style="{ backgroundColor:bgColor}"></view>
+		<view class="overlay" @tap.stop="cancel()" :style="{ backgroundColor:bgColor}"></view>
 		<view :class="['modal_wrapper', `modal_wrapper_${position}`]" :style="modalWrapperStyle">
 			<!-- 			<AcmePaper elevation="6" :sx="{ 
 								position: 'absolute', // 或 'fixed'
@@ -15,7 +15,6 @@
 				<view style="width: 32rpx;height: 32rpx;"></view>
 				<view class="acme-h6 title">{{title}}</view>
 				<view @tap.stop="cancel()">
-					<!-- <WtfIcon icon="del"></WtfIcon> -->
 					<AcmeIconClose :size="32" />
 				</view>
 			</header>
@@ -27,9 +26,9 @@
 			<AcmeDivider />
 			<view style="margin-bottom: -32rpx;"></view>
 			<footer class="footer_wrapper" v-if="showFooter">
-				<view class="acme-button-text cancel" @tap="cancel()">{{cancelText}}</view>
+				<view class="acme-button-text cancel" @tap.stop="cancel()">{{cancelText}}</view>
 				<view class="line_v"></view>
-				<view class="acme-button-text confirm" @tap="confirm()">{{confirmText}}</view>
+				<view class="acme-button-text confirm" @tap.stop="confirm()">{{confirmText}}</view>
 			</footer>
 			<!-- </AcmePaper> -->
 		</view>

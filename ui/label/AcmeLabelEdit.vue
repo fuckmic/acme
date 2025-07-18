@@ -1,6 +1,5 @@
 <template>
 	<view>
-		<view>AcmeModal</view>
 		<AcmeModal :show="true" :title="`修改翻译`" @cancel="onCancel" @confirm="onConfirm" :cancelText="`cancel`"
 			:confirmText="`confirm`">
 			<view style="display: flex;align-items: center;gap:24rpx;">
@@ -29,7 +28,12 @@
 			// 要修改的翻译键
 			transKey: { type: String, required: true },
 			// 当前翻译的明文内容（用于初始化编辑框）
-			initialLabel: { type: String, default: '' }
+			initialLabel: { type: String, default: '' },
+			// 新增：接收一个回调函数，用于关闭模态框
+			closeModalCallback: {
+				type: Function,
+				required: true // 确保父组件会传递这个函数
+			}
 		},
 		data() {
 			return {
@@ -42,12 +46,15 @@
 		methods: {
 			onCancel() {
 				// 通知父组件关闭模态框
-				this.$emit('close-modal');
+				if (typeof this.closeModalCallback === 'function') {
+					this.closeModalCallback();
+				}
 			},
 			onConfirm() {
-				// 通知父组件关闭模态框
-				this.$emit('close-modal');
-				// this.buy();
+				// 假设 API 调用成功后，调用回调关闭模态框
+				if (typeof this.closeModalCallback === 'function') {
+					this.closeModalCallback();
+				}
 			},
 			// handleSave() {
 			// 	// 向上抛出事件，携带要更新的数据

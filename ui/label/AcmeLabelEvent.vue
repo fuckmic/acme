@@ -1,10 +1,8 @@
 <template>
-	<!-- 需要绑定组合热键，鉴权 -->
 	<view :class="[`label-event`,variant]" @click.stop.prevent="handleEditHotKey" class="editable-label-highlight">
 		<view class="acme-body1"> {{label}} </view>
 		<template v-if="showModal">
-			<view>{{showModal}}</view>
-			<slot :transKey="translationKey" :initialLabel="label" @close-modal="showModal = false"></slot>
+			<slot :transKey="translationKey" :initialLabel="label" :closeModalCallback="handleCloseModalFromSlot"></slot>
 		</template>
 	</view>
 </template>
@@ -24,6 +22,9 @@
 			}
 		},
 		methods: {
+			handleCloseModalFromSlot() {
+				this.showModal = false;
+			},
 			checkPermission() {
 				// 调用由主项目注入的鉴权函数
 				if (typeof acmeCfg._checkEditPermissionFn === 'function') {
@@ -35,17 +36,15 @@
 			},
 			handleEditHotKey(event) {
 				console.log(`event:`, event);
-				// #ifdef H5
-				// if (event.altKey) {
+				// #ifdef H5 
 				// if (!this.checkPermission()) {
 				// 	uni.showToast({ title: '您没有权限修改翻译', icon: 'none', duration: 2000 });
 				// 	return;
 				// }
 				this.showModal = true;
-				// event.stopPropagation();
-				// event.preventDefault();
+				event.stopPropagation();
+				event.preventDefault();
 				console.log(`showModal:`, this.showModal);
-				// }
 				// #endif
 				// #ifndef H5
 				uni.showToast({ title: '此功能仅限PC浏览器使用', icon: 'none', duration: 2000 });
