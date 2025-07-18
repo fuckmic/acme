@@ -22,16 +22,18 @@
 
 ## ui/
 
+### icons/ 组件化一些图标
+- AcmeIconSearch.vue 
+- AcmeIcon[xxx].vue
+
 ### label/ 明文显示
 - AcmeLableStatic.vue 不含事件的明文显示组件(正式上线)
 - AcmeLabelEvent.vue 携带热键和对话框的明文显示组件(部署测试交付)，留一个插槽。
-
-
-## 主项目/components文件夹中，
+#### 主项目/components文件夹
 - DisplayLabel.vue 主项目全局注册，使用的明文显示组件。内中引入AcmeLableStatic.vue 和 AcmeLabelEvent.vue
-- LabelEdit.vue 明文修改组件。引入AcmeModal.vue。<LabelEdit><AcmeModal /> </LabelEdit>。这个对话框，修改明文，并调用接口提交新数据。
-LabelEdit 将会在<AcmeLabelEvent>以插槽方式嵌入。
-如:<AcmeLabelEvent><LabelEdit  /><AcmeLabelEvent>
+- LabelEdit.vue 明文修改组件。引入AcmeModal.vue。这个对话框，修改明文，并调用接口提交新数据。
+
+
 
 
 ### common/ 
@@ -48,9 +50,7 @@ LabelEdit 将会在<AcmeLabelEvent>以插槽方式嵌入。
 - ✅ AcmeBadge.vue 徽章、online
 <!-- - AcmeTheme.vue 主题切换 -->
 
-### icons/ 组件化一些图标
-- AcmeIconSearch.vue 
-- AcmeIcon[xxx].vue
+
 
 ### nav/ 导航相关组件
 <!-- - SmallNavItem.vue 竖屏一行一个。[icon  label]

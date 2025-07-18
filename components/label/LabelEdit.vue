@@ -19,8 +19,8 @@
 
 <script>
 	import { acmeCfg } from '../../config.js';
-	import AcmeModal from '../feedback/AcmeModal.vue';
-	import AcmeInputText from '../form/AcmeInputText.vue';
+	import AcmeModal from '../../ui/feedback/AcmeModal.vue';
+	import AcmeInputText from '../../ui/form/AcmeInputText.vue';
 	export default {
 		name: "AcmeLabelEdit",
 		components: { AcmeModal, AcmeInputText },
@@ -29,11 +29,8 @@
 			transKey: { type: String, required: true },
 			// 当前翻译的明文内容（用于初始化编辑框）
 			initialLabel: { type: String, default: '' },
-			// 新增：接收一个回调函数，用于关闭模态框
-			closeModalCallback: {
-				type: Function,
-				required: true // 确保父组件会传递这个函数
-			}
+			// 接收一个回调函数，用于关闭模态框 确保父组件会传递这个函数
+			closeModalCallback: { type: Function, required: true }
 		},
 		data() {
 			return {

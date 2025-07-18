@@ -11,9 +11,7 @@
 	export default {
 		components: { AcmeBottomNav, AcmeAppBarSub },
 		data() {
-			return {
-				curKey: `doc`,
-			}
+			return {}
 		}
 	}
 </script>

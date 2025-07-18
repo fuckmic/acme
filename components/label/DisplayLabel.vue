@@ -3,7 +3,7 @@
 		v-bind="$attrs" v-on="$listeners">
 		<view>{{isEditable}}</view>
 		<template v-slot="slotProps">
-			<AcmeLabelEdit :transKey="slotProps.transKey" :initialLabel="slotProps.initialLabel"
+			<LabelEdit :transKey="slotProps.transKey" :initialLabel="slotProps.initialLabel"
 				:closeModalCallback="slotProps.closeModalCallback" />
 		</template>
 	</AcmeLabelEvent>
@@ -15,7 +15,7 @@
 	import { acmeCfg } from '../../config.js';
 	import AcmeLabelStatic from '../../ui/label/AcmeLabelStatic.vue';
 	import AcmeLabelEvent from '../../ui/label/AcmeLabelEvent.vue';
-	import AcmeLabelEdit from '../../ui/label/AcmeLabelEdit.vue';
+	import LabelEdit from '../label/LabelEdit.vue';
 	export default {
 		name: "DisplayLabel",
 		// 阻止组件将未声明的属性自动添加到根元素上 使得 `$attrs` 能够“干净地”传递给子组件。
@@ -23,7 +23,7 @@
 		components: {
 			AcmeLabelStatic,
 			AcmeLabelEvent,
-			AcmeLabelEdit,
+			LabelEdit,
 		},
 		props: {
 			// 传入 JSON 的 key，这是必须的，因为本组件负责查找翻译

@@ -65,6 +65,7 @@
 
 			<AcmeDivider />
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
+				<view class="acme-body1">{{`Label Edit`}}</view>
 				<DisplayLabel label="Home" transKey="home.title" variant="" fallbackText="回退文本" />
 			</view>
 			<AcmeDivider />
@@ -195,7 +196,6 @@
 				curTab: null,
 				tabs: {
 					[this.$nav.keys.typography]: this.$nav.keys.typography,
-					[this.$nav.keys.format]: this.$nav.keys.format,
 					[this.$nav.keys.elevation]: this.$nav.keys.elevation,
 				},
 				curTab1: null,
@@ -208,6 +208,7 @@
 			svgData() { return exampleIconSvg(this.setColor) },
 			setNavs() {
 				return [
+					this.$nav.keys.format,
 					this.$nav.keys.presetSelector,
 					this.$nav.keys.input,
 					this.$nav.keys.icons

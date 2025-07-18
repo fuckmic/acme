@@ -37,6 +37,7 @@ const myProjectSvgColors = {
 
 // 在应用启动时，将主项目的颜色映射注入到 acme 库
 setGlobalThemeColorsMap(myProjectSvgColors);
+// 是否启用label可编辑
 acmeSetEditable(true);
 
 Vue.prototype.$appCfg = {

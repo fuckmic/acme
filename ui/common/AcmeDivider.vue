@@ -18,8 +18,7 @@
 		computed: {
 			/**
 			 * 计算左侧线条的动态样式。
-			 * - 如果 leftLineRatio 存在，则左线固定宽度，不拉伸。
-			 * - 否则，左线拉伸。
+			 * - 如果 leftLineRatio 存在，则左线固定宽度，不拉伸。 否则，左线拉伸。
 			 */
 			leftLineStyle() {
 				const style = {};
