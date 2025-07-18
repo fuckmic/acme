@@ -1,9 +1,14 @@
 import Vue from 'vue';
 import App from './App';
 import AcmePageContainer from '@/ui/common/AcmePageContainer.vue';
+import DisplayLabel from '@/components/label/DisplayLabel.vue';
 import * as navigation from './utils/navigation.js';
+import * as intl from './intl/index.js';
+import { setGlobalThemeColorsMap } from '@/utils/theme.js';
+import { acmeSetEditable } from './config.js';
 
 Vue.component('AcmePageContainer', AcmePageContainer); // 全局注册
+Vue.component('DisplayLabel', DisplayLabel); // 全局注册
 
 // 导入 acme 库的 CSS 变量定义
 import '@/styles/_variables.scss';
@@ -11,7 +16,7 @@ import '@/styles/_variables.scss';
 // 从 wtf-ui 库导入配置对象和设置函数
 // import { wtfConfig, wtfSetAssetsRootPath, wtfSetLgre, wtfSetCurrency, wtfSetTheme } from './config.js';
 
-import { setGlobalThemeColorsMap } from '@/utils/theme.js';
+
 
 // === 关键：定义主项目自己的 SVG 颜色映射并注入到 acme 库 ===
 // 这些颜色值应该与您主项目 styles/_variables.scss 中定义的实际颜色值保持一致
@@ -32,6 +37,7 @@ const myProjectSvgColors = {
 
 // 在应用启动时，将主项目的颜色映射注入到 acme 库
 setGlobalThemeColorsMap(myProjectSvgColors);
+acmeSetEditable(true);
 
 Vue.prototype.$appCfg = {
 	appName: null, // 应用名称
@@ -40,9 +46,11 @@ Vue.prototype.$appCfg = {
 	height: null, // 当前屏高
 	theme: null, // 当前主题方案
 	layout: null, // 当前布局方案
+	defLgre: "en-US", // 默认语言代码
 }
 
 Vue.prototype.$nav = navigation;
+Vue.prototype.$intl = intl;
 
 // // --- 1. 初始化资源根路径 ---
 // wtfSetAssetsRootPath('/static'); // 为UI库设置资源路径

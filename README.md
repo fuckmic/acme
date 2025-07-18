@@ -23,22 +23,15 @@
 ## ui/
 
 ### label/ 明文显示
-- AcmeLabel.vue 最终明文显示组件
-- LabelEvent.vue 携带热键和对话框的明文显示组件(部署测试交付)
-- LableStatic.vue 不含事件的明文显示组件(正式上线)
-- AcmeLabelEdit.vue 明文修改组件,内部引入feedback/AcmeModal.vue
+- AcmeLableStatic.vue 不含事件的明文显示组件(正式上线)
+- AcmeLabelEvent.vue 携带热键和对话框的明文显示组件(部署测试交付)，留一个插槽。
 
-你的这个方案还是不太好。我们是否应该考虑将部分组件移到主项目。
-- acme库的ui/label文件夹中，
-- - AcmeLabelStatic.vue 不含事件的明文显示组件(正式上线)
-- - AcmeLabelEvent.vue 携带热键和对话框的明文显示组件(部署测试交付)，留一个插槽。
 
-- 主项目/components文件夹中，
-- - LabelEdit.vue 明文修改组件。引入AcmeModal.vue。<LabelEdit><AcmeModal /> </LabelEdit>。这个对话框，修改明文，并调用接口提交新数据。
+## 主项目/components文件夹中，
+- DisplayLabel.vue 主项目全局注册，使用的明文显示组件。内中引入AcmeLableStatic.vue 和 AcmeLabelEvent.vue
+- LabelEdit.vue 明文修改组件。引入AcmeModal.vue。<LabelEdit><AcmeModal /> </LabelEdit>。这个对话框，修改明文，并调用接口提交新数据。
 LabelEdit 将会在<AcmeLabelEvent>以插槽方式嵌入。
 如:<AcmeLabelEvent><LabelEdit  /><AcmeLabelEvent>
-
-这种方式，组件职责完全分离。在主项目组合,实现热键唤起对话框，修改明文。
 
 
 ### common/ 

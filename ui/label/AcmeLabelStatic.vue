@@ -4,7 +4,7 @@
 
 <script>
 	export default {
-		name: "LableStatic",
+		name: "AcmeLabelStatic",
 		props: {
 			label: { type: String, default: '' },
 			// 外部变体

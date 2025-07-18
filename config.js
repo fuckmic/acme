@@ -7,13 +7,13 @@ export const acmeCfg = Vue.observable({
 	theme: 'dark', // 默认主题为 'dark'
 	lgre: 'en-US', // 默认国际化代码
 	currency: 'USD', // 默认法币代码
-	isEditable: false, // 是否启动编辑label
+	isEditLabel: false, // 是否启动编辑label
 });
 
 // 设置是否可以编辑label
 export const acmeSetEditable = (val) => {
-	acmeCfg.isEditable = val;
-	console.log(`[acme] isEditable set to: ${val}`);
+	acmeCfg.isEditLabel = val;
+	console.log(`[acme] isEditLabel set to: ${val}`);
 }
 
 // 导出设置默认国际化代码的函数
