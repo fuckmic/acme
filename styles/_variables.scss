@@ -44,5 +44,9 @@
   --acme-badge-translate-y-bottom: 50%; // 向下偏移自身高度的 50%
   --acme-badge-translate-x-right: 50%; // 向右偏移自身宽度的 50%
   --acme-badge-translate-x-left: -50%; // 向左偏移自身宽度的 50%
-
+	
+	// acme modal
+	--acme-modal-mask:rgba(0, 0, 0, 0.6);
+	--acme-bg-modal:var(--acme-bg-card);
+	
 	}

@@ -65,7 +65,7 @@
 
 			<AcmeDivider />
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
-				<DisplayLabel label="Home" transKey="home.title" variant="" fallbackText="fallbackText" />
+				<DisplayLabel label="Home" transKey="home.title" variant="" fallbackText="回退文本" />
 			</view>
 			<AcmeDivider />
 

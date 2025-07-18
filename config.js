@@ -8,12 +8,19 @@ export const acmeCfg = Vue.observable({
 	lgre: 'en-US', // 默认国际化代码
 	currency: 'USD', // 默认法币代码
 	isEditLabel: false, // 是否启动编辑label
+	// 鉴权 等待主项目注入具体的函数
+	_checkEditPermissionFn: null,
 });
 
 // 设置是否可以编辑label
 export const acmeSetEditable = (val) => {
 	acmeCfg.isEditLabel = val;
 	console.log(`[acme] isEditLabel set to: ${val}`);
+}
+
+// 用于主项目注入服务的回调函数
+export function setAcmeServices(checkPermissionFn) {
+	acmeCfg._checkEditPermissionFn = checkPermissionFn; // 注入鉴权函数
 }
 
 // 导出设置默认国际化代码的函数
