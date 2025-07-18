@@ -2,35 +2,27 @@
 	<view v-if="isVisible" :class="[`modal_container`,`pos_${position}`]">
 		<view class="overlay" @tap.stop="cancel()" :style="{ backgroundColor:bgColor}"></view>
 		<view :class="['modal_wrapper', `modal_wrapper_${position}`]" :style="modalWrapperStyle">
-			<!-- 			<AcmePaper elevation="6" :sx="{ 
-								position: 'absolute', // 或 'fixed'
-								top: '50%', 
-								left: '50%', 
-								transform: 'translate(-50%, -50%)', 
-								width: '100%', 
-								height: '100%',
-								zIndex: 19, // 引用 z-index 变量
-							}"> -->
-			<header class="header_wrapper">
-				<view style="width: 32rpx;height: 32rpx;"></view>
-				<view class="acme-h6 title">{{title}}</view>
-				<view @tap.stop="cancel()">
-					<AcmeIconClose :size="32" />
+			<AcmePaper elevation="6" :sx="setSx">
+				<header class="header_wrapper">
+					<view style="width: 32rpx;height: 32rpx;"></view>
+					<view class="acme-h6 title">{{title}}</view>
+					<view @tap.stop="cancel()">
+						<AcmeIconClose :size="32" />
+					</view>
+				</header>
+				<view style="margin-top: -32rpx;"></view>
+				<AcmeDivider />
+				<view class="body_wrapper">
+					<slot></slot>
 				</view>
-			</header>
-			<view style="margin-top: -32rpx;"></view>
-			<AcmeDivider />
-			<view class="body_wrapper">
-				<slot></slot>
-			</view>
-			<AcmeDivider />
-			<view style="margin-bottom: -32rpx;"></view>
-			<footer class="footer_wrapper" v-if="showFooter">
-				<view class="acme-button-text cancel" @tap.stop="cancel()">{{cancelText}}</view>
-				<view class="line_v"></view>
-				<view class="acme-button-text confirm" @tap.stop="confirm()">{{confirmText}}</view>
-			</footer>
-			<!-- </AcmePaper> -->
+				<AcmeDivider />
+				<view style="margin-bottom: -32rpx;"></view>
+				<footer class="footer_wrapper" v-if="showFooter">
+					<view class="acme-button-text cancel" @tap.stop="cancel()">{{cancelText}}</view>
+					<view class="line_v"></view>
+					<view class="acme-button-text confirm" @tap.stop="confirm()">{{confirmText}}</view>
+				</footer>
+			</AcmePaper>
 		</view>
 	</view>
 </template>
@@ -73,6 +65,18 @@
 				}
 				// 在 bottom 模式下，宽度通常是 100%，不需要 maxWidth
 				return style;
+			},
+			setSx() {
+				return {
+					width: '100%',
+					height: '100%',
+					borderRadius: '6rpx',
+					overflow: 'hidden',
+					position: 'relative',
+					zIndex: 1,
+					backgroundImage: 'none',
+					backgroundColor: `var(--acme-bg-card)`,
+				}
 			}
 		},
 		watch: {
@@ -108,7 +112,6 @@
 		justify-content: center;
 		z-index: 99;
 		pointer-events: auto;
-		pointer-events: auto;
 
 		/* 根据 position prop 调整内容对齐方式 */
 		&.pos_center {
@@ -136,13 +139,10 @@
 	.modal_wrapper {
 		z-index: 15;
 		width: 90%;
-		border-radius: 6rpx;
 		display: flex;
 		flex-direction: column;
 		overflow: hidden;
 		box-sizing: border-box;
-		background-color: var(--acme-bg-card);
-		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 		position: relative;
 		min-height: 720rpx;
 	}
@@ -186,7 +186,6 @@
 		gap: 24rpx;
 		width: 100%;
 		height: 100rpx;
-		background-color: transparent;
 	}
 
 	.footer_wrapper>.cancel,
@@ -203,5 +202,11 @@
 	.footer_wrapper>.cancel,
 	.footer_wrapper>.line {
 		color: var(--acme-text-color-primary);
+	}
+
+	.line_v {
+		width: 1px;
+		height: 60%;
+		background-color: var(--acme-border-color);
 	}
 </style>

@@ -1,5 +1,5 @@
 <template>
-	<view class="acme-divider">
+	<view :class="[`acme-divider`,variant]">
 		<view class="divider-line" :style="leftLineStyle"></view>
 		<view v-if="$slots.default" class="divider-content">
 			<slot></slot>
@@ -13,6 +13,7 @@
 		name: "AcmeDivider",
 		props: {
 			leftLineRatio: { type: String, default: '' },
+			variant: { type: String, default: '' },
 		},
 		computed: {
 			/**
@@ -53,11 +54,11 @@
 		// 分割线和内容之间的间距，仅当有内容时生效，否则 gap 仅在左右线之间
 		gap: 0;
 		width: 100%; // 占据父容器全部宽度
-		margin: var(--acme-divider-margin-y, var(--acme-spacing-lg)) 0; // 上下外边距
+		margin: var(--acme-divider-margin-y, var(--acme-spacing-sm)) 0; // 上下外边距
 	}
 
 	.divider-line {
-		height: var(--acme-divider-line-thickness, 2rpx); // 线条粗细
+		height: var(--acme-divider-line-thickness, 1rpx); // 线条粗细
 		background-color: var(--acme-divider-line-color, var(--acme-border-color)); // 线条颜色
 		flex-shrink: 1; // 默认可收缩，防止内容过多时挤压线条
 		// flex-grow 和 width 将由计算属性动态设置，这里不再需要默认的 flex-grow: 1;

@@ -10,7 +10,7 @@
 		props: {
 			elevation: {
 				type: [Number, String],
-				default: 1, // 默认海拔
+				default: 3, // 默认海拔
 				validator: (val) => val >= 0 && val <= 24, // 确保海拔值在有效范围内
 			},
 			sx: { type: Object, default: () => ({}), },
