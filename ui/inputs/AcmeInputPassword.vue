@@ -6,7 +6,7 @@
 		<input :value="value" :password="isMask" :placeholder="placeholder" @input="onInput" placeholder-class="placeholder"
 			:disabled="disabled" autocomplete="off"></input>
 		<view class="clear" @tap="onClear">
-			<AcmeIconClose v-show="showDel" :size="24" />
+			<AcmeIconClose v-show="showDel" :size="32" />
 		</view>
 		<view class="clear" @tap="onMask()">
 			<AcmeIconMaskhide v-if="isMask" :size="40" />

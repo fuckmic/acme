@@ -66,17 +66,17 @@
 	import AcmeAppBarSub from '../ui/nav/AcmeAppBarSub.vue';
 	import AcmeDivider from '../ui/common/AcmeDivider.vue';
 
-	import AcmeInputText from '../ui/form/AcmeInputText.vue';
-	import AcmeInputPassword from '../ui/form/AcmeInputPassword.vue';
-	import AcmeInputSearch from '../ui/form/AcmeInputSearch.vue';
-	import AcmeInputFiat from '../ui/form/AcmeInputFiat.vue';
-	import AcmeInputInteger from '../ui/form/AcmeInputInteger.vue';
+	import AcmeInputText from '../ui/inputs/AcmeInputText.vue';
+	import AcmeInputPassword from '../ui/inputs/AcmeInputPassword.vue';
+	import AcmeInputSearch from '../ui/inputs/AcmeInputSearch.vue';
+	import AcmeInputFiat from '../ui/inputs/AcmeInputFiat.vue';
+	import AcmeInputInteger from '../ui/inputs/AcmeInputInteger.vue';
 	export default {
 		components: {
 			AcmeAppBarSub,
 			AcmeBottomNav,
 			AcmeDivider,
- 
+
 			AcmeInputText,
 			AcmeInputPassword,
 			AcmeInputSearch,
@@ -97,8 +97,7 @@
 				},
 			}
 		},
-		computed: {
-		},
+		computed: {},
 	}
 </script>
 

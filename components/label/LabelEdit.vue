@@ -20,7 +20,7 @@
 <script>
 	import { acmeCfg } from '../../config.js';
 	import AcmeModal from '../../ui/feedback/AcmeModal.vue';
-	import AcmeInputText from '../../ui/form/AcmeInputText.vue';
+	import AcmeInputText from '../../ui/inputs/AcmeInputText.vue';
 	export default {
 		name: "AcmeLabelEdit",
 		components: { AcmeModal, AcmeInputText },

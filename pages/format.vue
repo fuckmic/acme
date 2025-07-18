@@ -1,9 +1,9 @@
 <template>
 	<AcmePageContainer>
 		<AcmeAppBarSub :title="$nav.keys.format" />
-		<AcmeBottomNav :code="`format`"></AcmeBottomNav>
+		<AcmeBottomNav :code="$nav.keys.format"></AcmeBottomNav>
 
-		<view style="padding: 160rpx 40rpx 40rpx;">
+		<view style="padding: 160rpx 40rpx 240rpx;">
 			<view class="acme-h6">{{`AcmeFmtFiat`}}</view>
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;padding-bottom: 12rpx;">
 				<view class="acme-body1">{{`标准法币：`}}</view>
@@ -74,7 +74,6 @@
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
 				<AcmeFmtCrypto :value="cryptoValue" />
 				<AcmeFmtCrypto :value="cryptoValue" locale="de-DE" :variant="getTextColor(cryptoValue)" />
-				<AcmeFmtCrypto :value="cryptoValue" locale="de-DE" :variant="getBgColorRgba(-cryptoValue)" />
 			</view>
 
 			<AcmeDivider />
@@ -82,6 +81,10 @@
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
 				<AcmeFmtStable :value="stableValue" />
 				<AcmeFmtStable :value="stableValue" locale="de-DE" :variant="getTextColor(-stableValue)" />
+			</view>
+
+			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
+				<AcmeFmtCrypto :value="cryptoValue" locale="de-DE" :variant="getBgColorRgba(-cryptoValue)" />
 				<AcmeFmtStable :value="stableValue" locale="de-DE" :variant="getBgColorRgba(stableValue)" />
 			</view>
 		</view>

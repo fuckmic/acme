@@ -4,7 +4,7 @@
 		<input :value="value" type="text" :placeholder="placeholder" placeholder-class="placeholder" @input="onInput"
 			autocomplete="off" @focus="onFocus" @blur="onBlur"></input>
 		<view class="clear" @tap="onClear">
-			<!-- <AcmeSvg v-show="showDel" :svgString="svgData" :size="24" /> -->
+			<AcmeIconClose :size="32" />
 		</view>
 		<view v-if="$slots.suffix" class="suffix">
 			<slot name="suffix"></slot>
@@ -15,9 +15,10 @@
 <script>
 	import { acmeCfg } from '../../config.js';
 	import AcmeIconSearch from '../icons/AcmeIconSearch.vue';
+	import AcmeIconClose from '../icons/AcmeIconClose.vue';
 	export default {
 		name: "AcmeInputSearchExpand",
-		components: { AcmeIconSearch },
+		components: { AcmeIconSearch, AcmeIconClose },
 		props: {
 			value: { type: [String, Number], default: '' },
 			placeholder: { type: String, default: '' },

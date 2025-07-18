@@ -7,7 +7,7 @@
 			:selection-end="cursorPosition" placeholder-class="placeholder" @input="onInput" @focus="onFocus" @blur="onBlur"
 			:disabled="disabled" autocomplete="off" />
 		<view class="clear" @tap="onClear">
-			<!-- <AcmeSvg v-show="showDel" :svgString="svgData" :size="24" /> -->
+			<AcmeIconClose :size="32" />
 		</view>
 		<view v-if="$slots.suffix" class="suffix">
 			<slot name="suffix"></slot>
@@ -17,6 +17,7 @@
 
 <script>
 	import { acmeCfg } from '../../config.js';
+	import AcmeIconClose from '../icons/AcmeIconClose.vue';
 	import {
 		getLocaleSeparators,
 		formatterFiat,
@@ -25,7 +26,7 @@
 	} from '../../utils/formatter.js';
 	export default {
 		name: "AcmeInputFiat",
-		components: {  },
+		components: { AcmeIconClose },
 		props: {
 			value: { type: [String, Number], default: '' },
 			placeholder: { type: String, default: '' },
