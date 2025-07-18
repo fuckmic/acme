@@ -17,7 +17,7 @@
 		name: "AcmeFmtFiat",
 		props: {
 			value: { type: [String, Number], default: 0 },
-			locale: { type: String, default: () => acmeCfg.lgre },
+			lgre: { type: String, default: () => acmeCfg.lgre },
 			// 用于 'fiat' 类型，如 'USD', 'EUR'
 			currency: { type: String, default: () => acmeCfg.currency },
 			showSign: {
@@ -30,7 +30,7 @@
 		},
 		computed: {
 			formattedValue() {
-				return formatterFiat(this.value, this.locale, this.currency, { signDisplay: this.showSign });
+				return formatterFiat(this.value, this.lgre, this.currency, { signDisplay: this.showSign });
 			},
 		},
 	}

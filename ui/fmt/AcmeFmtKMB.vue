@@ -17,7 +17,7 @@
 		name: "AcmeFmtKMB",
 		props: {
 			value: { type: [String, Number], default: 0 },
-			locale: { type: String, default: () => acmeCfg.lgre },
+			lgre: { type: String, default: () => acmeCfg.lgre },
 			currency: { type: String, default: () => acmeCfg.currency },
 			maxFractionDigits: { type: Number, default: 2 }, // KMB通常保留2位小数
 			showSign: { type: String, default: 'auto' },
@@ -33,7 +33,7 @@
 		},
 		computed: {
 			formattedValue() {
-				return formatterKMB(this.value, this.locale, { signDisplay: this.showSign, compact: this.compactDisplay });
+				return formatterKMB(this.value, this.lgre, { signDisplay: this.showSign, compact: this.compactDisplay });
 			},
 			setColor() { return this.color || `var(--acme-fmt-color)` },
 			setBg() { return this.bg || `var(--acme-fmt-bg)` },

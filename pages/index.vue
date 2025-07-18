@@ -65,6 +65,7 @@
 
 			<AcmeDivider />
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
+				<AcmeLabel label="Home" />
 			</view>
 			<AcmeDivider />
 
@@ -155,6 +156,7 @@
 	import AcmeAvatar from '../ui/common/AcmeAvatar.vue';
 	import AcmeBadge from '../ui/common/AcmeBadge.vue';
 	import AcmeInputSearchExpand from '../ui/inputs/AcmeInputSearchExpand.vue';
+	import AcmeLabel from '../ui/label/AcmeLabel.vue';
 
 	import AcmeIcon from '../ui/common/AcmeIcon.vue';
 	import AcmeSvg from '../ui/common/AcmeSvg.vue';
@@ -173,6 +175,7 @@
 			AcmeAvatar,
 			AcmeBadge,
 			AcmeInputSearchExpand,
+			AcmeLabel,
 
 			AcmeIcon,
 			AcmeSvg,

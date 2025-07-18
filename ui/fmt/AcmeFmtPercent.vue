@@ -17,7 +17,7 @@
 		name: "AcmeFmtPercent",
 		props: {
 			value: { type: [String, Number], default: 0 },
-			locale: { type: String, default: () => acmeCfg.lgre },
+			lgre: { type: String, default: () => acmeCfg.lgre },
 			showSign: { type: String, default: 'exceptZero' },
 			color: { type: String, default: undefined },
 			bg: { type: String, default: undefined },
@@ -25,7 +25,7 @@
 		},
 		computed: {
 			formattedValue() {
-				return formatterPercent(this.value, this.locale);
+				return formatterPercent(this.value, this.lgre);
 			},
 			setColor() { return this.color || `var(--acme-fmt-color)` },
 			setBg() { return this.bg || `var(--acme-fmt-bg)` },
