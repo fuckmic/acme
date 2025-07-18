@@ -45,6 +45,19 @@
 			<view class="acme-h6">{{`Current Lever:`}}</view>
 			<AcmeInputInteger v-model="formData.lever" :placeholder="`Enter Lever`" />
 
+			<AcmeDivider />
+			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
+				<AcmeInputSearchExpand :placeholder="`Search...`">
+					<!-- <template #prefix>
+					<AcmeSvg :svgString="svgDataSearch" :size="24" />
+				</template> -->
+				</AcmeInputSearchExpand>
+				<AcmeInputSearchExpand :placeholder="`Search...`" variant="search-expand">
+					<!-- <template #prefix>
+					<AcmeSvg :svgString="svgDataSearch" :size="24" />
+				</template> -->
+				</AcmeInputSearchExpand>
+			</view>
 			<view style="margin-bottom: 36rpx;"></view>
 		</view>
 	</AcmePageContainer>
@@ -60,6 +73,7 @@
 	import AcmeInputSearch from '../ui/inputs/AcmeInputSearch.vue';
 	import AcmeInputFiat from '../ui/inputs/AcmeInputFiat.vue';
 	import AcmeInputInteger from '../ui/inputs/AcmeInputInteger.vue';
+	import AcmeInputSearchExpand from '../ui/inputs/AcmeInputSearchExpand.vue';
 	export default {
 		components: {
 			AcmeAppBarSub,
@@ -71,6 +85,7 @@
 			AcmeInputSearch,
 			AcmeInputFiat,
 			AcmeInputInteger,
+			AcmeInputSearchExpand,
 		},
 		data() {
 			return {

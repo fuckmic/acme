@@ -73,16 +73,6 @@
 			<AcmeCopyrightVersion appName="Acme" version="V 0.0.1" />
 			<AcmeCopyrightVersion appName="Acme" />
 			<AcmeDivider />
-			<AcmeInputSearchExpand :placeholder="`Search...`">
-				<!-- <template #prefix>
-					<AcmeSvg :svgString="svgDataSearch" :size="24" />
-				</template> -->
-			</AcmeInputSearchExpand>
-			<AcmeInputSearchExpand :placeholder="`Search...`" variant="search-expand">
-				<!-- <template #prefix>
-					<AcmeSvg :svgString="svgDataSearch" :size="24" />
-				</template> -->
-			</AcmeInputSearchExpand>
 
 			<AcmeDivider />
 
@@ -156,7 +146,7 @@
 	import AcmeBottomNav from '../ui/nav/AcmeBottomNav.vue';
 	import AcmeAvatar from '../ui/common/AcmeAvatar.vue';
 	import AcmeBadge from '../ui/common/AcmeBadge.vue';
-	import AcmeInputSearchExpand from '../ui/inputs/AcmeInputSearchExpand.vue';
+
 
 	import AcmeIcon from '../ui/common/AcmeIcon.vue';
 	import AcmeSvg from '../ui/common/AcmeSvg.vue';
@@ -174,7 +164,7 @@
 			AcmeBottomNav,
 			AcmeAvatar,
 			AcmeBadge,
-			AcmeInputSearchExpand,
+
 
 			AcmeIcon,
 			AcmeSvg,

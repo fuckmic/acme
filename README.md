@@ -81,40 +81,31 @@
  -->
  
 ### inputs/ 各类Input组件
-
-
-
+- ✅ AcmeInputText.vue 普通文本
+- ✅ AcmeInputPassword.vue 密码，带掩码
+- ✅ AcmeInputSearch.vue 搜索
+- ✅ AcmeInputFiat.vue 法币。带币符号，小数两位或0位。
+- ✅ AcmeInputInteger.vue 正整值、数量值。
+- ✅ AcmeInputSearchExpand.vue 聚焦可伸缩
+<!-- 
+ -  InputFloat.vue 支持输入整数和小数
+ -  InputCryptoAmount.vue 仅输入加密币数量，按照lgre格式化。如 'BTC', 'ETH'，高精度小数位。
+ -  InputCryptoValue.vue 仅输入稳定币值，按照lgre格式化。如 'USDT', 'USDC',通常2-4位小数。
+ // 'email', 'phone', 'code' 
+ -->
 
 ### form/ 表单组件
 - ✅ AcmeCheckbox.vue 复选框
 - AcmeSwith.vue 开关
 - ✅ AcmeUpload.vue 上传图片，自带预览
 - AcmeUploadMini.vue 迷你上传，不带预览
-- ✅ AcmeInputText.vue 普通文本
-- ✅ AcmeInputPassword.vue 密码，带掩码
-- ✅ AcmeInputSearch.vue 搜索
-- ✅ AcmeInputFiat.vue 法币。带币符号，小数两位或0位。
-- ✅ AcmeInputInteger.vue 正整值、数量值。
 - ✅ AcmePresetSelector.vue 预置值 法币、杠杆、加密币、稳定币。自由列数
 - AcmeDropdownLgre.vue 下拉选择器 语言 。精简的、带搜索的、
 - AcmeSlider.vue  滑动条 :value值，抛出值。
-- ✅ AcmeInputSearchExpand.vue 聚焦可伸缩
 
 <!-- 
- -  InputFloat.vue 支持输入整数和小数
- -  InputCryptoAmount.vue 仅输入加密币数量，按照lgre格式化。如 'BTC', 'ETH'，高精度小数位。
- -  InputCryptoValue.vue 仅输入稳定币值，按照lgre格式化。如 'USDT', 'USDC',通常2-4位小数。
- - 
- displayValue 和 rawValue 的分离：
- displayValue 绑定到 input 的 :value，用户看到并直接操作。
- rawValue 是用于计算的实际数字，通过 v-model 传递给父组件。
-
- // 'email', 'phone', 'code'
-
- UIRadio.vue     单选框
- UISelect.vue    选择器
-
- 
+ AcmeRadio.vue     单选框
+ AcmeSelect.vue    选择器
  -->
 
 ### chart/ 图表
