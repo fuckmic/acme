@@ -3,6 +3,7 @@
 
 - 说明：✅ 已完成、❎ 未完成、❓ 待确认、🟰 等等做、➕ 新增功能、➖ 非使用功能、✖ 移除功能
 
+
 ## TODO
 - 加入代码段。
 - 按照UI下的大文件夹分导航和子页面。
@@ -228,3 +229,311 @@ git submodule update --init --recursive
 # --init: 初始化子模块，将其注册到 .git/config 中
 # --recursive: 如果子模块内部还有子模块，也一并初始化和更新
  -->
+ 
+ 
+ ## 国际化 语言 前端所见即所得 下放指定权限人员可编辑，前后端双重防注入。
+### 前端部分
+ - 考虑请求失败等情况，回退使用前端默认语言。
+ - 在App.vue的onLaunch生命周期里获取一次，全局挂载使用。	
+ - 在切换语言的地方同样执行一次请求。
+ - 前端封装两个子组件AcmeLabelEvent.vue(热键唤起对话框，Alt + 鼠标右键)、AcmeLabelStatic.vue(静默显示)。
+ - 前端封装组件AcmeLabel.vue，引入以上两个组件，根据项目进度，调整当前使用的label组件。
+- AcmeLabelEvent.vue(热键唤起对话框，Alt + 鼠标右键)，注意需鉴权，防止注入攻击或不合法的内容。
+- AcmeLabelStatic.vue(静默显示) 正式上线/稳定运行阶段 (无事件绑定)
+- 迷你对话框 (编辑界面) 内容：
+- - 不可修改信息： 当前语言代码 (e.g., zh-CN)、当前语言名称 (e.g., 简体中文)、当前明文字段 Key (e.g., home.title)、desc(通常是中文释义)。这些信息帮助用户了解他们正在修改的是哪个文案。
+- - 可修改内容： 允许用户输入新的翻译文本的输入框。
+- 提交与更新： 提交动作： 用户修改后点击“提交”按钮。
+- 前端刷新： 提交成功后，前端重新请求当前页面的国际化文案数据，或者局部更新当前显示在页面上的文案，从而实现“所见即所得”的立即生效效果。
+
+### 后端部分
+ - 后端建表:id(唯一键)、page_key(作用域，通常是页面)、lgre(语言代码)、label_key(明文的对应key)、value(明文)、desc(备注)。即，每个明文的每种语言一条数据
+ - 使用/api/translations 以及请求头中的"language": "en-US"来拉取全部指定语言的json，直接为前端可用个格式
+- api/translations?id=1&value=NewValue。来提交label明文更改。后端需加入鉴权与防注入检查。
+- 版本控制/操作日志： 对于关键的文案，可以考虑在后端实现简单的版本控制或操作日志，记录每次修改的内容、修改人和时间。这在出现问题时便于追溯和回滚。
+ 
+ ```json 
+ {
+   "home": {
+     "welcome_message": "Welcome to our App",
+     "button_save": "Save"
+   },
+   "user_profile": {
+     "title": "User Profile",
+     "edit_info": "Edit Information"
+   }
+ }
+ ```
+
+- 
+ 
+
+ <!-- 
+  
+  WebSocket服务 (Workerman大显身手):
+  
+  启动一个WebSocket服务。
+  
+  当客户在后台保存了任何一条翻译的修改时，PHP后端立即通过WebSocket通道，向所有连接的客户端推送一条消息。
+  
+  推送的消息应该小而精，只包含变更的部分，例如：
+  
+  JSON
+  
+  {
+    "event": "translation_updated",
+    "data": {
+      "key": "home.welcome_message", // 完整的key
+      "lang": "en-US",
+      "newValue": "Welcome, esteemed user!"
+    }
+  }
+  
+  实时更新:
+  
+  App启动后，就建立到后端Workerman的WebSocket连接。  
+  监听 translation_updated 事件。  
+  当收到消息时，检查消息中的 lang 是否与当前用户设置的语言匹配。
+
+  第一步：数据库设计与数据准备 (SQL)
+  首先，在您的数据库中创建一张表来存储多语言文本。
+  
+  SQL
+  
+  -- 创建多语言翻译表
+  CREATE TABLE `translations` (
+    `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+    `string_key` VARCHAR(255) NOT NULL COMMENT '语言键，格式如: home.title, button.save',
+    `lang_code` VARCHAR(10) NOT NULL COMMENT '语言代码, 如: en-US, zh-CN, de-DE',
+    `value` TEXT COMMENT '翻译内容',
+    `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `idx_key_lang` (`string_key`, `lang_code`) -- 确保每个语言的每个键都是唯一的
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='多语言翻译表';
+  
+  -- 插入一些示例数据
+  INSERT INTO `translations` (`string_key`, `lang_code`, `value`) VALUES
+  ('home.title', 'en-US', 'Home'),
+  ('home.title', 'zh-CN', '首页'),
+  ('home.title', 'de-DE', 'Startseite'),
+  ('home.welcome', 'en-US', 'Welcome to our application!'),
+  ('home.welcome', 'zh-CN', '欢迎使用我们的应用！'),
+  ('home.welcome', 'de-DE', 'Willkommen zu unserer Anwendung!'),
+  ('button.save', 'en-US', 'Save'),
+  ('button.save', 'zh-CN', '保存'),
+  ('button.save', 'de-DE', 'Speichern');
+  第二步：后端实现 (PHP + Workerman)
+  假设您的项目结构如下：
+  
+  /your_project
+    /api
+      - translations.php  // 全量语言包API
+    /admin
+      - update_translation.php // 管理后台更新语言的接口
+    /websocket
+      - server.php        // WebSocket & 内部通讯服务
+    /vendor             // Composer依赖
+    - composer.json
+  1. 安装Workerman
+  如果还没安装，请在项目根目录执行：
+  composer require workerman/workerman
+  
+  2. API 接口 - api/translations.php
+  
+  这个文件负责根据请求头中的语言，返回完整的语言包JSON。
+  
+  PHP
+  
+  <?php
+  // api/translations.php
+  
+  // 伪代码：数据库连接
+  // 实际项目中请使用更健壮的数据库连接方式，例如封装好的类
+  $pdo = new PDO('mysql:host=localhost;dbname=your_db_name;charset=utf8mb4', 'your_user', 'your_password');
+  
+  // 从请求头获取语言，这是您提到的现有逻辑
+  $lang = $_SERVER['HTTP_LANGUAGE'] ?? 'en-US'; // 如果没传，给个默认值
+  
+  try {
+      // 查询指定语言的所有键值对
+      $stmt = $pdo->prepare("SELECT string_key, value FROM translations WHERE lang_code = ?");
+      $stmt->execute([$lang]);
+      $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  
+      $translations = [];
+      foreach ($results as $row) {
+          // 将 'home.title' 这样的字符串转换为嵌套数组
+          $keys = explode('.', $row['string_key']);
+          $temp = &$translations;
+          foreach ($keys as $key) {
+              if (!isset($temp[$key])) {
+                  $temp[$key] = [];
+              }
+              $temp = &$temp[$key];
+          }
+          $temp = $row['value'];
+      }
+  
+      // 设置响应头并输出JSON
+      header('Content-Type: application/json');
+      echo json_encode(['code' => 200, 'data' => $translations, 'message' => 'success']);
+  
+  } catch (PDOException $e) {
+      header('Content-Type: application/json');
+      http_response_code(500);
+      echo json_encode(['code' => 500, 'message' => 'Database error: ' . $e->getMessage()]);
+  }
+  3. WebSocket 服务 - websocket/server.php
+  
+  这是核心！我们在这里同时启动一个对外的WebSocket服务和一个对内的TCP服务（用于接收来自后台的更新指令）。
+  
+  PHP
+  
+  <?php
+  // websocket/server.php
+  require_once __DIR__ . '/../vendor/autoload.php';
+  
+  use Workerman\Worker;
+  use Workerman\Connection\TcpConnection;
+  
+  // 全局变量，用于存储所有客户端连接
+  global $ws_connections;
+  $ws_connections = [];
+  
+  // === 对外的WebSocket服务，给uni-app客户端连接 ===
+  $ws_worker = new Worker('websocket://0.0.0.0:2346');
+  $ws_worker->count = 4; // 可以根据服务器性能调整进程数
+  
+  $ws_worker->onConnect = function (TcpConnection $connection) {
+      global $ws_connections;
+      echo "New connection from " . $connection->getRemoteIp() . "\n";
+      // 可以在这里做鉴权，如果鉴权失败，直接 $connection->close();
+      $ws_connections[$connection->id] = $connection;
+  };
+  
+  $ws_worker->onMessage = function (TcpConnection $connection, $data) {
+      // 客户端发来的心跳包等
+      if ($data === 'ping') {
+          $connection->send('pong');
+      }
+  };
+  
+  $ws_worker->onClose = function (TcpConnection $connection) {
+      global $ws_connections;
+      if (isset($ws_connections[$connection->id])) {
+          unset($ws_connections[$connection->id]);
+      }
+      echo "Connection closed from " . $connection->getRemoteIp() . "\n";
+  };
+  
+  
+  // === 对内的TCP文本服务，给PHP后台（管理后台）调用 ===
+  // 这个端口不对外网开放，仅用于内部进程间通信
+  $internal_worker = new Worker('text://127.0.0.1:5678');
+  
+  $internal_worker->onMessage = function (TcpConnection $connection, $data) {
+      global $ws_connections;
+      
+      // $data 应该是后台发来的JSON字符串
+      // {"event":"translation_updated","payload":{"key":"home.title","lang":"zh-CN","newValue":"首页-修改版"}}
+      echo "Received internal message: " . $data . "\n";
+      
+      // 向所有在线的WebSocket客户端广播这个消息
+      foreach ($ws_connections as $ws_connection) {
+          $ws_connection->send($data);
+      }
+      
+      // 告诉后台，消息已收到
+      $connection->send('ok');
+  };
+  
+  // 运行所有服务
+  Worker::runAll();
+  4. 管理后台更新逻辑 - admin/update_translation.php
+  
+  这个文件模拟了您在管理后台点击“保存”按钮后触发的PHP脚本。
+  
+  PHP
+  
+  <?php
+  // admin/update_translation.php
+  
+  // 假设从前端POST请求接收到这些数据
+  $string_key = $_POST['string_key'] ?? null; // e.g., 'home.title'
+  $lang_code = $_POST['lang_code'] ?? null;   // e.g., 'zh-CN'
+  $value = $_POST['value'] ?? null;           // e.g., '首页-后台修改版'
+  
+  if (!$string_key || !$lang_code || $value === null) {
+      die(json_encode(['code' => 400, 'message' => 'Missing parameters.']));
+  }
+  
+  // 1. 更新数据库
+  try {
+      $pdo = new PDO('mysql:host=localhost;dbname=your_db_name;charset=utf8mb4', 'your_user', 'your_password');
+      
+      // 使用 ON DUPLICATE KEY UPDATE 可以同时处理插入和更新，更方便
+      $stmt = $pdo->prepare(
+          "INSERT INTO translations (string_key, lang_code, value) VALUES (?, ?, ?)
+           ON DUPLICATE KEY UPDATE value = ?"
+      );
+      $stmt->execute([$string_key, $lang_code, $value, $value]);
+  
+  } catch (PDOException $e) {
+      die(json_encode(['code' => 500, 'message' => 'Database update failed: ' . $e->getMessage()]));
+  }
+  
+  // 2. 通知WebSocket服务进行广播
+  // 使用stream_socket_client连接到内部TCP端口
+  $client = stream_socket_client('tcp://127.0.0.1:5678', $errno, $errmsg, 1);
+  if (!$client) {
+      die(json_encode(['code' => 500, 'message' => "Cannot connect to internal broadcast service: $errmsg"]));
+  }
+  
+  // 准备要广播的数据
+  $broadcast_data = [
+      'event' => 'translation_updated',
+      'payload' => [
+          'key' => $string_key,
+          'lang' => $lang_code,
+          'newValue' => $value,
+      ]
+  ];
+  
+  // 发送JSON数据（末尾加换行符，因为我们用的是text协议）
+  fwrite($client, json_encode($broadcast_data) . "\n");
+  
+  // （可选）等待服务器响应 'ok'
+  // echo fread($client, 1024);
+  
+  fclose($client);
+  
+  echo json_encode(['code' => 200, 'message' => 'Update successful and broadcasted.']);
+  
+  第四步：运行与测试
+  启动后端服务: 在您的服务器上，进入项目根目录，执行：
+  php websocket/server.php start -d  (-d 表示以daemon模式后台运行)
+  
+  部署API和Admin: 确保您的Web服务器（如Nginx/Apache）能正确解析 api/ 和 admin/ 目录下的PHP文件。
+  
+  运行前端: 运行您的uni-app项目到H5、小程序或App。
+  
+  测试流程:
+  
+  打开App，您应该能看到默认语言（如英语）的 "Home" 和 "Welcome..."。
+  
+  通过工具（如Postman）或一个简单的HTML表单，向 http://your-domain.com/admin/update_translation.php 发送一个POST请求。
+  
+  string_key: home.title
+  
+  lang_code: en-US
+  
+  value: My New Home Title
+  
+  提交后，观察您的App界面，"Home" 文本应该会立即、自动变为 "My New Home Title"，并且控制台会打印出更新日志。
+  
+  点击App中的切换语言按钮，会重新拉取对应语言包，界面也会随之更新。
+  
+  这个示例为您搭建了完整的骨架，您可以基于此进行扩展，例如为WebSocket连接增加Token鉴权，完善管理后台的UI等。
+  -->
+ 
