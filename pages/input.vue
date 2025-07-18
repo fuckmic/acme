@@ -3,13 +3,8 @@
 		<AcmeAppBarSub :title="$nav.keys.input" />
 		<AcmeBottomNav :code="`input`"></AcmeBottomNav>
 
-		<view style="padding: 40rpx;padding-top: 160rpx;">
-			<AcmeDivider leftLineRatio="40rpx">
-				<view class="acme-h6">{{`Form Input`}}</view>
-			</AcmeDivider>
-
-
-
+		<view style="padding:160rpx 40rpx;">
+			<view class="acme-h6">{{`Form Input`}}</view>
 			<AcmeInputText v-model="formData.account" :placeholder="`Enter account`">
 				<!-- <template #prefix>
 				<AcmeSvg :svgString="svgDataSearch" :size="48" />
@@ -44,18 +39,12 @@
 			<view style="margin-bottom: 36rpx;"></view>
 			<AcmeInputInteger v-model="formData.quantity" :placeholder="`Enter quantity`" />
 			<view style="margin-bottom: 36rpx;"></view>
-			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
-				<view style="color:var(--acme-primary-color);">{{`Current curFiat:`}}</view>
-				<AcmeInputFiat v-model="formData.curFiat" :placeholder="`Enter curFiat`" />
-			</view>
-			<view style="margin: 16rpx 0; border: 1rpx dashed var(--acme-fmt-color);"></view>
+			<view class="acme-h6">{{`Current curFiat:`}}</view>
+			<AcmeInputFiat v-model="formData.curFiat" :placeholder="`Enter curFiat`" />
 
-			<view style="margin-bottom: 36rpx;"></view>
+			<view class="acme-h6">{{`Current Lever:`}}</view>
+			<AcmeInputInteger v-model="formData.lever" :placeholder="`Enter Lever`" />
 
-			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
-				<view style="color:var(--acme-primary-color);">{{`Current Lever:`}}</view>
-				<AcmeInputInteger v-model="formData.lever" :placeholder="`Enter Lever`" />
-			</view>
 			<view style="margin-bottom: 36rpx;"></view>
 		</view>
 	</AcmePageContainer>

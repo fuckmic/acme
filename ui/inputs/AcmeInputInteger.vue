@@ -7,7 +7,7 @@
 			:selection-end="cursorPosition" placeholder-class="placeholder" @input="onInput" @focus="onFocus" @blur="onBlur"
 			:disabled="disabled" autocomplete="off" />
 		<view class="clear" @tap="onClear">
-			<AcmeIconClose :size="32" />
+			<AcmeIconClose v-show="showDel" :size="32" />
 		</view>
 		<view v-if="$slots.suffix" class="suffix">
 			<slot name="suffix"></slot>

@@ -16,7 +16,8 @@
 			<AcmeDivider />
 			<view class="acme-h6">{{`PresetSelector column`}}</view>
 			<AcmePresetSelector v-model="formData.lever" :list="optLevers" @select="onSelectedLever" :column="8" />
-
+			<view class="acme-h6">{{`Current Lever:`}}</view>
+			<AcmeInputInteger v-model="formData.lever" :placeholder="`Enter Lever`" />
 		</view>
 
 	</AcmePageContainer>
@@ -26,7 +27,7 @@
 	import AcmeAppBarSub from '../ui/nav/AcmeAppBarSub.vue';
 	import AcmeBottomNav from '../ui/nav/AcmeBottomNav.vue';
 	import AcmeDivider from '../ui/common/AcmeDivider.vue';
-
+	import AcmeInputInteger from '../ui/inputs/AcmeInputInteger.vue';
 	import { acmeCfg } from '../config.js';
 	import AcmePresetSelector from '../ui/form/AcmePresetSelector.vue';
 	import { formatterFiat, formatterInteger } from '../utils/formatter';
@@ -36,6 +37,7 @@
 			AcmeAppBarSub,
 			AcmePresetSelector,
 			AcmeDivider,
+			AcmeInputInteger,
 		},
 		data() {
 			return {
