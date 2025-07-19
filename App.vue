@@ -12,6 +12,15 @@
 			this.$appCfg.height = systemInfo.windowHeight;
 
 			console.log('App Launch', systemInfo);
+			// 根据缓存的语言设置 intl 的当前 locale，填充 msg
+			this.$intl.setLocale(this.$appCfg.lgre);
+			this.$appCfg.bottomNavCfg = {
+				[this.$nav.keys.home]: this.$intl.msg.nav.home,
+				[this.$nav.keys.kline]: this.$intl.msg.nav.kline,
+				[this.$nav.keys.chart]: this.$intl.msg.nav.chart,
+				[this.$nav.keys.inputs]: this.$intl.msg.nav.inputs,
+				[this.$nav.keys.doc]: this.$intl.msg.nav.doc,
+			};
 		},
 		onShow: function(opt) {
 			console.log('App Show', opt)

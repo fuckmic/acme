@@ -16,6 +16,7 @@
 	import AcmeLabelStatic from '../../ui/label/AcmeLabelStatic.vue';
 	import AcmeLabelEvent from '../../ui/label/AcmeLabelEvent.vue';
 	import LabelEdit from '../label/LabelEdit.vue';
+	import { getNestedValue } from '../../utils/object.js';
 	export default {
 		name: "DisplayLabel",
 		// 阻止组件将未声明的属性自动添加到根元素上 使得 `$attrs` 能够“干净地”传递给子组件。
@@ -41,11 +42,16 @@
 			},
 			// 计算属性：根据 transKey 获取最终的翻译文本
 			translatedLabel() {
-				// 假设 $intl 已经挂载到 Vue.prototype，并且能够正确查找翻译
-				if (!this.$intl || !this.$intl.msg || !this.$intl.msg[this.transKey]) return this.fallbackText;
-				return this.$intl.msg[this.transKey];
+				if (!this.$intl || !this.$intl.msg) return this.fallbackText;
+				// 使用工具函数来获取嵌套值
+				const translation = getNestedValue(this.$intl.msg, this.transKey);
+				if (translation === undefined) return this.fallbackText;
+				return translation;
 			}
-		}
+		},
+		created() {
+			console.log(`transKey:`, this.transKey, getNestedValue(this.$intl.msg, this.transKey));
+		},
 	}
 </script>
 

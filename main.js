@@ -2,7 +2,7 @@ import Vue from 'vue';
 import App from './App';
 import AcmePageContainer from '@/ui/common/AcmePageContainer.vue';
 import DisplayLabel from '@/components/label/DisplayLabel.vue';
-import * as navigation from './utils/navigation.js';
+import * as nav from './utils/navigation.js';
 import * as intl from './intl/index.js';
 import { setGlobalThemeColorsMap } from '@/utils/theme.js';
 import { acmeSetEditable } from './config.js';
@@ -40,6 +40,7 @@ setGlobalThemeColorsMap(myProjectSvgColors);
 // 是否启用label可编辑
 acmeSetEditable(true);
 
+
 Vue.prototype.$appCfg = {
 	appName: null, // 应用名称
 	version: null, // 应用版本号
@@ -48,27 +49,22 @@ Vue.prototype.$appCfg = {
 	theme: null, // 当前主题方案
 	layout: null, // 当前布局方案
 	defLgre: "en-US", // 默认语言代码
-
 	// 竖版底导航配置
-	bottomNavCfg: {
-		'index': `Home`,
-		'kline': `Kline`,
-		'chart': `Chart`,
-		'input': `Input`,
-		'doc': `Readme`,
-	}
+	bottomNavCfg: null,
 }
 
-Vue.prototype.$nav = navigation;
-Vue.prototype.$intl = intl;
 
-console.log(Vue);
+Vue.prototype.$nav = nav;
+Vue.prototype.$intl = intl;
+console.log(`intl:`, intl);
+console.log(`intl:`, intl.msg);
+
+// console.log(Vue);
 
 // // --- 1. 初始化资源根路径 ---
-// wtfSetAssetsRootPath('/static'); // 为UI库设置资源路径
-// wtfSetLgre('de-DE'); // 为UI库设置语言代码
-// wtfSetCurrency('EUR'); // 为UI库设置货币代码
-// wtfSetTheme('light'); // 为UI库设置主题
+// setLgre('de-DE'); // 为UI库设置语言代码
+// setCurrency('EUR'); // 为UI库设置货币代码
+// setTheme('light'); // 为UI库设置主题
 
 // --- 方便所有组件访问 ---
 // Vue.prototype.$wtfCfg = wtfConfig;

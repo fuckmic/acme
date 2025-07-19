@@ -4,6 +4,8 @@ import { EN_US } from '../utils/locales.js';
 // 只引入客户指定所需语言.js文件
 import { enUS } from './en-US/index.js';
 
+console.log(`enUS:`, enUS);
+
 // 构建语言包对象。注意：此处只罗列客户指定所需语言，注意key与lgreCnf的key保持一致
 export const messages = {
 	'en-US': enUS,
@@ -46,17 +48,17 @@ export const langOpts = () => {
 
 
 export let msg = Object.create(null);
-// export const setLocale = (locale) => {
-// 	console.log(`setLocale called with locale:`, locale);
-// 	const defLgre = Vue.prototype.$appCfg.defLgre;
-// 	if (!locale) locale = defLgre;
+export const setLocale = (locale) => {
+	console.log(`setLocale called with locale:`, locale);
+	const defLgre = Vue.prototype.$appCfg.defLgre;
+	if (!locale) locale = defLgre;
 
-// 	const selectedMessages = messages[locale];
-// 	if (selectedMessages) msg = selectedMessages; // 更新 msg 变量
-// 	// 如果请求的语言翻译不存在，回退到默认语言的翻译
-// 	else msg = messages[defLgre] || {};
-// 	console.log(msg)
-// }
+	const selectedMessages = messages[locale];
+	if (selectedMessages) msg = selectedMessages; // 更新 msg 变量
+	// 如果请求的语言翻译不存在，回退到默认语言的翻译
+	else msg = messages[defLgre] || {};
+	console.log(msg)
+}
 
 // export const getTimeZone = (val) => { return lgreCnf[val].tz }
 // export const getCurrency = (val) => { return lgreCnf[val].currency }

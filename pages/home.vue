@@ -11,7 +11,7 @@
 			</view>
 		</AcmeAppBar>
 
-		<BottomNav :code="$nav.keys.index" />
+		<BottomNav :code="$nav.keys.home" />
 
 		<view style="padding: 40rpx;padding-top: 160rpx;">
 			<AcmeTabsFixed v-model="curTab" :tabs="tabs" @change="onTab" />
@@ -159,6 +159,8 @@
 	import AcmeIconDark from '../ui/icons/AcmeIconDark.vue';
 	import AcmeIconLight from '../ui/icons/AcmeIconLight.vue';
 
+	import DisplayLabel from '../components/label/DisplayLabel.vue';
+
 
 	import AcmeIcon from '../ui/common/AcmeIcon.vue';
 	import AcmeSvg from '../ui/common/AcmeSvg.vue';
@@ -176,6 +178,7 @@
 			AcmePaper,
 			AcmeAppBar,
 			BottomNav,
+			DisplayLabel,
 
 			AcmeAvatar,
 			AcmeBadge,
@@ -217,7 +220,7 @@
 				return [
 					this.$nav.keys.format,
 					this.$nav.keys.presetSelector,
-					this.$nav.keys.input,
+					this.$nav.keys.inputs,
 					this.$nav.keys.icons
 				]
 			},

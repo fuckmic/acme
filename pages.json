@@ -5,9 +5,9 @@
 		"rpxCalcIncludeWidth": 750
 	},
 	"pages": [{
-		"path": "pages/index",
+		"path": "pages/home",
 		"style": { "enablePullDownRefresh": true, "navigationStyle": "custom" },
-		"meta": { "name": "index", "auth": false, "mode": "reLaunch" }
+		"meta": { "name": "home", "auth": false, "mode": "reLaunch" }
 	}, {
 		"path": "pages/kline",
 		"style": { "enablePullDownRefresh": true, "navigationStyle": "custom" },
@@ -33,9 +33,9 @@
 		"style": { "enablePullDownRefresh": true, "navigationStyle": "custom" },
 		"meta": { "name": "elevation", "auth": false, "mode": "" }
 	}, {
-		"path": "pages/input",
+		"path": "pages/inputs",
 		"style": { "enablePullDownRefresh": true, "navigationStyle": "custom" },
-		"meta": { "name": "input", "auth": false, "mode": "" }
+		"meta": { "name": "inputs", "auth": false, "mode": "" }
 	}, {
 		"path": "pages/presetSelector",
 		"style": { "enablePullDownRefresh": true, "navigationStyle": "custom" },

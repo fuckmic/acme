@@ -3,20 +3,22 @@
 		<AcmeModal :show="true" :title="`修改翻译`" @cancel="onCancel" @confirm="onConfirm" :cancelText="`cancel`"
 			:confirmText="`confirm`">
 			<view style="display: flex;align-items: center;gap:24rpx;">
-				<view class="acme-body1">当前语言代码:</view>
-				<view class="acme-body1" style="color: var(--acme-primary-color);">{{ currentLgre }}</view>
+				<view class="acme-subtitle1">当前语言代码:</view>
+				<view class="acme-subtitle2" style="color: var(--acme-primary-color);text-transform: none;">{{ currentLgre }}
+				</view>
 				<!-- 如果是新增 其他语言，此处语言代码需要可选 -->
 			</view>
 			<view style="display: flex;align-items: center;gap:24rpx;padding: 24rpx 0;">
-				<view class="acme-body1">当前语言:</view>
-				<view class="acme-body1" style="color: var(--acme-primary-color);">{{ curLang }}</view>
+				<view class="acme-subtitle1">当前语言:</view>
+				<view class="acme-subtitle2" style="color: var(--acme-primary-color);">{{ curLang }}</view>
 			</view>
 
 			<view style="display: flex;align-items: center;gap:24rpx;padding: 24rpx 0;">
-				<view class="acme-body1">当前字段Key:</view>
-				<view class="acme-body1" style="color: var(--acme-primary-color);">{{ transKey }}</view>
+				<view class="acme-subtitle1">当前字段Key:</view>
+				<view class="acme-subtitle2" style="color: var(--acme-primary-color);text-transform: none; ">{{ transKey }}
+				</view>
 			</view>
-			<view class="acme-body1" style="padding-bottom: 24rpx;">明文内容:</view>
+			<view class="acme-subtitle1" style="padding-bottom: 24rpx;">明文内容:</view>
 			<AcmeInputText v-model="formData.editedLabel" :placeholder="`Enter Text`" />
 		</AcmeModal>
 	</view>

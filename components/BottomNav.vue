@@ -1,22 +1,22 @@
 <template>
 	<AcmeBottomNav>
-		<!-- <view class="bottom-nav"> -->
 		<block v-for="(v,k) in internalTabs" :key="k">
 			<view class="bottom-item" :class="{ 'is-active': curActive === k }" @tap="$nav.comLink(k)">
 				<AcmeIcon :icon="`${k}${curActive === k?`_act`:``}`" path="/static/" :size="48" format="png" />
-				<text class="acme-button-text">{{ v }}</text>
+				<!-- {{`nav.${k}`}} -->
+				<DisplayLabel :transKey="`nav.${k}`" variant="acme-button-text" :fallbackText="k" />
 			</view>
 		</block>
-		<!-- </view> -->
 	</AcmeBottomNav>
 </template>
 
 <script>
 	import AcmeBottomNav from '../ui/nav/AcmeBottomNav.vue';
 	import AcmeIcon from '../ui/common/AcmeIcon.vue';
+	import DisplayLabel from '../components/label/DisplayLabel.vue';
 	export default {
 		name: "BottomNav",
-		components: { AcmeBottomNav, AcmeIcon },
+		components: { AcmeBottomNav, AcmeIcon, DisplayLabel },
 		props: {
 			code: { type: String, default: null },
 			tabs: { type: Object, default: null },
