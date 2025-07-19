@@ -4,7 +4,8 @@
 			:confirmText="`confirm`">
 			<view style="display: flex;align-items: center;gap:24rpx;">
 				<view class="acme-subtitle1">当前语言代码:</view>
-				<view class="acme-subtitle2" style="color: var(--acme-primary-color);text-transform: none;">{{ currentLgre }}
+				<view class="acme-subtitle2" style="color: var(--acme-primary-color);text-transform: none;">
+					{{ currentLgre }}
 				</view>
 				<!-- 如果是新增 其他语言，此处语言代码需要可选 -->
 			</view>
@@ -15,7 +16,8 @@
 
 			<view style="display: flex;align-items: center;gap:24rpx;padding: 24rpx 0;">
 				<view class="acme-subtitle1">当前字段Key:</view>
-				<view class="acme-subtitle2" style="color: var(--acme-primary-color);text-transform: none; ">{{ transKey }}
+				<view class="acme-subtitle2" style="color: var(--acme-primary-color);text-transform: none; ">
+					{{ transKey }}
 				</view>
 			</view>
 			<view class="acme-subtitle1" style="padding-bottom: 24rpx;">明文内容:</view>

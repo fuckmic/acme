@@ -1,3 +1,4 @@
+// object  path
 export function getNestedValue(obj, path) {
 	if (!obj || !path) return undefined;
 	const parts = path.split('.');

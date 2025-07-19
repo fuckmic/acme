@@ -4,7 +4,7 @@ import { EN_US } from '../utils/locales.js';
 // 只引入客户指定所需语言.js文件
 import { enUS } from './en-US/index.js';
 
-console.log(`enUS:`, enUS);
+// console.log(`enUS:`, enUS);
 
 // 构建语言包对象。注意：此处只罗列客户指定所需语言，注意key与lgreCnf的key保持一致
 export const messages = {
