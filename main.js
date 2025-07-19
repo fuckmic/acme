@@ -48,10 +48,21 @@ Vue.prototype.$appCfg = {
 	theme: null, // 当前主题方案
 	layout: null, // 当前布局方案
 	defLgre: "en-US", // 默认语言代码
+
+	// 竖版底导航配置
+	bottomNavCfg: {
+		'index': `Home`,
+		'kline': `Kline`,
+		'chart': `Chart`,
+		'input': `Input`,
+		'doc': `Readme`,
+	}
 }
 
 Vue.prototype.$nav = navigation;
 Vue.prototype.$intl = intl;
+
+console.log(Vue);
 
 // // --- 1. 初始化资源根路径 ---
 // wtfSetAssetsRootPath('/static'); // 为UI库设置资源路径

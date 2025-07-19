@@ -11,7 +11,7 @@
 			</view>
 		</AcmeAppBar>
 
-		<AcmeBottomNav :code="`index`"></AcmeBottomNav>
+		<BottomNav :code="$nav.keys.index" />
 
 		<view style="padding: 40rpx;padding-top: 160rpx;">
 			<AcmeTabsFixed v-model="curTab" :tabs="tabs" @change="onTab" />
@@ -153,7 +153,6 @@
 	import { acmeSetTheme } from '../config.js';
 	import AcmePaper from '../ui/common/AcmePaper.vue';
 	import AcmeAppBar from '../ui/nav/AcmeAppBar.vue';
-	import AcmeBottomNav from '../ui/nav/AcmeBottomNav.vue';
 	import AcmeAvatar from '../ui/common/AcmeAvatar.vue';
 	import AcmeBadge from '../ui/common/AcmeBadge.vue';
 
@@ -170,11 +169,14 @@
 	import AcmeTabsFixed from '../ui/nav/AcmeTabsFixed.vue';
 	import AcmeDivider from '../ui/common/AcmeDivider.vue';
 
+	import BottomNav from '../components/BottomNav.vue';
+
 	export default {
 		components: {
 			AcmePaper,
 			AcmeAppBar,
-			AcmeBottomNav,
+			BottomNav,
+
 			AcmeAvatar,
 			AcmeBadge,
 			AcmeIconDark,

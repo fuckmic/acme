@@ -6,8 +6,7 @@
 				<view class="acme-h5">{{$nav.keys.input}}</view>
 			</view>
 		</AcmeAppBar>
-
-		<AcmeBottomNav :code="$nav.keys.input"></AcmeBottomNav>
+		<BottomNav :code="$nav.keys.input" />
 
 		<view style="padding:160rpx 40rpx;">
 			<view class="acme-h6">{{`Form Input`}}</view>
@@ -70,7 +69,7 @@
 </template>
 
 <script>
-	import AcmeBottomNav from '../ui/nav/AcmeBottomNav.vue';
+	import BottomNav from '../components/BottomNav.vue';
 	import AcmeAppBar from '../ui/nav/AcmeAppBar.vue';
 	import AcmeDivider from '../ui/common/AcmeDivider.vue';
 	import AcmeIconBack from '../ui/icons/AcmeIconBack.vue';
@@ -84,7 +83,7 @@
 	export default {
 		components: {
 			AcmeAppBar,
-			AcmeBottomNav,
+			BottomNav,
 			AcmeDivider,
 			AcmeIconBack,
 

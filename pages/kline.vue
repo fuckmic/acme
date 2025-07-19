@@ -1,15 +1,15 @@
 <template>
 	<AcmePageContainer>
 		<AcmeAppBar />
-		<AcmeBottomNav :code="`kline`"></AcmeBottomNav>
+		<BottomNav :code="$nav.keys.kline" />
 	</AcmePageContainer>
 </template>
 
 <script>
 	import AcmeAppBar from '../ui/nav/AcmeAppBar.vue';
-	import AcmeBottomNav from '../ui/nav/AcmeBottomNav.vue';
+	import BottomNav from '../components/BottomNav.vue';
 	export default {
-		components: { AcmeBottomNav, AcmeAppBar },
+		components: { BottomNav, AcmeAppBar },
 		data() {
 			return {}
 		}

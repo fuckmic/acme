@@ -58,9 +58,10 @@
 ### nav/ 导航相关组件
 <!-- - SmallNavItem.vue 竖屏一行一个。[icon  label]
 - SmallNavItemArrow.vue 竖屏一行一个。[icon label  arrow] -->
-- ✅ AcmeAppBar.vue 顶部导航，响应式
-- AcmeAppBarSub.vue 顶部导航，竖屏，子级
-- ✅ AcmeBottomNav.vue 底部导航 竖屏版
+- ✅ AcmeAppBar.vue 顶部导航，响应式。容器，主项目自行填充内容
+- ✅ AcmeBottomNav.vue 底部导航 竖屏版。容器，主项目自行填充内容
+#### 主项目/components/
+- BottomNav.vue 主项目定制化底导航，竖屏版。
 
 - AcmeDrawer.vue 四方入侧边导航， 通常只有宽屏需要。
 - AcmePagination.vue 分页导航 通常只有宽屏需要。

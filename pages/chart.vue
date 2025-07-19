@@ -1,15 +1,15 @@
 <template>
 	<AcmePageContainer>
 		<AcmeAppBar />
-		<AcmeBottomNav :code="`chart`"></AcmeBottomNav>
+		<BottomNav :code="$nav.keys.chart" />
 	</AcmePageContainer>
 </template>
 
 <script>
 	import AcmeAppBar from '../ui/nav/AcmeAppBar.vue';
-	import AcmeBottomNav from '../ui/nav/AcmeBottomNav.vue';
+	import BottomNav from '../components/BottomNav.vue';
 	export default {
-		components: { AcmeBottomNav, AcmeAppBar },
+		components: { BottomNav, AcmeAppBar },
 		data() {
 			return {
 				curKey: `doc`,

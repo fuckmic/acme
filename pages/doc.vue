@@ -6,14 +6,12 @@
 				<view class="acme-h5">{{$nav.keys.doc}}</view>
 				<view style="margin-left: auto;">
 					<AcmeInputSearchExpand v-model="formData.keyword" :placeholder="`Search...`" @click="onSearch">
-						<!-- <template #suffix>
-							<view @tap="onSearch">{{`Search`}}</view>
-						</template> -->
 					</AcmeInputSearchExpand>
 				</view>
 			</view>
 		</AcmeAppBar>
-		<AcmeBottomNav :code="$nav.keys.doc"></AcmeBottomNav>
+
+		<BottomNav :code="$nav.keys.doc" />
 
 		<view style="padding: 160rpx 40rpx;">
 
@@ -23,12 +21,12 @@
 
 <script>
 	import AcmeAppBar from '../ui/nav/AcmeAppBar.vue';
-	import AcmeBottomNav from '../ui/nav/AcmeBottomNav.vue';
+	import BottomNav from '../components/BottomNav.vue';
 	import AcmeInputSearchExpand from '../ui/inputs/AcmeInputSearchExpand.vue';
 	import AcmeIconBack from '../ui/icons/AcmeIconBack.vue';
 	export default {
 		components: {
-			AcmeBottomNav,
+			BottomNav,
 			AcmeAppBar,
 			AcmeInputSearchExpand,
 			AcmeIconBack

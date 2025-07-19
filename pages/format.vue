@@ -6,8 +6,7 @@
 				<view class="acme-h5">{{$nav.keys.format}}</view>
 			</view>
 		</AcmeAppBar>
-
-		<AcmeBottomNav :code="$nav.keys.format"></AcmeBottomNav>
+		<BottomNav :code="$nav.keys.format" />
 
 		<view style="padding: 160rpx 40rpx 240rpx;">
 			<view class="acme-h6">{{`AcmeFmtFiat`}}</view>
@@ -100,7 +99,7 @@
 
 <script>
 	import AcmeAppBar from '../ui/nav/AcmeAppBar.vue';
-	import AcmeBottomNav from '../ui/nav/AcmeBottomNav.vue';
+	import BottomNav from '../components/BottomNav.vue';
 	import AcmeDivider from '../ui/common/AcmeDivider.vue';
 	import AcmeIconBack from '../ui/icons/AcmeIconBack.vue';
 
@@ -114,7 +113,7 @@
 	import AcmeFmtStable from '../ui/fmt/AcmeFmtStable.vue';
 	export default {
 		components: {
-			AcmeBottomNav,
+			BottomNav,
 			AcmeAppBar,
 			AcmeIconBack,
 			AcmeDivider,

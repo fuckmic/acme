@@ -6,7 +6,7 @@
 				<view class="acme-h5">{{$nav.keys.presetSelector}}</view>
 			</view>
 		</AcmeAppBar>
-		<AcmeBottomNav :code="$nav.keys.presetSelector"></AcmeBottomNav>
+		<BottomNav :code="$nav.keys.presetSelector" />
 
 		<view style="padding: 160rpx 40rpx 240rpx;">
 			<view class="acme-h6">{{`PresetSelector`}}</view>
@@ -30,7 +30,7 @@
 
 <script>
 	import AcmeAppBar from '../ui/nav/AcmeAppBar.vue';
-	import AcmeBottomNav from '../ui/nav/AcmeBottomNav.vue';
+	import BottomNav from '../components/BottomNav.vue';
 	import AcmeDivider from '../ui/common/AcmeDivider.vue';
 	import AcmeIconBack from '../ui/icons/AcmeIconBack.vue';
 	import AcmeInputInteger from '../ui/inputs/AcmeInputInteger.vue';
@@ -39,7 +39,7 @@
 	import { formatterFiat, formatterInteger } from '../utils/formatter';
 	export default {
 		components: {
-			AcmeBottomNav,
+			BottomNav,
 			AcmeAppBar,
 			AcmeIconBack,
 			AcmePresetSelector,

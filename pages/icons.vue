@@ -5,12 +5,11 @@
 				<AcmeIconBack @click="$nav.navBack" />
 				<view class="acme-h5">{{$nav.keys.icons}}</view>
 				<view style="margin-left: auto;">
-					<AcmeInputSearchExpand :placeholder="`Search...`" />
+					<AcmeInputSearchExpand v-model="formData.keyword" :placeholder="`Search...`" @click="onSearch" />
 				</view>
 			</view>
 		</AcmeAppBar>
-
-		<AcmeBottomNav :code="`icons`"></AcmeBottomNav>
+		<BottomNav :code="$nav.keys.icons" />
 		<view style="padding: 160rpx 40rpx;display: flex;align-items: center;flex-wrap: wrap;gap:24rpx;">
 			<template v-for="(IconComponent, iconName) in iconComponents">
 				<view style="display: flex;flex-direction: column;align-items: center;">
@@ -24,7 +23,7 @@
 
 <script>
 	import AcmeAppBar from '../ui/nav/AcmeAppBar.vue';
-	import AcmeBottomNav from '../ui/nav/AcmeBottomNav.vue';
+	import BottomNav from '../components/BottomNav.vue';
 	import AcmeIconBack from '../ui/icons/AcmeIconBack.vue';
 	import AcmeInputSearchExpand from '../ui/inputs/AcmeInputSearchExpand.vue';
 
@@ -44,7 +43,7 @@
 	});
 	export default {
 		components: {
-			AcmeBottomNav,
+			BottomNav,
 			AcmeAppBar,
 			AcmeIconBack,
 			AcmeInputSearchExpand,
@@ -52,10 +51,16 @@
 		},
 		data() {
 			return {
-				iconComponents: iconComponents // 将导入的组件对象暴露给模板，用于动态渲染
+				iconComponents: iconComponents, // 将导入的组件对象暴露给模板，用于动态渲染
+				formData: {
+					keyword: ''
+				}
 			}
 		},
 		methods: {
+			onSearch() {
+				console.log(this.formData.keyword);
+			},
 			/**
 			 * 从组件的全名中提取最后一个部分作为其简称。
 			 * 例如：'AcmeIconSearch' -> 'Search'
