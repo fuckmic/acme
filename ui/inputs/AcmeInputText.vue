@@ -25,6 +25,8 @@
 			showClearIcon: { type: Boolean, default: true },
 			disabled: { type: Boolean, default: false },
 			variant: { type: String, default: '' },
+			// 是否可输入空格
+			isSpace: { type: Boolean, default: false },
 		},
 		computed: {
 			showDel() {
@@ -34,7 +36,8 @@
 		methods: {
 			onInput(event) {
 				const inputValue = event.detail.value.trim();
-				const filteredValue = inputValue.replace(/\s/g, '');
+				// 如果不可输入空格，则将空格移除
+				const filteredValue = this.isSpace ? inputValue : inputValue.replace(/\s/g, '');
 				this.$emit('input', filteredValue);
 			},
 			onClear() { this.$emit('input', ''); },

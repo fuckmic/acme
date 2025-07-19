@@ -21,7 +21,7 @@
 				</view>
 			</view>
 			<view class="acme-subtitle1" style="padding-bottom: 24rpx;">明文内容:</view>
-			<AcmeInputText v-model="formData.editedLabel" :placeholder="`Enter Text`" />
+			<AcmeInputText v-model="formData.editedLabel" :placeholder="`Enter Text`" isSpace />
 		</AcmeModal>
 	</view>
 </template>
