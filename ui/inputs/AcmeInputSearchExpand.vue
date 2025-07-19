@@ -1,6 +1,6 @@
 <template>
 	<view :class="['acme-input-base', variant, { 'is-active': isFocused }]" :style="dynamicWidthStyle">
-		<AcmeIconSearch :size="24" />
+		<AcmeIconSearch v-if="search" :size="24" @tap="onTap" />
 		<input :value="value" type="text" :placeholder="placeholder" placeholder-class="placeholder" @input="onInput"
 			autocomplete="off" @focus="onFocus" @blur="onBlur"></input>
 		<view class="clear" @tap="onClear">
@@ -26,7 +26,9 @@
 			variant: { type: String, default: 'custom_class' },
 			// 新增 props，用于自定义活跃/非活跃宽度
 			activeWidth: { type: String, default: '400rpx' },
-			inactiveWidth: { type: String, default: '240rpx' }
+			inactiveWidth: { type: String, default: '240rpx' },
+			// 前缀是否显示搜索图标
+			search: { type: Boolean, default: true },
 		},
 		data() {
 			return {
@@ -44,6 +46,9 @@
 			}
 		},
 		methods: {
+			onTap() {
+				this.$emit('click');
+			},
 			onInput(event) {
 				console.log(`event:`, event);
 				const inputValue = event.detail.value.trim();
@@ -51,7 +56,12 @@
 				// this.$emit('input', filteredValue);
 				this.$emit('input', inputValue);
 			},
-			onClear() { this.$emit('input', ''); },
+			onClear() {
+				this.$emit('input', undefined);
+				setTimeout(() => {
+					this.isFocused = false;
+				}, 1000);
+			},
 			onFocus() {
 				console.log('Input Focused!');
 				this.isFocused = true;

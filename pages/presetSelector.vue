@@ -1,6 +1,11 @@
 <template>
 	<AcmePageContainer>
-		<AcmeAppBarSub :title="$nav.keys.presetSelector" />
+		<AcmeAppBar elevation="6">
+			<view style="padding:40rpx 32rpx 24rpx; display: flex;align-items: center;gap:24rpx;">
+				<AcmeIconBack @click="$nav.navBack" />
+				<view class="acme-h5">{{$nav.keys.presetSelector}}</view>
+			</view>
+		</AcmeAppBar>
 		<AcmeBottomNav :code="$nav.keys.presetSelector"></AcmeBottomNav>
 
 		<view style="padding: 160rpx 40rpx 240rpx;">
@@ -24,9 +29,10 @@
 </template>
 
 <script>
-	import AcmeAppBarSub from '../ui/nav/AcmeAppBarSub.vue';
+	import AcmeAppBar from '../ui/nav/AcmeAppBar.vue';
 	import AcmeBottomNav from '../ui/nav/AcmeBottomNav.vue';
 	import AcmeDivider from '../ui/common/AcmeDivider.vue';
+	import AcmeIconBack from '../ui/icons/AcmeIconBack.vue';
 	import AcmeInputInteger from '../ui/inputs/AcmeInputInteger.vue';
 	import { acmeCfg } from '../config.js';
 	import AcmePresetSelector from '../ui/form/AcmePresetSelector.vue';
@@ -34,7 +40,8 @@
 	export default {
 		components: {
 			AcmeBottomNav,
-			AcmeAppBarSub,
+			AcmeAppBar,
+			AcmeIconBack,
 			AcmePresetSelector,
 			AcmeDivider,
 			AcmeInputInteger,

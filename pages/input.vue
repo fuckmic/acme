@@ -1,7 +1,13 @@
 <template>
 	<AcmePageContainer>
-		<AcmeAppBarSub :title="$nav.keys.input" />
-		<AcmeBottomNav :code="`input`"></AcmeBottomNav>
+		<AcmeAppBar elevation="6">
+			<view style="padding:40rpx 32rpx 24rpx; display: flex;align-items: center;gap:24rpx;">
+				<AcmeIconBack @click="$nav.navBack" />
+				<view class="acme-h5">{{$nav.keys.input}}</view>
+			</view>
+		</AcmeAppBar>
+
+		<AcmeBottomNav :code="$nav.keys.input"></AcmeBottomNav>
 
 		<view style="padding:160rpx 40rpx;">
 			<view class="acme-h6">{{`Form Input`}}</view>
@@ -65,8 +71,9 @@
 
 <script>
 	import AcmeBottomNav from '../ui/nav/AcmeBottomNav.vue';
-	import AcmeAppBarSub from '../ui/nav/AcmeAppBarSub.vue';
+	import AcmeAppBar from '../ui/nav/AcmeAppBar.vue';
 	import AcmeDivider from '../ui/common/AcmeDivider.vue';
+	import AcmeIconBack from '../ui/icons/AcmeIconBack.vue';
 
 	import AcmeInputText from '../ui/inputs/AcmeInputText.vue';
 	import AcmeInputPassword from '../ui/inputs/AcmeInputPassword.vue';
@@ -76,9 +83,10 @@
 	import AcmeInputSearchExpand from '../ui/inputs/AcmeInputSearchExpand.vue';
 	export default {
 		components: {
-			AcmeAppBarSub,
+			AcmeAppBar,
 			AcmeBottomNav,
 			AcmeDivider,
+			AcmeIconBack,
 
 			AcmeInputText,
 			AcmeInputPassword,

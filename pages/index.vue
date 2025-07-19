@@ -1,6 +1,16 @@
 <template>
 	<AcmePageContainer>
-		<AcmeAppBar />
+		<AcmeAppBar elevation="6">
+			<view style="padding:40rpx 32rpx 24rpx; display: flex;align-items: center;gap:12rpx;">
+				<AcmeIcon icon="sun" :size="64" />
+				<view class="acme-h5" style="flex:1;">{{`Name`}}</view>
+				<view style="margin-left: auto;" @tap="onTheme()">
+					<AcmeIconDark v-if="isDark" />
+					<AcmeIconLight v-else />
+				</view>
+			</view>
+		</AcmeAppBar>
+
 		<AcmeBottomNav :code="`index`"></AcmeBottomNav>
 
 		<view style="padding: 40rpx;padding-top: 160rpx;">
@@ -147,6 +157,9 @@
 	import AcmeAvatar from '../ui/common/AcmeAvatar.vue';
 	import AcmeBadge from '../ui/common/AcmeBadge.vue';
 
+	import AcmeIconDark from '../ui/icons/AcmeIconDark.vue';
+	import AcmeIconLight from '../ui/icons/AcmeIconLight.vue';
+
 
 	import AcmeIcon from '../ui/common/AcmeIcon.vue';
 	import AcmeSvg from '../ui/common/AcmeSvg.vue';
@@ -164,7 +177,8 @@
 			AcmeBottomNav,
 			AcmeAvatar,
 			AcmeBadge,
-
+			AcmeIconDark,
+			AcmeIconLight,
 
 			AcmeIcon,
 			AcmeSvg,
@@ -177,6 +191,7 @@
 		},
 		data() {
 			return {
+				isDark: true,
 				title: 'Acme',
 				isChecked: false,
 				formData: {
@@ -216,6 +231,14 @@
 			uni.stopPullDownRefresh();
 		},
 		methods: {
+			onTheme() {
+				this.isDark = !this.isDark;
+				const tmp = this.isDark ? `dark` : `light`;
+				acmeSetTheme(tmp);
+				uni.navigateTo({
+					url: `/pages/index`
+				})
+			},
 			calColor() {
 				this.setColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
 			},

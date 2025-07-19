@@ -1,5 +1,5 @@
 <template>
-	<view :class="['acme-input-base', customClass]">
+	<view :class="['acme-input-base', variant]">
 		<view v-if="$slots.prefix">
 			<slot name="prefix"></slot>
 		</view>
@@ -35,7 +35,7 @@
 			locale: { type: String, default: () => acmeCfg.lgre },
 			// 用于 'fiat' 类型，如 'USD', 'EUR'
 			currency: { type: String, default: () => acmeCfg.currency },
-			customClass: { type: String, default: 'custom_class' },
+			variant: { type: String, default: 'custom_class' },
 		},
 		data() {
 			return {

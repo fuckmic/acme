@@ -1,5 +1,5 @@
 <template>
-	<view :class="['acme-input-base', customClass]">
+	<view :class="['acme-input-base', variant]">
 		<view v-if="$slots.prefix">
 			<slot name="prefix"></slot>
 		</view>
@@ -24,7 +24,7 @@
 			value: { type: [String, Number], default: '' },
 			placeholder: { type: String, default: '' },
 			showClearIcon: { type: Boolean, default: true },
-			customClass: { type: String, default: 'custom_class' },
+			variant: { type: String, default: 'custom_class' },
 		},
 		computed: {
 			showDel() {

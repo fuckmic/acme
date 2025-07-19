@@ -5,7 +5,13 @@
 			<view style="display: flex;align-items: center;gap:24rpx;">
 				<view class="acme-body1">当前语言代码:</view>
 				<view class="acme-body1" style="color: var(--acme-primary-color);">{{ currentLgre }}</view>
+				<!-- 如果是新增 其他语言，此处语言代码需要可选 -->
 			</view>
+			<view style="display: flex;align-items: center;gap:24rpx;padding: 24rpx 0;">
+				<view class="acme-body1">当前语言:</view>
+				<view class="acme-body1" style="color: var(--acme-primary-color);">{{ curLang }}</view>
+			</view>
+
 			<view style="display: flex;align-items: center;gap:24rpx;padding: 24rpx 0;">
 				<view class="acme-body1">当前字段Key:</view>
 				<view class="acme-body1" style="color: var(--acme-primary-color);">{{ transKey }}</view>
@@ -19,6 +25,7 @@
 
 <script>
 	import { acmeCfg } from '../../config.js';
+	import { lgreCnf } from '../../intl/index.js';
 	import AcmeModal from '../../ui/feedback/AcmeModal.vue';
 	import AcmeInputText from '../../ui/inputs/AcmeInputText.vue';
 	export default {
@@ -39,6 +46,12 @@
 				},
 				currentLgre: acmeCfg.lgre, // 从配置中获取当前语言代码
 			};
+		},
+		computed: {
+			curLang() {
+				const tmp = lgreCnf[this.currentLgre].lang;
+				return tmp;
+			},
 		},
 		methods: {
 			onCancel() {

@@ -1,6 +1,12 @@
 <template>
 	<AcmePageContainer>
-		<AcmeAppBarSub :title="$nav.keys.format" />
+		<AcmeAppBar elevation="6">
+			<view style="padding:40rpx 32rpx 24rpx; display: flex;align-items: center;gap:24rpx;">
+				<AcmeIconBack @click="$nav.navBack" />
+				<view class="acme-h5">{{$nav.keys.format}}</view>
+			</view>
+		</AcmeAppBar>
+
 		<AcmeBottomNav :code="$nav.keys.format"></AcmeBottomNav>
 
 		<view style="padding: 160rpx 40rpx 240rpx;">
@@ -93,9 +99,10 @@
 </template>
 
 <script>
-	import AcmeAppBarSub from '../ui/nav/AcmeAppBarSub.vue';
+	import AcmeAppBar from '../ui/nav/AcmeAppBar.vue';
 	import AcmeBottomNav from '../ui/nav/AcmeBottomNav.vue';
 	import AcmeDivider from '../ui/common/AcmeDivider.vue';
+	import AcmeIconBack from '../ui/icons/AcmeIconBack.vue';
 
 	import { acmeCfg } from '../config.js';
 	import { formatterFiat, formatterInteger, formatNumberToPrecision } from '../utils/formatter';
@@ -108,7 +115,8 @@
 	export default {
 		components: {
 			AcmeBottomNav,
-			AcmeAppBarSub,
+			AcmeAppBar,
+			AcmeIconBack,
 			AcmeDivider,
 			AcmeFmtFiat,
 			AcmeFmtInteger,

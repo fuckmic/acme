@@ -1,6 +1,15 @@
 <template>
 	<AcmePageContainer>
-		<AcmeAppBarSub :title="$nav.keys.icons" />
+		<AcmeAppBar elevation="6">
+			<view style="padding:40rpx 32rpx 24rpx; display: flex;align-items: center;gap:24rpx;">
+				<AcmeIconBack @click="$nav.navBack" />
+				<view class="acme-h5">{{$nav.keys.icons}}</view>
+				<view style="margin-left: auto;">
+					<AcmeInputSearchExpand :placeholder="`Search...`" />
+				</view>
+			</view>
+		</AcmeAppBar>
+
 		<AcmeBottomNav :code="`icons`"></AcmeBottomNav>
 		<view style="padding: 160rpx 40rpx;display: flex;align-items: center;flex-wrap: wrap;gap:24rpx;">
 			<template v-for="(IconComponent, iconName) in iconComponents">
@@ -14,8 +23,11 @@
 </template>
 
 <script>
-	import AcmeAppBarSub from '../ui/nav/AcmeAppBarSub.vue';
+	import AcmeAppBar from '../ui/nav/AcmeAppBar.vue';
 	import AcmeBottomNav from '../ui/nav/AcmeBottomNav.vue';
+	import AcmeIconBack from '../ui/icons/AcmeIconBack.vue';
+	import AcmeInputSearchExpand from '../ui/inputs/AcmeInputSearchExpand.vue';
+
 	// 批量导入图标组件
 	const iconContext = require.context(
 		'../ui/icons/', // 图标组件所在的目录
@@ -31,7 +43,13 @@
 		iconComponents[componentName] = component;
 	});
 	export default {
-		components: { AcmeBottomNav, AcmeAppBarSub, ...iconComponents },
+		components: {
+			AcmeBottomNav,
+			AcmeAppBar,
+			AcmeIconBack,
+			AcmeInputSearchExpand,
+			...iconComponents
+		},
 		data() {
 			return {
 				iconComponents: iconComponents // 将导入的组件对象暴露给模板，用于动态渲染

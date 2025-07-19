@@ -25,6 +25,8 @@
 ### icons/ 组件化一些图标
 - AcmeIconSearch.vue 
 - AcmeIcon[xxx].vue
+- AcmeIconMore.vue 更多
+- <AcmeIconMenu @click="showMenu" />
 
 ### label/ 明文显示
 - AcmeLableStatic.vue 不含事件的明文显示组件(正式上线)
@@ -32,6 +34,7 @@
 #### 主项目/components文件夹
 - DisplayLabel.vue 主项目全局注册，使用的明文显示组件。内中引入AcmeLableStatic.vue 和 AcmeLabelEvent.vue
 - LabelEdit.vue 明文修改组件。引入AcmeModal.vue。这个对话框，修改明文，并调用接口提交新数据。
+- - 也可以选择语言，新增其他语言的数据。后端需要判断，相同语言代码，相同key，是否已存在。
 
 
 
