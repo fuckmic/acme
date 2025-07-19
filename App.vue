@@ -14,6 +14,7 @@
 			console.log('App Launch', systemInfo);
 			// 根据缓存的语言设置 intl 的当前 locale，填充 msg
 			this.$intl.setLocale(this.$appCfg.lgre);
+			// 在设置完成语言代码，并拉取接口语言js后，设置底导航
 			this.$appCfg.bottomNavCfg = {
 				[this.$nav.keys.home]: this.$intl.msg.nav.home,
 				[this.$nav.keys.kline]: this.$intl.msg.nav.kline,

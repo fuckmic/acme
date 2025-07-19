@@ -241,7 +241,7 @@ git submodule update --init --recursive
  ## 国际化 语言 前端所见即所得 下放指定权限人员可编辑，前后端双重防注入。
 ### 前端部分
  - 考虑请求失败等情况，回退使用前端默认语言。
- - 在App.vue的onLaunch生命周期里获取一次，全局挂载使用。	
+ - 在App.vue的onLaunch生命周期里获取一次，全局挂载使用。检测拉取的时间等性能问题。
  - 在切换语言的地方同样执行一次请求。
  - 前端封装两个子组件AcmeLabelEvent.vue(热键唤起对话框，Alt + 鼠标右键)、AcmeLabelStatic.vue(静默显示)。
  - 前端封装组件AcmeLabel.vue，引入以上两个组件，根据项目进度，调整当前使用的label组件。
@@ -272,7 +272,6 @@ git submodule update --init --recursive
  }
  ```
 
-- 
  
 
  <!-- 
