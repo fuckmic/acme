@@ -49,6 +49,7 @@
 	import AcmeIconBack from '../ui/icons/AcmeIconBack.vue';
 	import AcmeDivider from '../ui/common/AcmeDivider.vue';
 	import AcmeDropdown from '../ui/selectors/AcmeDropdown.vue';
+	import { setLgres } from '../intl/index.js';
 	export default {
 		components: {
 			BottomNav,
@@ -61,23 +62,16 @@
 			return {
 				showCountryDropdown: false,
 				selectedCountry: null,
-
-				showCurrencyDropdown: false,
-				currencyOptions: [
-					{ code: 'USD', value: 'US Dollar', icon: '' },
-					{ code: 'EUR', value: 'Euro', icon: '' },
-					{ code: 'SGD', value: 'Singapore Dollar', icon: '' },
-				],
-				selectedCurrency: { code: 'USD', value: 'US Dollar', icon: '' },
-
 			};
 		},
 		computed: {
 			countryOptions() {
-				// const tmp  = locales.map(v=>{
-				// 	return {icon:v.flag,code:v.code,vlue:v.country}
-				// })
-				return [];
+				const tmp = setLgres(['en-US', 'de-DE']);
+				const result = Object.values(tmp['en-US']).map(v => {
+					return { icon: v.flag, code: v.code, value: v.country }
+				});
+				console.log(`countryOptions:`, result);
+				return result;
 			}
 		},
 		onShow() {

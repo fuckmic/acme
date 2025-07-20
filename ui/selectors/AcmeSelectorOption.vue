@@ -1,8 +1,9 @@
 <template>
-	<view :class="[`acme-select-option`,variant, { 'selected': isSelected }]" @tap="onTap">
-		<view v-show="isSelected" class="selected-icon">
-			{{`✔`}}
+	<view :class="[`acme-select-option`,variant, { 'selected': curSelected }]" @tap="onTap">
+		<view class="selected-icon">
+			<AcmeCheckbox v-model="curSelected" @change="onCheck" />
 		</view>
+
 		<image :src="option.icon" mode="heightFix" class="option-logo"></image>
 		<view class="acme-caption opticon-code">
 			{{option.code}}
@@ -13,16 +14,26 @@
 </template>
 
 <script>
+	import AcmeCheckbox from '../form/AcmeCheckbox.vue';
 	export default {
 		name: 'AcmeSelectorOption',
+		components: { AcmeCheckbox },
 		props: {
 			option: { type: Object, default: undefined },
 			variant: { type: String, default: '' },
 			isSelected: { type: Boolean, default: false },
 		},
+		data() {
+			return {
+				curSelected: this.isSelected,
+			}
+		},
 		methods: {
 			onTap() {
 				this.$emit('click', this.option);
+			},
+			onCheck(val) {
+				this.curSelected = true;
 			}
 		}
 	}

@@ -31,10 +31,13 @@
 - fiatCode.js 法币符号
 - idcode.js 国际区号
 - timezone.js 标准时区
+- index.js
+- - 最终外部使用 setLgres(['en-US', 'de-DE']);语言易读翻译
+- - setLgresSelfNamed(['en-US', 'de-DE']);语言易读不翻译
+- 如果是国际区号，则可以单独导入所需，进行对象组装。
 ### locale/ 区域化
 - en-US.js 所有设置英语
-- 最终外部使用 setLgres(['en-US', 'de-DE']);语言易读翻译
-- setLgresSelfNamed(['en-US', 'de-DE']);语言易读不翻译
+
 
 ## ui/
 
