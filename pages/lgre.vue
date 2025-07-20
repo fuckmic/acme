@@ -23,7 +23,7 @@
 							<view class="acme-caption">{{v.code}}</view>
 						</view>
 						<view style="display: flex;align-items: center;gap:24rpx;">
-							<view class="acme-caption" style="width:124rpx;">{{`Timezone:`}}</view>
+							<view class="acme-caption" style="width:124rpx;">{{`tz:`}}</view>
 							<view class="acme-caption">{{v.tz}}</view>
 						</view>
 						<view style="display: flex;align-items: center;gap:24rpx;">
@@ -36,7 +36,19 @@
 						</view>
 						<view style="display: flex;align-items: center;gap:24rpx;">
 							<view class="acme-caption" style="width:124rpx;">{{`ID Code:`}}</view>
-							<view class="acme-caption">{{v.idc}}</view>
+							<view class="acme-caption">{{v.idCode}}</view>
+						</view>
+						<view style="display: flex;align-items: center;gap:24rpx;">
+							<view class="acme-caption" style="width:124rpx;">{{`Timezone:`}}</view>
+							<view class="acme-caption">{{v.tzValue}}</view>
+						</view>
+						<view style="display: flex;align-items: center;gap:24rpx;">
+							<view class="acme-caption" style="width:124rpx;">{{`Country:`}}</view>
+							<view class="acme-caption">{{v.country}}</view>
+						</view>
+						<view style="display: flex;align-items: center;gap:24rpx;">
+							<view class="acme-caption" style="width:124rpx;">{{`Fiat:`}}</view>
+							<view class="acme-caption">{{v.fiat}}</view>
 						</view>
 					</view>
 				</view>
@@ -51,6 +63,7 @@
 	import AcmeIconBack from '../ui/icons/AcmeIconBack.vue';
 	import AcmeInputSearchExpand from '../ui/inputs/AcmeInputSearchExpand.vue';
 	import AcmeDivider from '../ui/common/AcmeDivider.vue';
+	import { setLgres } from '../intl/index.js';
 	export default {
 		components: {
 			BottomNav,
@@ -61,10 +74,15 @@
 		},
 		data() {
 			return {
-				localeCfg: {},
 				formData: {
 					keyword: ''
 				}
+			}
+		},
+		computed: {
+			localeCfg() {
+				const tmp = setLgres(['en-US', 'de-DE']);
+				return tmp['en-US'];
 			}
 		},
 		methods: {
