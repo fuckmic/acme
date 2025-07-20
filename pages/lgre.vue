@@ -46,7 +46,6 @@
 </template>
 
 <script>
-	import * as locales from '../utils/locales.js';
 	import AcmeAppBar from '../ui/nav/AcmeAppBar.vue';
 	import BottomNav from '../components/BottomNav.vue';
 	import AcmeIconBack from '../ui/icons/AcmeIconBack.vue';
@@ -62,7 +61,7 @@
 		},
 		data() {
 			return {
-				localeCfg: locales,
+				localeCfg: {},
 				formData: {
 					keyword: ''
 				}

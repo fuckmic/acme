@@ -48,5 +48,9 @@
 		"path": "pages/doc",
 		"style": { "enablePullDownRefresh": true, "navigationStyle": "custom" },
 		"meta": { "name": "doc", "auth": false, "mode": "" }
+	}, {
+		"path": "pages/selectors",
+		"style": { "enablePullDownRefresh": true, "navigationStyle": "custom" },
+		"meta": { "name": "selectors", "auth": false, "mode": "" }
 	}]
 }

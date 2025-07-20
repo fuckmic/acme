@@ -3,6 +3,8 @@
 
 - 说明：✅ 已完成、❎ 未完成、❓ 待确认、🟰 等等做、➕ 新增功能、➖ 非使用功能、✖ 移除功能
 
+[](https://inputoutput.dev/svg-to-base64-converter/)
+[](https://www.svgviewer.dev/)
 
 ## TODO
 - 加入代码段。
@@ -10,6 +12,7 @@
 - 支持PC布局、竖屏布局。
 - UI组件多种css形态
 - uni.onWindowResize()
+
 
 ## pages/示例
 - icons.vue 所有自定义默认icon
@@ -20,6 +23,18 @@
 - _elevation.scss 海拔定义0-24
 - _variables.css css变量。主项目引入，再引入覆写的变量。
 - - 确保所有可变的设计属性（颜色、字体大小、字重、间距、圆角、边框、阴影等）都抽象为 CSS 变量
+
+## intl/ 国际化
+- lgres.js lgre代码(语言代码) 
+- countryFlag.js 国旗base64
+- currencys.js 货币
+- fiatCode.js 法币符号
+- idcode.js 国际区号
+- timezone.js 标准时区
+### locale/ 区域化
+- en-US.js 所有设置英语
+- 最终外部使用 setLgres(['en-US', 'de-DE']);语言易读翻译
+- setLgresSelfNamed(['en-US', 'de-DE']);语言易读不翻译
 
 ## ui/
 
@@ -112,16 +127,20 @@
 
 ### selectors/ 所有选择器
 - ✅ AcmePresetGroup.vue 预置值 法币、杠杆、加密币、稳定币。自由列数, 数量较少、无需过滤的预设选项组。
+- AcmeSelectorOption.vue 单个选项，在所有选择器通用。[icon |value|code]
+
 <!-- 带有输入和过滤的选择器。输入框形式，输入时，自动展开，显示根据输入内容过滤后的选项组。 -->
 - AcmeAutocompleteCountry.vue 国家选择器。输入即过滤、国旗(base64)、国家全称、电话前缀。
 - AcmeAutocompleteLgre.vue 语言选择器。输入即过滤、国旗(base64)、语言全称、语言代码。
 - AcmeAutocompleteCurrency.vue 法币选择器。输入即过滤、国旗(base64)、货币符号、货币代码。
-- AcmeAutocompleteCrypto.vue 加密币选择器。输入即过滤、logo(url)、加密币全称、加密币代码。
+- AcmeAutocompleteCrypto.vue 加密币选择器。输入即过滤、logo(url)、加密币全称。
 
-- AcmeBottomSheetSelect.vue 底入 弹层选择器。多用于竖屏（App）
-- AcmeModalSelect.vue 居中 弹层选择器。多用于竖屏（App）
+<!-- 已经有AcmeModal.vue ，并且可以设置位置(居中或底入)。 -->
+- AcmeModalSelector.vue 对话框选择器。底入多用于竖屏（App）,居中通用。
+- - AcmeInputText.vue 对话框选择器中的输入框。
 
-- AcmeDropdown.vue  点击图标/标签触发的浮层选择器，带过滤。
+
+- AcmeDropdown.vue  点击图标/标签触发的浮层选择器，带过滤。只有浮层，不含触发器。
 
 
 <!-- 

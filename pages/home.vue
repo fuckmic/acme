@@ -222,6 +222,7 @@
 					this.$nav.keys.inputs,
 					this.$nav.keys.icons,
 					this.$nav.keys.lgre,
+					this.$nav.keys.selectors,
 				]
 			},
 

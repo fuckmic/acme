@@ -1,0 +1,22 @@
+// lgres
+export default {
+	'en-US': `en-US`,
+	'de-DE': `de-DE`,
+	'nl-BE': `nl-BE`,
+	'fr-BE': `fr-BE`,
+	'sg-SG': `sg-SG`,
+	'my-MY': `my-MY`,
+	'tr-TR': `tr-TR`,
+	'fr-FR': `fr-FR`,
+	'th-TH': `th-TH`,
+	'ru-RU': `ru-RU`,
+	'vi-VN': `vi-VN`,
+	'pt-BR': `pt-BR`,
+	'ja-JP': `ja-JP`,
+	'zh-HK': `zh-HK`,
+	'en-IN': `en-IN`,
+	'en-GB': `en-GB`,
+	'ko-KR': `ko-KR`,
+	'zh-TW': `zh-TW`,
+	'zh-CN': `zh-CN`,
+};
