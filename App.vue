@@ -16,12 +16,13 @@
 			this.$intl.setLocale(this.$appCfg.lgre);
 			// 在设置完成语言代码，并拉取接口语言js后，设置底导航
 			this.$appCfg.bottomNavCfg = {
-				[this.$nav.keys.home]: this.$intl.msg.nav.home,
-				[this.$nav.keys.kline]: this.$intl.msg.nav.kline,
-				[this.$nav.keys.chart]: this.$intl.msg.nav.chart,
-				[this.$nav.keys.inputs]: this.$intl.msg.nav.inputs,
-				[this.$nav.keys.doc]: this.$intl.msg.nav.doc,
+				[this.$nav.keys.home]: this.$intl.msg["nav.home"],
+				[this.$nav.keys.kline]: this.$intl.msg["nav.kline"],
+				[this.$nav.keys.chart]: this.$intl.msg["nav.chart"],
+				[this.$nav.keys.inputs]: this.$intl.msg["nav.inputs"],
+				[this.$nav.keys.doc]: this.$intl.msg["nav.doc"],
 			};
+			console.log(`bottom navs:`, this.$appCfg.bottomNavCfg);
 		},
 		onShow: function(opt) {
 			console.log('App Show', opt)
