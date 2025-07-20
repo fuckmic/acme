@@ -10,17 +10,17 @@
 
 		<view style="padding: 160rpx 40rpx 240rpx;">
 			<view class="acme-h6">{{`PresetSelector`}}</view>
-			<AcmePresetSelector v-model="formData.fiat" :list="optsFiat" @select="onSelected" />
+			<AcmePresetGroup v-model="formData.fiat" :list="optsFiat" @select="onSelected" />
 			<AcmeDivider />
 			<view class="acme-h6">{{`PresetSelector column`}}</view>
-			<AcmePresetSelector v-model="formData.lever" :list="optLevers" @select="onSelectedLever" :column="4" />
+			<AcmePresetGroup v-model="formData.lever" :list="optLevers" @select="onSelectedLever" :column="4" />
 			<AcmeDivider />
 			<view class="acme-h6">{{`PresetSelector column variant`}}</view>
-			<AcmePresetSelector v-model="formData.lever" :list="optLevers" @select="onSelectedLever" :column="5"
+			<AcmePresetGroup v-model="formData.lever" :list="optLevers" @select="onSelectedLever" :column="5"
 				variant="variant" />
 			<AcmeDivider />
 			<view class="acme-h6">{{`PresetSelector column`}}</view>
-			<AcmePresetSelector v-model="formData.lever" :list="optLevers" @select="onSelectedLever" :column="8" />
+			<AcmePresetGroup v-model="formData.lever" :list="optLevers" @select="onSelectedLever" :column="8" />
 			<view class="acme-h6">{{`Current Lever:`}}</view>
 			<AcmeInputInteger v-model="formData.lever" :placeholder="`Enter Lever`" />
 		</view>
@@ -35,14 +35,14 @@
 	import AcmeIconBack from '../ui/icons/AcmeIconBack.vue';
 	import AcmeInputInteger from '../ui/inputs/AcmeInputInteger.vue';
 	import { acmeCfg } from '../config.js';
-	import AcmePresetSelector from '../ui/form/AcmePresetSelector.vue';
+	import AcmePresetGroup from '../ui/selectors/AcmePresetGroup.vue';
 	import { formatterFiat, formatterInteger } from '../utils/formatter';
 	export default {
 		components: {
 			BottomNav,
 			AcmeAppBar,
 			AcmeIconBack,
-			AcmePresetSelector,
+			AcmePresetGroup,
 			AcmeDivider,
 			AcmeInputInteger,
 		},

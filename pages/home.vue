@@ -13,7 +13,7 @@
 
 		<BottomNav :code="$nav.keys.home" />
 
-		<view style="padding: 40rpx;padding-top: 160rpx;">
+		<view style="padding: 160rpx 40rpx;">
 			<AcmeTabsFixed v-model="curTab" :tabs="tabs" @change="onTab" />
 			<AcmeTabsFixed v-model="curTab1" :tabs="tabs1" @change="onTab1" variant="variant-pill" />
 			<view style="font-size: 28rpx;color:var(--acme-primary-color);">{{curTab1}}</view>
@@ -142,8 +142,6 @@
 
 
 
-
-
 		</view>
 
 	</AcmePageContainer>
@@ -212,6 +210,7 @@
 				tabs1: { 'four': `Tab Four` },
 				curNav: null,
 				setColor: '',
+
 			}
 		},
 		computed: {
@@ -221,7 +220,8 @@
 					this.$nav.keys.format,
 					this.$nav.keys.presetSelector,
 					this.$nav.keys.inputs,
-					this.$nav.keys.icons
+					this.$nav.keys.icons,
+					this.$nav.keys.lgre,
 				]
 			},
 

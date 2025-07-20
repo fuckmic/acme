@@ -1,5 +1,5 @@
 <template>
-	<view class="acme-preset-selector-group">
+	<view class="acme-preset-group">
 		<view :class="[`acme-preset-selector`,variant]" v-for="(row, rowIndex) in optsRows" :key="rowIndex">
 			<block v-for="(item,index) in row" :key="item[keyField]">
 				<view class="selector-item" :class="{ 'is-selected': internalValue==item[keyField]}" :style="curWidth"
@@ -13,7 +13,7 @@
 
 <script>
 	export default {
-		name: "AcmePresetSelector",
+		name: "AcmePresetGroup",
 		props: {
 			// 允许字符串以更好地与输入框 v-model 兼容 当前选中的项。可以是完整的对象，也可以是其 keyField 的值。
 			value: { type: [String, Number], default: 0 },
@@ -66,7 +66,7 @@
 </script>
 
 <style lang="scss" scoped>
-	.acme-preset-selector-group {
+	.acme-preset-group {
 		display: flex;
 		flex-direction: column;
 		width: 100%;

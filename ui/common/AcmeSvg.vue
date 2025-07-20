@@ -1,5 +1,5 @@
 <template>
-	<image :src="computedSvgSrc" :style="computedStyle" :mode="mode" :class="customClass"></image>
+	<image :src="computedSvgSrc" :style="computedStyle" :mode="mode"></image>
 </template>
 
 <script>
@@ -19,7 +19,6 @@
 				type: String,
 				default: 'scaleToFill'
 			},
-			customClass: { type: String, default: '' }
 		},
 		computed: {
 			// 动态生成 Base64 Data URL

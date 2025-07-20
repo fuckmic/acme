@@ -13,6 +13,7 @@
 
 ## pages/示例
 - icons.vue 所有自定义默认icon
+- lgre.vue 所有以包含的lgre配置
 
 ## styles
 - _colors.scss 包含所有基础的 Sass 颜色变量.
@@ -27,6 +28,9 @@
 - AcmeIcon[xxx].vue
 - AcmeIconMore.vue 更多
 - <AcmeIconMenu @click="showMenu" />
+<!-- - AcmeIconCountryFlag.vue 国旗base64、法币logo
+- AcomeIconCrypto.vue 加密币logo
+- AcmeIconStable.vue 稳定币logo -->
 
 ### label/ 明文显示
 - AcmeLableStatic.vue 不含事件的明文显示组件(正式上线)
@@ -103,9 +107,22 @@
 - AcmeSwith.vue 开关
 - ✅ AcmeUpload.vue 上传图片，自带预览
 - AcmeUploadMini.vue 迷你上传，不带预览
-- ✅ AcmePresetSelector.vue 预置值 法币、杠杆、加密币、稳定币。自由列数
 - AcmeDropdownLgre.vue 下拉选择器 语言 。精简的、带搜索的、
 - AcmeSlider.vue  滑动条 :value值，抛出值。
+
+### selectors/ 所有选择器
+- ✅ AcmePresetGroup.vue 预置值 法币、杠杆、加密币、稳定币。自由列数, 数量较少、无需过滤的预设选项组。
+<!-- 带有输入和过滤的选择器。输入框形式，输入时，自动展开，显示根据输入内容过滤后的选项组。 -->
+- AcmeAutocompleteCountry.vue 国家选择器。输入即过滤、国旗(base64)、国家全称、电话前缀。
+- AcmeAutocompleteLgre.vue 语言选择器。输入即过滤、国旗(base64)、语言全称、语言代码。
+- AcmeAutocompleteCurrency.vue 法币选择器。输入即过滤、国旗(base64)、货币符号、货币代码。
+- AcmeAutocompleteCrypto.vue 加密币选择器。输入即过滤、logo(url)、加密币全称、加密币代码。
+
+- AcmeBottomSheetSelect.vue 底入 弹层选择器。多用于竖屏（App）
+- AcmeModalSelect.vue 居中 弹层选择器。多用于竖屏（App）
+
+- AcmeDropdown.vue  点击图标/标签触发的浮层选择器，带过滤。
+
 
 <!-- 
  AcmeRadio.vue     单选框
@@ -254,53 +271,23 @@ git submodule update --init --recursive
 - 前端刷新： 提交成功后，前端重新请求当前页面的国际化文案数据，或者局部更新当前显示在页面上的文案，从而实现“所见即所得”的立即生效效果。
 
 ### 后端部分
- - 后端建表:id(唯一键)、page_key(作用域，通常是页面)、lgre(语言代码)、label_key(明文的对应key)、value(明文)、desc(备注)。即，每个明文的每种语言一条数据
+ - 后端建表:id(唯一键)、lgre(语言代码)、label_key(明文的对应key)、value(明文)、desc(备注)。即，每个明文的每种语言一条数据 。
+ `{id:1,lgre:'en-US',label_key:'nav.home',value:'Home',desc:'导航.首页'}`
  - 使用/api/translations 以及请求头中的"language": "en-US"来拉取全部指定语言的json，直接为前端可用个格式
 - api/translations?id=1&value=NewValue。来提交label明文更改。后端需加入鉴权与防注入检查。
 - 版本控制/操作日志： 对于关键的文案，可以考虑在后端实现简单的版本控制或操作日志，记录每次修改的内容、修改人和时间。这在出现问题时便于追溯和回滚。
  
- ```json 
- {
-   "home": {
-     "welcome_message": "Welcome to our App",
-     "button_save": "Save"
-   },
-   "user_profile": {
-     "title": "User Profile",
-     "edit_info": "Edit Information"
-   }
+ ```js
+ // 拿到并处理为前端使用格式为：
+ export const enUS = {
+	"home.title": "Home Title",
+	"nav.home": "Home",
  }
  ```
 
  
 
  <!-- 
-  
-  WebSocket服务 (Workerman大显身手):
-  
-  启动一个WebSocket服务。
-  
-  当客户在后台保存了任何一条翻译的修改时，PHP后端立即通过WebSocket通道，向所有连接的客户端推送一条消息。
-  
-  推送的消息应该小而精，只包含变更的部分，例如：
-  
-  JSON
-  
-  {
-    "event": "translation_updated",
-    "data": {
-      "key": "home.welcome_message", // 完整的key
-      "lang": "en-US",
-      "newValue": "Welcome, esteemed user!"
-    }
-  }
-  
-  实时更新:
-  
-  App启动后，就建立到后端Workerman的WebSocket连接。  
-  监听 translation_updated 事件。  
-  当收到消息时，检查消息中的 lang 是否与当前用户设置的语言匹配。
-
   第一步：数据库设计与数据准备 (SQL)
   首先，在您的数据库中创建一张表来存储多语言文本。
   
@@ -318,17 +305,6 @@ git submodule update --init --recursive
     UNIQUE KEY `idx_key_lang` (`string_key`, `lang_code`) -- 确保每个语言的每个键都是唯一的
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='多语言翻译表';
   
-  -- 插入一些示例数据
-  INSERT INTO `translations` (`string_key`, `lang_code`, `value`) VALUES
-  ('home.title', 'en-US', 'Home'),
-  ('home.title', 'zh-CN', '首页'),
-  ('home.title', 'de-DE', 'Startseite'),
-  ('home.welcome', 'en-US', 'Welcome to our application!'),
-  ('home.welcome', 'zh-CN', '欢迎使用我们的应用！'),
-  ('home.welcome', 'de-DE', 'Willkommen zu unserer Anwendung!'),
-  ('button.save', 'en-US', 'Save'),
-  ('button.save', 'zh-CN', '保存'),
-  ('button.save', 'de-DE', 'Speichern');
   第二步：后端实现 (PHP + Workerman)
   假设您的项目结构如下：
   

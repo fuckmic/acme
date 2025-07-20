@@ -21,6 +21,10 @@
 		"style": { "enablePullDownRefresh": true, "navigationStyle": "custom" },
 		"meta": { "name": "icons", "auth": false, "mode": "" }
 	}, {
+		"path": "pages/lgre",
+		"style": { "enablePullDownRefresh": true, "navigationStyle": "custom" },
+		"meta": { "name": "lgre", "auth": false, "mode": "" }
+	}, {
 		"path": "pages/format",
 		"style": { "enablePullDownRefresh": true, "navigationStyle": "custom" },
 		"meta": { "name": "format", "auth": false, "mode": "" }
