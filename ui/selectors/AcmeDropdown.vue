@@ -23,6 +23,7 @@
 		name: "AcmeDropdown",
 		components: { AcmeSelectorOption, AcmePaper, AcmeDivider },
 		props: {
+			name: { type: String, required: true }, // 新增 name prop
 			show: { type: Boolean, default: false },
 			title: { type: String, default: '' },
 			options: { type: Array, default: () => [] },
@@ -99,8 +100,8 @@
 				this.cancel();
 			},
 			cancel() {
-				console.log('Dropdown closed by overlay');
-				this.$emit('cancel');
+				console.log('Dropdown closed by overlay', this.name);
+				this.$emit('cancel', this.name);
 			},
 		}
 	}

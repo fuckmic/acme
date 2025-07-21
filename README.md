@@ -42,8 +42,8 @@
 ## ui/
 
 ### icons/ 组件化一些图标
-- AcmeIconSearch.vue 
-- AcmeIcon[xxx].vue
+- ✅ AcmeIconSearch.vue 
+- ✅ AcmeIcon[xxx].vue
 - AcmeIconMore.vue 更多
 - <AcmeIconMenu @click="showMenu" />
 <!-- - AcmeIconCountryFlag.vue 国旗base64、法币logo
@@ -51,11 +51,11 @@
 - AcmeIconStable.vue 稳定币logo -->
 
 ### label/ 明文显示
-- AcmeLableStatic.vue 不含事件的明文显示组件(正式上线)
-- AcmeLabelEvent.vue 携带热键和对话框的明文显示组件(部署测试交付)，留一个插槽。
+- ✅ AcmeLableStatic.vue 不含事件的明文显示组件(正式上线)
+- ✅ AcmeLabelEvent.vue 携带热键和对话框的明文显示组件(部署测试交付)，留一个插槽。
 #### 主项目/components文件夹
-- DisplayLabel.vue 主项目全局注册，使用的明文显示组件。内中引入AcmeLableStatic.vue 和 AcmeLabelEvent.vue
-- LabelEdit.vue 明文修改组件。引入AcmeModal.vue。这个对话框，修改明文，并调用接口提交新数据。
+- ✅ DisplayLabel.vue 主项目全局注册，使用的明文显示组件。内中引入AcmeLableStatic.vue 和 AcmeLabelEvent.vue
+- ✅ LabelEdit.vue 明文修改组件。引入AcmeModal.vue。这个对话框，修改明文，并调用接口提交新数据。
 - - 也可以选择语言，新增其他语言的数据。后端需要判断，相同语言代码，相同key，是否已存在。
 
 
@@ -74,7 +74,6 @@
 - ✅ AcmeAvatar.vue 头像及类头像风格显示
 - ✅ AcmeBadge.vue 徽章、online
 <!-- - AcmeTheme.vue 主题切换 -->
-
 
 
 ### nav/ 导航相关组件
