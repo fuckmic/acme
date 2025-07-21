@@ -9,11 +9,11 @@
 		<BottomNav :code="$nav.keys.selectors" />
 
 		<view style="padding: 160rpx 40rpx 240rpx;">
-			<view style="margin-left: auto;position: relative;" @tap="openCountryDropdown()">
-				<text>选择国家: {{ selectedCountry.value }}</text>
+			<view style="position: relative;" @tap="openCountryDropdown()">
+				<text class="acme-h6"> {{`Dropdown Country:`+ selectedCountry.value }}</text>
 				<template v-if="showCountryDropdown">
 					<AcmeDropdown :show="showCountryDropdown" :options="countryOptions" :active="selectedCountry" :elevation="6"
-						@select="onCountry" @cancel="onCancel" />
+						@select="onCountry" @cancel="onCancel" :title="`Choose Country`" :position="{right:0}" />
 				</template>
 			</view>
 
@@ -90,7 +90,8 @@
 				console.log('Selected showCountryDropdown (after select):', this.showCountryDropdown);
 			},
 			onCancel() {
-				this.showCountryDropdown = false
+				console.log(`onCancel:`, this.showCountryDropdown);
+				// this.showCountryDropdown = false
 			}
 		},
 	}

@@ -1,9 +1,9 @@
 <template>
 	<view :class="['acme-input-base', variant, { 'is-active': isFocused }]" :style="dynamicWidthStyle">
-		<AcmeIconSearch v-if="search" :size="24" @tap="onTap" />
-		<input :value="value" type="text" :placeholder="placeholder" placeholder-class="placeholder" @input="onInput"
-			autocomplete="off" @focus="onFocus" @blur="onBlur"></input>
-		<view class="clear" @tap="onClear">
+		<AcmeIconSearch v-if="search" :size="24" @tap.stop="onTap" />
+		<input :value="value" type="text" :placeholder="placeholder" placeholder-class="placeholder" @input.stop="onInput"
+			autocomplete="off" @focus.stop="onFocus" @blur.stop="onBlur"></input>
+		<view class="clear" @tap.stop="onClear">
 			<AcmeIconClose v-show="showDel" :size="32" />
 		</view>
 		<view v-if="$slots.suffix" class="suffix">

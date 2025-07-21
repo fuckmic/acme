@@ -143,7 +143,8 @@
 - - AcmeInputText.vue 对话框选择器中的输入框。
 
 
-- AcmeDropdown.vue  点击图标/标签触发的浮层选择器，带过滤。只有浮层，不含触发器。
+- AcmeDropdown.vue  点击图标/标签触发的浮层选择器，用于少量、固定的数据选择,不含搜索。只有浮层，不含触发器。
+- - 如果想要使用过滤和选择器，则使用AcmeAutocomplete系列组件，通过输入框值，实时过滤dropdown内容。
 
 
 <!-- 
@@ -540,4 +541,5 @@ git submodule update --init --recursive
   
   这个示例为您搭建了完整的骨架，您可以基于此进行扩展，例如为WebSocket连接增加Token鉴权，完善管理后台的UI等。
   -->
+ 
  
