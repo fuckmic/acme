@@ -53,8 +53,9 @@ Vue.prototype.$appCfg = {
 	defLgre: "en-US", // 默认语言代码
 	// 竖版底导航配置
 	bottomNavCfg: null,
-	curLgres: curLgres["en-US"],
+	curLgres: null,
 }
+Vue.prototype.$appCfg.curLgres = curLgres[Vue.prototype.$appCfg.defLgre];
 console.log(Vue.prototype.$appCfg);
 
 
