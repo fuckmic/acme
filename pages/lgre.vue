@@ -64,6 +64,7 @@
 	import AcmeInputSearchExpand from '../ui/inputs/AcmeInputSearchExpand.vue';
 	import AcmeDivider from '../ui/common/AcmeDivider.vue';
 	import { setLgres } from '../intl/index.js';
+	import lgres from '../intl/lgres.js';
 	export default {
 		components: {
 			BottomNav,
@@ -81,7 +82,9 @@
 		},
 		computed: {
 			localeCfg() {
-				const tmp = setLgres(['en-US', 'de-DE']);
+				const keys = Object.keys(lgres);
+				const tmp = setLgres(keys);
+				console.log(tmp);
 				return tmp['en-US'];
 			}
 		},
