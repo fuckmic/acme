@@ -29,7 +29,7 @@
 
 <script>
 	import { acmeCfg } from '../../config.js';
-	import { lgreCnf } from '../../intl/index.js';
+	// import { lgreCnf } from '../../intl/index.js';
 	import AcmeModal from '../../ui/feedback/AcmeModal.vue';
 	import AcmeInputText from '../../ui/inputs/AcmeInputText.vue';
 	export default {
@@ -53,7 +53,8 @@
 		},
 		computed: {
 			curLang() {
-				const tmp = lgreCnf[this.currentLgre].lang;
+				console.log(this.$appCfg);
+				const tmp = this.$appCfg.curLgres[this.currentLgre].lang;
 				return tmp;
 			},
 		},

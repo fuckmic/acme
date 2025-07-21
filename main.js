@@ -6,6 +6,7 @@ import * as nav from './utils/navigation.js';
 import * as intl from './intl/index.js';
 import { setGlobalThemeColorsMap } from '@/utils/theme.js';
 import { acmeSetEditable } from './config.js';
+import { setLgresSelfNamed } from './intl/index.js';
 
 Vue.component('AcmePageContainer', AcmePageContainer); // 全局注册
 Vue.component('DisplayLabel', DisplayLabel); // 全局注册
@@ -40,6 +41,7 @@ setGlobalThemeColorsMap(myProjectSvgColors);
 // 是否启用label可编辑
 acmeSetEditable(true);
 
+const curLgres = setLgresSelfNamed(['en-US', 'de-DE']);
 
 Vue.prototype.$appCfg = {
 	appName: null, // 应用名称
@@ -51,7 +53,9 @@ Vue.prototype.$appCfg = {
 	defLgre: "en-US", // 默认语言代码
 	// 竖版底导航配置
 	bottomNavCfg: null,
+	curLgres: curLgres["en-US"],
 }
+console.log(Vue.prototype.$appCfg);
 
 
 Vue.prototype.$nav = nav;
