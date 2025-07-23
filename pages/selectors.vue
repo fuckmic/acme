@@ -9,35 +9,9 @@
 		<BottomNav :code="$nav.keys.selectors" />
 
 		<view style="padding: 160rpx 40rpx 240rpx;">
-
-			<!-- <view style="display: flex;align-items: center;gap:24rpx;">
-				<view style="position: relative;">
-					<AcmeIconLang @click="openDropdownLang" :size="64" />
-					<template v-if="showDropdownLang">
-						<AcmeDropdown :show="showDropdownLang" :options="langOpts" :active="selectedLang" :elevation="6"
-							@select="onSelectedLang" @cancel="onCancel" :title="`Choose Lang`" :position="{left:0}" />
-					</template>
-				</view>
-				<view style="position: relative;border-radius: 100%;width: 64rpx;height: 64rpx;">
-					<image :src="selectedLang.icon" mode="scaleToFill" style="width: 100%;height: 100%;border-radius: 100%;"
-						@tap="openDropdownLang()">
-					</image>
-					<template v-if="showDropdownLang">
-						<AcmeDropdown :show="showDropdownLang" :options="langOpts" :active="selectedLang" :elevation="6"
-							@select="onSelectedLang" @cancel="onCancel" :title="`Choose Lang`" :position="{left:0}" />
-					</template>
-				</view>
-			</view> -->
-
-			<!-- <view style="position: relative;">
-				<text class="acme-h6" @tap="openDropdownCountry()">
-					{{`Dropdown Country:`+ selectedCountry.value }}</text>
-				<template v-if="showDropdownCountry">
-					<AcmeDropdown :show="showDropdownCountry" :options="countryOpts" :active="selectedCountry" :elevation="6"
-						@select="onSelectedCountry" @cancel="onCancel" :title="`Choose Country`" :position="{right:0}" />
-				</template>
-			</view> -->
-
+			<AcmeDivider leftLineRatio="80rpx">
+				<view class="acme-h6">{{`Dropdown`}}</view>
+			</AcmeDivider>
 			<view style="display: flex;align-items: center;gap:24rpx;">
 				<view style="position: relative;">
 					<AcmeIconLang @click="openDropdown('lang')" :size="64" />
@@ -77,6 +51,22 @@
 						:title="`Choose Currency`" :position="{left:0}" />
 				</template>
 			</view>
+
+			<AcmeDivider leftLineRatio="80rpx">
+				<view class="acme-h6">{{`Dropdown`}}</view>
+			</AcmeDivider>
+
+			<view style="position: relative;">
+				<AcmeInputText v-model="formData.keyword" :placeholder="`Enter keyword`" variant="variant-bordered" isSpace
+					@focus="onFocus" @blur="onBlur" />
+				<template v-if="showDropdown">
+					<AcmeDropdown name="currency" :show="showDropdown" :options="currencyOpts" :active="selectedCurrency"
+						:elevation="6" @select="onSelectedCurrencyAuto" @cancel="onCancel" :title="`Choose Currency`"
+						:position="{left:0}" />
+				</template>
+			</view>
+
+
 		</view>
 
 	</AcmePageContainer>
@@ -90,6 +80,7 @@
 	import AcmeDropdown from '../ui/selectors/AcmeDropdown.vue';
 	import AcmeIconLang from '../ui/icons/AcmeIconLang.vue';
 	import { setLgres } from '../intl/index.js';
+	import AcmeInputText from '../ui/inputs/AcmeInputText.vue';
 	export default {
 		components: {
 			BottomNav,
@@ -98,6 +89,7 @@
 			AcmeDivider,
 			AcmeDropdown,
 			AcmeIconLang,
+			AcmeInputText,
 		},
 		data() {
 			return {
@@ -107,6 +99,10 @@
 				selectedCurrency: null,
 				selectedFlag: null,
 				curLgres: setLgres(['en-US', 'de-DE']),
+				formData: {
+					keyword: ''
+				},
+				showDropdown: false,
 			};
 		},
 		computed: {
@@ -146,6 +142,17 @@
 			this.selectedFlag = this.flagOpts[0];
 		},
 		methods: {
+			onFocus() {
+				// this.activeDropdownName = (this.activeDropdownName === dropdownName) ? null : dropdownName;
+				this.showDropdown = true;
+			},
+			onSelectedCurrencyAuto(opt) {
+				this.selectedCurrency = opt;
+				this.formData.keyword = opt.value;
+
+				this.showDropdown = false;
+			},
+
 			// 统一的打开 Dropdown 方法
 			openDropdown(dropdownName) {
 				// 如果点击的是当前已打开的 dropdown，则关闭

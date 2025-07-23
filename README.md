@@ -129,20 +129,21 @@
 
 ### selectors/ 所有选择器
 - ✅ AcmePresetGroup.vue 预置值 法币、杠杆、加密币、稳定币。自由列数, 数量较少、无需过滤的预设选项组。
-- AcmeSelectorOption.vue 单个选项，在所有选择器通用。[icon |value|code]
+- ✅ AcmeSelectorOption.vue 单个选项，在所有选择器通用。[icon |value|code]
+- ✅ AcmeDropdown.vue  点击图标/文字触发的浮层选择器，用于少量、固定的数据选择,不含搜索。只有浮层，不含触发器。
+<!-- - AcmeAutocomplete.vue 点击输入框触发的浮层选择器。输入时，自动展开，显示根据输入内容过滤后的选项组。按照统一规范格式传递数据 -->
 
-<!-- 带有输入和过滤的选择器。输入框形式，输入时，自动展开，显示根据输入内容过滤后的选项组。 -->
-- AcmeAutocompleteCountry.vue 国家选择器。输入即过滤、国旗(base64)、国家全称、电话前缀。
+<!-- - AcmeAutocompleteCountry.vue 国家选择器。输入即过滤、国旗(base64)、国家全称、电话前缀。
 - AcmeAutocompleteLgre.vue 语言选择器。输入即过滤、国旗(base64)、语言全称、语言代码。
 - AcmeAutocompleteCurrency.vue 法币选择器。输入即过滤、国旗(base64)、货币符号、货币代码。
-- AcmeAutocompleteCrypto.vue 加密币选择器。输入即过滤、logo(url)、加密币全称。
+- AcmeAutocompleteCrypto.vue 加密币选择器。输入即过滤、logo(url)、加密币全称。 -->
 
 <!-- 已经有AcmeModal.vue ，并且可以设置位置(居中或底入)。 -->
 - AcmeModalSelector.vue 对话框选择器。底入多用于竖屏（App）,居中通用。
 - - AcmeInputText.vue 对话框选择器中的输入框。
 
 
-- AcmeDropdown.vue  点击图标/标签触发的浮层选择器，用于少量、固定的数据选择,不含搜索。只有浮层，不含触发器。
+
 - - 如果想要使用过滤和选择器，则使用AcmeAutocomplete系列组件，通过输入框值，实时过滤dropdown内容。
 
 
@@ -152,6 +153,7 @@
  -->
 
 ### chart/ 图表
+- AcmeChartTooltip.vue 通用的自定义tooltip。解决图表和tooltip重叠问题。
 - AcmeChartKline.vue (Acme 库的图表组件，具体是 K 线图)
 - AcmeChartMiniArea.vue (Acme 库的图表组件，具体是迷你面积图)
 - AcmeChartProgressBarSegmented.vue 

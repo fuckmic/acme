@@ -4,7 +4,7 @@
 			<slot name="prefix"></slot>
 		</view>
 		<input :value="value" type="text" :placeholder="placeholder" @input="onInput" placeholder-class="placeholder"
-			:disabled="disabled" autocomplete="off"></input>
+			@focus="onFocus" :disabled="disabled" autocomplete="off"></input>
 		<view class="clear" @tap="onClear">
 			<AcmeIconClose v-show="showDel" :size="32" />
 		</view>
@@ -41,6 +41,12 @@
 				this.$emit('input', filteredValue);
 			},
 			onClear() { this.$emit('input', ''); },
+			// 输入框获取焦点时
+			onFocus() {
+				// this.isFocused = true;
+				this.$emit('focus')
+			},
+
 		},
 	}
 </script>

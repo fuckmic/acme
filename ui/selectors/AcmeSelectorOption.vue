@@ -42,6 +42,7 @@
 		gap: 24rpx;
 		padding: 16rpx 24rpx; // 添加一些内边距，使点击区域更舒适
 		cursor: pointer; // 添加手型光标
+		white-space: nowrap;
 
 		.option-logo {
 			width: auto;
