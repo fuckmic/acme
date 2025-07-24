@@ -38,23 +38,31 @@
 				</view>
 				<view class="variant-large">{{formatterFiat( setFiatNoml,  acmeCfg.lgre, 'EUR')}}</view>
 			</view>
-			<!-- 
-			
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;padding-bottom: 12rpx;">
 				<view class="acme-body1">{{`动态variant：`}}</view>
-				<AcmeFmtFiat :value="setFiatNoml" :variant="getTextColor(setFiatNoml)" />
-				<AcmeFmtFiat :value="setFiatNoml" :variant="getBgColor(-setFiatNoml)" />
+				<view :class="getTextColor(setFiatNoml)">
+					{{formatterFiat( setFiatNoml,  acmeCfg.lgre,  acmeCfg.currency)}}
+				</view>
+				<view :class="getBgColor(-setFiatNoml)">{{formatterFiat( setFiatNoml,  acmeCfg.lgre, 'EUR')}}</view>
 			</view>
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;padding-bottom: 12rpx;">
 				<view class="acme-body1">{{`动态variant 反转：`}}</view>
-				<AcmeFmtFiat :value="setFiatNoml" :variant="getTextColor(setFiatNoml,true)" />
-				<AcmeFmtFiat :value="setFiatNoml" :variant="getBgColor(-setFiatNoml,true)" />
+				<view :class="getTextColor(setFiatNoml,true)">
+					{{formatterFiat( setFiatNoml,  acmeCfg.lgre,  acmeCfg.currency)}}
+				</view>
+				<view :class="getBgColor(-setFiatNoml,true)">{{formatterFiat( setFiatNoml,  acmeCfg.lgre, 'EUR')}}</view>
 			</view>
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;padding-bottom: 12rpx;">
-				<AcmeFmtFiat :value="setFiatNoml" :variant="getBgColorRgba(setFiatNoml)" />
-				<AcmeFmtFiat :value="setFiatNoml" :variant="getBgColorRgba(0)" />
-				<AcmeFmtFiat :value="setFiatNoml" :variant="getBgColorRgba(-setFiatNoml)" />
-			</view> -->
+				<view :class="getBgColorRgba(setFiatNoml)">
+					{{formatterFiat( setFiatNoml,  acmeCfg.lgre,  acmeCfg.currency)}}
+				</view>
+				<view :class="getBgColorRgba(0)">
+					{{formatterFiat( setFiatNoml,  acmeCfg.lgre,  acmeCfg.currency)}}
+				</view>
+				<view :class="getBgColorRgba(-setFiatNoml)">
+					{{formatterFiat( setFiatNoml,  acmeCfg.lgre,  acmeCfg.currency)}}
+				</view>
+			</view>
 
 			<AcmeDivider />
 			<view class="acme-h6 ">{{`AcmeFmtKMB`}}</view>
@@ -115,7 +123,6 @@
 
 	import { acmeCfg } from '../config.js';
 	import { formatterFiat, formatterInteger, formatNumberToPrecision } from '../utils/formatter';
-	import AcmeFmtFiat from '../ui/fmt/AcmeFmtFiat.vue';
 	import AcmeFmtInteger from '../ui/fmt/AcmeFmtInteger.vue';
 	import AcmeFmtPercent from '../ui/fmt/AcmeFmtPercent.vue';
 	import AcmeFmtKMB from '../ui/fmt/AcmeFmtKMB.vue';
@@ -127,7 +134,6 @@
 			AcmeAppBar,
 			AcmeIconBack,
 			AcmeDivider,
-			AcmeFmtFiat,
 			AcmeFmtInteger,
 			AcmeFmtPercent,
 			AcmeFmtKMB,
@@ -216,5 +222,56 @@
 		--acme-fmt-color: red;
 		--acme-fmt-font-weight: 900;
 		--acme-fmt-font-size: 80rpx;
+	}
+
+	.acme-text-profit {
+		color: var(--acme-success);
+	}
+
+	.acme-text-flat {
+		color: var(--acme-info);
+	}
+
+	.acme-text-fall {
+		color: var(--acme-error)
+	}
+
+	.acme-bg-profit {
+		background-color: var(--acme-success);
+		padding: var(--acme-spacing-xs);
+		border-radius: var(--acme-border-radius-sm);
+	}
+
+	.acme-bg-flat {
+		background-color: var(--acme-info);
+		padding: var(--acme-spacing-xs);
+		border-radius: var(--acme-border-radius-sm);
+	}
+
+	.acme-bg-fall {
+		background-color: var(--acme-error);
+		padding: var(--acme-spacing-xs);
+		border-radius: var(--acme-border-radius-sm);
+	}
+
+	.acme-bg-profit-rgba {
+		color: var(--acme-success);
+		background-color: rgba(var(--acme-success-rgb), var(--acme-opacity-medium));
+		padding: var(--acme-spacing-xs);
+		border-radius: var(--acme-border-radius-sm);
+	}
+
+	.acme-bg-flat-rgba {
+		color: var(--acme-info);
+		background-color: rgba(var(--acme-info-rgb), var(--acme-opacity-medium));
+		padding: var(--acme-spacing-xs);
+		border-radius: var(--acme-border-radius-sm);
+	}
+
+	.acme-bg-fall-rgba {
+		color: var(--acme-error);
+		background-color: rgba(var(--acme-error-rgb), var(--acme-opacity-medium));
+		padding: var(--acme-spacing-xs);
+		border-radius: var(--acme-border-radius-sm);
 	}
 </style>
