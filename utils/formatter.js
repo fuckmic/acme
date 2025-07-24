@@ -153,26 +153,15 @@ export function formatNumberManually(numValue, locale, fixedDigits = 0) {
 }
 
 /**
- * 根据货币代码获取默认小数位数，或根据传入的 desiredDecimalPlaces 返回指定位数。
- * @param {string} currency - 货币代码 (如 'USD', 'EUR', 'JPY')。
- * @param {number} [desiredDecimalPlaces] - 可选参数，如果提供，则覆盖默认值。
- * @returns {number} - 最终确定的小数位数。
- */
-export function getFiatDecimalPlaces(currency, desiredDecimalPlaces) {
-	// 如果 desiredDecimalPlaces 明确提供且有效，则优先使用它
-	if (typeof desiredDecimalPlaces === 'number' && desiredDecimalPlaces >= 0 && Number.isInteger(desiredDecimalPlaces)) {
-		return desiredDecimalPlaces;
-	}
-}
-
-/**
  * 根据货币代码获取默认小数位数。
  * @param {string} currency - 货币代码 (如 'USD', 'EUR', 'JPY')。
  * @returns {number} - 默认小数位数。
  */
 export function getDefaultFiatDecimalPlaces(currency) {
+	// 通常无小数的货币代码
 	if (currency === 'JPY' || currency === 'VND' || currency === 'ISK') return 0;
-	else return 2; // 默认两位小数
+	// 绝大多数货币代码默认两位小数
+	return 2;
 }
 
 /**

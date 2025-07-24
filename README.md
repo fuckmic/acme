@@ -92,18 +92,7 @@
 - AcmeTabsVertical.vue 竖tabs，通常宽屏使用
 
 
-### fmt/ 各类数据格式化
-- ✅ AcmeFmtFiat.vue 法币值。传入最终显示值，不处理国际化之外的逻辑
-- ✅ AcmeFmtInteger.vue 整数值
-- ✅ AcmeFmtPercent.vue 百分值
-- ✅ AcmeFmtCrypto.vue 加密币
-- ✅ AcmeFmtStable.vue 稳定币
-- ✅ AcmeFmtKMB.vue 金融大数KMB
-<!-- 
- :variant="直接传入需要的class名"
- 数值设置涨跌平颜色
- 数值设置涨跌平背景色、内边距、圆角
- -->
+
  
 ### inputs/ 各类Input组件
 - ✅ AcmeInputText.vue 普通文本
@@ -195,6 +184,20 @@ Txn (Transaction)：交易相关组件（如充值提现）。
 ### chart/ 图表相关
 - klinechart.js
 - u-chart.js
+
+
+### fmt/ 各类数据格式化 formatter.js
+- ✅ AcmeFmtFiat.vue 法币值。传入最终显示值，不处理国际化之外的逻辑
+- ✅ AcmeFmtInteger.vue 整数值
+- ✅ AcmeFmtPercent.vue 百分值
+- ✅ AcmeFmtCrypto.vue 加密币
+- ✅ AcmeFmtStable.vue 稳定币
+- ✅ AcmeFmtKMB.vue 金融大数KMB
+<!-- 
+ :variant="直接传入需要的class名"
+ 数值设置涨跌平颜色
+ 数值设置涨跌平背景色、内边距、圆角
+ -->
 
 <!-- 
 
