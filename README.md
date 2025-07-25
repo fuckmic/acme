@@ -175,7 +175,7 @@ Txn (Transaction)：交易相关组件（如充值提现）。
 
 ## utils/
 ### fmt/index.js 各类数据格式化。优先从数据层格式化，其次考虑元素结构直接调用
-- number.js 数值格式化
+- number.js 数值格式化、反格式化
 - string.js 字符串处理
 - date.js 日期时间格式化 
  date格式化时根据一个格式字符串，动态配置opt。
