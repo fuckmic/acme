@@ -53,9 +53,12 @@ Vue.prototype.$appCfg = {
 	theme: null, // 当前主题方案
 	layout: null, // 当前布局方案
 	defLgre: "en-US", // 默认语言代码
+	lgre: null, // 当前使用的语言代码
 	// 竖版底导航配置
 	bottomNavCfg: null,
 	curLgres: null,
+	// 当前语言对应的涨跌平基色，此处直接根据语言设置Boolan值
+	isRevse: false,
 }
 Vue.prototype.$appCfg.curLgres = curLgres[Vue.prototype.$appCfg.defLgre];
 console.log(Vue.prototype.$appCfg);
@@ -69,6 +72,8 @@ Vue.prototype.$fmt = fmt;
 console.log(`$fmt:`, fmt);
 Vue.prototype.$theme = theme;
 console.log(`$theme:`, theme);
+
+
 
 // console.log(Vue);
 

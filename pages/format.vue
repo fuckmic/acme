@@ -41,10 +41,10 @@
 			</view>
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;padding-bottom: 12rpx;">
 				<view class="acme-body1">{{`动态variant 反转：`}}</view>
-				<view :class="$theme.getTextColor(fiatValue,true)">
+				<view :class="$theme.getTextColor(fiatValue)">
 					{{$fmt.fmtFiat( fiatValue )}}
 				</view>
-				<view :class="$theme.getBgColor(-fiatValue,true)">{{$fmt.fmtFiat( fiatValue, {currency: 'EUR'})}}</view>
+				<view :class="$theme.getBgColor(-fiatValue)">{{$fmt.fmtFiat( fiatValue, {currency: 'EUR'})}}</view>
 			</view>
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;padding-bottom: 12rpx;">
 				<view :class="$theme.getBgColorRgba(fiatValue)">
