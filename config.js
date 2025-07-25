@@ -10,7 +10,16 @@ export const acmeConfig = Vue.observable({
 	isEditLabel: false, // 是否启动编辑label
 	// 鉴权 等待主项目注入具体的函数
 	_checkEditPermissionFn: null,
+	// 当前语言对应的涨跌平基色，此处直接根据语言设置Boolan值
+	isRevse: false,
 });
+
+// 是否反转涨跌平基色
+export function acmeSetIsRevse() {
+	const tmp = acmeConfig.lgre;
+	acmeConfig.isRevse = [`ko-KR`, `zh-TW`, `zh-CN`].includes(tmp);
+	console.log(`[acme] isRevse set to: ${tmp}`);
+}
 
 // 设置是否可以编辑label
 export const acmeSetEditable = (val) => {

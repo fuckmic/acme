@@ -1,4 +1,4 @@
-import Vue from 'vue';
+import { acmeConfig } from '../config.js';
 
 /* Maybe only map svg color */
 // 默认的全局主题颜色映射表 初始为空，由主项目通过 setGlobalThemeColorsMap 函数来填充。
@@ -34,10 +34,7 @@ export function cssVariableColor(cssVarString, theme) {
 	return cssVarString; // 如果不是 CSS 变量格式，或者在映射中未找到，则返回原始字符串
 }
 
-export function setIsRevse() {
-	const tmp = Vue.prototype.$appCfg.lgre || Vue.prototype.$appCfg.defLgre;
-	Vue.prototype.$appCfg.isRevse = [`ko-KR`, `zh-TW`, `zh-CN`].includes(tmp);
-}
+
 
 // 根据数字获取对应的索引 (0: 跌/亏, 1: 平, 2: 涨/盈)
 export function getSignIndex(num) {
@@ -47,7 +44,7 @@ export function getSignIndex(num) {
 // 获取盈亏/涨跌文字颜色  (传入值，是否倒转)
 export function getTextColor(num) {
 	let index = this.getSignIndex(num);
-	const isRevse = Vue.prototype.$appCfg.isRevse;
+	const isRevse = acmeConfig.isRevse;
 	index = isRevse ? (index === 0 ? 2 : (index === 2 ? 0 : index)) : index;
 	const tmp = [`acme-text-fall`, `acme-text-flat`, `acme-text-profit`];
 	return tmp[index];
@@ -55,14 +52,14 @@ export function getTextColor(num) {
 // 获取盈亏/涨跌背景颜色  (传入值，是否倒转)
 export function getBgColor(num) {
 	let index = this.getSignIndex(num);
-	const isRevse = Vue.prototype.$appCfg.isRevse;
+	const isRevse = acmeConfig.isRevse;
 	index = isRevse ? (index === 0 ? 2 : (index === 2 ? 0 : index)) : index;
 	const tmp = [`acme-bg-fall`, `acme-bg-flat`, `acme-bg-profit`];
 	return tmp[index];
 }
 export function getBgColorRgba(num) {
 	let index = this.getSignIndex(num);
-	const isRevse = Vue.prototype.$appCfg.isRevse;
+	const isRevse = acmeConfig.isRevse;
 	index = isRevse ? (index === 0 ? 2 : (index === 2 ? 0 : index)) : index;
 	const tmp = [`acme-bg-fall-rgba`, `acme-bg-flat-rgba`, `acme-bg-profit-rgba`];
 	return tmp[index];

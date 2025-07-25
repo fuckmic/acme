@@ -33,7 +33,6 @@
 			this.$appCfg.width = systemInfo.windowWidth;
 			this.$appCfg.height = systemInfo.windowHeight;
 			console.log('App Show', systemInfo);
-			this.$theme.setIsRevse();
 		},
 		onHide: function() {
 			console.log('App Hide');
