@@ -218,7 +218,7 @@
 			setNavs() {
 				return [
 					this.$nav.keys.format,
-					this.$nav.keys.presetSelector,
+					this.$nav.keys.presetGroup,
 					this.$nav.keys.inputs,
 					this.$nav.keys.icons,
 					this.$nav.keys.lgre,

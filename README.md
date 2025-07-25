@@ -17,6 +17,8 @@
 ## pages/示例
 - icons.vue 所有自定义默认icon
 - lgre.vue 所有已包含的lgre配置
+- format.vue 函数式数值格式化
+- selectors.vue 选择器
 
 ## styles
 - _colors.scss 包含所有基础的 Sass 颜色变量.
@@ -139,7 +141,7 @@
 - ✅ AcmePresetGroup.vue 预置值 法币、杠杆、加密币、稳定币。自由列数, 数量较少、无需过滤的预设选项组。
 - ✅ AcmeSelectorOption.vue 单个选项，在所有选择器通用。[icon |value|code]
 - ✅ AcmeDropdown.vue  点击图标/文字触发的浮层选择器，用于少量、固定的数据选择,不含搜索。只有浮层，不含触发器。
-<!-- - AcmeAutocomplete.vue 点击输入框触发的浮层选择器。输入时，自动展开，显示根据输入内容过滤后的选项组。按照统一规范格式传递数据 -->
+<!-- - 不使用Autocomplete，而是在主项目自由组合。输入框聚焦，自动展开，显示根据输入内容过滤后的选项组。按照统一规范格式传递数据 -->
 
 <!-- - AcmeAutocompleteCountry.vue 国家选择器。输入即过滤、国旗(base64)、国家全称、电话前缀。
 - AcmeAutocompleteLgre.vue 语言选择器。输入即过滤、国旗(base64)、语言全称、语言代码。

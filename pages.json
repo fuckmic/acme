@@ -41,9 +41,9 @@
 		"style": { "enablePullDownRefresh": true, "navigationStyle": "custom" },
 		"meta": { "name": "inputs", "auth": false, "mode": "" }
 	}, {
-		"path": "pages/presetSelector",
+		"path": "pages/presetGroup",
 		"style": { "enablePullDownRefresh": true, "navigationStyle": "custom" },
-		"meta": { "name": "presetSelector", "auth": false, "mode": "" }
+		"meta": { "name": "presetGroup", "auth": false, "mode": "" }
 	}, {
 		"path": "pages/doc",
 		"style": { "enablePullDownRefresh": true, "navigationStyle": "custom" },

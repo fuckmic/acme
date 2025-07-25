@@ -58,11 +58,11 @@
 
 			<view style="position: relative;">
 				<AcmeInputText v-model="formData.keyword" :placeholder="`Enter keyword`" variant="variant-bordered" isSpace
-					@focus="onFocus" @blur="onBlur" />
+					@focus="onFocus" @input="onInput" />
 				<template v-if="showDropdown">
-					<AcmeDropdown name="currency" :show="showDropdown" :options="currencyOpts" :active="selectedCurrency"
-						:elevation="6" @select="onSelectedCurrencyAuto" @cancel="onCancel" :title="`Choose Currency`"
-						:position="{left:0}" />
+					<AcmeDropdown name="currency" :show="showDropdown" :options="filterCurrencyOpts"
+						:active="selectedCurrencyInput" :elevation="6" @select="onSelectedCurrencyAuto" @cancel="onCancel"
+						:title="`Choose Currency`" :position="{left:0}" />
 				</template>
 			</view>
 
@@ -98,6 +98,7 @@
 				selectedCountry: null,
 				selectedCurrency: null,
 				selectedFlag: null,
+				selectedCurrencyInput: null,
 				curLgres: setLgres(['en-US', 'de-DE']),
 				formData: {
 					keyword: ''
@@ -133,23 +134,38 @@
 				});
 				console.log(`setOpts:`, result);
 				return result;
-			}
+			},
+			filterCurrencyOpts() {
+				const keyword = this.formData.keyword.toLowerCase().trim();
+				if (!keyword) {
+					return this.currencyOpts;
+				}
+				return this.currencyOpts.filter(v => {
+					// 确保 value 存在且是字符串，进行安全过滤
+					const value = v.value ? String(v.value) : '';
+					return value.toLowerCase().includes(keyword);
+				});
+			},
 		},
 		onShow() {
 			this.selectedLang = this.langOpts[0];
 			this.selectedCountry = this.countryOpts[0];
 			this.selectedCurrency = this.currencyOpts[0];
 			this.selectedFlag = this.flagOpts[0];
+			this.selectedCurrencyInput = this.filterCurrencyOpts[0];
 		},
 		methods: {
 			onFocus() {
 				// this.activeDropdownName = (this.activeDropdownName === dropdownName) ? null : dropdownName;
 				this.showDropdown = true;
 			},
+			onInput(val) {
+				console.log(`onInput:`, val);
+				// 数据过滤后，传入dropdown
+			},
 			onSelectedCurrencyAuto(opt) {
-				this.selectedCurrency = opt;
+				this.selectedCurrencyInput = opt;
 				this.formData.keyword = opt.value;
-
 				this.showDropdown = false;
 			},
 
