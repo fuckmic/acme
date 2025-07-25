@@ -14,7 +14,7 @@
 </template>
 
 <script>
-	import { acmeCfg } from '../../config.js';
+	import { acmeConfig } from '../../config.js';
 	import AcmeIcon from '../common/AcmeIcon.vue';
 	export default {
 		name: 'AcmeUpload',

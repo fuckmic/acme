@@ -12,7 +12,7 @@
 </template>
 
 <script>
-	import { acmeCfg } from '../../config.js';
+	import { acmeConfig } from '../../config.js';
 	import AcmeLabelStatic from '../../ui/label/AcmeLabelStatic.vue';
 	import AcmeLabelEvent from '../../ui/label/AcmeLabelEvent.vue';
 	import LabelEdit from '../label/LabelEdit.vue';
@@ -36,8 +36,8 @@
 		computed: {
 			// 是否启用编辑模式的标志
 			isEditable() {
-				console.log(acmeCfg.isEditLabel);
-				return acmeCfg.isEditLabel;
+				console.log(acmeConfig.isEditLabel);
+				return acmeConfig.isEditLabel;
 			},
 			// 计算属性：根据 transKey 获取最终的翻译文本
 			translatedLabel() {

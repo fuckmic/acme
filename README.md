@@ -186,19 +186,16 @@ Txn (Transaction)：交易相关组件（如充值提现）。
 - u-chart.js
 
 
-### fmt/ 各类数据格式化 formatter.js
-- ✅ AcmeFmtFiat.vue 法币值。传入最终显示值，不处理国际化之外的逻辑
+### fmt/ 各类数据格式化 formatter.js 优先从数据层格式化，其次考虑元素结构直接调用
+- ✅ fmtFiat  法币值。
 - ✅ AcmeFmtInteger.vue 整数值
 - ✅ AcmeFmtPercent.vue 百分值
 - ✅ AcmeFmtCrypto.vue 加密币
 - ✅ AcmeFmtStable.vue 稳定币
 - ✅ AcmeFmtKMB.vue 金融大数KMB
-<!-- 
- :variant="直接传入需要的class名"
- 数值设置涨跌平颜色
- 数值设置涨跌平背景色、内边距、圆角
- -->
-
+ 
+ date格式化时根据一个格式字符串，动态配置opt。
+例如：format="D-M-Y h:m:s" =》 日月年 时分秒
 <!-- 
 
 ### chart // 图表相关的 UI 组件 (例如 TradeView 风格的UI)

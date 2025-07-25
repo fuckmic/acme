@@ -5,11 +5,11 @@
 </template>
 
 <script>
-	import { acmeCfg } from '../../config.js';
+	import { acmeConfig } from '../../config.js';
 	export default {
 		name: "AcmePageContainer",
 		computed: {
-			curTheme() { return acmeCfg.theme === 'dark' ? 'dark-theme' : ''; },
+			curTheme() { return acmeConfig.theme === 'dark' ? 'dark-theme' : ''; },
 		}
 	}
 </script>

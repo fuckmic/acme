@@ -16,7 +16,7 @@
 </template>
 
 <script>
-	import { acmeCfg } from '../../config.js';
+	import { acmeConfig } from '../../config.js';
 	import AcmeIconClose from '../icons/AcmeIconClose.vue';
 	import {
 		getLocaleSeparators,
@@ -32,9 +32,9 @@
 			placeholder: { type: String, default: '' },
 			showClearIcon: { type: Boolean, default: true },
 			disabled: { type: Boolean, default: false },
-			locale: { type: String, default: () => acmeCfg.lgre },
+			locale: { type: String, default: () => acmeConfig.lgre },
 			// 用于 'fiat' 类型，如 'USD', 'EUR'
-			currency: { type: String, default: () => acmeCfg.currency },
+			currency: { type: String, default: () => acmeConfig.currency },
 			variant: { type: String, default: 'custom_class' },
 		},
 		data() {

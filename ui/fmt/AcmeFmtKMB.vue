@@ -11,13 +11,13 @@
 </template>
 
 <script>
-	import { acmeCfg } from '../../config.js';
+	import { acmeConfig } from '../../config.js';
 	import { formatterKMB } from '../../utils/formatter';
 	export default {
 		name: "AcmeFmtKMB",
 		props: {
 			value: { type: [String, Number], default: 0 },
-			lgre: { type: String, default: () => acmeCfg.lgre },
+			lgre: { type: String, default: () => acmeConfig.lgre },
 			maxFractionDigits: { type: Number, default: 2 }, // KMB通常保留2位小数
 			showSign: { type: String, default: 'auto' },
 			// 控制紧凑型显示方式  'short' (默认，如 1M, 1B), 'long' (如 1 million, 1 billion)

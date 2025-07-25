@@ -5,7 +5,7 @@
 </template>
 
 <script>
-	import { acmeCfg } from '../../config.js';
+	import { acmeConfig } from '../../config.js';
 	import AcmeSvg from '../common/AcmeSvg.vue';
 	import { cssVariableColor } from '../../utils/theme.js';
 	export default {
@@ -18,7 +18,7 @@
 			variant: { type: String, default: '' },
 		},
 		computed: {
-			setColor() { return cssVariableColor(this.color, acmeCfg.theme) },
+			setColor() { return cssVariableColor(this.color, acmeConfig.theme) },
 			setStyle() {
 				return { width: `${this.size}rpx`, height: `auto` }
 			},

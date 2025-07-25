@@ -19,7 +19,7 @@
 </template>
 
 <script>
-	import { acmeCfg } from '../../config.js';
+	import { acmeConfig } from '../../config.js';
 	import AcmeIconClose from '../icons/AcmeIconClose.vue';
 	import AcmeIconMaskhide from '../icons/AcmeIconMaskhide.vue';
 	import AcmeIconMaskshow from '../icons/AcmeIconMaskshow.vue';

@@ -11,13 +11,13 @@
 </template>
 
 <script>
-	import { acmeCfg } from '../../config.js';
+	import { acmeConfig } from '../../config.js';
 	import { formatterPercent } from '../../utils/formatter';
 	export default {
 		name: "AcmeFmtPercent",
 		props: {
 			value: { type: [String, Number], default: 0 },
-			lgre: { type: String, default: () => acmeCfg.lgre },
+			lgre: { type: String, default: () => acmeConfig.lgre },
 			showSign: { type: String, default: 'exceptZero' },
 			variant: { type: String, default: '' },
 		},

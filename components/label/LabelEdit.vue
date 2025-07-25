@@ -28,7 +28,7 @@
 
 
 <script>
-	import { acmeCfg } from '../../config.js';
+	import { acmeConfig } from '../../config.js';
 	// import { lgreCnf } from '../../intl/index.js';
 	import AcmeModal from '../../ui/feedback/AcmeModal.vue';
 	import AcmeInputText from '../../ui/inputs/AcmeInputText.vue';
@@ -48,7 +48,7 @@
 				formData: {
 					editedLabel: this.initialLabel, // 编辑框内容初始化为当前明文
 				},
-				currentLgre: acmeCfg.lgre, // 从配置中获取当前语言代码
+				currentLgre: acmeConfig.lgre, // 从配置中获取当前语言代码
 			};
 		},
 		computed: {

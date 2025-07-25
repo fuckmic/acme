@@ -8,7 +8,7 @@
 </template>
 
 <script>
-	import { acmeCfg } from '../../config.js';
+	import { acmeConfig } from '../../config.js';
 	export default {
 		name: 'AcmeLabelEvent',
 		props: {
@@ -27,11 +27,11 @@
 			},
 			checkPermission() {
 				// 调用由主项目注入的鉴权函数
-				if (typeof acmeCfg._checkEditPermissionFn === 'function') {
-					return acmeCfg._checkEditPermissionFn();
+				if (typeof acmeConfig._checkEditPermissionFn === 'function') {
+					return acmeConfig._checkEditPermissionFn();
 				}
 				// 如果没有注入，或者不是函数，则默认无权限并给出警告
-				console.warn('权限检查函数 (acmeCfg._checkEditPermissionFn) 未在主项目或正确注入！默认无权限。');
+				console.warn('权限检查函数 (acmeConfig._checkEditPermissionFn) 未在主项目或正确注入！默认无权限。');
 				return false;
 			},
 			handleEditHotKey(event) {

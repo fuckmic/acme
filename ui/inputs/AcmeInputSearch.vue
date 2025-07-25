@@ -15,7 +15,7 @@
 </template>
 
 <script>
-	import { acmeCfg } from '../../config.js';
+	import { acmeConfig } from '../../config.js';
 	import AcmeIconClose from '../icons/AcmeIconClose.vue';
 	export default {
 		name: "AcmeInputSearch",

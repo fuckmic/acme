@@ -11,13 +11,13 @@
 </template>
 
 <script>
-	import { acmeCfg } from '../../config.js';
+	import { acmeConfig } from '../../config.js';
 	import { formatterInteger } from '../../utils/formatter';
 	export default {
 		name: "AcmeFmtInteger",
 		props: {
 			value: { type: [String, Number], default: 0 },
-			lgre: { type: String, default: () => acmeCfg.lgre },
+			lgre: { type: String, default: () => acmeConfig.lgre },
 			showSign: { type: String, default: 'auto' },
 			variant: { type: String, default: '' },
 		},

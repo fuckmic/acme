@@ -13,7 +13,7 @@
 </template>
 
 <script>
-	import { acmeCfg } from '../../config.js';
+	import { acmeConfig } from '../../config.js';
 	import AcmeIconSearch from '../icons/AcmeIconSearch.vue';
 	import AcmeIconClose from '../icons/AcmeIconClose.vue';
 	export default {

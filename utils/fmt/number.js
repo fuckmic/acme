@@ -1,12 +1,22 @@
-import { acmeConfig } from '../config.js';
+import { acmeConfig } from '../../config';
+
+// 法币默认小数位配置
+const fiatDecimalConfig = {
+	'JPY': 0,
+	'VND': 0,
+	'ISK': 0,
+	// ... 其他特殊货币
+	'DEFAULT': 2 // 默认值
+};
+
 /**
  * 获取指定语言环境的数字分隔符
- * @param {string} locale - 语言环境字符串，例如 'en-US', 'de-DE'
- * @returns {{decimal: string, thousand: string}} - 包含小数点和千分符的对象
+ * @param {string} lgre
+ * @returns {decimal: string, thousand: string} - 包含小数点和千分符的对象
  */
-export function getLocaleSeparators(locale) {
+export function getLocaleSeparators(lgre) {
 	try {
-		const formatter = new Intl.NumberFormat(locale);
+		const formatter = new Intl.NumberFormat(lgre);
 		// [{"type":"integer","value":"12"},{"type":"group","value":"."},{"type":"integer","value":"345"},{"type":"decimal","value":","},{"type":"fraction","value":"67"}]
 		const parts = formatter.formatToParts(12345.67);
 		let decimal = '.'; // 默认小数符号
@@ -20,8 +30,8 @@ export function getLocaleSeparators(locale) {
 		}
 		return { decimal, thousand };
 	} catch (e) {
-		console.warn(`getLocaleSeparators 无法获取语言环境 ${locale} 的分隔符，使用默认值：小数点 '.'，千分符 ','`, e);
-		return { decimal: '.', thousand: ',' }; // 兼容性回退
+		console.warn(`getLocaleSeparators - ${lgre} 的兼容性回退`, e);
+		return { decimal: decimal, thousand: thousand }; // 兼容性回退
 	}
 }
 
@@ -153,55 +163,30 @@ export function formatNumberManually(numValue, locale, fixedDigits = 0) {
 	return formattedNum;
 }
 
-// 法币默认小数位配置
-export const fiatDecimalConfig = {
-	'JPY': 0,
-	'VND': 0,
-	'ISK': 0,
-	// ... 其他特殊货币
-	'DEFAULT': 2 // 默认值
-};
 
-/**
- * 根据货币代码获取默认小数位数。
- * @param {string} currency - 货币代码 (如 'USD', 'EUR', 'JPY')。
- * @returns {number} - 默认小数位数。
- */
-export function getDefaultFiatDecimalPlaces(currency) {
+
+
+// 数值为数字类型
+export function parseToNumer(rawValue) {
+	const num = parseFloat(rawValue);
+	return isNaN(num) ? null : num;
+}
+
+// 获取真实小数位
+export function getRawDecimal(rawValue) {
+	const valueString = String(rawValue);
+	const parts = valueString.split('.');
+	return parts.length === 2 ? parts[1].length : 0;
+}
+
+// 获取法币默认小数位
+export function getDefFiatDecimal(currency) {
 	return fiatDecimalConfig[currency.toUpperCase()] !== undefined ?
 		fiatDecimalConfig[currency.toUpperCase()] :
 		fiatDecimalConfig.DEFAULT;
 }
 
-// 纯粹的数值精度处理
-export function formatNumberToDecimal(rawValue, currency, opt = {}) {
-	const num = parseFloat(rawValue);
-	if (isNaN(num)) return rawValue; // 对于无效输入，返回原始值或空字符串，而不是NaN
 
-	let finalDecimalDigits;
-	if (typeof opt.decimal === 'number' && opt.decimal >= 0 && Number.isInteger(opt.decimal)) {
-		finalDecimalDigits = opt.decimal;
-	} else {
-		finalDecimalDigits = getDefaultFiatDecimalPlaces(currency); // 使用货币默认
-	}
-
-	// 使用 toFixed 进行格式化和四舍五入。 返回字符串， 避免了浮点数转换的再次精度损失
-	return num.toFixed(finalDecimalDigits);
-}
-
-/**
- * 从原始字符串获取小数位数。所有数值可通用
- * 例如：123 -> 0, 123.4 -> 1, 123.456 -> 3
- * 注意：此函数处理的是字符串表示的小数位数，对于浮点数精度问题需谨慎。
- * @param {number|string} rawValue - 原始数值。
- * @returns {number} - 原始数值字符串表示的小数位数。如果不是有效数字，返回 0。
- */
-export function getRawDecimalPlaces(rawValue) {
-	const valueString = String(rawValue);
-	const parts = valueString.split('.');
-	if (parts.length === 2) return parts[1].length;
-	return 0;
-}
 
 /**
  * 法币格式化 12345.67 -> 12,345.67|12.345,67
@@ -214,19 +199,16 @@ export function getRawDecimalPlaces(rawValue) {
  * @returns {string} - 格式化后的字符串
  */
 export function fmtFiat(rawValue, opt = {}) {
-	const {
-		lgre = acmeConfig.lgre,
-			currency = acmeConfig.currency,
-			signDisplay = 'auto', decimal
-	} = opt;
+	const { lgre = acmeConfig.lgre, currency = acmeConfig.currency, signDisplay = 'auto', decimal } = opt;
 	// 优先处理传入的decimal
 	let _decimal;
+	// 如果decimal有值
 	if (typeof decimal === 'number' && decimal >= 0 && Number.isInteger(decimal)) _decimal = decimal;
 	// 否则，使用默认的法币值方案
-	else _decimal = getDefaultFiatDecimalPlaces(currency);
+	else _decimal = getDefFiatDecimal(currency);
 	// console.log(_decimal);
-	const num = parseFloat(rawValue);
-	if (isNaN(num)) return '';
+	const num = parseToNumer(rawValue);
+	if (!num) return '';
 
 	const options = {
 		style: "currency",
@@ -241,132 +223,6 @@ export function fmtFiat(rawValue, opt = {}) {
 	} catch (e) {
 		console.warn(`fmtFiat 格式化数字 ${rawValue} 失败，使用默认格式化。`, e);
 		const formattedNum = formatNumberManually(num, lgre, _decimal);
-		// return `${formattedNum} ${currency}`;
-		return formattedNum;
-	}
-}
-
-export function formatterInteger(rawValue, locale) {
-	const num = parseFloat(rawValue);
-	if (isNaN(num)) return '';
-	const options = {
-		style: "decimal",
-		useGrouping: true,
-		signDisplay: 'auto',
-		minimumFractionDigits: 0,
-		maximumFractionDigits: 0,
-	}
-	try {
-		return new Intl.NumberFormat(locale, options).format(num);
-	} catch (e) {
-		console.warn(`formatterInteger 格式化数字 ${rawValue} 失败，使用默认格式化。`, e);
-		const formattedNum = formatNumberManually(num, locale, 0);
-		// return `${formattedNum} ${currency}`;
-		return formattedNum;
-	}
-}
-
-export function formatterPercent(rawValue, locale, signDisplay = 'auto') {
-	const num = parseFloat(rawValue);
-	if (isNaN(num)) return '';
-	let defDigit = 2; // %值通常两位小数
-	const options = {
-		style: "percent",
-		useGrouping: true,
-		signDisplay: signDisplay,
-		minimumFractionDigits: defDigit,
-		maximumFractionDigits: defDigit,
-	};
-	try {
-		// Intl.NumberFormat percent style 期望0-1的数值，所以需要除以100
-		return new Intl.NumberFormat(locale, options).format(num / 100);
-	} catch (e) {
-		console.warn(`formatterPercent 格式化数字 ${rawValue} 失败，使用默认格式化。`, e);
-		// const formattedNum = formatNumberManually(num, locale, 0);
-		// // return `${formattedNum} ${currency}`;
-		// return formattedNum;
-		return `${num.toFixed(defDigit)}%`; // 回退方案
-	}
-}
-
-export function formatterKMB(rawValue, locale, opt = {}) {
-	const { signDisplay = 'auto', compact = 'short' } = opt;
-	const num = parseFloat(rawValue);
-	if (isNaN(num)) return '';
-	// 真实的小数位数
-	const _decimal = getRawDecimalPlaces(rawValue);
-	const options = {
-		style: "decimal",
-		useGrouping: true, // 通常在 compact 模式下，这个会被 notation 覆盖，但保留无害
-		signDisplay: signDisplay,
-		notation: 'compact',
-		compactDisplay: compact, // 'short' (默认) 或 'long'
-		// 关于小数位数：
-		// compact notation 会根据缩写自动调整小数位数，
-		// 但 maxFractionDigits 仍然可以作为最大限制。
-		// minimumFractionDigits 通常设为 0，让 compact notation 灵活处理。
-		minimumFractionDigits: 0,
-		maximumFractionDigits: _decimal,
-	};
-	try {
-		return new Intl.NumberFormat(locale, options).format(num);
-	} catch (e) {
-		console.warn(`formatterFiat 格式化数字 ${rawValue} 失败，使用默认格式化。`, e);
-		const formattedNum = formatNumberManually(num, locale, _decimal);
-		// return `${formattedNum} ${currency}`;
-		return formattedNum;
-	}
-}
-
-// 加密币格式化
-export function formatterCrypto(rawValue, locale, opt = {}) {
-	// 解构 opt 对象，并为 signDisplay 提供默认值
-	const { signDisplay = 'auto' } = opt;
-
-	const num = parseFloat(rawValue);
-	if (isNaN(num)) return '';
-	// 真实的小数位数
-	const _decimal = getRawDecimalPlaces(rawValue);
-
-	const options = {
-		style: "decimal",
-		useGrouping: true, // 使用千位分隔符
-		signDisplay: signDisplay,
-		minimumFractionDigits: _decimal, // 最少显示的小数位数
-		maximumFractionDigits: _decimal, // 最多显示的小数位数
-	}
-	try {
-		return new Intl.NumberFormat(locale, options).format(num);
-	} catch (e) {
-		console.warn(`formatterFiat 格式化数字 ${rawValue} 失败，使用默认格式化。`, e);
-		const formattedNum = formatNumberManually(num, locale, _decimal);
-		// return `${formattedNum} ${currency}`;
-		return formattedNum;
-	}
-}
-
-// 稳定币格式化
-export function formatterStable(rawValue, locale, opt = {}) {
-	// 解构 opt 对象，并为 signDisplay 提供默认值
-	const { signDisplay = 'auto' } = opt;
-
-	const num = parseFloat(rawValue);
-	if (isNaN(num)) return '';
-	// 真实的小数位数
-	const _decimal = getRawDecimalPlaces(rawValue);
-
-	const options = {
-		style: "decimal",
-		useGrouping: true, // 使用千位分隔符
-		signDisplay: signDisplay,
-		minimumFractionDigits: _decimal, // 最少显示的小数位数
-		maximumFractionDigits: _decimal, // 最多显示的小数位数
-	}
-	try {
-		return new Intl.NumberFormat(locale, options).format(num);
-	} catch (e) {
-		console.warn(`formatterFiat 格式化数字 ${rawValue} 失败，使用默认格式化。`, e);
-		const formattedNum = formatNumberManually(num, locale, _decimal);
 		// return `${formattedNum} ${currency}`;
 		return formattedNum;
 	}

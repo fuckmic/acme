@@ -34,7 +34,7 @@
 	import AcmeDivider from '../ui/common/AcmeDivider.vue';
 	import AcmeIconBack from '../ui/icons/AcmeIconBack.vue';
 	import AcmeInputInteger from '../ui/inputs/AcmeInputInteger.vue';
-	import { acmeCfg } from '../config.js';
+	import { acmeConfig } from '../config.js';
 	import AcmePresetGroup from '../ui/selectors/AcmePresetGroup.vue';
 	import { formatterFiat, formatterInteger } from '../utils/formatter';
 	export default {
@@ -59,7 +59,7 @@
 			optsFiat() {
 				const tmp = [100, 500, 1000, 3000, 5000, 10000];
 				return tmp.map(v => {
-					const _label = formatterFiat(v, acmeCfg.lgre, acmeCfg.currency);
+					const _label = formatterFiat(v, acmeConfig.lgre, acmeConfig.currency);
 					return { key: v, label: _label }
 				})
 			},
@@ -67,7 +67,7 @@
 			optLevers() {
 				const tmp = [1, 5, 10, 30, 50, 100, 300, 800];
 				return tmp.map(v => {
-					const _label = formatterInteger(v, acmeCfg.lgre);
+					const _label = formatterInteger(v, acmeConfig.lgre);
 					return { key: v, label: _label }
 				})
 			},

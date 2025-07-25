@@ -9,58 +9,52 @@
 		<BottomNav :code="$nav.keys.format" />
 
 		<view style="padding: 160rpx 40rpx 240rpx;color: var(--acme-fmt-text-color);">
-			<view class="acme-h6">{{`AcmeFmtFiat`}}</view>
+			<view class="acme-h6">{{`FmtFiat`}}</view>
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;padding-bottom: 12rpx;">
 				<view class="acme-body1">{{`标准法币：`}}</view>
-				<view>
-					{{formatterFiat( setFiatNoml,  acmeCfg.lgre,  acmeCfg.currency)}}
-				</view>
-				<view>{{formatterFiat( setFiatNoml,  acmeCfg.lgre, 'EUR')}}</view>
-			</view>
-			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;padding-bottom: 12rpx;">
-				<view class="acme-body1">{{`不限位数：`}}</view>
-				<view>
-					{{formatterFiat( fiatValue,  acmeCfg.lgre,  acmeCfg.currency)}}
-				</view>
-				<view>{{formatterFiat( fiatValue,  acmeCfg.lgre, 'EUR')}}</view>
+				<view> {{$fmt.fmtFiat( fiatValue )}} </view>
+				<view>{{$fmt.fmtFiat( fiatValue, {currency: 'EUR'})}}</view>
 			</view>
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;padding-bottom: 12rpx;">
 				<view class="acme-body1">{{`限定4位：`}}</view>
-				<view>
-					{{formatterFiat( setFiat,  acmeCfg.lgre,  acmeCfg.currency)}}
-				</view>
-				<view>{{formatterFiat( setFiat,  acmeCfg.lgre, 'EUR')}}</view>
+				<view> {{$fmt.fmtFiat( fiatValue ,{decimal: 4})}} </view>
+				<view>{{$fmt.fmtFiat( fiatValue, {currency: 'EUR',decimal: 4})}}</view>
+			</view>
+			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;padding-bottom: 12rpx;">
+				<view class="acme-body1">{{`不限位数：`}}</view>
+				<view> {{$fmt.fmtFiat( fiatValue,{decimal:$fmt.getRawDecimal(fiatValue)})}} </view>
+				<view>{{$fmt.fmtFiat( fiatValue, {currency: 'EUR',decimal:$fmt.getRawDecimal(fiatValue)})}}</view>
 			</view>
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;padding-bottom: 12rpx;">
 				<view class="acme-body1">{{`variant 样式：`}}</view>
 				<view class="variant-bold" style="font-weight: 900;">
-					{{formatterFiat( setFiatNoml,  acmeCfg.lgre,  acmeCfg.currency)}}
+					{{$fmt.fmtFiat( fiatValue )}}
 				</view>
-				<view class="variant-large">{{formatterFiat( setFiatNoml,  acmeCfg.lgre, 'EUR')}}</view>
+				<view class="variant-large">{{$fmt.fmtFiat( fiatValue, {currency: 'EUR'})}}</view>
 			</view>
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;padding-bottom: 12rpx;">
 				<view class="acme-body1">{{`动态variant：`}}</view>
-				<view :class="getTextColor(setFiatNoml)">
-					{{formatterFiat( setFiatNoml,  acmeCfg.lgre,  acmeCfg.currency)}}
+				<view :class="getTextColor(fiatValue)">
+					{{$fmt.fmtFiat( fiatValue)}}
 				</view>
-				<view :class="getBgColor(-setFiatNoml)">{{formatterFiat( setFiatNoml,  acmeCfg.lgre, 'EUR')}}</view>
+				<view :class="getBgColor(-fiatValue)">{{$fmt.fmtFiat( fiatValue, {currency: 'EUR'})}}</view>
 			</view>
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;padding-bottom: 12rpx;">
 				<view class="acme-body1">{{`动态variant 反转：`}}</view>
-				<view :class="getTextColor(setFiatNoml,true)">
-					{{formatterFiat( setFiatNoml,  acmeCfg.lgre,  acmeCfg.currency)}}
+				<view :class="getTextColor(fiatValue,true)">
+					{{$fmt.fmtFiat( fiatValue )}}
 				</view>
-				<view :class="getBgColor(-setFiatNoml,true)">{{formatterFiat( setFiatNoml,  acmeCfg.lgre, 'EUR')}}</view>
+				<view :class="getBgColor(-fiatValue,true)">{{$fmt.fmtFiat( fiatValue, {currency: 'EUR'})}}</view>
 			</view>
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;padding-bottom: 12rpx;">
-				<view :class="getBgColorRgba(setFiatNoml)">
-					{{formatterFiat( setFiatNoml,  acmeCfg.lgre,  acmeCfg.currency)}}
+				<view :class="getBgColorRgba(fiatValue)">
+					{{$fmt.fmtFiat( fiatValue )}}
 				</view>
 				<view :class="getBgColorRgba(0)">
-					{{formatterFiat( setFiatNoml,  acmeCfg.lgre,  acmeCfg.currency)}}
+					{{$fmt.fmtFiat( fiatValue )}}
 				</view>
-				<view :class="getBgColorRgba(-setFiatNoml)">
-					{{formatterFiat( setFiatNoml,  acmeCfg.lgre,  acmeCfg.currency)}}
+				<view :class="getBgColorRgba(-fiatValue)">
+					{{$fmt.fmtFiat( fiatValue )}}
 				</view>
 			</view>
 
@@ -121,8 +115,8 @@
 	import AcmeDivider from '../ui/common/AcmeDivider.vue';
 	import AcmeIconBack from '../ui/icons/AcmeIconBack.vue';
 
-	import { acmeCfg } from '../config.js';
-	import { formatterFiat, formatterInteger, formatNumberToPrecision } from '../utils/formatter';
+	import { acmeConfig } from '../config.js';
+	import { formatterInteger, formatNumberToPrecision } from '../utils/formatter';
 	import AcmeFmtInteger from '../ui/fmt/AcmeFmtInteger.vue';
 	import AcmeFmtPercent from '../ui/fmt/AcmeFmtPercent.vue';
 	import AcmeFmtKMB from '../ui/fmt/AcmeFmtKMB.vue';
@@ -148,31 +142,24 @@
 				percentValue: 123.45,
 				cryptoValue: 123456.78901234,
 				stableValue: 123456.78901234,
-				acmeCfg,
+				acmeConfig,
 			}
 		},
-		computed: {
-			// 标准法币
-			setFiatNoml() {
-				return formatNumberToPrecision(this.fiatValue, this.acmeCfg.currency)
-			},
-			// 自定义小数位
-			setFiat() {
-				return formatNumberToPrecision(this.fiatValue, this.acmeCfg.currency, { decimal: 4 })
-			},
-		},
+		computed: {},
 
 		onShow() {
-			console.log(`setFiatNoml:`, this.setFiatNoml);
-			console.log(`setFiat:`, this.setFiat);
-			const tmp = this.formatterFiat(this.setFiatNoml, this.acmeCfg.lgre, this.acmeCfg.currency);
-			const tmp1 = this.formatterFiat(this.setFiat, this.acmeCfg.lgre, 'EUR');
-			console.log(`setFiatNoml:`, tmp);
-			console.log(`setFiat:`, tmp1);
+			const tmp3 = this.$fmt.fmtFiat(this.fiatValue, { decimal: 4 });
+			console.log(`tmp3:`, tmp3);
+			const tmp4 = this.$fmt.fmtFiat(this.fiatValue, { lgre: 'de-DE', currency: 'EUR' });
+			console.log(`tmp4:`, tmp4);
+
+			const tmp5 = this.$fmt.fmtFiat(this.fiatValue, { decimal: 4 });
+			console.log(`tmp5:`, tmp5);
+			const tmp6 = this.$fmt.fmtFiat(this.fiatValue, { lgre: 'de-DE', currency: 'EUR' });
+			console.log(`tmp6:`, tmp6);
 		},
 
 		methods: {
-			formatterFiat,
 
 			// 根据数字获取对应的索引 (0: 跌/亏, 1: 平, 2: 涨/盈)
 			getSignIndex(num) {

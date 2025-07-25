@@ -11,13 +11,13 @@
 </template>
 
 <script>
-	import { acmeCfg } from '../../config.js';
+	import { acmeConfig } from '../../config.js';
 	import { formatterCrypto } from '../../utils/formatter';
 	export default {
 		name: "AcmeFmtCrypto",
 		props: {
 			value: { type: [String, Number], default: 0 },
-			lgre: { type: String, default: () => acmeCfg.lgre },
+			lgre: { type: String, default: () => acmeConfig.lgre },
 			showSign: {
 				type: String,
 				default: 'auto', // 默认自动显示，负数显示负号，正数不显示
