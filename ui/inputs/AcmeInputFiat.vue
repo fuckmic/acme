@@ -18,12 +18,6 @@
 <script>
 	import { acmeConfig } from '../../config.js';
 	import AcmeIconClose from '../icons/AcmeIconClose.vue';
-	import {
-		getLocaleSeparators,
-		formatterFiat,
-		parseFormattedNumber,
-		formatCleanNumber
-	} from '../../utils/formatter.js';
 	export default {
 		name: "AcmeInputFiat",
 		components: { AcmeIconClose },
@@ -51,7 +45,7 @@
 				return (this.value !== null && this.value !== '' && String(this.value).length > 0) && this.showClearIcon
 			},
 			// 缓存语言环境分隔符
-			localeSeparators() { return getLocaleSeparators(this.locale); }
+			localeSeparators() { return this.$fmt.getLocaleSeparators(this.locale); }
 		},
 		watch: {
 			// 监听 value prop 的变化，更新内部状态
@@ -67,7 +61,7 @@
 					} else if (!isNaN(numVal) && numVal !== this.rawValue) {
 						this.rawValue = numVal;
 						if (!this.isFocused) {
-							this.displayValue = formatterFiat(this.rawValue, this.locale, this.currency);
+							this.displayValue = this.$fmt.fmtFiat(this.rawValue);
 						}
 					} else if (newVal === '' || newVal === null || isNaN(numVal)) {
 						this.rawValue = 0;
@@ -81,7 +75,7 @@
 		// mounted 生命周期钩子，用于初始化值并确保格式正确
 		mounted() {
 			// // 确保在组件挂载后，初始值被正确格式化显示
-			// this.displayValue = formatterFiat(this.rawValue, this.locale, this.currency);
+			// this.displayValue = this.$fmt.fmtFiat(this.rawValue );
 			// this.lastInputValue = this.displayValue;
 			// 确保在组件挂载后，如果初始 value 为 0，displayValue 保持为空
 			if (this.value === 0 || this.value === '0' || this.value === '' ||
@@ -90,7 +84,7 @@
 				this.displayValue = '';
 			} else {
 				this.rawValue = parseFloat(this.value);
-				this.displayValue = formatterFiat(this.rawValue, this.locale, this.currency);
+				this.displayValue = this.$fmt.fmtFiat(this.rawValue);
 			}
 			this.lastInputValue = this.displayValue;
 		},
@@ -111,7 +105,7 @@
 				}
 
 				// 解析用户输入的字符串，得到纯数字字符串（小数点为 '.'） 处理输入的句点和逗号
-				const cleanNumberStr = parseFormattedNumber(newValue);
+				const cleanNumberStr = this.$fmt.parseFormattedNumber(newValue);
 				let newRawValue = parseFloat(cleanNumberStr);
 
 				if (isNaN(newRawValue) && cleanNumberStr !== '' && cleanNumberStr !== '.') {
@@ -126,7 +120,7 @@
 				}
 
 				// 格式化为显示字符串 (在焦点状态下，显示不带千分符的干净格式)
-				let formattedDisplayValue = formatCleanNumber(newRawValue, this.locale);
+				let formattedDisplayValue = this.$fmt.formatCleanNumber(newRawValue, this.locale);
 
 				// 计算光标位置 找出本次输入发生变化的起始位置
 				let start = 0;
@@ -155,7 +149,8 @@
 					// 这是一个简化的光标调整逻辑，对于复杂格式化可能会有偏差
 					// 更精确的需要逐字符对比新旧字符串并计算光标经过的格式字符数量
 					const addedChars = formattedDisplayValue.length - cleanNumberStr.length; // 比如千分符和小数点
-					const currentRawCursorPosition = parseFormattedNumber(newValue.substring(0, oldCursorPosition)).length;
+					const currentRawCursorPosition = this.$fmt.parseFormattedNumber(newValue.substring(0, oldCursorPosition))
+						.length;
 
 					// 重新计算光标在格式化后的字符串中的位置
 					let tempFormatted = formattedDisplayValue;
@@ -219,7 +214,7 @@
 			onFocus() {
 				this.isFocused = true;
 				// 获取焦点时，显示不带千分符的纯数字格式（带本地化小数点）
-				this.displayValue = formatCleanNumber(this.rawValue, this.locale);
+				this.displayValue = this.$fmt.formatCleanNumber(this.rawValue, this.locale);
 				// 聚焦时将光标置于末尾
 				this.$nextTick(() => {
 					this.cursorPosition = this.displayValue.length;
@@ -230,7 +225,7 @@
 			onBlur() {
 				this.isFocused = false;
 				// 失去焦点时，重新格式化显示
-				this.displayValue = formatterFiat(this.rawValue, this.locale, this.currency);
+				this.displayValue = this.$fmt.fmtFiat(this.rawValue, this.locale, this.currency);
 				this.cursorPosition = -1; // 失去焦点后重置光标位置
 			}
 		},

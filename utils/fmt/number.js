@@ -227,3 +227,122 @@ export function fmtFiat(rawValue, opt = {}) {
 		return formattedNum;
 	}
 }
+
+// fmtCompact 紧凑计数值
+export function fmtCompact(rawValue, opt = {}) {
+	const { lgre = acmeConfig.lgre, signDisplay = 'auto', compact = 'short', decimal = 2 } = opt;
+	// 优先处理传入的decimal
+	let _decimal;
+	// 如果decimal有值
+	if (typeof decimal === 'number' && decimal >= 0 && Number.isInteger(decimal))
+		_decimal = decimal;
+	// console.log(_decimal);
+	const num = parseToNumer(rawValue);
+	if (!num) return '';
+
+	const options = {
+		style: "decimal",
+		useGrouping: true, // 通常在 compact 模式下，这个会被 notation 覆盖，但保留无害
+		signDisplay: signDisplay,
+		notation: 'compact',
+		compactDisplay: compact, // 'short' (默认) 或 'long'
+		// 关于小数位数：
+		// compact notation 会根据缩写自动调整小数位数，
+		// 但 maxFractionDigits 仍然可以作为最大限制。
+		// minimumFractionDigits 通常设为 0，让 compact notation 灵活处理。
+		minimumFractionDigits: 0,
+		maximumFractionDigits: _decimal,
+	};
+	try {
+		return new Intl.NumberFormat(lgre, options).format(num);
+	} catch (e) {
+		console.warn(`fmtCompact 格式化数字 ${rawValue} 失败，使用默认格式化。`, e);
+		const formattedNum = formatNumberManually(num, lgre, _decimal);
+		// return `${formattedNum} ${currency}`;
+		return formattedNum;
+	}
+}
+
+// 整数值 格式化
+export function fmtInteger(rawValue, opt = {}) {
+	const { lgre = acmeConfig.lgre, signDisplay = 'auto' } = opt;
+	const num = parseToNumer(rawValue);
+	if (!num) return '';
+	const options = {
+		style: "decimal",
+		useGrouping: true,
+		signDisplay: signDisplay,
+		minimumFractionDigits: 0,
+		maximumFractionDigits: 0,
+	}
+	try {
+		return new Intl.NumberFormat(lgre, options).format(num);
+	} catch (e) {
+		console.warn(`fmtInteger 格式化数字 ${rawValue} 失败，使用默认格式化。`, e);
+		const formattedNum = formatNumberManually(num, lgre, 0);
+		// return `${formattedNum} ${currency}`;
+		return formattedNum;
+	}
+}
+
+// 百分值 格式化
+export function fmtPercent(rawValue, opt = {}) {
+	const { lgre = acmeConfig.lgre, signDisplay = 'auto', decimal } = opt;
+	// 优先处理传入的decimal
+	let _decimal;
+	// 如果decimal有值
+	if (typeof decimal === 'number' && decimal >= 0 && Number.isInteger(decimal)) _decimal = decimal;
+	// 否则，使用默认的法币值方案
+	else _decimal = 2;
+	// console.log(_decimal);
+
+	const num = parseToNumer(rawValue);
+	if (!num) return '';
+	const options = {
+		style: "percent",
+		useGrouping: true,
+		signDisplay: signDisplay,
+		minimumFractionDigits: _decimal,
+		maximumFractionDigits: _decimal,
+	};
+	try {
+		// Intl.NumberFormat percent style 期望0-1的数值，所以需要除以100
+		return new Intl.NumberFormat(lgre, options).format(num / 100);
+	} catch (e) {
+		console.warn(`fmtPercent 格式化数字 ${rawValue} 失败，使用默认格式化。`, e);
+		// const formattedNum = formatNumberManually(num, lgre, 0);
+		// // return `${formattedNum} ${currency}`;
+		// return formattedNum;
+		return `${num.toFixed(_decimal)}%`; // 回退方案
+	}
+}
+
+// crypto stable
+export function fmtCrypto(rawValue, opt = {}) {
+	const { lgre = acmeConfig.lgre, signDisplay = 'auto', decimal } = opt;
+	// 优先处理传入的decimal
+	let _decimal;
+	// 如果decimal有值
+	if (typeof decimal === 'number' && decimal >= 0 && Number.isInteger(decimal))
+		_decimal = decimal;
+	// 否则，使用真实小数位数
+	else _decimal = getRawDecimal(rawValue);
+
+	const num = parseToNumer(rawValue);
+	if (!num) return '';
+	const options = {
+		style: "decimal",
+		useGrouping: true, // 使用千位分隔符
+		signDisplay: signDisplay,
+		minimumFractionDigits: _decimal, // 最少显示的小数位数
+		maximumFractionDigits: _decimal, // 最多显示的小数位数
+	}
+	try {
+		return new Intl.NumberFormat(lgre, options).format(num);
+	} catch (e) {
+		console.warn(`formatterFiat 格式化数字 ${rawValue} 失败，使用默认格式化。`, e);
+		const formattedNum = formatNumberManually(num, lgre, _decimal);
+		// return `${formattedNum} ${currency}`;
+		return formattedNum;
+	}
+}

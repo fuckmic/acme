@@ -61,48 +61,70 @@
 			<AcmeDivider />
 			<view class="acme-h6 ">{{`AcmeFmtKMB`}}</view>
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
-				<AcmeFmtKMB :value="kmbValue" />
-				<AcmeFmtKMB :value="kmbValue" :variant="getTextColor(-kmbValue)" />
-				<AcmeFmtKMB :value="kmbValue" :variant="getBgColorRgba(kmbValue)" />
+				<view>{{$fmt.fmtCompact(kmbValue)}}</view>
+				<view>{{$fmt.fmtCompact(kmbValue, { decimal: 4,lgre:'de-DE' })}}</view>
+			</view>
+			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
+				<view :class="getTextColor(kmbValue)">{{$fmt.fmtCompact(kmbValue, {lgre:'de-DE' })}}</view>
+				<view :class="getBgColorRgba(-kmbValue)">{{$fmt.fmtCompact(kmbValue, { decimal: 4 })}}</view>
 			</view>
 
 			<AcmeDivider />
 			<view class="acme-h6 ">{{`AcmeFmtInteger`}}</view>
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
-				<AcmeFmtInteger :value="integerValue">
-					<template #suffix>
-						<text style="font-size: 24rpx;color:var(--acme-info);">{{`KM`}}</text>
-					</template>
-				</AcmeFmtInteger>
-				<AcmeFmtInteger :value="integerValue" locale="de-DE" :variant="getTextColor(integerValue)" />
-				<AcmeFmtInteger :value="integerValue" locale="de-DE" :variant="getBgColorRgba(integerValue)" />
+				<view>{{$fmt.fmtInteger(integerValue )}}</view>
+				<view style="display: flex;align-items: center;gap:4rpx;">
+					<view>{{$fmt.fmtInteger(integerValue )}}</view>
+					<text style="font-size: 24rpx;color:var(--acme-info);">{{`KM`}}</text>
+				</view>
+			</view>
+			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
+				<view :class="getTextColor(integerValue)">{{$fmt.fmtInteger(integerValue ,{lgre:'de-DE'})}}</view>
+				<view :class="getBgColorRgba(integerValue)" style="display: flex;align-items: center;gap:4rpx;">
+					<view>{{$fmt.fmtInteger(integerValue ,{lgre:'de-DE'})}}</view>
+					<text style="font-size: 24rpx;">{{`KM`}}</text>
+				</view>
 			</view>
 
 			<AcmeDivider />
 			<view class="acme-h6 ">{{`AcmeFmtPercent`}}</view>
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
-				<AcmeFmtPercent :value="percentValue" />
-				<AcmeFmtPercent :value="percentValue" locale="de-DE" :variant="getTextColor(percentValue)" />
-				<AcmeFmtPercent :value="percentValue" locale="de-DE" :variant="getBgColorRgba(-percentValue)" />
+				<view>{{$fmt.fmtPercent(percentValue )}}</view>
+				<view :class="getTextColor(percentValue)">{{$fmt.fmtPercent(percentValue,{lgre:'de-DE'} )}}</view>
+				<view :class="getBgColorRgba(-percentValue)">
+					{{$fmt.fmtPercent(percentValue,{lgre:'de-DE',decimal:4} )}}
+				</view>
 			</view>
 
 			<AcmeDivider />
 			<view class="acme-h6 ">{{`AcmeFmtCrypto`}}</view>
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
-				<AcmeFmtCrypto :value="cryptoValue" />
-				<AcmeFmtCrypto :value="cryptoValue" locale="de-DE" :variant="getTextColor(cryptoValue)" />
+				<view>{{$fmt.fmtCrypto(cryptoValue )}}</view>
+				<view :class="getTextColor(cryptoValue)">{{$fmt.fmtCrypto(cryptoValue,{lgre:'de-DE',decimal:6} )}}</view>
+			</view>
+			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
+				<view style="display: flex;align-items: center;gap:4rpx;">
+					<view>{{$fmt.fmtCrypto(cryptoValue )}}</view>
+					<text style="font-size: 24rpx;color:var(--acme-info);">{{`BTC`}}</text>
+				</view>
+				<view style="display: flex;align-items: center;gap:4rpx;">
+					<view :class="getTextColor(cryptoValue)">{{$fmt.fmtCrypto(cryptoValue,{lgre:'de-DE',decimal:6} )}}</view>
+					<text style="font-size: 24rpx;color:var(--acme-info);">{{`BTC`}}</text>
+				</view>
 			</view>
 
 			<AcmeDivider />
 			<view class="acme-h6 ">{{`AcmeFmtStable`}}</view>
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
-				<AcmeFmtStable :value="stableValue" />
-				<AcmeFmtStable :value="stableValue" locale="de-DE" :variant="getTextColor(-stableValue)" />
+				<view>{{$fmt.fmtCrypto(stableValue )}}</view>
+				<view :class="getTextColor(-stableValue)">
+					{{$fmt.fmtCrypto(stableValue,{lgre:'de-DE',decimal:6} )}}
+				</view>
 			</view>
 
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
-				<AcmeFmtCrypto :value="cryptoValue" locale="de-DE" :variant="getBgColorRgba(-cryptoValue)" />
-				<AcmeFmtStable :value="stableValue" locale="de-DE" :variant="getBgColorRgba(stableValue)" />
+				<view :class="getBgColorRgba(-stableValue)">{{$fmt.fmtCrypto(stableValue,{lgre:'de-DE' } )}}</view>
+				<view :class="getBgColorRgba(stableValue)">{{$fmt.fmtCrypto(stableValue,{lgre:'de-DE' } )}}</view>
 			</view>
 		</view>
 
@@ -114,25 +136,12 @@
 	import BottomNav from '../components/BottomNav.vue';
 	import AcmeDivider from '../ui/common/AcmeDivider.vue';
 	import AcmeIconBack from '../ui/icons/AcmeIconBack.vue';
-
-	import { acmeConfig } from '../config.js';
-	import { formatterInteger, formatNumberToPrecision } from '../utils/formatter';
-	import AcmeFmtInteger from '../ui/fmt/AcmeFmtInteger.vue';
-	import AcmeFmtPercent from '../ui/fmt/AcmeFmtPercent.vue';
-	import AcmeFmtKMB from '../ui/fmt/AcmeFmtKMB.vue';
-	import AcmeFmtCrypto from '../ui/fmt/AcmeFmtCrypto.vue';
-	import AcmeFmtStable from '../ui/fmt/AcmeFmtStable.vue';
 	export default {
 		components: {
 			BottomNav,
 			AcmeAppBar,
 			AcmeIconBack,
 			AcmeDivider,
-			AcmeFmtInteger,
-			AcmeFmtPercent,
-			AcmeFmtKMB,
-			AcmeFmtCrypto,
-			AcmeFmtStable,
 		},
 		data() {
 			return {
@@ -142,25 +151,10 @@
 				percentValue: 123.45,
 				cryptoValue: 123456.78901234,
 				stableValue: 123456.78901234,
-				acmeConfig,
 			}
-		},
-		computed: {},
-
-		onShow() {
-			const tmp3 = this.$fmt.fmtFiat(this.fiatValue, { decimal: 4 });
-			console.log(`tmp3:`, tmp3);
-			const tmp4 = this.$fmt.fmtFiat(this.fiatValue, { lgre: 'de-DE', currency: 'EUR' });
-			console.log(`tmp4:`, tmp4);
-
-			const tmp5 = this.$fmt.fmtFiat(this.fiatValue, { decimal: 4 });
-			console.log(`tmp5:`, tmp5);
-			const tmp6 = this.$fmt.fmtFiat(this.fiatValue, { lgre: 'de-DE', currency: 'EUR' });
-			console.log(`tmp6:`, tmp6);
 		},
 
 		methods: {
-
 			// 根据数字获取对应的索引 (0: 跌/亏, 1: 平, 2: 涨/盈)
 			getSignIndex(num) {
 				return num === 0 ? 1 : (num < 0 ? 0 : 2); // 调整索引顺序为 [跌, 平, 涨]
