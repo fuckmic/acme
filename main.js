@@ -7,7 +7,8 @@ import * as intl from './intl/index.js';
 import { setGlobalThemeColorsMap } from '@/utils/theme.js';
 import { acmeSetEditable } from './config.js';
 import { setLgresSelfNamed } from './intl/index.js';
-import { createFormatter } from './utils/fmt/index.js';
+import fmt from './utils/fmt/index.js';
+import * as theme from './utils/theme.js';
 
 Vue.component('AcmePageContainer', AcmePageContainer); // 全局注册
 Vue.component('DisplayLabel', DisplayLabel); // 全局注册
@@ -64,8 +65,10 @@ Vue.prototype.$nav = nav;
 Vue.prototype.$intl = intl;
 console.log(`intl:`, intl);
 console.log(`intl:`, intl.msg);
-Vue.prototype.$fmt = createFormatter();
-console.log(`$fmt:`, Vue.prototype.$fmt);
+Vue.prototype.$fmt = fmt;
+console.log(`$fmt:`, fmt);
+Vue.prototype.$theme = theme;
+console.log(`$theme:`, theme);
 
 // console.log(Vue);
 

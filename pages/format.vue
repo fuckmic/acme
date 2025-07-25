@@ -34,26 +34,26 @@
 			</view>
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;padding-bottom: 12rpx;">
 				<view class="acme-body1">{{`动态variant：`}}</view>
-				<view :class="getTextColor(fiatValue)">
+				<view :class="$theme.getTextColor(fiatValue)">
 					{{$fmt.fmtFiat( fiatValue)}}
 				</view>
-				<view :class="getBgColor(-fiatValue)">{{$fmt.fmtFiat( fiatValue, {currency: 'EUR'})}}</view>
+				<view :class="$theme.getBgColor(-fiatValue)">{{$fmt.fmtFiat( fiatValue, {currency: 'EUR'})}}</view>
 			</view>
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;padding-bottom: 12rpx;">
 				<view class="acme-body1">{{`动态variant 反转：`}}</view>
-				<view :class="getTextColor(fiatValue,true)">
+				<view :class="$theme.getTextColor(fiatValue,true)">
 					{{$fmt.fmtFiat( fiatValue )}}
 				</view>
-				<view :class="getBgColor(-fiatValue,true)">{{$fmt.fmtFiat( fiatValue, {currency: 'EUR'})}}</view>
+				<view :class="$theme.getBgColor(-fiatValue,true)">{{$fmt.fmtFiat( fiatValue, {currency: 'EUR'})}}</view>
 			</view>
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;padding-bottom: 12rpx;">
-				<view :class="getBgColorRgba(fiatValue)">
+				<view :class="$theme.getBgColorRgba(fiatValue)">
 					{{$fmt.fmtFiat( fiatValue )}}
 				</view>
-				<view :class="getBgColorRgba(0)">
+				<view :class="$theme.getBgColorRgba(0)">
 					{{$fmt.fmtFiat( fiatValue )}}
 				</view>
-				<view :class="getBgColorRgba(-fiatValue)">
+				<view :class="$theme.getBgColorRgba(-fiatValue)">
 					{{$fmt.fmtFiat( fiatValue )}}
 				</view>
 			</view>
@@ -65,8 +65,8 @@
 				<view>{{$fmt.fmtCompact(kmbValue, { decimal: 4,lgre:'de-DE' })}}</view>
 			</view>
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
-				<view :class="getTextColor(kmbValue)">{{$fmt.fmtCompact(kmbValue, {lgre:'de-DE' })}}</view>
-				<view :class="getBgColorRgba(-kmbValue)">{{$fmt.fmtCompact(kmbValue, { decimal: 4 })}}</view>
+				<view :class="$theme.getTextColor(kmbValue)">{{$fmt.fmtCompact(kmbValue, {lgre:'de-DE' })}}</view>
+				<view :class="$theme.getBgColorRgba(-kmbValue)">{{$fmt.fmtCompact(kmbValue, { decimal: 4 })}}</view>
 			</view>
 
 			<AcmeDivider />
@@ -79,8 +79,8 @@
 				</view>
 			</view>
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
-				<view :class="getTextColor(integerValue)">{{$fmt.fmtInteger(integerValue ,{lgre:'de-DE'})}}</view>
-				<view :class="getBgColorRgba(integerValue)" style="display: flex;align-items: center;gap:4rpx;">
+				<view :class="$theme.getTextColor(integerValue)">{{$fmt.fmtInteger(integerValue ,{lgre:'de-DE'})}}</view>
+				<view :class="$theme.getBgColorRgba(integerValue)" style="display: flex;align-items: center;gap:4rpx;">
 					<view>{{$fmt.fmtInteger(integerValue ,{lgre:'de-DE'})}}</view>
 					<text style="font-size: 24rpx;">{{`KM`}}</text>
 				</view>
@@ -90,8 +90,8 @@
 			<view class="acme-h6 ">{{`AcmeFmtPercent`}}</view>
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
 				<view>{{$fmt.fmtPercent(percentValue )}}</view>
-				<view :class="getTextColor(percentValue)">{{$fmt.fmtPercent(percentValue,{lgre:'de-DE'} )}}</view>
-				<view :class="getBgColorRgba(-percentValue)">
+				<view :class="$theme.getTextColor(percentValue)">{{$fmt.fmtPercent(percentValue,{lgre:'de-DE'} )}}</view>
+				<view :class="$theme.getBgColorRgba(-percentValue)">
 					{{$fmt.fmtPercent(percentValue,{lgre:'de-DE',decimal:4} )}}
 				</view>
 			</view>
@@ -100,7 +100,9 @@
 			<view class="acme-h6 ">{{`AcmeFmtCrypto`}}</view>
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
 				<view>{{$fmt.fmtCrypto(cryptoValue )}}</view>
-				<view :class="getTextColor(cryptoValue)">{{$fmt.fmtCrypto(cryptoValue,{lgre:'de-DE',decimal:6} )}}</view>
+				<view :class="$theme.getTextColor(cryptoValue)">
+					{{$fmt.fmtCrypto(cryptoValue,{lgre:'de-DE',decimal:6} )}}
+				</view>
 			</view>
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
 				<view style="display: flex;align-items: center;gap:4rpx;">
@@ -108,7 +110,9 @@
 					<text style="font-size: 24rpx;color:var(--acme-info);">{{`BTC`}}</text>
 				</view>
 				<view style="display: flex;align-items: center;gap:4rpx;">
-					<view :class="getTextColor(cryptoValue)">{{$fmt.fmtCrypto(cryptoValue,{lgre:'de-DE',decimal:6} )}}</view>
+					<view :class="$theme.getTextColor(cryptoValue)">
+						{{$fmt.fmtCrypto(cryptoValue,{lgre:'de-DE',decimal:6} )}}
+					</view>
 					<text style="font-size: 24rpx;color:var(--acme-info);">{{`BTC`}}</text>
 				</view>
 			</view>
@@ -117,14 +121,14 @@
 			<view class="acme-h6 ">{{`AcmeFmtStable`}}</view>
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
 				<view>{{$fmt.fmtCrypto(stableValue )}}</view>
-				<view :class="getTextColor(-stableValue)">
+				<view :class="$theme.getTextColor(-stableValue)">
 					{{$fmt.fmtCrypto(stableValue,{lgre:'de-DE',decimal:6} )}}
 				</view>
 			</view>
 
 			<view style="display: flex;align-items: center;justify-content: space-between;gap:12rpx;">
-				<view :class="getBgColorRgba(-stableValue)">{{$fmt.fmtCrypto(stableValue,{lgre:'de-DE' } )}}</view>
-				<view :class="getBgColorRgba(stableValue)">{{$fmt.fmtCrypto(stableValue,{lgre:'de-DE' } )}}</view>
+				<view :class="$theme.getBgColorRgba(-stableValue)">{{$fmt.fmtCrypto(stableValue,{lgre:'de-DE' } )}}</view>
+				<view :class="$theme.getBgColorRgba(stableValue)">{{$fmt.fmtCrypto(stableValue,{lgre:'de-DE' } )}}</view>
 			</view>
 		</view>
 
@@ -154,33 +158,7 @@
 			}
 		},
 
-		methods: {
-			// 根据数字获取对应的索引 (0: 跌/亏, 1: 平, 2: 涨/盈)
-			getSignIndex(num) {
-				return num === 0 ? 1 : (num < 0 ? 0 : 2); // 调整索引顺序为 [跌, 平, 涨]
-			},
-
-			// 获取盈亏/涨跌文字颜色  (传入值，是否倒转)
-			getTextColor(num, isRevse) {
-				let index = this.getSignIndex(num);
-				index = isRevse ? (index === 0 ? 2 : (index === 2 ? 0 : index)) : index;
-				const tmp = [`acme-text-fall`, `acme-text-flat`, `acme-text-profit`];
-				return tmp[index];
-			},
-			// 获取盈亏/涨跌背景颜色  (传入值，是否倒转)
-			getBgColor(num, isRevse) {
-				let index = this.getSignIndex(num);
-				index = isRevse ? (index === 0 ? 2 : (index === 2 ? 0 : index)) : index;
-				const tmp = [`acme-bg-fall`, `acme-bg-flat`, `acme-bg-profit`];
-				return tmp[index];
-			},
-			getBgColorRgba(num, isRevse) {
-				let index = this.getSignIndex(num);
-				index = isRevse ? (index === 0 ? 2 : (index === 2 ? 0 : index)) : index;
-				const tmp = [`acme-bg-fall-rgba`, `acme-bg-flat-rgba`, `acme-bg-profit-rgba`];
-				return tmp[index];
-			},
-		}
+		methods: {}
 	}
 </script>
 

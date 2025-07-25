@@ -16,7 +16,7 @@
 
 ## pages/示例
 - icons.vue 所有自定义默认icon
-- lgre.vue 所有以包含的lgre配置
+- lgre.vue 所有已包含的lgre配置
 
 ## styles
 - _colors.scss 包含所有基础的 Sass 颜色变量.
@@ -37,6 +37,25 @@
 - 如果是国际区号，则可以单独导入所需，进行对象组装。
 ### locale/ 区域化
 - en-US.js 所有设置英语
+
+
+## utils/
+### fmt/index.js 各类数据格式化。优先从数据层格式化，其次考虑元素结构直接调用
+- number.js 数值格式化、反格式化
+- string.js 字符串处理
+- date.js 日期时间格式化 
+ date格式化时根据一个格式字符串，动态配置opt。
+例如：format="D-M-Y h:m:s" =》 日月年 时分秒
+
+- locales.js 所有国家国际化配置
+- theme.js 主题、 css变量映射颜色值等
+- websocket.js ws
+- validator.js 表单验证
+- svg.js 所有需要动态改变size和color的svg文件
+
+### chart/ 图表相关
+- klinechart.js
+- u-chart.js
 
 
 ## ui/
@@ -173,23 +192,6 @@ Table.vue
 
 Txn (Transaction)：交易相关组件（如充值提现）。
 
-## utils/
-### fmt/index.js 各类数据格式化。优先从数据层格式化，其次考虑元素结构直接调用
-- number.js 数值格式化、反格式化
-- string.js 字符串处理
-- date.js 日期时间格式化 
- date格式化时根据一个格式字符串，动态配置opt。
-例如：format="D-M-Y h:m:s" =》 日月年 时分秒
-
-- locales.js 所有国家国际化配置
-- theme.js 主题、 css变量映射颜色值等
-- websocket.js ws
-- validator.js 表单验证
-- svg.js 所有需要动态改变size和color的svg文件
-
-### chart/ 图表相关
-- klinechart.js
-- u-chart.js
 
 
 

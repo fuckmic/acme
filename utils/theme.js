@@ -31,3 +31,29 @@ export function cssVariableColor(cssVarString, theme) {
 	if (colorsForTheme && colorsForTheme[cssVarString]) return colorsForTheme[cssVarString];
 	return cssVarString; // 如果不是 CSS 变量格式，或者在映射中未找到，则返回原始字符串
 }
+
+// 根据数字获取对应的索引 (0: 跌/亏, 1: 平, 2: 涨/盈)
+export function getSignIndex(num) {
+	return num === 0 ? 1 : (num < 0 ? 0 : 2); // 调整索引顺序为 [跌, 平, 涨]
+}
+
+// 获取盈亏/涨跌文字颜色  (传入值，是否倒转)
+export function getTextColor(num, isRevse) {
+	let index = this.getSignIndex(num);
+	index = isRevse ? (index === 0 ? 2 : (index === 2 ? 0 : index)) : index;
+	const tmp = [`acme-text-fall`, `acme-text-flat`, `acme-text-profit`];
+	return tmp[index];
+}
+// 获取盈亏/涨跌背景颜色  (传入值，是否倒转)
+export function getBgColor(num, isRevse) {
+	let index = this.getSignIndex(num);
+	index = isRevse ? (index === 0 ? 2 : (index === 2 ? 0 : index)) : index;
+	const tmp = [`acme-bg-fall`, `acme-bg-flat`, `acme-bg-profit`];
+	return tmp[index];
+}
+export function getBgColorRgba(num, isRevse) {
+	let index = this.getSignIndex(num);
+	index = isRevse ? (index === 0 ? 2 : (index === 2 ? 0 : index)) : index;
+	const tmp = [`acme-bg-fall-rgba`, `acme-bg-flat-rgba`, `acme-bg-profit-rgba`];
+	return tmp[index];
+}
